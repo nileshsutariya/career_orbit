@@ -4,73 +4,85 @@
 @endsection
 @section('website-settings')
     <div class="container-fluid">
-        <div class="row">
-            <div class="col-md-12">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
                 <div class="card">
                     <div class="card-header">
-                        <h3 class="card-title" style="line-height: 36px;">{{ __('create_city') }}</h3>
-                        <a href="{{ route('location.city.city') }}"
-                            class="btn bg-primary float-right d-flex align-items-center justify-content-center"><i
-                                class="fas fa-arrow-left"></i>&nbsp; {{ __('back') }}</a>
+                        <div class="float-start">
+                            <h4>{{ __('edit_city') }}</h4>
+                        </div>
+
+                        <div class="float-end">
+                            <a href="{{ route('location.city.city') }}" class="btn bg-primary"><i
+                                    class="fa fa-arrow-left"></i>&nbsp; {{ __('back') }}</a>
+                        </div>
+
                     </div>
-                    <div class="row pt-3 pb-4">
-                        <div class="col-md-6 offset-md-3">
-                            <form class="form-horizontal" action="{{ route('location.city.update', $city->id) }}" method="POST">
-                                @csrf
-                                @method('PUT') <!-- Use PUT or PATCH method for updating -->
-                            
-                                <div class="form-group row mb-2">
-                                    <x-forms.label name="state" required="true" class="col-sm-3" />
-                                    <div class="col-sm-9">
-                                        <select name="state_id" class="form-select  select2 @error('state_id') is-invalid @enderror">
-                                            <option value="">Select State</option>
-                                            @foreach ($states as $state)
-                                                <option {{ old('state_id', $city->state_id) == $state->id ? 'selected' : '' }}
-                                                    value="{{ $state->id }}">
-                                                    {{ $state->name }}
-                                                </option>
-                                            @endforeach
-                                        </select>
-                                        @error('state_id')
-                                            <span class="invalid-feedback" role="alert"><strong>{{ $message }}</strong></span>
-                                        @enderror
-                                    </div>
-                                </div>
-                                <div class="form-group row mb-2">
-                                    <x-forms.label name="city" required="true" class="col-sm-3" />
-                                    <div class="col-sm-9">
-                                        <input class="form-control" type="text" name="city_name" value="{{ old('city_name', $city->name) }}"
-                                            placeholder="Enter City Name" required>
-                                    </div>
-                                    @error('city_name')
-                                        <span class="invalid-feedback" role="alert"><strong>{{ $message }}</strong></span>
+                    <div class="card-body">
+
+                        <form class="form-horizontal" action="{{ route('location.city.update', $city->id) }}"
+                            method="POST">
+                            @csrf
+                            @method('PUT') <!-- Use PUT or PATCH method for updating -->
+
+                            <div class="form-group row mb-2">
+                                <x-forms.label name="state" required="true" class="col-sm-3" />
+                                <div class="col-sm-9">
+                                    <select name="state_id" class="form-select @error('state_id') is-invalid @enderror">
+                                        <option value="">Select State</option>
+                                        @foreach ($states as $state)
+                                            <option {{ old('state_id', $city->state_id) == $state->id ? 'selected' : '' }}
+                                                value="{{ $state->id }}">
+                                                {{ $state->name }}
+                                            </option>
+                                        @endforeach
+                                    </select>
+                                    @error('state_id')
+                                        <span class="invalid-feedback"
+                                            role="alert"><strong>{{ $message }}</strong></span>
                                     @enderror
                                 </div>
-                                <div class="form-group row mb-2">
-                                    <x-forms.label name="latitude" required="true" class="col-sm-3" />
-                                    <div class="col-sm-9">
-                                        <input class="form-control" type="text" name="lat"  value="{{ old('lat', $city->lat) }}" placeholder="Enter latitude " required> 
-                                    </div>
-                                    @error('lat') <span class="invalid-feedback"
-                                    role="alert"><strong>{{ $message }}</strong></span> @enderror
+                            </div>
+                            <div class="form-group row mb-2">
+                                <x-forms.label name="city" required="true" class="col-sm-3" />
+                                <div class="col-sm-9">
+                                    <input class="form-control" type="text" name="city_name"
+                                        value="{{ old('city_name', $city->name) }}" placeholder="Enter City Name" required>
                                 </div>
-                                <div class="form-group row mb-2">
-                                    <x-forms.label name="longitude" required="true" class="col-sm-3" />
-                                    <div class="col-sm-9">
-                                        <input class="form-control" type="text" name="long" value="{{ old('long', $city->long) }}" placeholder="Enter longitude" required>  
-                                    </div>
-                                    @error('long') <span class="invalid-feedback"
-                                    role="alert"><strong>{{ $message }}</strong></span> @enderror
+                                @error('city_name')
+                                    <span class="invalid-feedback" role="alert"><strong>{{ $message }}</strong></span>
+                                @enderror
+                            </div>
+                            <div class="form-group row mb-2">
+                                <x-forms.label name="latitude" required="true" class="col-sm-3" />
+                                <div class="col-sm-9">
+                                    <input class="form-control" type="text" name="lat"
+                                        value="{{ old('lat', $city->lat) }}" placeholder="Enter latitude " required>
                                 </div>
-                            
-                                <div class="form-group row">
-                                    <div class="text-end">
-                                        <button type="submit" class="btn btn-primary"><i class="fas fa-plus"></i>&nbsp;{{ __('update') }}</button>
-                                    </div>
+                                @error('lat')
+                                    <span class="invalid-feedback" role="alert"><strong>{{ $message }}</strong></span>
+                                @enderror
+                            </div>
+                            <div class="form-group row mb-2">
+                                <x-forms.label name="longitude" required="true" class="col-sm-3" />
+                                <div class="col-sm-9">
+                                    <input class="form-control" type="text" name="long"
+                                        value="{{ old('long', $city->long) }}" placeholder="Enter longitude" required>
                                 </div>
-                            </form>
-                            
-                        </div>
+                                @error('long')
+                                    <span class="invalid-feedback" role="alert"><strong>{{ $message }}</strong></span>
+                                @enderror
+                            </div>
+
+                            <div class="form-group row">
+                                <div class="text-end">
+                                    <button type="submit" class="btn btn-primary"><i
+                                            class="fa fa-plus"></i>&nbsp;{{ __('update') }}</button>
+                                </div>
+                            </div>
+                        </form>
+
+
                     </div>
                 </div>
             </div>
@@ -80,7 +92,7 @@
 
 
 @section('style')
-    {{-- <link rel="stylesheet"
+    <link rel="stylesheet"
         href="{{ asset('backend') }}/plugins/bootstrap-iconpicker/dist/css/bootstrap-iconpicker.min.css" />
     <link rel="stylesheet" href="{{ asset('backend') }}/plugins/select2/css/select2.min.css">
     <link rel="stylesheet" href="{{ asset('backend') }}/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">
@@ -100,7 +112,7 @@
         .select2-container--bootstrap4 .select2-selection--multiple .select2-selection__choice__remove {
             color: #fff;
         }
-    </style> --}}
+    </style>
 @endsection
 
 @section('script')
@@ -109,9 +121,9 @@
     <script src="{{ asset('backend') }}/plugins/select2/js/select2.full.min.js"></script>
     <script>
         //Initialize Select2 Elements
-        // $('.select2bs4').select2({
-        //     theme: 'bootstrap4'
-        // })
+        $('.select2bs4').select2({
+            theme: 'bootstrap4'
+        })
 
 
         $('#target').iconpicker({

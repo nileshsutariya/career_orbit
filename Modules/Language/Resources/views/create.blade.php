@@ -18,76 +18,80 @@
 @endsection
 @section('website-settings')
     <div class="container-fluid">
-        <div class="row">
-            <div class="col-md-12">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
                 <div class="card">
                     <div class="card-header">
-                        <h3 class="card-title line-height-36">{{ __('create_language') }}</h3>
-                        <a href="{{ route('languages.index') }}"
-                            class="btn bg-primary float-right d-flex align-items-center justify-content-center">
-                            <i class="fas fa-arrow-left"></i>
-                            {{ __('back') }}
-                        </a>
-                    </div>
-                    <div class="row pt-3 pb-4">
-                        <div class="col-md-6 offset-md-3">
-                            <form class="form-horizontal" action="{{ route('languages.store') }}" method="POST">
-                                @csrf
-                                <div class="form-group row mb-2">
-                                    <x-forms.label name="name" required="true" class="col-sm-3" />
-                                    <div class="col-sm-9">
-                                        <select name="name" class="form-control select2 @error('name') is-invalid @enderror">
-                                            @foreach ($translations as $key => $country)
-                                                <option {{ old('name') == $country['name'] ? 'selected' : '' }}
-                                                    data-key="{{ $key }}" value="{{ $country['name'] }}">
-                                                    {{ $country['name'] }}
-                                                </option>
-                                            @endforeach
-                                        </select>
-                                        @error('name')
-                                            <span class="invalid-feedback"
-                                                role="alert"><strong>{{ $message }}</strong></span>
-                                        @enderror
-                                    </div>
-                                    <input type="hidden" name="code" id="code_input"/>
-                                </div>
-                                <div class="form-group row mb-2">
-                                    <x-forms.label name="direction" required="true" class="col-sm-3" />
-                                    <div class="col-sm-9">
-                                        <select name="direction"
-                                            class="form-control select2 @error('direction') is-invalid @enderror">
-                                            <option {{ old('direction') == 'ltr' ? 'selected' : '' }} value="ltr">
-                                                {{ __('ltr') }}
-                                            </option>
-                                            <option {{ old('direction') == 'rtl' ? 'selected' : '' }} value="rtl">
-                                                {{ __('rtl') }}
-                                            </option>
-                                        </select>
-                                        @error('direction')
-                                            <span class="invalid-feedback"
-                                                role="alert"><strong>{{ $message }}</strong></span>
-                                        @enderror
-                                    </div>
-                                </div>
-                                <div class="form-group row mb-2">
-                                    <x-forms.label name="flag" required="true" class="col-sm-3" />
-                                    <div class="col-sm-9">
-                                        <input type="hidden" name="icon" id="icon" value="{{ old('icon') }}" />
-                                        <div id="target"></div>
-                                        @error('icon')
-                                            <span class="invalid-feedback d-block"
-                                                role="alert"><strong>{{ $message }}</strong></span>
-                                        @enderror
-                                    </div>
-                                </div>
-
-                                <div class="form-group row">
-                                    <div class="text-end">
-                                        <button type="submit" class="btn btn-primary"></i>&nbsp;{{ __('create') }}</button>
-                                    </div>
-                                </div>
-                            </form>
+                        <div class="float-start">
+                            <h4>{{ __('create_language') }}</h4>
                         </div>
+
+                        <div class="float-end">
+                            <a href="{{ route('languages.index') }}" class="btn bg-primary">
+                                <i class="fa fa-arrow-left"></i>
+                                {{ __('back') }}
+                            </a>
+                        </div>
+
+                    </div>
+                    <div class="card-body">
+
+                        <form class="form-horizontal" action="{{ route('languages.store') }}" method="POST">
+                            @csrf
+                            <div class="form-group row mb-2">
+                                <x-forms.label name="name" required="true" class="col-sm-3" />
+                                <div class="col-sm-9">
+                                    <select name="name" class="form-control @error('name') is-invalid @enderror">
+                                        @foreach ($translations as $key => $country)
+                                            <option {{ old('name') == $country['name'] ? 'selected' : '' }}
+                                                data-key="{{ $key }}" value="{{ $country['name'] }}">
+                                                {{ $country['name'] }}
+                                            </option>
+                                        @endforeach
+                                    </select>
+                                    @error('name')
+                                        <span class="invalid-feedback"
+                                            role="alert"><strong>{{ $message }}</strong></span>
+                                    @enderror
+                                </div>
+                                <input type="hidden" name="code" id="code_input" />
+                            </div>
+                            <div class="form-group row mb-2">
+                                <x-forms.label name="direction" required="true" class="col-sm-3" />
+                                <div class="col-sm-9">
+                                    <select name="direction" class="form-control @error('direction') is-invalid @enderror">
+                                        <option {{ old('direction') == 'ltr' ? 'selected' : '' }} value="ltr">
+                                            {{ __('ltr') }}
+                                        </option>
+                                        <option {{ old('direction') == 'rtl' ? 'selected' : '' }} value="rtl">
+                                            {{ __('rtl') }}
+                                        </option>
+                                    </select>
+                                    @error('direction')
+                                        <span class="invalid-feedback"
+                                            role="alert"><strong>{{ $message }}</strong></span>
+                                    @enderror
+                                </div>
+                            </div>
+                            <div class="form-group row mb-2">
+                                <x-forms.label name="flag" required="true" class="col-sm-3" />
+                                <div class="col-sm-9">
+                                    <input type="hidden" name="icon" id="icon" value="{{ old('icon') }}" />
+                                    <div id="target"></div>
+                                    @error('icon')
+                                        <span class="invalid-feedback d-block"
+                                            role="alert"><strong>{{ $message }}</strong></span>
+                                    @enderror
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <div class="text-end">
+                                    <button type="submit" class="btn btn-primary"></i>&nbsp;{{ __('create') }}</button>
+                                </div>
+                            </div>
+                        </form>
+
                     </div>
                 </div>
             </div>
@@ -97,7 +101,7 @@
 
 
 @section('style')
-    {{-- <link rel="stylesheet"
+    <link rel="stylesheet"
         href="{{ asset('backend') }}/plugins/bootstrap-iconpicker/dist/css/bootstrap-iconpicker.min.css" />
     <link rel="stylesheet" href="{{ asset('backend') }}/plugins/select2/css/select2.min.css">
     <link rel="stylesheet" href="{{ asset('backend') }}/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">
@@ -118,7 +122,7 @@
         .select2-container--bootstrap4 .select2-selection--multiple .select2-selection__choice__remove {
             color: #fff;
         }
-    </style> --}}
+    </style>
 @endsection
 
 @section('script')
@@ -140,10 +144,10 @@
             });
         });
 
-        // //Initialize Select2 Elements
-        // $('.select2bs4').select2({
-        //     theme: 'bootstrap4'
-        // })
+        //Initialize Select2 Elements
+        $('.select2bs4').select2({
+            theme: 'bootstrap4'
+        })
 
 
         $('#target').iconpicker({

@@ -8,24 +8,23 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">
-                        <div class="row">
-                            <div class="col-sm-12 col-md-2 p-1">
-                                <h3 class="card-title line-height-36">{{ __('state_list') }}</h3>
-                            </div>
-                            <div class="col align-self-end p-1">
-                                @if (userCan('post.create'))
-                                    <a href="{{ route('location.state.create') }}"
-                                        class="btn bg-primary float-right d-flex align-items-center mx-1 justify-content-center">
-                                        <i class="fas fa-plus"></i>&nbsp;{{ __('create_state') }}
-                                    </a>
-                                @endif
-                            </div>
+
+                        <div class="float-start">
+                            <h4>{{ __('state_list') }}</h4>
                         </div>
+                        <div class="float-end">
+                            @if (userCan('post.create'))
+                                <a href="{{ route('location.state.create') }}" class="btn bg-primary">
+                                    <i class="fa     fa-plus"></i>&nbsp;{{ __('create_state') }}
+                                </a>
+                            @endif
+                        </div>
+
                     </div>
                     <div class="">
                         <!-- filter -->
                         <form id="formSubmit" action="" method="GET" onchange="this.submit();">
-                            <div class="card-body border-bottom row">
+                            <div class="card-body  row">
                                 <div class="col-12 col-md-3">
                                     <label>{{ __('search') }}</label>
                                     <input name="keyword" type="text" placeholder="{{ __('title') }}"
@@ -54,42 +53,33 @@
                             </div>
 
                         </form>
-                        <div class="row">
-                            <div class="col-sm-12">
-                                <table id="example1" class="table table-bordered table-striped dataTable dtr-inline"
-                                    role="grid" aria-describedby="example1_info">
+                        <div class="card-body">
+                            <div class="dt-ext table-responsive theme-scrollbar">
+                                <table class="display" id="keytable">
                                     <thead>
-                                        <tr role="row" class="text-center">
-                                            <th class="sorting_desc" tabindex="0" aria-controls="example1" rowspan="1"
-                                                colspan="1"
-                                                aria-label="Rendering engine: activate to sort column ascending"
-                                                aria-sort="descending" width="50%">{{ __('state') }}</th>
-                                            <th class="sorting_desc" tabindex="0" aria-controls="example1" rowspan="1"
-                                                colspan="1"
-                                                aria-label="Rendering engine: activate to sort column ascending"
-                                                aria-sort="descending" width="20%">{{ __('country') }}</th>
+                                        <tr>
+                                            <th>{{ __('state') }}</th>
+                                            <th>{{ __('country') }}</th>
                                             @if (userCan('post.edit') || userCan('post.delete'))
-                                                <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1"
-                                                    colspan="1" aria-label="CSS grade: activate to sort column ascending"
-                                                    width="100px"> {{ __('actions') }}</th>
+                                                <th width="100px"> {{ __('actions') }}</th>
                                             @endif
                                         </tr>
                                     </thead>
                                     <tbody>
                                         @if ($states->count() > 0)
                                             @foreach ($states as $state)
-                                                <tr role="row" class="odd">
-                                                    <td class="sorting_1 text-center" tabindex="0">{{ $state->name }}
+                                                <tr>
+                                                    <td>{{ $state->name }}
                                                     </td>
-                                                    <td class="sorting_1 text-center" tabindex="0">
+                                                    <td>
                                                         {{ Str::ucfirst($state->country->name) }}</td>
                                                     @if (userCan('post.update') || userCan('post.delete'))
-                                                        <td class="sorting_1 text-center" tabindex="0">
+                                                        <td class="d-flex justify-items-center">
                                                             @if (userCan('post.update'))
-                                                                <a data-toggle="tooltip" data-placement="top"
-                                                                    title="{{ __('edit_city') }}"
+                                                                <a data-bs-toggle="tooltip" data-placement="top"
+                                                                    title="{{ __('edit_state') }}"
                                                                     href="{{ route('location.state.edit', $state->id) }}"
-                                                                    class="btn bg-info"><i class="fas fa-edit"></i></a>
+                                                                    class="btn"><i class="fa fa-edit fa-2x"></i></a>
                                                             @endif
                                                             @if (userCan('post.delete'))
                                                                 <form
@@ -97,11 +87,11 @@
                                                                     method="POST" class="d-inline">
                                                                     @method('DELETE')
                                                                     @csrf
-                                                                    <button data-toggle="tooltip" data-placement="top"
-                                                                        title="{{ __('delete_post') }}"
+                                                                    <button data-bs-toggle="tooltip" data-placement="top"
+                                                                        title="{{ __('delete_state') }}"
                                                                         onclick="return confirm('{{ __('Are you sure want to delete this item?') }}');"
-                                                                        class="btn bg-danger"><i
-                                                                            class="fas fa-trash"></i></button>
+                                                                        class="btn"><i
+                                                                            class="text-dark fa fa-trash fa-2x"></i></button>
                                                                 </form>
                                                             @endif
                                                         </td>
@@ -109,19 +99,16 @@
                                                 </tr>
                                             @endforeach
                                         @else
-                                            <tr>
-                                                <td class="text-center" colspan="4">{{ __('no_data_found') }}</td>
-                                            </tr>
                                         @endif
                                     </tbody>
                                 </table>
-                                @if (request('perpage') != 'all' && $states->total() > $states->count())
+                                {{-- @if (request('perpage') != 'all' && $states->total() > $states->count())
                                     <div class="card-footer">
                                         <div class="d-flex justify-content-center">
                                             {{ $states->appends(['country' => request('country')])->links() }}
                                         </div>
                                     </div>
-                                @endif
+                                @endif --}}
                             </div>
                         </div>
                     </div>

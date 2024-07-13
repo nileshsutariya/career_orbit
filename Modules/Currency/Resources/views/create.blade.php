@@ -18,81 +18,95 @@
 @endsection
 @section('website-settings')
     <div class="container-fluid">
-        <div class="row">
-            <div class="col-md-12">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
                 <div class="card">
                     <div class="card-header">
-                        <h3 class="card-title line-height-36"> {{ __('create_currency') }} </h3>
-                        <a href="{{ route('module.currency.index') }}" class="btn bg-primary float-right d-flex align-items-center   justify-content-center">
-                            <i class="fas fa-arrow-left"></i>
-                            {{ __('back') }}
-                        </a>
-                    </div>
-                    <div class="row pt-3 pb-4">
-                        <div class="col-md-6 offset-md-3">
-                            <form class="form-horizontal" action="{{ route('module.currency.store') }}" method="POST">
-                                @csrf
-                                <div class="form-group row mb-2">
-                                    <x-forms.label name="name" class="col-sm-3" />
-                                    <div class="col-sm-9">
-                                        <input type="text" name="name" id="name"
-                                            class="form-control @error('name') is-invalid @enderror"
-                                            value="{{ old('name') }}" placeholder="E.g - Dollar">
-                                        @error('name')
-                                            <span class="invalid-feedback" role="alert">{{ __($message) }}</span>
-                                        @enderror
-                                    </div>
-                                </div>
-                                <div class="form-group row mb-2">
-                                    <x-forms.label name="code" class="col-sm-3" />
-                                    <div class="col-sm-9">
-                                        <input type="text" name="code" id="code"
-                                            class="form-control @error('code') is-invalid @enderror"
-                                            value="{{ old('code') }}" placeholder="E.g - USD">
-                                        @error('code')
-                                            <span class="invalid-feedback" role="alert">{{ __($message) }}</span>
-                                        @enderror
-                                    </div>
-                                </div>
-                                <div class="form-group row mb-2">
-                                    <x-forms.label name="rate" class="col-sm-3" />
-                                    <div class="col-sm-9">
-                                        <input type="text" name="rate" id="rate"
-                                            class="form-control @error('rate') is-invalid @enderror"
-                                            value="{{ old('rate') }}" placeholder="E.g - Currency current rate againest USD">
-                                        @error('rate')
-                                            <span class="invalid-feedback" role="alert">{{ __($message) }}</span>
-                                        @enderror
-                                    </div>
-                                </div>
-                                <div class="form-group row mb-2">
-                                    <x-forms.label name="Symbol" class="col-sm-3" />
-                                    <div class="col-sm-9">
-                                        <input type="text" name="symbol" id="symbol"
-                                            class="form-control @error('symbol') is-invalid @enderror"
-                                            value="{{ old('symbol') }}" placeholder="E.g - $">
-                                        @error('symbol')
-                                            <span class="invalid-feedback" role="alert">{{ __($message) }}</span>
-                                        @enderror
-                                    </div>
-                                </div>
-                                <div class="form-group row mb-2">
-                                    <x-forms.label name="position" class="col-sm-3" />
-                                    <div class="col-sm-9">
-                                        <x-forms.switch-input button="buttonOne" oldvalue="oldalue" name="symbol_position"
-                                            onText="{{ __('left') }}" offText="{{ __('right') }}" value="left"
-                                            :checked="0" />
-                                    </div>
-                                </div>
-                                <div class="form-group row">
-                                    <div class="text-end">
-                                        <button type="submit" class="btn btn-primary"><i class="fas fa-plus"></i>&nbsp;
-                                            {{ __('create') }}</button>
-                                    </div>
-                                </div>
-                            </form>
+                        <div class="float-start">
+                            <h4> {{ __('create_currency') }} </h4>
                         </div>
+                        <div class="float-end">
+                            <a href="{{ route('module.currency.index') }}" class="btn bg-primary">
+                                <i class="fa fa-arrow-left"></i>
+                                {{ __('back') }}
+                            </a>
+                        </div>
+
+
                     </div>
+                    <form class="form-horizontal" action="{{ route('module.currency.store') }}" method="POST">
+                        @csrf
+                        <div class="card-body">
+
+
+                            <div class="form-group row mb-2">
+                                <x-forms.label name="name" class="col-sm-3" />
+                                <div class="col-sm-9">
+                                    <input type="text" name="name" id="name"
+                                        class="form-control @error('name') is-invalid @enderror"
+                                        value="{{ old('name') }}" placeholder="E.g - Dollar">
+                                    @error('name')
+                                        <span class="invalid-feedback" role="alert">{{ __($message) }}</span>
+                                    @enderror
+                                </div>
+                            </div>
+                            <div class="form-group row mb-2">
+                                <x-forms.label name="code" class="col-sm-3" />
+                                <div class="col-sm-9">
+                                    <input type="text" name="code" id="code"
+                                        class="form-control @error('code') is-invalid @enderror"
+                                        value="{{ old('code') }}" placeholder="E.g - USD">
+                                    @error('code')
+                                        <span class="invalid-feedback" role="alert">{{ __($message) }}</span>
+                                    @enderror
+                                </div>
+                            </div>
+                            <div class="form-group row mb-2">
+                                <x-forms.label name="rate" class="col-sm-3" />
+                                <div class="col-sm-9">
+                                    <input type="text" name="rate" id="rate"
+                                        class="form-control @error('rate') is-invalid @enderror"
+                                        value="{{ old('rate') }}" placeholder="E.g - Currency current rate againest USD">
+                                    @error('rate')
+                                        <span class="invalid-feedback" role="alert">{{ __($message) }}</span>
+                                    @enderror
+                                </div>
+                            </div>
+                            <div class="form-group row mb-2">
+                                <x-forms.label name="Symbol" class="col-sm-3" />
+                                <div class="col-sm-9">
+                                    <input type="text" name="symbol" id="symbol"
+                                        class="form-control @error('symbol') is-invalid @enderror"
+                                        value="{{ old('symbol') }}" placeholder="E.g - $">
+                                    @error('symbol')
+                                        <span class="invalid-feedback" role="alert">{{ __($message) }}</span>
+                                    @enderror
+                                </div>
+                            </div>
+                            <div class="form-group row mb-2">
+                                <x-forms.label name="position" class="col-sm-3" />
+                                {{-- <div class="col-sm-9">
+                                    <x-forms.switch-input button="buttonOne" oldvalue="oldalue" name="symbol_position"
+                                        onText="{{ __('left') }}" offText="{{ __('right') }}" value="left"
+                                        :checked="0" />
+                                </div> --}}
+
+
+                                <input class="tgl tgl-flip" data-bootstrap-switch value="left" name="symbol_position"
+                                    id="symbol_position" type="checkbox" checked="0">
+                                <label class="tgl-btn" data-tg-off="{{ __('right') }}" data-tg-on="{{ __('left') }}"
+                                    for="symbol_position"></label>
+                            </div>
+                        </div>
+
+                        <div class="card-footer ">
+                            <div class="text-end">
+                                <button type="submit" class="btn btn-primary"><i class="fa fa-plus"></i>&nbsp;
+                                    {{ __('create') }}</button>
+                            </div>
+
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>

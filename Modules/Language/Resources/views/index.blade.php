@@ -28,7 +28,7 @@
                     @method('put')
                     <x-forms.label name="set_default_language" for="inlineFormCustomSelect" class="mr-sm-2" />
                     <div class="d-flex">
-                        <select name="code" class="form-select select2 mr-sm-2" id="inlineFormCustomSelect">
+                        <select name="code" class="form-select mr-sm-2" id="inlineFormCustomSelect">
                             <option value="" hidden>{{ __('language') }}</option>
                             @foreach ($languagesList as $language)
                                 <option {{ $current_language->code === $language->code ? 'selected' : '' }}
@@ -44,15 +44,16 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">
-                        <h3 class="card-title line-height-36">{{ __('language_list') }}</h3>
-                        <a href="{{ route('languages.create') }}"
-                            class="btn bg-primary float-right d-flex align-items-center justify-content-center">
-                           
-                            {{ __('create') }}
-                        </a>
+                        <div class="float-start">
+                            <h4>{{ __('language_list') }}</h4>
+                        </div>
+                        <div class="float-end"> <a href="{{ route('languages.create') }}" class="btn bg-primary">
+                                {{ __('create') }}
+                            </a></div>
                     </div>
-                    <div class="card-body table-responsive p-0">
-                        <table class="table table-hover text-nowrap table-bordered">
+
+                    <div class="card-body dt-ext table-responsive theme-scrollbar ">
+                        <table class="display" id="keytable">
                             <thead>
                                 <tr>
                                     <th width="5%">#</th>
@@ -78,55 +79,47 @@
                                         <td><i class="flag-icon {{ $language->icon }}"></i></td>
                                         <td class="d-flex justify-content-center align-items-center">
                                             <a href="{{ route('languages.view', $language->code) }}"
-                                                class="btn btn-secondary mr-2">
-                                                <i class="fas fa-cog"></i>
+                                                class="btn border m-r-10">
+                                                <i class="fa fa-cog fa-2x"></i>
                                             </a>
                                             @if ($language->code == 'en')
-                                                <a data-toggle="tooltip" data-placement="top"
+                                                <a data-bs-toggle="tooltip" data-placement="top"
                                                     title="{{ __('translate_language') }}" href="javascript:void(0)"
-                                                    class="btn btn-warning mt-0 mr-2" data-toggle="tooltip"
+                                                    class="btn border m-r-10" data-bs-toggle="tooltip"
                                                     title="You can't delete or edit this language">
-                                                    <i class="fas fa-lock"></i>
+                                                    <i class="fa fa-lock fa-2x"></i>
                                                 </a>
                                             @endif
                                             @if ($language->code != 'en')
-                                                <a data-toggle="tooltip" data-placement="top"
+                                                <a data-bs-toggle="tooltip" data-placement="top"
                                                     title="{{ __('sync_language_contents') }}"
                                                     onclick="return confirm('{{ __('are_you_sure') }}');"
                                                     href="{{ route('language.syncLanguage', $language->id) }}"
-                                                    class="btn btn-primary mt-0 mr-2">
-                                                    <i class="fas fa-sync"></i>
+                                                    class="btn border m-r-10">
+                                                    <i class="fa fa-refresh fa-2x"></i>
                                                 </a>
-                                                <a data-toggle="tooltip" data-placement="top"
+                                                <a data-bs-toggle="tooltip" data-placement="top"
                                                     title="{{ __('edit_language') }}"
                                                     href="{{ route('languages.edit', $language->id) }}"
-                                                    class="btn btn-info mt-0 mr-2">
-                                                    <i class="fas fa-edit"></i>
+                                                    class="btn border m-r-10">
+                                                    <i class="fa fa-edit fa-2x"></i>
                                                 </a>
                                                 @if ($language->code !== 'en')
                                                     <form action="{{ route('languages.destroy', $language->id) }}"
                                                         class="d-inline" method="POST">
                                                         @method('DELETE')
                                                         @csrf
-                                                        <button data-toggle="tooltip" data-placement="top"
+                                                        <button data-bs-toggle="tooltip" data-placement="top"
                                                             title="{{ __('delete_language') }}"
                                                             onclick="return confirm('{{ __('are_you_sure_want_to_delete_this_item') }}');"
-                                                            class="btn bg-danger"><i class="fas fa-trash"></i></button>
+                                                            class="btn border m-r-10"><i
+                                                                class="text-dark fa fa-trash fa-2x"></i></button>
                                                     </form>
                                                 @endif
                                             @endif
                                         </td>
                                     </tr>
                                 @empty
-                                    <tr>
-                                        <td colspan="10" class="text-center">
-                                            @if (userCan('setting.update'))
-                                                <x-admin.not-found word="{{ __('language') }}" route="languages.create" />
-                                            @else
-                                                <x-admin.not-found word="language" route="" />
-                                            @endif
-                                        </td>
-                                    </tr>
                                 @endforelse
                             </tbody>
                         </table>
