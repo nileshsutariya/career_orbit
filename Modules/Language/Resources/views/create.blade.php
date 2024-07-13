@@ -41,7 +41,7 @@
                             <div class="form-group row mb-2">
                                 <x-forms.label name="name" required="true" class="col-sm-3" />
                                 <div class="col-sm-9">
-                                    <select name="name" class="form-control @error('name') is-invalid @enderror">
+                                    <select name="name" class="form-control select2 @error('name') is-invalid @enderror">
                                         @foreach ($translations as $key => $country)
                                             <option {{ old('name') == $country['name'] ? 'selected' : '' }}
                                                 data-key="{{ $key }}" value="{{ $country['name'] }}">
@@ -59,7 +59,7 @@
                             <div class="form-group row mb-2">
                                 <x-forms.label name="direction" required="true" class="col-sm-3" />
                                 <div class="col-sm-9">
-                                    <select name="direction" class="form-control @error('direction') is-invalid @enderror">
+                                    <select name="direction" class="form-control select2 @error('direction') is-invalid @enderror">
                                         <option {{ old('direction') == 'ltr' ? 'selected' : '' }} value="ltr">
                                             {{ __('ltr') }}
                                         </option>
@@ -101,7 +101,7 @@
 
 
 @section('style')
-    <link rel="stylesheet"
+    {{-- <link rel="stylesheet"
         href="{{ asset('backend') }}/plugins/bootstrap-iconpicker/dist/css/bootstrap-iconpicker.min.css" />
     <link rel="stylesheet" href="{{ asset('backend') }}/plugins/select2/css/select2.min.css">
     <link rel="stylesheet" href="{{ asset('backend') }}/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">
@@ -122,7 +122,7 @@
         .select2-container--bootstrap4 .select2-selection--multiple .select2-selection__choice__remove {
             color: #fff;
         }
-    </style>
+    </style> --}}
 @endsection
 
 @section('script')
@@ -145,9 +145,9 @@
         });
 
         //Initialize Select2 Elements
-        $('.select2bs4').select2({
-            theme: 'bootstrap4'
-        })
+        // $('.select2bs4').select2({
+        //     theme: 'bootstrap4'
+        // })
 
 
         $('#target').iconpicker({

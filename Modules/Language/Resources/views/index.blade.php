@@ -28,7 +28,7 @@
                     @method('put')
                     <x-forms.label name="set_default_language" for="inlineFormCustomSelect" class="mr-sm-2" />
                     <div class="d-flex">
-                        <select name="code" class="form-select mr-sm-2" id="inlineFormCustomSelect">
+                        <select name="code" class="form-select select2 mr-sm-2" id="inlineFormCustomSelect">
                             <option value="" hidden>{{ __('language') }}</option>
                             @foreach ($languagesList as $language)
                                 <option {{ $current_language->code === $language->code ? 'selected' : '' }}
@@ -53,7 +53,7 @@
                     </div>
 
                     <div class="card-body dt-ext table-responsive theme-scrollbar ">
-                        <table class="display" id="keytable">
+                        <table class="table" id="export-button">
                             <thead>
                                 <tr>
                                     <th width="5%">#</th>

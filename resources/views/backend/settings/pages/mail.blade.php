@@ -91,7 +91,7 @@
                         <div class="mb-3">
                             <x-forms.label name="mail_encryption" />
                             <select name="mail_encryption" id="mail_encryption"
-                                class="form-control @error('mail_encryption') is-invalid @enderror">
+                                class="form-control select2 @error('mail_encryption') is-invalid @enderror">
                                 <option {{ config('mail.mailers.smtp.encryption') == 'tls' ? 'selected' : '' }}
                                     value="tls">TLS</option>
                                 <option {{ config('mail.mailers.smtp.encryption') == 'ssl' ? 'selected' : '' }}

@@ -33,7 +33,7 @@
                             </label>
                         </div>
                         <div class="form-group">
-                            <select name="timezone" class="timezone-select form-control">
+                            <select name="timezone" class="timezone-select form-control select2">
                                 @foreach ($timeszones as $timezone)
                                     <option {{ config('app.timezone') == $timezone->value ? 'selected' : '' }}
                                         value="{{ $timezone->value }}">

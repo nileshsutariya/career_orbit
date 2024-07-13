@@ -79,7 +79,7 @@
 
             {{-- Table --}}
             <div class="card-body dt-ext table-responsive theme-scrollbar">
-                <table class="display" id="keytable">
+                <table class="table" id="export-button" cellspacing="0" width="100%">
                     <thead>
                         <tr>
                             <th>{{ __('candidate') }}</th>
@@ -171,7 +171,7 @@
                                 @endif
                                 @if (userCan('candidate.update'))
                                 <a href="{{ route('candidate.edit', $candidate->id) }}" class="btn ll-p-0">
-                                    <p class="text-dark"><i class="fa fa-edit fa-2x"></i></p>
+                                    <i class="fa fa-edit fa-2x text-success"></i>
                                 </a>
                                 @endif
                                 @if (userCan('candidate.delete'))
@@ -182,7 +182,7 @@
                                     <button
                                         onclick="return confirm('{{ __('are_you_sure_you_want_to_delete_this_item') }}');"
                                         class="btn ll-p-0">
-                                       <p class="text-dark"><i class="fa fa-trash-o fa-2x"></i></p>
+                                       <i class="fa fa-trash-o fa-2x text-danger"></i>
                                     </button>
                                 </form>
                                 @endif

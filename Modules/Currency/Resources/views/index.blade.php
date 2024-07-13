@@ -24,7 +24,7 @@
                 <div class="">
                     <x-forms.label name="{{ __('set_default_currency') }}" class="" for="inlineFormCustomSelect" />
                     <div class="d-flex align-items-center">
-                        <select name="currency" class="form-select" id="inlineFormCustomSelect">
+                        <select name="currency" class="form-select select2 " id="inlineFormCustomSelect">
                             <option value="" disabled selected>{{ __('Currency') }}</option>
                             @foreach ($currencies as $key => $currency)
                                 <option {{ config('templatecookie.currency') == $currency->code ? 'selected' : '' }}
@@ -54,7 +54,7 @@
             </div>
             <div class=" card-body dt-ext table-responsive theme-scrollbar">
 
-                <table class="display" id="keytable">
+                <table class="table" id="export-button">
                     <thead>
                         <tr>
                             <th width="5%">#</th>

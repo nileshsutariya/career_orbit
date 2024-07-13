@@ -66,7 +66,7 @@
                             <input type="hidden" name="lang_id" value="{{ $language->id }}">
                             <div class="row">
                                 <div class="card-body dt-ext table-responsive theme-scrollbar ">
-                                    <table class="display" id="keytable">
+                                    <table class="display" id="export-button">
                                         <thead>
                                             <tr>
                                                 <th>#</th>

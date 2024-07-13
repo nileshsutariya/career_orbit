@@ -65,7 +65,7 @@
                             <label class="col-sm-3" for="cookie_name">{{ __('cookie_name') }}<span
                                     class="text-danger">*</span></label>
                             <div class="col-sm-9">
-                                <select name="cookie_name" id="cookie_name" class="form-select">
+                                <select name="cookie_name" id="cookie_name" class="form-select select2">
                                     <option value="gdpr_cookie" @if ($cookie->cookie_name == 'gdpr_cookie') selected @endif>
                                         {{ __('gdpr_cookie') }} </option>
                                     <option value="ccpa_cookie" @if ($cookie->cookie_name == 'ccpa_cookie') selected @endif>

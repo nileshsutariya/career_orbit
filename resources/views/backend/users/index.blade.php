@@ -29,7 +29,7 @@ $userr = auth()->user();
                 </div>
 
                 <div class="card-body dt-ext table-responsive theme-scrollbar">
-                    <table class="display" id="keytable">
+                    <table class="table" id="export-button">
                         <thead>
                             <tr>
                                 <th width="5%">#</th>

@@ -411,11 +411,11 @@
 <script>
     $("#export-button2").DataTable({
       dom: "Bfrtip",
-      buttons: ["copyHtml5", "excelHtml5", "csvHtml5", "pdfHtml5"],
+    //   buttons: ["copyHtml5", "excelHtml5", "csvHtml5", "pdfHtml5"],
     });
     $("#export-button3").DataTable({
       dom: "Bfrtip",
-      buttons: ["copyHtml5", "excelHtml5", "csvHtml5", "pdfHtml5"],
+    //   buttons: ["copyHtml5", "excelHtml5", "csvHtml5", "pdfHtml5"],
     });
     var areaChartData = {
                 // labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],

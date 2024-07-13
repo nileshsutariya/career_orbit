@@ -28,7 +28,7 @@
                     </div>
                     <div class="card-body dt-ext table-responsive theme-scrollbar">
 
-                        <table class="display" id="keytable">
+                        <table class="table" id="export-button">
                             <thead>
                                 <tr>
                                     <th>{{ __('name') }}</th>
@@ -121,7 +121,7 @@
                                         <label for="name" class="col-form-label">
                                             {{ __('payment_type') }}
                                         </label>
-                                        <select name="type" class="form-control @error('type') is-invalid @enderror">
+                                        <select name="type" class="form-control select2 @error('type') is-invalid @enderror">
                                             <option {{ $manual_payment->type == 'bank_payment' ? 'selected' : '' }}
                                                 value="bank_payment">{{ __('bank_payment') }}</option>
                                             <option {{ $manual_payment->type == 'cash_payment' ? 'selected' : '' }}
@@ -192,7 +192,7 @@
                                         <label for="name" class="col-form-label">
                                             {{ __('payment_type') }}
                                         </label>
-                                        <select name="type" class="form-control @error('type') is-invalid @enderror">
+                                        <select name="type" class="form-control select2 @error('type') is-invalid @enderror">
                                             <option value="bank_payment">{{ __('bank_payment') }}</option>
                                             <option value="cash_payment">{{ __('cash_payment') }}</option>
                                             <option value="check_payment">{{ __('check_payment') }}</option>

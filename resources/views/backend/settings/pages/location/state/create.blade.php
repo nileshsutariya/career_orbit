@@ -25,7 +25,7 @@
                             <div class="form-group row mb-2">
                                 <x-forms.label name="country" required="true" class="col-sm-3" />
                                 <div class="col-sm-9">
-                                    <select name="country_id" class="form-select @error('state_id') is-invalid @enderror">
+                                    <select name="country_id" class="form-select select2 @error('state_id') is-invalid @enderror">
                                         <option value="">Select Country</option>
                                         @foreach ($countries as $key => $country)
                                             <option {{ old('id') == $country['id'] ? 'selected' : '' }}
@@ -88,7 +88,7 @@
 
 
 @section('style')
-    <link rel="stylesheet"
+    {{-- <link rel="stylesheet"
         href="{{ asset('backend') }}/plugins/bootstrap-iconpicker/dist/css/bootstrap-iconpicker.min.css" />
     <link rel="stylesheet" href="{{ asset('backend') }}/plugins/select2/css/select2.min.css">
     <link rel="stylesheet" href="{{ asset('backend') }}/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">
@@ -108,7 +108,7 @@
         .select2-container--bootstrap4 .select2-selection--multiple .select2-selection__choice__remove {
             color: #fff;
         }
-    </style>
+    </style> --}}
 @endsection
 
 @section('script')
@@ -116,10 +116,10 @@
         src="{{ asset('backend') }}/plugins/bootstrap-iconpicker/dist/js/bootstrap-iconpicker.bundle.min.js"></script>
     <script src="{{ asset('backend') }}/plugins/select2/js/select2.full.min.js"></script>
     <script>
-        //Initialize Select2 Elements
-        $('.select2bs4').select2({
-            theme: 'bootstrap4'
-        })
+        // //Initialize Select2 Elements
+        // $('.select2bs4').select2({
+        //     theme: 'bootstrap4'
+        // })
 
 
         $('#target').iconpicker({

@@ -29,8 +29,8 @@
                             {{ __('create') }}
                         </a>
                     </div>
-                    <div class="card-body table-responsive p-0">
-                        <table class="table table-hover text-nowrap table-bordered">
+                    <div class="card-body dt-ext table-responsive theme-scrollbar">
+                        <table class="table" id="export-button">
                             <thead>
                                 <tr>
                                     <th>{{ __('title') }}</th>

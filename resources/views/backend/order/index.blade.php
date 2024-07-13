@@ -118,7 +118,7 @@
 
                     <div class="card-body">
                         <div class="dt-ext table-responsive theme-scrollbar">
-                            <table class="display" id="keytable">
+                            <table class="table" id="export-button">
                                 <thead>
                                     <tr>
                                         <th>{{ __('order_and_transaction') }}</th>

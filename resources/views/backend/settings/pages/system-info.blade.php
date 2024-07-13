@@ -14,7 +14,7 @@
                         <h3 class="card-title line-height-36">{{ __('Application Information') }}</h3>
                     </div>
                     <div class="card-body table-responsive p-0">
-                        <table class="table table-hover text-nowrap table-bordered">
+                        <table class="table" id="export-button">
                             <tr>
                                 <th>Current Version</th>
                                 <th>{{ $data['app_version'] }}</th>

@@ -109,7 +109,7 @@
                             </div>
                             <div class="col-xl-3 col-md-6 col-12">
                                 <label>{{ __('category') }}</label>
-                                <select name="category" class="form-control w-100-p">
+                                <select name="category" class="form-control select2 w-100-p">
                                     <option value=""
                                         {{ !Route::current()->parameter('category') ? 'selected' : '' }}>
                                         {{ __('all') }}
@@ -125,7 +125,7 @@
                             </div>
                             <div class="col-xl-2 col-md-6 col-12">
                                 <label>{{ __('author') }}</label>
-                                <select name="author" class="form-control w-100-p">
+                                <select name="author" class="form-control select2 w-100-p">
                                     <option value="" {{ !request('author') ? 'selected' : '' }}>
                                         {{ __('all') }}
                                     </option>
@@ -138,7 +138,7 @@
                             </div>
                             <div class="col-xl-2 col-md-6 col-12">
                                 <label>{{ __('status') }}</label>
-                                <select name="status" class="form-control w-100-p">
+                                <select name="status" class="form-control select2 w-100-p">
                                     <option value="" {{ !request('status') ? 'selected' : '' }}>
                                         {{ __('all') }}
                                     </option>
@@ -152,7 +152,7 @@
                             </div>
                             <div class="col-xl-2 col-md-6 col-12">
                                 <label>{{ __('language') }}</label>
-                                <select name="code" class="form-control w-100-p">
+                                <select name="code" class="form-control select2 w-100-p">
                                     <option value="">
                                         {{ __('all') }}
                                     </option>
@@ -170,7 +170,7 @@
                     <div class="card-body">
                         <div class="dt-ext table-responsive theme-scrollbar">
 
-                            <table class="display" id="keytable">
+                            <table class="table" id="export-button">
                                 <thead>
                                     <tr>
                                         <th>{{ __('image') }}</th>

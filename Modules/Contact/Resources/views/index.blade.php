@@ -11,8 +11,8 @@
                     <div class="card-header">
                         <h3 class="card-title line-height-36">{{ __('contact_list') }}</h3>
                     </div>
-                    <div class="card-body table-responsive p-0">
-                        <table class="table table-hover text-nowrap table-bordered">
+                    <div class="card-body dt-ext table-responsive theme-scrollbar">
+                        <table class="table" id="export-button">
                             @if ($contacts->count() > 0)
                                 <thead>
                                     <tr>

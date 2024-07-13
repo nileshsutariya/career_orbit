@@ -29,7 +29,7 @@
                         {{ __('jobs') }}</label>
                 </div>
                 <div class="d-flex">
-                    <select name="job_provider" class="form-control">
+                    <select name="job_provider" class="form-control select2">
                         <option value="" hidden>{{ __('select_one') }}</option>
                         @if (config('templatecookie.default_job_provider'))
                             <option value="">{{ __('disable_all') }}</option>
@@ -83,7 +83,7 @@
                                 {{ __('per_page') }}</label>
                             <div class="col-sm-7">
                                 <select name="job_limit" id="careerjet_job_limit"
-                                    class="form-control mr-sm-2 @error('job_limit') is-invalid @enderror">
+                                    class="form-control select3 m-r-sm-2 @error('job_limit') is-invalid @enderror">
                                     </option>
                                     <option {{ config('templatecookie.careerjet_limit') == 5 ? 'selected' : '' }}
                                         value="5">
@@ -115,7 +115,7 @@
                             <x-forms.label name="default_locale" class="col-sm-5" />
                             <div class="col-sm-7">
                                 <select name="default_locale"
-                                    class=" form-control select2bs4 custom-select mr-sm-2 @error('default_locale') is-invalid @enderror">
+                                    class=" form-control select2  m-r-sm-2 @error('default_locale') is-invalid @enderror">
                                     </option>
                                     <option
                                         {{ config('templatecookie.careerjet_default_locale') == 'en_BD' ? 'selected' : '' }}
@@ -499,7 +499,7 @@
                                 {{ __('per_page') }}</label>
                             <div class="col-sm-7">
                                 <select name="job_limit"
-                                    class="form-control mr-sm-2 @error('job_limit') is-invalid @enderror"
+                                    class="form-control select2 mr-sm-2 @error('job_limit') is-invalid @enderror"
                                     id="indeed_job_limit">
                                     </option>
                                     <option {{ config('templatecookie.indeed_limit') == 5 ? 'selected' : '' }}
@@ -547,7 +547,7 @@
 @endsection
 
 @section('style')
-    <link rel="stylesheet" href="{{ asset('backend') }}/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
+    {{-- <link rel="stylesheet" href="{{ asset('backend') }}/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
     <style>
         .select2-results__option[aria-selected=true] {
             display: none;
@@ -563,5 +563,5 @@
         .select2-container--bootstrap4 .select2-selection--multiple .select2-selection__choice__remove {
             color: #fff;
         }
-    </style>
+    </style> --}}
 @endsection

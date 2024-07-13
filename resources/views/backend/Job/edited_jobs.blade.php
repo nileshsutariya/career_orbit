@@ -100,7 +100,7 @@
                     @include('backend.layouts.partials.message')
                     <div class="row">
                         <div class="col-sm-12">
-                            <table class="display" id="keytable">
+                            <table class="table" id="export-button">
                                 <thead>
                                     <tr class="text-center">
                                         <th width="2%">#</th>

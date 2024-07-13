@@ -43,7 +43,7 @@
                             <div class="form-group row">
                                 <x-forms.label name="name" class="col-sm-3" />
                                 <div class="col-sm-9">
-                                    <select name="name" class="form-control m-b-10 @error('name') is-invalid @enderror">
+                                    <select name="name" class="form-control select2 m-b-10 @error('name') is-invalid @enderror">
                                         @foreach ($translations as $key => $country)
                                             <option {{ $country['name'] == $language->name ? 'selected' : '' }}
                                                 data-key="{{ $key }}" value="{{ $country['name'] }}">
@@ -61,7 +61,7 @@
                             <div class="form-group row">
                                 <x-forms.label name="direction" required="true" class="col-sm-3" />
                                 <div class="col-sm-9">
-                                    <select name="direction" class="form-control @error('direction') is-invalid @enderror">
+                                    <select name="direction" class="form-control select2  @error('direction') is-invalid @enderror">
                                         <option {{ $language->direction == 'ltr' ? 'selected' : '' }} value="ltr">
                                             {{ __('ltr') }}
                                         </option>
@@ -151,9 +151,9 @@
         });
 
         //Initialize Select2 Elements
-        $('.select2bs4').select2({
-            theme: 'bootstrap4'
-        })
+        // $('.select2bs4').select2({
+        //     theme: 'bootstrap4'
+        // })
 
         $('#target').iconpicker({
             align: 'left', // Only in div tag

@@ -32,7 +32,7 @@
                                 </div>
                                 <div class="col-12 col-md-3">
                                     <label>{{ __('state') }}</label>
-                                    <select name="state" class="select2bs4  form-control w-100-p">
+                                    <select name="state" class="select2  form-control w-100-p">
                                         <option value="" {{ !request('state') ? 'selected' : '' }}>
                                             {{ __('all') }}
                                         </option>
@@ -113,7 +113,7 @@
     </div>
 @endsection
 @section('style')
-    <link rel="stylesheet"
+    {{-- <link rel="stylesheet"
         href="{{ asset('backend') }}/plugins/bootstrap-iconpicker/dist/css/bootstrap-iconpicker.min.css" />
     <link rel="stylesheet" href="{{ asset('backend') }}/plugins/select2/css/select2.min.css">
     <link rel="stylesheet" href="{{ asset('backend') }}/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">
@@ -133,7 +133,7 @@
         .select2-container--bootstrap4 .select2-selection--multiple .select2-selection__choice__remove {
             color: #fff;
         }
-    </style>
+    </style> --}}
 @endsection
 
 @section('script')
@@ -142,9 +142,9 @@
     <script src="{{ asset('backend') }}/plugins/select2/js/select2.full.min.js"></script>
     <script>
         //Initialize Select2 Elements
-        $('.select2bs4').select2({
-            theme: 'bootstrap4'
-        })
+        // $('.select2').select2({
+        //     theme: 'bootstrap4'
+        // })
 
 
         $('#target').iconpicker({

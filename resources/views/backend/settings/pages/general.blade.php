@@ -464,7 +464,7 @@
                                 </div>
                                 <div class="form-group mb-2">
                                     <x-forms.label name="set_default_currency" for="inlineFormCustomSelect" />
-                                    <select name="currency" class="custom-select select2bs4 mr-sm-2"
+                                    <select name="currency" class="custom-select select2 mr-sm-2"
                                         id="inlineFormCustomSelect">
                                         <option value="" disabled selected>{{ __('currency') }}
                                         </option>
@@ -758,7 +758,7 @@
 
                             <div class="{{ $setting->app_country_type == 'single_base' ? '' : 'd-none' }} col-sm-8"
                                 id="app_countries">
-                                <select name="app_country" class="form-select select2bs4 mr-sm-2" id="">
+                                <select name="app_country" class="form-select select2 mr-sm-2" id="">
                                     @foreach ($countries as $country)
                                         <option {{ $setting->app_country == $country->id ? 'selected' : '' }}
                                             value="{{ $country->id }}">
@@ -807,7 +807,7 @@
             min-height: 300px;
         }
 
-        .select2-results__option[aria-selected=true] {
+        /* .select2-results__option[aria-selected=true] {
             display: none;
         }
 
@@ -820,7 +820,7 @@
 
         .select2-container--bootstrap4 .select2-selection--multiple .select2-selection__choice__remove {
             color: #fff;
-        }
+        } */
 
         .image-container {
             height: 300px;
@@ -896,10 +896,10 @@
                 $('#googlemap_key').addClass('d-none');
             }
         }
-        $('.multiple_country').select2({
-            theme: 'bootstrap4',
-            multiple: true,
-            placeholder: 'Select Your Country'
-        })
+        // $('.multiple_country').select2({
+        //     theme: 'bootstrap4',
+        //     multiple: true,
+        //     placeholder: 'Select Your Country'
+        // })
     </script>
 @endsection

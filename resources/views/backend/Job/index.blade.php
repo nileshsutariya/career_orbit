@@ -139,7 +139,7 @@ $userr = auth()->user();
                 <div class="row">
 
                     <div class="col-sm-12 card-body dt-ext table-responsive theme-scrollbar">
-                        <table class="display" id="keytable">
+                        <table class="table" id="export-button">
                             <thead>
                                 <tr>
                                     <th width="5%">{{ __('job') }}</th>
