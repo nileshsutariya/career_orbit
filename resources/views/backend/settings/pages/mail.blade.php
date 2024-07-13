@@ -23,7 +23,8 @@
         <p class="mb-0"> {{ __('setup_smtp_to_send_all_applications_emails_such_as') }}
             <strong>{{ __('forget_password') }}</strong>, <strong>{{ __('user_verification') }}</strong>,
             <strong>{{ __('invoice') }}</strong> & {{ __('many_more') }}. <a href="https://www.gmass.co/smtp-test"
-                target="_blank"> {{ __('test_your_smtp_credentials_here') }} </a></p>
+                target="_blank"> {{ __('test_your_smtp_credentials_here') }} </a>
+        </p>
     </div>
     <div class="card">
         <div class="card-header">
@@ -125,7 +126,7 @@
                 @if (userCan('setting.update'))
                     <div class="mx-auto">
                         <div class="text-end">
-                            <button type="submit" class="btn btn-primary"><i class="fas fa-sync"></i>
+                            <button type="submit" class="btn btn-primary"><i class="fa fa-refresh"></i>
                                 {{ __('update') }}</button>
                         </div>
                     </div>
@@ -153,7 +154,7 @@
                         @enderror
                     </div>
                     @if (userCan('setting.update'))
-                        <button type="submit" class="btn btn-primary mb-2"><i class="far fa-paper-plane"></i>
+                        <button type="submit" class="btn btn-primary mb-2"><i class="fa fa-paper-plane"></i>
                             {{ __('send_mail') }}</button>
                     @endif
                 </form>

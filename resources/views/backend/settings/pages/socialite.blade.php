@@ -311,8 +311,7 @@
                                 <div class="mb-3 row">
                                     <label class="col-sm-3">{{ __('status') }}<span class="text-danger">*</span></label>
                                     <div class="col-sm-9">
-                                        {{-- <input {{ config('services.linkedin-openid.active') ? 'checked' : '' }}
-                                            type="checkbox" name="linkedin" data-bootstrap-switch value="1"> --}}
+
                                         <input class="tgl tgl-flip" id="cb4"
                                             {{ config('services.linkedin-openid.active') ? 'checked' : '' }}
                                             type="checkbox" name="linkedin" data-bootstrap-switch value="1">
@@ -385,8 +384,7 @@
                                 <div class="mb-3 row">
                                     <label class="col-sm-3">{{ __('status') }}<span class="text-danger">*</span></label>
                                     <div class="col-sm-9">
-                                        {{-- <input {{ config('services.github.active') ? 'checked' : '' }} type="checkbox"
-                                            name="github" data-bootstrap-switch value="1"> --}}
+
                                         <input class="tgl tgl-flip" id="cb5"
                                             {{ config('services.github.active') ? 'checked' : '' }} type="checkbox"
                                             name="github" data-bootstrap-switch value="1">

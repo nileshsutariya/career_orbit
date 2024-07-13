@@ -24,7 +24,7 @@
                 <div class="">
                     <x-forms.label name="{{ __('set_default_currency') }}" class="" for="inlineFormCustomSelect" />
                     <div class="d-flex align-items-center">
-                        <select name="currency" class="form-select select2" id="inlineFormCustomSelect">
+                        <select name="currency" class="form-select" id="inlineFormCustomSelect">
                             <option value="" disabled selected>{{ __('Currency') }}</option>
                             @foreach ($currencies as $key => $currency)
                                 <option {{ config('templatecookie.currency') == $currency->code ? 'selected' : '' }}
@@ -40,15 +40,22 @@
         </form>
         <div class="card">
             <div class="card-header">
-                <h3 class="card-title line-height-36">{{ __('currency_list') }}</h3>
-                <a href="{{ route('module.currency.create') }}" class="btn bg-primary float-right d-flex align-items-center justify-content-center">
-                    <i class="fas fa-plus"></i>
-                    {{ __('create') }}
-                </a>
+                <div class="float-start">
+                    <h4>{{ __('currency_list') }}</h4>
+                </div>
+
+                <div class="float-end">
+                    <a href="{{ route('module.currency.create') }}" class="btn bg-primary">
+                        <i class="fa fa-plus"></i>
+                        {{ __('create') }}
+                    </a>
+                </div>
+
             </div>
-            <div class="card-body table-responsive p-0">
-                <table class="table table-hover text-nowrap table-bordered">
-                    <thead class="text-center">
+            <div class=" card-body dt-ext table-responsive theme-scrollbar">
+
+                <table class="display" id="keytable">
+                    <thead>
                         <tr>
                             <th width="5%">#</th>
                             <th>{{ __('name') }}</th>
@@ -59,7 +66,7 @@
                             <th width="15%">{{ __('action') }}</th>
                         </tr>
                     </thead>
-                    <tbody class="text-center">
+                    <tbody>
                         @forelse ($currencies as $key => $currency)
                             <tr>
                                 <td>{{ $key + 1 }}</td>
@@ -73,27 +80,27 @@
                                 </td>
                                 <td>{{ $currency->code }}</td>
                                 <td>{{ $currency->symbol }}</td>
-                                <td>{{$currency->rate}}</td>
+                                <td>{{ $currency->rate }}</td>
                                 <td>{{ ucfirst($currency->symbol_position) }}</td>
                                 <td class="d-flex justify-content-center align-items-center">
                                     @if ($currency->code == 'USD')
-                                        <a href="javascript:void(0)" class="btn btn-warning mt-0 mr-2"
-                                            data-toggle="tooltip" title="You can't delete or edit this currency">
-                                            <i class="fas fa-lock"></i>
+                                        <a href="javascript:void(0)" class="btn " data-bs-toggle="tooltip"
+                                            title="You can't delete or edit this currency">
+                                            <i class="fa fa-lock fa-2x"></i>
                                         </a>
                                     @endif
                                     @if ($currency->code != 'USD')
-                                        <a data-toggle="tooltip" data-placement="top"
-                                        title="{{ __('edit') }}" href="{{ route('module.currency.edit', $currency->id) }}"
-                                            class="btn btn-info mt-0 mr-2"><i class="fas fa-edit"></i></a>
+                                        <a data-bs-toggle="tooltip" data-placement="top" title="{{ __('edit') }}"
+                                            href="{{ route('module.currency.edit', $currency->id) }}" class="btn"><i
+                                                class="text-dark fa fa-edit fa-2x"></i></a>
                                         <form action="{{ route('module.currency.delete', $currency->id) }}"
                                             class="d-inline" method="POST">
                                             @method('DELETE')
                                             @csrf
-                                            <button data-toggle="tooltip" data-placement="top"
+                                            <button data-bs-toggle="tooltip" data-placement="top"
                                                 title="{{ __('delete') }}"
                                                 onclick="return confirm('{{ __('are_you_sure_you_want_to_delete_this_item') }}');"
-                                                class="btn bg-danger"><i class="fas fa-trash"></i></button>
+                                                class="btn"><i class="text-dark fa fa-trash fa-2x"></i></button>
                                         </form>
                                     @endif
                                 </td>

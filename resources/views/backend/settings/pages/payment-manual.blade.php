@@ -19,210 +19,233 @@
 @endsection
 
 @section('website-settings')
-    <div class="row">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">
-                    <h3 class="card-title line-height-36">{{ __('manual_payment_methods') }}</h3>
-                </div>
-                <div class="card-body table-responsive p-0">
-                    <table class="table text-nowrap table-bordered">
-                        <thead>
-                            <tr>
-                                <th>{{ __('name') }}</th>
-                                <th>{{ __('payment_type') }}</th>
-                                <th width="10%">{{ __('status') }}</th>
-                                <th width="15%">{{ __('action') }}</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @forelse ($manual_payment_gateways as $payment)
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-header">
+                        <h4>{{ __('manual_payment_methods') }}</h4>
+                    </div>
+                    <div class="card-body dt-ext table-responsive theme-scrollbar">
+
+                        <table class="display" id="keytable">
+                            <thead>
                                 <tr>
-                                    <td>
-                                        {{ $payment->name }}
-                                    </td>
-                                    <td>{{ ucfirst(Str::replace('_', ' ', $payment->type)) }}</td>
-                                    <td tabindex="0">
-                                        <a href="#">
-                                            <label class="switch ">
-                                                <input data-id="{{ $payment->id }}" type="checkbox"
-                                                    class="success status-switch"
-                                                    {{ $payment->status == 1 ? 'checked' : '' }}>
-                                                <span class="slider round"></span>
-                                            </label>
-                                        </a>
-                                    </td>
-                                    <td>
-                                        <a href="javascript:void(0)" onclick="contactDetail({{ json_encode($payment) }})"
-                                            class="btn btn-warning mt-0 mr-2"><i class="fas fa-eye"></i></a>
-                                        <a href="{{ route('settings.payment.manual.edit', $payment->id) }}"
-                                            class="btn btn-info mt-0 mr-2"><i class="fas fa-edit"></i></a>
-                                        <form action="{{ route('settings.payment.manual.delete', $payment->id) }}"
-                                            class="d-inline" method="POST">
-                                            @method('DELETE')
-                                            @csrf
-                                            <button data-toggle="tooltip" data-placement="top" title="{{ __('delete') }}"
-                                                onclick="return confirm('{{ __('are_you_sure_want_to_delete_this_item') }}');"
-                                                class="btn bg-danger"><i class="fas fa-trash"></i></button>
-                                        </form>
-                                    </td>
+                                    <th>{{ __('name') }}</th>
+                                    <th>{{ __('payment_type') }}</th>
+                                    <th width="10%">{{ __('status') }}</th>
+                                    <th width="15%">{{ __('action') }}</th>
                                 </tr>
-                            @empty
-                                <tr>
-                                    <td colspan="10" class="text-center">
-                                        <x-admin.not-found word="language" route="" />
-                                    </td>
-                                </tr>
-                            @endforelse
-                        </tbody>
-                    </table>
+                            </thead>
+                            <tbody>
+                                @forelse ($manual_payment_gateways as $payment)
+                                    <tr>
+                                        <td>
+                                            {{ $payment->name }}
+                                        </td>
+                                        <td>{{ ucfirst(Str::replace('_', ' ', $payment->type)) }}</td>
+                                        <td tabindex="0">
+                                            <a href="#">
+
+                                                <div class="form-check-size">
+                                                    <div class="form-check form-switch form-check-inline">
+                                                        <input
+                                                            class="form-check-input switch-primary check-size success status-switch"
+                                                            data-id="{{ $payment->id }}" type="checkbox" role="switch"
+                                                            {{ $payment->status == 1 ? 'checked' : '' }}>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        </td>
+                                        <td class="d-flex">
+                                            <a href="javascript:void(0)"
+                                                onclick="contactDetail({{ json_encode($payment) }})" data-bs-toggle="modal"
+                                                data-bs-target="#tooltipmodal" class="btn   m-r-10"> <i
+                                                    class="icon-eye fa-2x"></i> </a>
+                                            <a href="{{ route('settings.payment.manual.edit', $payment->id) }}"
+                                                class="btn  m-r-10"><i class="fa fa-edit fa-2x"></i></a>
+                                            <form action="{{ route('settings.payment.manual.delete', $payment->id) }}"
+                                                class="d-inline" method="POST">
+                                                @method('DELETE')
+                                                @csrf
+                                                <button data-bs-toggle="tooltip" data-placement="top"
+                                                    title="{{ __('delete') }}"
+                                                    onclick="return confirm('{{ __('are_you_sure_want_to_delete_this_item') }}');"
+                                                    class="btn"><i class="text-dark fa fa-trash fa-2x"></i></button>
+                                            </form>
+                                        </td>
+                                    </tr>
+                                @empty
+                                @endforelse
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="col-md-4">
-            @if (!empty($manual_payment))
-                <div class="card">
-                    <div class="card-header">
-                        <h3 class="card-title line-height-36">{{ __('edit') }}</h3>
-                        <a href="{{ route('settings.payment.manual') }}"
-                            class="btn bg-primary float-right d-flex align-items-center justify-content-center"><i
-                                class="fas fa-arrow-left mr-1"></i>{{ __('back') }}
-                        </a>
+            <div class="col-md-4">
+                @if (!empty($manual_payment))
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="float-start">
+                                <h4>{{ __('edit') }}</h4>
+                            </div>
+
+
+                            <div class="float-end">
+                                <a href="{{ route('settings.payment.manual') }}" class="btn bg-primary"><i
+                                        class="fa fa-arrow-left mr-1"></i>{{ __('back') }}
+                                </a>
+                            </div>
+
+                        </div>
+                        <div class="card-body">
+                            @if (userCan('job_role.create'))
+                                <form class="form-horizontal"
+                                    action="{{ route('settings.payment.manual.update', $manual_payment->id) }}"
+                                    method="POST">
+                                    @csrf
+                                    @method('PUT')
+                                    <div class="form-group mb-2">
+                                        <x-forms.label name="name" for="name" :required="true" />
+                                        <input id="name" type="text" name="name"
+                                            placeholder="{{ __('enter') }} {{ __('name') }}"
+                                            value="{{ old('name', $manual_payment->name) }}"
+                                            class="form-control @error('name') is-invalid @enderror">
+                                        @error('name')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
+                                    <div class="form-group mb-2">
+                                        <label for="name" class="col-form-label">
+                                            {{ __('payment_type') }}
+                                        </label>
+                                        <select name="type" class="form-control @error('type') is-invalid @enderror">
+                                            <option {{ $manual_payment->type == 'bank_payment' ? 'selected' : '' }}
+                                                value="bank_payment">{{ __('bank_payment') }}</option>
+                                            <option {{ $manual_payment->type == 'cash_payment' ? 'selected' : '' }}
+                                                value="cash_payment">{{ __('cash_payment') }}</option>
+                                            <option {{ $manual_payment->type == 'check_payment' ? 'selected' : '' }}
+                                                value="check_payment">{{ __('check_payment') }}</option>
+                                            <option {{ $manual_payment->type == 'custom_payment' ? 'selected' : '' }}
+                                                value="custom_payment">{{ __('custom_payment') }}</option>
+                                        </select>
+                                        @error('type')
+                                            <span class="invalid-feedback"
+                                                role="alert"><strong>{{ $message }}</strong></span>
+                                        @enderror
+                                    </div>
+                                    <div class="form-group mb-2">
+                                        <label for="image_ckeditor" class="pt-2">{{ __('description') }}<span
+                                                class="text-red font-weight-bold">*</span></label>
+                                        <textarea name="description" id="image_ckeditor" class="form-control @error('description') is-invalid @enderror"
+                                            cols="30" rows="10">{{ old('description', $manual_payment->description) }}</textarea>
+                                        @error('description')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ __($message) }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
+                                    <div class="form-group m-auto">
+                                        <div class="text-end">
+                                            <button type="submit" class="btn btn-primary">
+                                                <i class="fa fa-plus mr-1"></i>
+                                                {{ __('save') }}
+                                            </button>
+                                        </div>
+
+                                    </div>
+                                </form>
+                            @else
+                                <p>{{ __('dont_have_permission') }}</p>
+                            @endif
+                        </div>
                     </div>
-                    <div class="card-body">
-                        @if (userCan('job_role.create'))
-                            <form class="form-horizontal"
-                                action="{{ route('settings.payment.manual.update', $manual_payment->id) }}" method="POST">
-                                @csrf
-                                @method('PUT')
-                                <div class="form-group mb-2">
-                                    <x-forms.label name="name" for="name" :required="true" />
-                                    <input id="name" type="text" name="name"
-                                        placeholder="{{ __('enter') }} {{ __('name') }}"
-                                        value="{{ old('name', $manual_payment->name) }}"
-                                        class="form-control @error('name') is-invalid @enderror">
-                                    @error('name')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
-                                </div>
-                                <div class="form-group mb-2">
-                                    <label for="name" class="col-form-label">
-                                        {{ __('payment_type') }}
-                                    </label>
-                                    <select name="type" class="form-control @error('type') is-invalid @enderror">
-                                        <option {{ $manual_payment->type == 'bank_payment' ? 'selected' : '' }}
-                                            value="bank_payment">{{ __('bank_payment') }}</option>
-                                        <option {{ $manual_payment->type == 'cash_payment' ? 'selected' : '' }}
-                                            value="cash_payment">{{ __('cash_payment') }}</option>
-                                        <option {{ $manual_payment->type == 'check_payment' ? 'selected' : '' }}
-                                            value="check_payment">{{ __('check_payment') }}</option>
-                                        <option {{ $manual_payment->type == 'custom_payment' ? 'selected' : '' }}
-                                            value="custom_payment">{{ __('custom_payment') }}</option>
-                                    </select>
-                                    @error('type')
-                                        <span class="invalid-feedback"
-                                            role="alert"><strong>{{ $message }}</strong></span>
-                                    @enderror
-                                </div>
-                                <div class="form-group mb-2">
-                                    <label for="image_ckeditor" class="pt-2">{{ __('description') }}<span
-                                            class="text-red font-weight-bold">*</span></label>
-                                    <textarea name="description" id="image_ckeditor" class="form-control @error('description') is-invalid @enderror"
-                                        cols="30" rows="10">{{ old('description', $manual_payment->description) }}</textarea>
-                                    @error('description')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ __($message) }}</strong>
-                                        </span>
-                                    @enderror
-                                </div>
-                                <div class="form-group m-auto">
-                                    <button type="submit" class="btn btn-primary">
-                                        <i class="fas fa-plus mr-1"></i>
-                                        {{ __('save') }}
-                                    </button>
-                                </div>
-                            </form>
-                        @else
-                            <p>{{ __('dont_have_permission') }}</p>
-                        @endif
+                @endif
+                @if (empty($manual_payment))
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="float-start">
+                                <h4>{{ __('create') }}</h4>
+                            </div>
+
+                        </div>
+                        <div class="card-body">
+                            @if (userCan('job_role.create'))
+                                <form class="form-horizontal" action="{{ route('settings.payment.manual.store') }}"
+                                    method="POST">
+                                    @csrf
+                                    <div class="form-group mb-2">
+                                        <x-forms.label name="name" for="name" :required="true" />
+                                        <input id="name" type="text" name="name"
+                                            placeholder="{{ __('enter') }} {{ __('name') }}"
+                                            value="{{ old('name') }}"
+                                            class="form-control @error('name') is-invalid @enderror">
+                                        @error('name')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
+                                    <div class="form-group mb-2">
+                                        <label for="name" class="col-form-label">
+                                            {{ __('payment_type') }}
+                                        </label>
+                                        <select name="type" class="form-control @error('type') is-invalid @enderror">
+                                            <option value="bank_payment">{{ __('bank_payment') }}</option>
+                                            <option value="cash_payment">{{ __('cash_payment') }}</option>
+                                            <option value="check_payment">{{ __('check_payment') }}</option>
+                                            <option value="custom_payment">{{ __('custom_payment') }}</option>
+                                        </select>
+                                        @error('type')
+                                            <span class="invalid-feedback"
+                                                role="alert"><strong>{{ $message }}</strong></span>
+                                        @enderror
+                                    </div>
+                                    <div class="form-group mb-2">
+                                        <label for="image_ckeditor" class="pt-2">{{ __('description') }}<span
+                                                class="text-red font-weight-bold">*</span></label>
+                                        <textarea name="description" id="image_ckeditor" class="form-control @error('description') is-invalid @enderror"
+                                            cols="30" rows="10">{{ old('description') }}</textarea>
+                                        @error('description')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ __($message) }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="text-end">
+                                            <button type="submit" class="btn btn-primary">
+                                                <i class="fa fa-plus m-r-10"></i>
+                                                {{ __('save') }}
+                                            </button>
+                                        </div>
+
+                                    </div>
+                                </form>
+                            @else
+                                <p>{{ __('dont_have_permission') }}</p>
+                            @endif
+                        </div>
                     </div>
-                </div>
-            @endif
-            @if (empty($manual_payment))
-                <div class="card">
-                    <div class="card-header">
-                        <h3 class="card-title line-height-36">{{ __('create') }}</h3>
-                    </div>
-                    <div class="card-body">
-                        @if (userCan('job_role.create'))
-                            <form class="form-horizontal" action="{{ route('settings.payment.manual.store') }}"
-                                method="POST">
-                                @csrf
-                                <div class="form-group mb-2">
-                                    <x-forms.label name="name" for="name" :required="true" />
-                                    <input id="name" type="text" name="name"
-                                        placeholder="{{ __('enter') }} {{ __('name') }}"
-                                        value="{{ old('name') }}"
-                                        class="form-control @error('name') is-invalid @enderror">
-                                    @error('name')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
-                                </div>
-                                <div class="form-group mb-2">
-                                    <label for="name" class="col-form-label">
-                                        {{ __('payment_type') }}
-                                    </label>
-                                    <select name="type" class="form-control @error('type') is-invalid @enderror">
-                                        <option value="bank_payment">{{ __('bank_payment') }}</option>
-                                        <option value="cash_payment">{{ __('cash_payment') }}</option>
-                                        <option value="check_payment">{{ __('check_payment') }}</option>
-                                        <option value="custom_payment">{{ __('custom_payment') }}</option>
-                                    </select>
-                                    @error('type')
-                                        <span class="invalid-feedback"
-                                            role="alert"><strong>{{ $message }}</strong></span>
-                                    @enderror
-                                </div>
-                                <div class="form-group mb-2">
-                                    <label for="image_ckeditor" class="pt-2">{{ __('description') }}<span
-                                            class="text-red font-weight-bold">*</span></label>
-                                    <textarea name="description" id="image_ckeditor" class="form-control @error('description') is-invalid @enderror"
-                                        cols="30" rows="10">{{ old('description') }}</textarea>
-                                    @error('description')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ __($message) }}</strong>
-                                        </span>
-                                    @enderror
-                                </div>
-                                <div class="form-group">
-                                    <button type="submit" class="btn btn-primary">
-                                        <i class="fas fa-plus mr-1"></i>
-                                        {{ __('save') }}
-                                    </button>
-                                </div>
-                            </form>
-                        @else
-                            <p>{{ __('dont_have_permission') }}</p>
-                        @endif
-                    </div>
-                </div>
-            @endif
+                @endif
+            </div>
+
+
         </div>
 
-        {{-- Message Modal --}}
-        <div class="modal fade" id="contactModal">
-            <div class="modal-dialog modal-dialog-centered">
+        <div class="modal fade" id="tooltipmodal" tabindex="-1" role="dialog" aria-labelledby="tooltipmodal"
+            aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title">{{ __('details') }}</h5>
-                        <button type="button" class="close" onclick="HideModal()" data-bs-dismiss="modal">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
+                        <h4 class="modal-title">{{ __('details') }}</h4>
+                        <button class="btn-close py-0" type="button" data-bs-dismiss="modal"
+                            aria-label="Close"></button>
                     </div>
+
+
                     <div class="modal-body">
                         <div class="form-group mb-2">
                             <label>{{ __('name') }}</label>
@@ -237,6 +260,8 @@
                             <textarea class="form-control" rows="10" id="contact-modal-description" readonly></textarea>
                         </div>
                     </div>
+
+
                 </div>
             </div>
         </div>

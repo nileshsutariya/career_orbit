@@ -27,14 +27,19 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">
-                        <h3 class="card-title line-height-36">
-                            {{ $language->name }} - {{ __('translate_language') }}
-                        </h3>
-                        <a href="{{ route('languages.index') }}"
-                            class="btn bg-primary float-right d-flex align-items-center justify-content-center">
-                            <i class="fas fa-arrow-left"></i>
-                            {{ __('back') }}
-                        </a>
+                        <div class="float-start">
+                            <h4>
+                                {{ $language->name }} - {{ __('translate_language') }}
+                            </h4>
+                        </div>
+                        <div class="float-end">
+                            <a href="{{ route('languages.index') }}" class="btn bg-primary ">
+                                <i class="fa fa-arrow-left"></i>
+                                {{ __('back') }}
+                            </a>
+                        </div>
+
+
                     </div>
                     <div class="">
                         <!-- filter -->
@@ -60,51 +65,55 @@
                             @csrf
                             <input type="hidden" name="lang_id" value="{{ $language->id }}">
                             <div class="row">
-                                <table class="table table-striped table-bordered mt-0 pt-0" id="tranlation-table"
-                                    cellspacing="0" width="100%">
-                                    <thead>
-                                        <tr>
-                                            <th>#</th>
-                                            <th width="48%">{{ __('english_text') }}</th>
-                                            <th width="48%">
-                                                <span class="d-flex justify-content-between">
-                                                    <span>{{ __('translation_text') }}</span>
-                                                </span>
-                                            </th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        @php
-                                            $lastPageTotalData = request()->input('page') == null || request()->input('page') == 1 ? 0 : request()->input('page') * 100;
-                                        @endphp
-                                        @foreach ($translations as $key => $value)
+                                <div class="card-body dt-ext table-responsive theme-scrollbar ">
+                                    <table class="display" id="keytable">
+                                        <thead>
                                             <tr>
-                                                <td>{{ $lastPageTotalData + $loop->iteration }}</td>
-                                                <td class="key">{{ ucwords(str_replace('_', ' ', $key)) }}
-                                                </td>
-                                                <td>
-                                                    <span class="d-flex">
-                                                        <input type="text" class="form-control value  w-100"
-                                                            name="{{ $key }}" value="{{ $value }}">
-                                                        <button type="button"
-                                                            onclick="AutoTrans('{{ $key }}', '{{ ucwords(str_replace('_', ' ', $key)) }}', '{{ $language->code }}')"
-                                                            class="btn btn-sm ml-1 bg-info">
-                                                            {{ __('translate') }}
-                                                        </button>
+                                                <th>#</th>
+                                                <th width="48%">{{ __('english_text') }}</th>
+                                                <th width="48%">
+                                                    <span class="d-flex justify-content-between">
+                                                        <span>{{ __('translation_text') }}</span>
                                                     </span>
-                                                </td>
+                                                </th>
                                             </tr>
-                                        @endforeach
-                                    </tbody>
-                                </table>
-                                <div class="d-flex ml-auto">
-                                    {{ $translations->appends(['keyword' => request()->input('keyword')])->links() }}
+                                        </thead>
+                                        <tbody>
+                                            @php
+                                                $lastPageTotalData =
+                                                    request()->input('page') == null || request()->input('page') == 1
+                                                        ? 0
+                                                        : request()->input('page') * 100;
+                                            @endphp
+                                            @foreach ($translations as $key => $value)
+                                                <tr>
+                                                    <td>{{ $lastPageTotalData + $loop->iteration }}</td>
+                                                    <td class="key">{{ ucwords(str_replace('_', ' ', $key)) }}
+                                                    </td>
+                                                    <td>
+                                                        <span class="d-flex">
+                                                            <input type="text" class="form-control value  w-100"
+                                                                name="{{ $key }}" value="{{ $value }}">
+                                                            <button type="button"
+                                                                onclick="AutoTrans('{{ $key }}', '{{ ucwords(str_replace('_', ' ', $key)) }}', '{{ $language->code }}')"
+                                                                class="btn btn-sm m-l-10 bg-secondary">
+                                                                {{ __('translate') }}
+                                                            </button>
+                                                        </span>
+                                                    </td>
+                                                </tr>
+                                            @endforeach
+                                        </tbody>
+                                    </table>
                                 </div>
+                                {{-- <div class="d-flex ml-auto">
+                                    {{ $translations->appends(['keyword' => request()->input('keyword')])->links() }}
+                                </div> --}}
                             </div>
                             <div class="row">
                                 <div class="d-flex mx-auto">
-                                    <button type="submit" class="lang-btn btn btn-success">
-                                        <i class="fas fa-sync"></i>
+                                    <button type="submit" class="lang-btn btn btn-primary">
+                                        <i class="fa fa-refresh"></i>
                                         {{ __('update') }}
                                     </button>
                                 </div>

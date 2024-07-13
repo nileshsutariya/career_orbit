@@ -25,18 +25,24 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="card">
-                        <div width="100%" class="d-flex justify-content-between card-header1">
-                            <h3 width="100%" class="card-title line-height-36">
-                                {{ __('seo_page_list') }}
-                                <div class="badge badge-primary ml-1">
-                                    {{ Str::ucfirst($seo->page_slug) }}
-                                </div>
-                            </h3>
-                            <a width="100%" class="btn bg-primary"
-                                href="{{ route('settings.seo.index', ['lang_query' => request('lang_query')]) }}"> <i
-                                    class="icofont icofont-arrow-left"></i>
-                                {{ __('back') }}
-                            </a>
+                        <div class="card-header">
+                            <div class="float-start">
+                                <h3>
+                                    {{ __('seo_page_list') }}
+                                    <div class="badge badge-primary ml-1">
+                                        {{ Str::ucfirst($seo->page_slug) }}
+                                    </div>
+                                </h3>
+                            </div>
+                            <div class="float-end">
+                                <a width="100%" class="btn bg-primary"
+                                    href="{{ route('settings.seo.index', ['lang_query' => request('lang_query')]) }}"> <i
+                                        class="fa fa-arrow-left"></i>
+                                    {{ __('back') }}
+                                </a>
+                            </div>
+
+
                         </div>
                         <div class="card-body">
                             <form id="language_code_form" action="{{ route('module.seo.content.create') }}" method="POST"

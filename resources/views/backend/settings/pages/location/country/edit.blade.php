@@ -4,65 +4,77 @@
 @endsection
 @section('website-settings')
     <div class="container-fluid">
-        <div class="row">
-            <div class="col-md-12">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
                 <div class="card">
                     <div class="card-header">
-                        <h3 class="card-title" style="line-height: 36px;">{{ __('edit_country') }}</h3>
-                        <a href="{{ route('location.country.country') }}"
-                            class="btn bg-primary float-right d-flex align-items-center justify-content-center"><i
-                                class="fas fa-arrow-left"></i>&nbsp; {{ __('back') }}</a>
-                    </div>
-                    <div class="row pt-3 pb-4">
-                        <div class="col-md-6 offset-md-3">
-                            <form class="form-horizontal" action="{{ route('location.country.update', $country->id) }}" method="POST">
-                                @csrf
-                                @method('PUT') <!-- Use PUT or PATCH method for updating -->
-                                <div class="form-group row mb-2">
-                                    <x-forms.label name="name" required="true" class="col-sm-3" />
-                                    <div class="col-sm-9">
-                                        <input class="form-control" type="text" name="name" value="{{ old('name', $country->name) }}"
-                                            placeholder="Enter Country Name" required>
-                                    </div>
-                                    @error('name')
-                                        <span class="invalid-feedback" role="alert"><strong>{{ $message }}</strong></span>
-                                    @enderror
-                                </div>
-                                <div class="form-group row mb-2">
-                                    <x-forms.label name="short_name" required="true" class="col-sm-3" />
-                                    <div class="col-sm-9">
-                                        <input class="form-control" type="text" name="short_name" value="{{ old('short_name', $country->short_name) }}"
-                                            placeholder="Enter Country Name" required>
-                                    </div>
-                                    @error('short_name')
-                                        <span class="invalid-feedback" role="alert"><strong>{{ $message }}</strong></span>
-                                    @enderror
-                                </div>
-                                <div class="form-group row mb-2">
-                                    <x-forms.label name="latitude" required="true" class="col-sm-3" />
-                                    <div class="col-sm-9">
-                                        <input class="form-control" type="text" name="lat"  value="{{ old('lat', $country->lat) }}" placeholder="Enter latitude " required> 
-                                    </div>
-                                    @error('lat') <span class="invalid-feedback"
-                                    role="alert"><strong>{{ $message }}</strong></span> @enderror
-                                </div>
-                                <div class="form-group row mb-2">
-                                    <x-forms.label name="longitude" required="true" class="col-sm-3" />
-                                    <div class="col-sm-9">
-                                        <input class="form-control" type="text" name="long" value="{{ old('long', $country->long) }}" placeholder="Enter longitude" required>  
-                                    </div>
-                                    @error('long') <span class="invalid-feedback"
-                                    role="alert"><strong>{{ $message }}</strong></span> @enderror
-                                </div>
-                            
-                                <div class="form-group row">
-                                    <div class="text-end">
-                                        <button type="submit" class="btn btn-primary"><i class="fas fa-plus"></i>&nbsp;{{ __('update') }}</button>
-                                    </div>
-                                </div>
-                            </form>
-                            
+                        <div class="float-start">
+                            <h4>{{ __('edit_country') }}</h4>
                         </div>
+
+                        <div class="float-end">
+                            <a href="{{ route('location.country.country') }}" class="btn bg-primary"><i
+                                    class="fa fa-arrow-left"></i>&nbsp; {{ __('back') }}</a>
+                        </div>
+
+                    </div>
+                    <div class="card-body">
+
+                        <form class="form-horizontal" action="{{ route('location.country.update', $country->id) }}"
+                            method="POST">
+                            @csrf
+                            @method('PUT') <!-- Use PUT or PATCH method for updating -->
+                            <div class="form-group row mb-2">
+                                <x-forms.label name="name" required="true" class="col-sm-3" />
+                                <div class="col-sm-9">
+                                    <input class="form-control" type="text" name="name"
+                                        value="{{ old('name', $country->name) }}" placeholder="Enter Country Name" required>
+                                </div>
+                                @error('name')
+                                    <span class="invalid-feedback" role="alert"><strong>{{ $message }}</strong></span>
+                                @enderror
+                            </div>
+                            <div class="form-group row mb-2">
+                                <x-forms.label name="short_name" required="true" class="col-sm-3" />
+                                <div class="col-sm-9">
+                                    <input class="form-control" type="text" name="short_name"
+                                        value="{{ old('short_name', $country->short_name) }}"
+                                        placeholder="Enter Country Name" required>
+                                </div>
+                                @error('short_name')
+                                    <span class="invalid-feedback" role="alert"><strong>{{ $message }}</strong></span>
+                                @enderror
+                            </div>
+                            <div class="form-group row mb-2">
+                                <x-forms.label name="latitude" required="true" class="col-sm-3" />
+                                <div class="col-sm-9">
+                                    <input class="form-control" type="text" name="lat"
+                                        value="{{ old('lat', $country->lat) }}" placeholder="Enter latitude " required>
+                                </div>
+                                @error('lat')
+                                    <span class="invalid-feedback" role="alert"><strong>{{ $message }}</strong></span>
+                                @enderror
+                            </div>
+                            <div class="form-group row mb-2">
+                                <x-forms.label name="longitude" required="true" class="col-sm-3" />
+                                <div class="col-sm-9">
+                                    <input class="form-control" type="text" name="long"
+                                        value="{{ old('long', $country->long) }}" placeholder="Enter longitude" required>
+                                </div>
+                                @error('long')
+                                    <span class="invalid-feedback" role="alert"><strong>{{ $message }}</strong></span>
+                                @enderror
+                            </div>
+
+                            <div class="form-group row">
+                                <div class="text-end">
+                                    <button type="submit" class="btn btn-primary"><i
+                                            class="fa fa-plus"></i>&nbsp;{{ __('update') }}</button>
+                                </div>
+                            </div>
+                        </form>
+
+
                     </div>
                 </div>
             </div>
@@ -71,7 +83,7 @@
 @endsection
 
 
-@section('style')
+{{-- @section('style')
     <link rel="stylesheet"
         href="{{ asset('backend') }}/plugins/bootstrap-iconpicker/dist/css/bootstrap-iconpicker.min.css" />
     <link rel="stylesheet" href="{{ asset('backend') }}/plugins/select2/css/select2.min.css">
@@ -93,7 +105,7 @@
             color: #fff;
         }
     </style>
-@endsection
+@endsection --}}
 
 @section('script')
     <script type="text/javascript"
