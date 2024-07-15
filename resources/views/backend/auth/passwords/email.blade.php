@@ -10,20 +10,22 @@
         </div>
     @endif
 
-    <form method="POST" action="{{ route('admin.password.email') }}">
+    <form class="theme-form" method="POST" action="{{ route('admin.password.email') }}">
         @csrf
-        <div class="input-group mb-3">
+
+        <div class="mb-2 input-group">
             <input type="email" class="form-control @error('email') is-invalid @enderror" name="email"
                 value="{{ old('email') }}" placeholder="{{ __('email') }}">
-            <div class="input-group-append">
-                <div class="input-group-text">
-                    <span class="fas fa-envelope"></span>
-                </div>
-            </div>
+
+            <span class="input-group-text list-light-primary">
+                <i class="fa fa-envelope txt-primary"> </i></span>
             @error('email')
                 <span class="invalid-feedback" role="alert"><strong>{{ $message }}</strong></span>
             @enderror
         </div>
+
+
+
 
         <button type="submit" class="btn btn-primary d-block w-100">
             {{ __('send_password_reset_link') }}
