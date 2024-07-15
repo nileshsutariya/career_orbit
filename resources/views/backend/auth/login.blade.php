@@ -101,7 +101,13 @@
                 <button class="btn btn-primary btn-block w-100" type="submit"> {{ __('sign_in') }}</button>
             </div>
         </div>
+<<<<<<< HEAD
        
+=======
+        <h6 class="text-muted mt-4 or">Or Sign in with</h6>
+
+        <p class="mt-4 mb-0 text-center">Don't have account?<a class="ms-2" href="sign-up.html">Create Account</a></p>
+>>>>>>> 9f646546689e0ce5de13ec1f72c7bf228085d720
     </form>
 @endsection
 
