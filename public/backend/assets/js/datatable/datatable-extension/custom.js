@@ -51,8 +51,8 @@
       ],
     });
     $("#export-button").DataTable({
-      dom: "Bfrtip",
-      buttons: ["copyHtml5", "excelHtml5", "csvHtml5", "pdfHtml5"],
+      // dom: "Bfrtip",
+      // buttons: ["copyHtml5", "excelHtml5", "csvHtml5", "pdfHtml5"],
     });
     $("#column-selector").DataTable({
       dom: "Bfrtip",

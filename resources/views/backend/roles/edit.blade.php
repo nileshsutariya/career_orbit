@@ -9,19 +9,23 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">
+                        <div class="float-start">
                         <h3 class="card-title line-height-36">{{ __('edit') }}</h3>
+                        </div>
+                        <div class="float-end">
                         <a href="{{ route('role.index') }}" class="btn bg-primary float-right d-flex align-items-center justify-content-center">
-                            <i class="fas fa-arrow-left mr-1"></i> 
+                            <i class="fa fa-arrow-left m-r-5"></i> 
                             {{ __('back') }}
                         </a>
+                        </div>
                     </div>
                     <div class="row">
-                        <div class="col-md-6 offset-md-3">
+                        <div class="col-md-12">
                             <form role="form" action="{{ route('role.update', $role->id) }}" method="POST">
                                 @method('PUT')
                                 @csrf
                                 <div class="card-body">
-                                    <div class="form-group">
+                                    <div class="mb-2">
                                         <x-forms.label name="name" for="role_name" />
                                         <input value="{{ $role->name }}" name="name" type="text"
                                             class="form-control @error('name') is-invalid @enderror" id="role_name"
@@ -82,8 +86,8 @@
                                             @php $i++; @endphp
                                         @endforeach
                                     </div>
-                                    <div class="form-group">
-                                        <button type="submit" class="btn btn-success"><i class="fa fa-sync mr-1"></i>
+                                    <div class="text-end">
+                                        <button type="submit" class="btn btn-primary"><i class="fa fa-refresh m-r-2"></i>
                                             {{ __('save') }}</button>
                                     </div>
                                 </div>

@@ -42,7 +42,6 @@
 
 <link rel="stylesheet" href="{{ asset('backend') }}/plugins/flagicon/dist/css/flag-icon.min.css" />
 
-
 <link rel="stylesheet" type="text/css"
     href="{{ asset('backend/assets/css/vendors/filepond-plugin-image-preview.css') }}">
 

@@ -187,8 +187,8 @@
                     <a href="{{ route('job.index') }}" class="btn btn-dark">{{ __('view_all') }}</a>
                 </div>
             </div>
-            <div class="table-responsive theme-scrollbar">
-                <table class="table display" id="export-button">
+            <div class="card-body dt-ext table-responsive theme-scrollbar">
+                <table class="table" id="export-button">
                     <thead>
                         <tr>
                             <th>{{ __('title') }}</th>
@@ -212,7 +212,7 @@
                             </td>
                             <td class="text-muted">
                                 <a href="{{ route('job.show', $latest->id) }}" class="btn bg-info ml-1">
-                                    <i class="fas fa-eye"></i>
+                                    <i class="fa fa-eye"></i>
                                 </a>
                             </td>
                         </tr>
@@ -292,13 +292,13 @@
                             <td class="text-muted">
                             <td class="d-flex">
                                 <a href="{{ route('order.show', $earning->id) }}" class="btn bg-primary mr-1">
-                                    <i class="fas fa-eye"></i>
+                                    <i class="fa fa-eye"></i>
                                 </a>
                                 <form action="{{ route('admin.transaction.invoice.download', $earning->id) }}"
                                     method="POST">
                                     @csrf
                                     <button type="submit" class="btn btn-info">
-                                        <i class=" fas fa-download"></i>
+                                        <i class=" fa fa-download"></i>
                                     </button>
                                 </form>
                             </td>
@@ -313,15 +313,16 @@
     <div class="col-12 col-lg-12">
         <div class="card">
             <div class="card-header">
-                <div class=" d-flex justify-content-between align-items-center">
+                <div class="d-flex justify-content-between align-items-center">
                     <h3 class="card-title">{{ __('latest_users') }}</h3>
                     <div class="d-flex justify-content-center align-items-center">
-                        <a href="{{ route('candidate.index') }}" class="btn btn-success mr-1">
+                        <a href="{{ route('candidate.index') }}" class="btn btn-secondary m-r-5">
                             {{ __('view_all_candidates') }}</a>
-                        <a href="{{ route('company.index') }}" class="btn btn-info">{{ __('view_all_company') }}</a>
+                        <a href="{{ route('company.index') }}" class="btn btn-primary">{{ __('view_all_company') }}</a>
                     </div>
                 </div>
-                <div class="dt-ext table-responsive theme-scrollbar">
+            </div>
+                <div class="card-body dt-ext table-responsive theme-scrollbar">
                     <table class="table" id="export-button3">
                         <thead>
                             <tr>
@@ -377,7 +378,7 @@
                                     @if ($user->company && $user->company->id)
                                     <a href="{{ route('company.show', $user->company->id) }}"
                                         class="btn bg-primary mr-1">
-                                        <i class="fas fa-eye"></i>
+                                        <i class="fa fa-eye"></i>
                                     </a>
                                     @else
                                     -
@@ -386,7 +387,7 @@
                                     @if ($user->candidate && $user->candidate->id)
                                     <a href="{{ route('candidate.show', $user->candidate->id) }}"
                                         class="btn bg-primary mr-1">
-                                        <i class="fas fa-eye"></i>
+                                        <i class="fa fa-eye"></i>
                                     </a>
                                     @else
                                     -
@@ -399,7 +400,7 @@
                         </tbody>
                     </table>
                 </div>
-            </div>
+            
         </div>
     </div>
 </div>
@@ -410,11 +411,11 @@
 <script src="{{ asset('backend') }}/plugins/bootstrap-switch/js/bootstrap-switch.min.js"></script>
 <script>
     $("#export-button2").DataTable({
-      dom: "Bfrtip",
+    //   dom: "Bfrtip",
     //   buttons: ["copyHtml5", "excelHtml5", "csvHtml5", "pdfHtml5"],
     });
     $("#export-button3").DataTable({
-      dom: "Bfrtip",
+    //   dom: "Bfrtip",
     //   buttons: ["copyHtml5", "excelHtml5", "csvHtml5", "pdfHtml5"],
     });
     var areaChartData = {

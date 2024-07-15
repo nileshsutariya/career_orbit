@@ -12,14 +12,14 @@
                         <div class="d-flex align-items-center justify-content-between">
                             <h3 class="card-title line-height-36">{{ __('roles_list') }}</h3>
                             <div class="d-flex align-items center">
-                                <a href="{{ route('user.index') }}" class="btn btn-outline-dark mr-2">
-                                    <i class="fas fa-users mr-1"></i>
+                                <a href="{{ route('user.index') }}" class="btn btn-outline-secondary m-r-5">
+                                    <i class="fa fa-users m-r-1"></i>
                                     {{ __('all_users') }}
                                 </a>
                                 @if (auth()->user()->can('role.create'))
                                     <a href="{{ route('role.create') }}"
                                         class="btn bg-primary float-right d-flex align-items-center justify-content-center">
-                                        <i class="fas fa-plus mr-1"></i>
+                                        <i class="fa fa-plus mr-1"></i>
                                         {{ __('create') }}
                                     </a>
                                 @endif
@@ -80,20 +80,20 @@
                                         @if (auth()->user()->can('role.edit') ||
                                             auth()->user()->can('role.delete'))
                                             <td>
+                                                <div class="d-flex align-items-center">
                                                 @if (auth()->user()->can('role.edit'))
-                                                    <a href="{{ route('role.edit', $role->id) }}"
-                                                        class="btn bg-info"><i class="fas fa-edit"></i></a>
+                                                    <a href="{{ route('role.edit', $role->id) }}" class="btn ll-p-0"><i class="fa fa-edit fa-2x text-success"></i></a>
                                                 @endif
                                                 @if (auth()->user()->can('role.delete'))
-                                                    <form action="{{ route('role.destroy', $role->id) }}" method="POST"
-                                                        class="d-inline">
+                                                    <form action="{{ route('role.destroy', $role->id) }}" method="POST">
                                                         @method('DELETE')
                                                         @csrf
                                                         <button
-                                                            onclick="return confirm('{{ __('are_you_sure_you_want_to_delete_this_item') }}');"
-                                                            class="btn bg-danger"><i class="fas fa-trash"></i></button>
+                                                        class="btn ll-p-0" onclick="return confirm('{{ __('are_you_sure_you_want_to_delete_this_item') }}');"><i class="fa fa-trash-o fa-2x text-danger"></i></button>
                                                     </form>
                                                 @endif
+                                                </div>
+                
                                             </td>
                                         @endif
                                     </tr>

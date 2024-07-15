@@ -59,12 +59,12 @@
                     </li>
 
                     @if (userCan('menu-setting.index'))
-                        <li class="sidebar-list"><i class="fa fa-thumb-tack"></i>
-                            <a class="sidebar-link sidebar-title link-nav {{ Route::is('menu-settings.*') ? 'active' : 'nav' }}"
-                                href="{{ route('menu-settings.index') }}">
-                                <i class="fa fa-navicon text-light"></i>
-                                <span>{{ __('menu_settings') }}</span></a>
-                        </li>
+                    <li class="sidebar-list"><i class="fa fa-thumb-tack"></i>
+                        <a class="sidebar-link sidebar-title link-nav {{ Route::is('menu-settings.*') ? 'active' : 'nav' }}"
+                            href="{{ route('menu-settings.index') }}">
+                            <i class="fa fa-navicon text-light"></i>
+                            <span>{{ __('menu_settings') }}</span></a>
+                    </li>
                     @endif
 
                     <li class="sidebar-list"><i class="fa fa-thumb-tack"></i>
@@ -137,29 +137,33 @@
                     </li>
 
                     @if (auth()->user()->can('setting.view') || auth()->user()->can('setting.update'))
-                        <li class="sidebar-list"><i class="fa fa-thumb-tack"></i>
-                            <a class="sidebar-link sidebar-title link-nav {{ Route::is('languages.*') ? 'active' : 'nav' }}"
-                                href="{{ route('languages.index') }}">
-                                <i class="fa fa-globe text-light"></i>
-                                <span>{{ __('language') }}</span></a>
-                        </li>
+                    <li class="sidebar-list"><i class="fa fa-thumb-tack"></i>
+                        <a class="sidebar-link sidebar-title link-nav {{ Route::is('languages.*') ? 'active' : 'nav' }}"
+                            href="{{ route('languages.index') }}">
+                            <i class="fa fa-globe text-light"></i>
+                            <span>{{ __('language') }}</span></a>
+                    </li>
                     @endif
 
-                    <li class="sidebar-list"><i class="fa fa-thumb-tack"></i><a class="sidebar-link sidebar-title"
+                    <li
+                        class="sidebar-list">
+                        <i class="fa fa-thumb-tack"></i><a
+                            class="sidebar-link sidebar-title"
                             href="javascript:void(0)">
                             <i class="fa fa-map-marker text-light"></i>
                             <span>{{ __('location') }}</span></a>
 
                         @if (userCan('country.view'))
-                            <ul class="sidebar-submenu">
-                                <li><a class="{{ Route::is('location.country.country') ? 'active' : 'nav' }}"
-                                        href="{{ route('location.country.country') }}">{{ __('country') }}</a>
-                                </li>
-                                <li><a class="{{ Route::is('location.state.state') ? 'active' : 'nav' }}"
-                                        href="{{ route('location.state.state') }}">{{ __('state') }}</a></li>
-                                <li><a class="{{ Route::is('location.city.city') ? 'active' : 'nav' }}"
-                                        href="{{ route('location.city.city') }}">{{ __('city') }}</a></li>
-                            </ul>
+                        <ul class="sidebar-submenu">
+                            <li><a class="{{ Route::is('location.country.country') ? 'active' : 'nav' }}"
+                                    href="{{ route('location.country.country') }}">{{ __('country') }}</a>
+                            </li>
+                            <li><a class="{{ Route::is('location.state.state') ? 'active' : 'nav' }}"
+                                    href="{{ route('location.state.state') }}">{{ __('state') }}</a></li>
+
+                            <li><a class="{{ Route::is('location.city.city') ? 'active' : 'nav' }}"
+                                    href="{{ route('location.city.city') }}">{{ __('city') }}</a></li>
+                        </ul>
                         @endif
                     </li>
 
@@ -184,55 +188,58 @@
                             <span>{{ __('currency') }}</span></a>
                     </li>
 
-                    <li class="sidebar-list"><i class="fa fa-thumb-tack"></i><a class="sidebar-link sidebar-title"
+                    <li
+                        class="sidebar-list {{Route::is('settings.payment') || Route::is('settings.payment.manual') ?'active' : 'nav'}}">
+                        <i class="fa fa-thumb-tack"></i><a
+                            class="sidebar-link sidebar-title {{Route::is('settings.payment') || Route::is('settings.payment.manual') ? 'active' : 'nav'}}"
                             href="javascript:void(0)">
                             <i class="fa fa-credit-card text-light"></i>
                             <span>{{ __('payment_gateway') }}</span></a>
 
                         @if (userCan('country.view'))
-                            <ul class="sidebar-submenu">
-                                <li><a class="{{ Route::is('settings.payment') ? 'active' : 'nav' }}"
-                                        href="{{ route('settings.payment') }}"> {{ __('auto_payment') }}</a></li>
+                        <ul class="sidebar-submenu">
+                            <li><a class="{{ Route::is('settings.payment') ? 'active' : 'nav' }}"
+                                    href="{{ route('settings.payment') }}"> {{ __('auto_payment') }}</a></li>
+                            @endif
+
+                            @if (userCan('map.view'))
+                            <li><a class="{{ Route::is('settings.payment.manual') ? 'active' : 'nav' }}"
+                                    href="{{ route('settings.payment.manual') }}"> {{ __('manual_payment') }}</a></li>
+                        </ul>
                         @endif
+                    </li>
 
-                        @if (userCan('map.view'))
-                    <li><a class="{{ Route::is('settings.payment.manual') ? 'active' : 'nav' }}"
-                            href="{{ route('settings.payment.manual') }}"> {{ __('manual_payment') }}</a></li>
-                </ul>
-                @endif
-                </li>
+                    <li class="sidebar-list"><i class="fa fa-thumb-tack"></i>
+                        <a class="sidebar-link sidebar-title link-nav {{ Route::is('settings.upgrade') ? 'active' : 'nav' }}"
+                            href="{{ route('settings.upgrade') }}">
+                            <i class="fa fa-upload text-light"></i>
+                            <span>{{ __('upgrade_guide') }}</span></a>
+                    </li>
 
-                <li class="sidebar-list"><i class="fa fa-thumb-tack"></i>
-                    <a class="sidebar-link sidebar-title link-nav {{ Route::is('settings.upgrade') ? 'active' : 'nav' }}"
-                        href="{{ route('settings.upgrade') }}">
-                        <i class="fa fa-upload text-light"></i>
-                        <span>{{ __('upgrade_guide') }}</span></a>
-                </li>
+                    <li class="sidebar-list"><i class="fa fa-thumb-tack"></i>
+                        <a class="sidebar-link sidebar-title link-nav {{ Route::is('settings.ad_setting') ? 'active' : 'nav' }}"
+                            href="{{ route('settings.ad_setting') }}">
+                            <span>{{ __('Place listing') }}</span></a>
+                    </li>
 
-                <li class="sidebar-list"><i class="fa fa-thumb-tack"></i>
-                    <a class="sidebar-link sidebar-title link-nav {{ Route::is('settings.ad_setting') ? 'active' : 'nav' }}"
-                        href="{{ route('settings.ad_setting') }}">
-                        <span>{{ __('Place listing') }}</span></a>
-                </li>
+                    <li class="sidebar-list"><i class="fa fa-thumb-tack"></i>
+                        <a class="sidebar-link sidebar-title link-nav" href="/log-viewer">
+                            <i class="fa fa-cog text-light"></i>
+                            <span>Log Viewer</span></a>
+                    </li>
 
-                <li class="sidebar-list"><i class="fa fa-thumb-tack"></i>
-                    <a class="sidebar-link sidebar-title link-nav" href="/log-viewer">
-                        <i class="fa fa-cog text-light"></i>
-                        <span>Log Viewer</span></a>
-                </li>
+                    <li class="sidebar-list"><i class="fa fa-thumb-tack"></i>
+                        <a class="sidebar-link sidebar-title link-nav {{ Route::is('settings.systemInfo') ? 'active' : 'nav' }}"
+                            href="{{ route('settings.systemInfo') }}">
+                            <i class="fa fa-info-circle text-light"></i>
+                            <span>{{ __('systemInfo') }}</span></a>
+                    </li>
 
-                <li class="sidebar-list"><i class="fa fa-thumb-tack"></i>
-                    <a class="sidebar-link sidebar-title link-nav {{ Route::is('settings.systemInfo') ? 'active' : 'nav' }}"
-                        href="{{ route('settings.systemInfo') }}">
-                        <i class="fa fa-info-circle text-light"></i>
-                        <span>{{ __('systemInfo') }}</span></a>
-                </li>
-
-                <li class="sidebar-list"><i class="fa fa-thumb-tack"></i>
-                    <a class="sidebar-link sidebar-title link-nav active" href="{{ route('admin.dashboard') }}">
-                        <i class="fa fa-chevron-left text-light"></i>
-                        <span>{{ __('go_back') }}</span></a>
-                </li>
+                    <li class="sidebar-list"><i class="fa fa-thumb-tack"></i>
+                        <a class="sidebar-link sidebar-title link-nav active" href="{{ route('admin.dashboard') }}">
+                            <i class="fa fa-chevron-left text-light"></i>
+                            <span>{{ __('go_back') }}</span></a>
+                    </li>
 
                 </ul>
             </div>

@@ -52,8 +52,8 @@ $userr = auth()->user();
                                     <span class="badge badge-primary">{{ $role->name }}</span>
                                     @endforeach
                                 </td>
-                                <td class="d-flex">
-
+                                <td>
+                                    <div class="d-flex">
                                     <a href="{{ route('user.edit', $user->id) }}" class="btn ll-p-0">
                                         <i class="fa fa-edit text-success fa-2x"></i>
                                     </a>
@@ -67,6 +67,7 @@ $userr = auth()->user();
                                             <i class="fa fa-trash-o fa-2x text-danger"></i>
                                         </button>
                                     </form>
+                                    </div>
 
                                 </td>
                             </tr>
