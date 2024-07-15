@@ -115,7 +115,8 @@
 
                                             <div class="col-md-12">
                                                 <label class="form-label" name="$label" for="name"
-                                                    @required(true)>Name English<spna class="text-red"> * </spna></label>
+                                                    @required(true)>{{ __($label) }}<spna class="text-red"> * </spna>
+                                                </label>
                                                 <input id="name" type="text" name="{{ $name }}"
                                                     placeholder="{{ __('name') }}" value="{{ old('name') }}"
                                                     class="form-control @if ($errors->has($name)) is-invalid @endif">
@@ -176,8 +177,8 @@
                                         @endphp
 
                                         <div class="col-md-12">
-                                            <label class="form-label" name="$label" for="name" @required(true)>Name
-                                                English
+                                            <label class="form-label" name="$label" for="name"
+                                                @required(true)>{{ __($label) }}
                                                 <spna class="text-red"> * </spna>
                                             </label>
                                             <input id="name" type="text" name="{{ $name }}"

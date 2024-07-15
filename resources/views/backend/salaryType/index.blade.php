@@ -70,11 +70,6 @@
                                             </td>
                                         </tr>
                                     @empty
-                                        <tr>
-                                            <td colspan="10" class="text-center">
-                                                {{ __('no_data_found') }}
-                                            </td>
-                                        </tr>
                                     @endforelse
                                 </tbody>
                                 <tfoot>
@@ -114,8 +109,8 @@
                                             $name = "name_{$language->code}";
                                         @endphp
                                         <div class="col-md-12">
-                                            <label class="form-label" name="$label" for="name" @required(true)>Name
-                                                English<spna class="text-red"> * </spna></label>
+                                            <label class="form-label" name="$label" for="name" @required(true)>
+                                                {{ __($label) }}<spna class="text-red"> * </spna></label>
                                             <input id="name" type="text" name="{{ $name }}"
                                                 placeholder="{{ __('name') }}" value="{{ old('name') }}"
                                                 class="form-control @if ($errors->has($name)) is-invalid @endif">
@@ -176,8 +171,8 @@
                                             $value = $data ? $data->name : '';
                                         @endphp
                                         <div class="col-md-12">
-                                            <label class="form-label" name="$label" for="name" @required(true)>Name
-                                                English
+                                            <label class="form-label" name="$label" for="name"
+                                                @required(true)>{{ __($label) }}
                                                 <spna class="text-red"> * </spna>
                                             </label>
                                             <input id="name" type="text" name="{{ $name }}"

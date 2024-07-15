@@ -80,19 +80,9 @@
                                             </td>
                                         </tr>
                                     @empty
-                                        <tr>
-                                            <td colspan="10" class="text-center">
-                                                {{ __('no_data_found') }}
-                                            </td>
-                                        </tr>
                                     @endforelse
                                 </tbody>
-                                <tfoot>
-                                    <tr>
-                                        <th>{{ __('name') }}</th>
-                                        <th width="10%">{{ __('action') }}</th>
-                                    </tr>
-                                </tfoot>
+
                             </table>
                         </div>
                     </div>
@@ -121,8 +111,9 @@
                                         @endphp
 
                                         <div class="col-md-12">
-                                            <label class="form-label" name="$label" for="name" @required(true)>Name
-                                                English<spna class="text-red"> * </spna></label>
+                                            <label class="form-label" name="$label" for="name"
+                                                @required(true)>{{ __($label) }}</label>
+                                            <spna class="text-red"> * </spna></label>
                                             <input id="name" type="text" name="{{ $name }}"
                                                 placeholder="{{ __('name') }}" value="{{ old('name') }}"
                                                 class="form-control @if ($errors->has($name)) is-invalid @endif">
@@ -183,8 +174,8 @@
                                             $value = $data ? $data->name : '';
                                         @endphp
                                         <div class="col-md-12">
-                                            <label class="form-label" name="$label" for="name" @required(true)>Name
-                                                English
+                                            <label class="form-label" name="$label" for="name"
+                                                @required(true)>{{ __($label) }}
                                                 <spna class="text-red"> * </spna>
                                             </label>
                                             <input id="name" type="text" name="{{ $name }}"
@@ -220,8 +211,7 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <h4 class="modal-title">{{ __('bulk_import') }}</h4>
-                        <button class="btn-close py-0" type="button" data-bs-dismiss="modal"
-                            aria-label="Close"></button>
+                        <button class="btn-close py-0" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
 
                     <form action="{{ route('admin.organization.type.bulk.import') }}" method="post"

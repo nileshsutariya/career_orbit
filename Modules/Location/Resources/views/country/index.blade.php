@@ -191,13 +191,14 @@
 
 
                     <div class="card-body">
-                        <div class="dt-ext table-responsive theme-scrollbar">
 
-                            <table class="table" id="export-button">
+
+                        <div class="table-responsive theme-scrollbar signal-table">
+                            <table class="table table-hover">
                                 <thead>
                                     <tr>
                                         @if ($countries->count() > 1)
-                                            <th width="4%">
+                                            <th scope="col" width="4%">
                                                 <div class="icheck-primary ml-1">
                                                     <input type="checkbox" id="checkboxAll">
                                                     <label for="checkboxAll">
@@ -205,11 +206,11 @@
                                                 </div>
                                             </th>
                                         @endif
-                                        <th width="5%">#</th>
-                                        <th>{{ __('image') }}</th>
-                                        <th>{{ __('name') }}</th>
+                                        <th scope="col"width="5%">#</th>
+                                        <th scope="col">{{ __('image') }}</th>
+                                        <th scope="col">{{ __('name') }}</th>
                                         @if (userCan('country.update') || userCan('country.delete'))
-                                            <th width="12%">{{ __('action') }}</th>
+                                            <th scope="col" width="12%">{{ __('action') }}</th>
                                         @endif
                                     </tr>
                                 </thead>
@@ -242,27 +243,31 @@
 
                                                 </td>
                                                 @if (userCan('country.update') || userCan('country.delete'))
-                                                    <td class="d-flex align-items-center">
-                                                        @if (userCan('country.update'))
-                                                            <a data-toggle="tooltip" data-placement="top"
-                                                                title="{{ __('edit') }}"
-                                                                href="{{ route('module.country.edit', $country->id) }}"
-                                                                class="btn"> <i class="text-dark fa fa-edit fa-2x"></i>
-                                                            </a>
-                                                        @endif
-                                                        @if (userCan('country.delete'))
-                                                            <form
-                                                                action="{{ route('module.country.delete', $country->id) }}"
-                                                                method="POST" class="d-inline">
-                                                                @method('DELETE')
-                                                                @csrf
-                                                                <button data-toggle="tooltip" data-placement="top"
-                                                                    title="{{ __('delete') }}"
-                                                                    onclick="return confirm('{{ __('are_you_sure_you_want_to_delete_this_item') }}');"
+                                                    <td>
+                                                        <div class="d-flex align-items-center">
+                                                            @if (userCan('country.update'))
+                                                                <a data-toggle="tooltip" data-placement="top"
+                                                                    title="{{ __('edit') }}"
+                                                                    href="{{ route('module.country.edit', $country->id) }}"
                                                                     class="btn"> <i
-                                                                        class="text-dark fa fa-trash-o fa-2x"></i></button>
-                                                            </form>
-                                                        @endif
+                                                                        class="text-dark fa fa-edit fa-2x"></i>
+                                                                </a>
+                                                            @endif
+                                                            @if (userCan('country.delete'))
+                                                                <form
+                                                                    action="{{ route('module.country.delete', $country->id) }}"
+                                                                    method="POST" class="d-inline">
+                                                                    @method('DELETE')
+                                                                    @csrf
+                                                                    <button data-toggle="tooltip" data-placement="top"
+                                                                        title="{{ __('delete') }}"
+                                                                        onclick="return confirm('{{ __('are_you_sure_you_want_to_delete_this_item') }}');"
+                                                                        class="btn"> <i
+                                                                            class="text-dark fa fa-trash-o fa-2x"></i></button>
+                                                                </form>
+                                                            @endif
+                                                        </div>
+
                                                     </td>
                                                 @endif
                                             </tr>
@@ -273,14 +278,15 @@
                             </table>
 
                         </div>
-                        @if (request('perpage') != 'all' && $countries->total() > $countries->count())
-                            <div class="mt-3 d-flex justify-content-center">
-                                {{ $countries->links() }}
-                            </div>
-                        @endif
-                    </div>
-                </div>
 
+                    </div>
+
+                </div>
+                @if (request('perpage') != 'all' && $countries->total() > $countries->count())
+                    <div class="m-b-10 d-flex justify-content-center pagination pagination-primary pagin-border-primary">
+                        {{ $countries->links() }}
+                    </div>
+                @endif
             </div>
 
         </div>

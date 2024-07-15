@@ -45,7 +45,7 @@
 <link rel="stylesheet" type="text/css" href="{{ asset('backend/assets/css/vendors/leaflet.css') }}">
 
 <link rel="stylesheet" type="text/css" href="{{ asset('backend/assets/css/vendors/flatpickr/flatpickr.min.css') }}">
-<link rel="stylesheet" type="text/css" href="{{asset('backend/assets/css/vendors/summernote.css')}}">
+<link rel="stylesheet" type="text/css" href="{{ asset('backend/assets/css/vendors/summernote.css') }}">
 
 <link rel="stylesheet" type="text/css" href="{{ asset('backend/assets/css/vendors/intltelinput.min.css') }}">
 <link rel="stylesheet" type="text/css" href="{{ asset('backend/assets/css/vendors/tagify.css') }}">
@@ -83,7 +83,6 @@
     }
 </style>
 <style>
-
     .text-red {
         color: red;
     }

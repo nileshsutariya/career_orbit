@@ -96,9 +96,10 @@
                                 {{ __('back') }}
                             </a></div>
                     </div>
-                    <div class="card-body">
-                        <form action="{{ route('module.plan.store') }}" method="POST">
-                            @csrf
+                    <form action="{{ route('module.plan.store') }}" method="POST">
+                        @csrf
+                        <div class="card-body">
+
                             <div class="row">
                                 <div class="col-md-6">
                                     <label class="form-label" for="label">{{ __('label') }} <small
@@ -278,14 +279,18 @@
                             </div>
 
 
-                            <div class="d-grid gap-2 col-6 mx-auto">
+
+
+                        </div>
+                        <div class="card-body">
+                            <div class="text-end">
                                 <button class="btn btn-primary" type="submit"> <i class="icon-plus"></i>
                                     {{ __('save') }}</button>
-
                             </div>
-                        </form>
-                    </div>
 
+
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>

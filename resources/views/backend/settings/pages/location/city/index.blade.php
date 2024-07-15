@@ -46,7 +46,7 @@
                                 </div>
                                 <div class="col-3 col-md-2">
                                     <label></label>
-                                    <button type="submit" class="mt-2 form-control btn btn-primary">
+                                    <button type="submit" class="mt-4  btn btn-primary">
                                         {{ __('search') }}
                                     </button>
                                 </div>

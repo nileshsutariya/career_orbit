@@ -27,7 +27,7 @@
                     </div>
 
                     <form id="formSubmit" action="{{ route('admin.candidate.language.index') }}" method="GET">
-                        <div class="card-body border-bottom row">
+                        <div class="card-body row">
                             <div class="col-4">
                                 <input name="keyword" type="text" placeholder="{{ __('name') }}" class="form-control"
                                     value="{{ request('keyword') }}">
@@ -42,9 +42,8 @@
 
 
                     <div class="card-body">
-                        <div class="dt-ext table-responsive theme-scrollbar">
-
-                            <table class="table" id="export-button">
+                        <div class="table-responsive theme-scrollbar signal-table">
+                            <table class="table table-hover">
                                 <thead>
                                     <tr>
                                     <tr>
@@ -94,26 +93,19 @@
                                         </tr>
                                     @endif
                                 </tbody>
-                                <tfoot>
-                                    <tr>
-                                    <tr>
-                                        <th>{{ __('name') }}</th>
-                                        @if (userCan('candidate-language.update') || userCan('candidate-language.delete'))
-                                            <th width="20%" class="text-center">{{ __('action') }}</th>
-                                        @endif
-                                    </tr>
-                                    </tr>
-                                </tfoot>
+
                             </table>
-                            @if ($candidate_languages->count())
-                                <div class="mt-3 overflow-auto d-flex justify-content-center">
-                                    {{ $candidate_languages->onEachSide(1)->links() }}
-                                </div>
-                            @endif
+
                         </div>
                     </div>
-                </div>
 
+                </div>
+                @if ($candidate_languages->count())
+                    <div
+                        class="m-b-10 overflow-auto d-flex justify-content-center  pagination pagination-primary pagin-border-primary">
+                        {{ $candidate_languages->onEachSide(1)->links() }}
+                    </div>
+                @endif
             </div>
 
             <div class="col-md-4">
@@ -136,7 +128,8 @@
                                         @csrf
 
                                         <div class="col-md-12">
-                                            <label class="form-label" name="name" @required(false)>Name </label>
+                                            <label class="form-label" name="name" @required(false)>{{ __('name') }}
+                                            </label>
                                             <input type="text" id="name" name="name" value="{{ $item->name }}"
                                                 class="form-control @error('name') is-invalid @enderror"
                                                 placeholder="{{ __('name') }}">
@@ -161,7 +154,7 @@
                                         @csrf
 
                                         <div class="col-md-12">
-                                            <label class="form-label" name="name" @required(false)>Name
+                                            <label class="form-label" name="name" @required(false)>{{ __('name') }}
                                             </label>
                                             <input type="text" id="name" name="name" value="{{ old('name') }}"
                                                 class="form-control @error('name') is-invalid @enderror"
@@ -189,102 +182,3 @@
 
     </div>
 @endsection
-
-
-
-
-
-
-{{-- @section('content')
-    <div class="col-sm-12">
-        <div class="alert alert-warning">
-            This will show on the candidate's settings page. If the candidate wants, he can save from list on which language
-            he knows.
-        </div>
-    </div>
-    <div class="row">
-    
-        <div class="col-12 col-md-4">
-            <div class="card">
-                <div class="card-header">
-                    <div class="d-flex justify-content-between">
-                        @if (request()->routeIs('admin.candidate.language.edit'))
-                            <h3 class="card-title line-height-36">{{ __('update') }}</h3>
-                        @else
-                            <h3 class="card-title line-height-36">{{ __('create') }}</h3>
-                        @endif
-                    </div>
-                </div>
-                <!-- Table  -->
-                <div class="card-body table-responsive p-0">
-
-                    @if (request()->routeIs('admin.candidate.language.edit'))
-                        @if (userCan('candidate-language.update'))
-                            <form action="{{ route('admin.candidate.language.update', $item->id) }}" method="POST">
-                                @csrf
-                                @method('PUT')
-                                <div class="card-body">
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <div class="form-group">
-                                                <x-forms.label name="name" :required="false" />
-                                                <input type="text" id="name" name="name"
-                                                    value="{{ $item->name }}"
-                                                    class="form-control @error('name') is-invalid @enderror"
-                                                    placeholder="{{ __('name') }}">
-                                                @error('name')
-                                                    <span class="invalid-feedback" role="alert">{{ __($message) }}</span>
-                                                @enderror
-                                            </div>
-                                        </div>
-                                        <div class="col-md-12">
-                                            <div class="form-group">
-                                                <button type="submit" class="btn bg-success px-4">
-                                                    {{ __('update') }}
-                                                </button>
-                                                <a href="{{ route('admin.candidate.language.index') }}"
-                                                    class="btn bg-danger px-4">
-                                                    {{ __('cancel') }}
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </form>
-                        @endif
-                    @else
-                        @if (userCan('candidate-language.create'))
-                            <form action="{{ route('admin.candidate.language.store') }}" method="POST">
-                                @csrf
-                                <div class="card-body">
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <div class="form-group">
-                                                <x-forms.label name="name" :required="false" />
-                                                <input type="text" id="name" name="name"
-                                                    value="{{ old('name') }}"
-                                                    class="form-control @error('name') is-invalid @enderror"
-                                                    placeholder="{{ __('name') }}">
-                                                @error('name')
-                                                    <span class="invalid-feedback" role="alert">{{ __($message) }}</span>
-                                                @enderror
-                                            </div>
-                                        </div>
-                                        <div class="col-md-12">
-                                            <div class="form-group">
-                                                <button type="submit" class="btn bg-success px-4">
-                                                    {{ __('create') }}
-                                                </button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </form>
-                        @endif
-                    @endif
-                </div>
-            </div>
-        </div>
-    </div>
-    </div>
-@endsection --}}

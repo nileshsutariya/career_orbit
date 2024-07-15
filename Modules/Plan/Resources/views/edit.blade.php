@@ -282,8 +282,8 @@
 @section('content')
     @if (userCan('plan.update'))
         <div class="container-fluid">
-            <div class="row">
-                <div class="col-md-12">
+            <div class="row justify-content-center">
+                <div class="col-md-6">
                     <div class="card">
                         <div class="card-header">
                             <div class="float-start">
@@ -297,12 +297,13 @@
                             </div>
 
                         </div>
-                        <div class="card-body">
+                        <form action="{{ route('module.plan.update', $plan->id) }}" method="POST">
+                            @csrf
+                            @method('PUT')
+                            <div class="card-body">
 
 
-                            <form action="{{ route('module.plan.update', $plan->id) }}" method="POST">
-                                @csrf
-                                @method('PUT')
+
                                 <div class="row">
                                     <div class="col-md-6">
 
@@ -490,16 +491,27 @@
                                         </div>
                                     @endforeach
                                 </div>
-                                <div class="d-grid  col-6 mx-auto">
+
+
+
+                            </div>
+                            <div class="card-body">
+                                <div class="text-end">
+
 
                                     <button class="btn btn-primary" type="submit">
-                                        <i class="fa fa-sync"></i>&nbsp; {{ __('update') }}
+                                        <i class="fa fa-refresh"></i>&nbsp; {{ __('update') }}
                                     </button>
+
                                 </div>
-                            </form>
 
 
-                        </div>
+                            </div>
+
+
+
+                        </form>
+
                     </div>
                 </div>
             </div>

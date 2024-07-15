@@ -38,14 +38,13 @@
 
 
                     <div class="card-body">
-                        <div class="dt-ext table-responsive theme-scrollbar">
-
-                            <table class="table" id="export-button">
+                        <div class="table-responsive theme-scrollbar signal-table">
+                            <table class="table table-hover">
                                 <thead>
                                     <tr>
-                                        <th>{{ __('name') }}</th>
+                                        <th scope="col">{{ __('name') }}</th>
                                         @if (userCan('skills.update') || userCan('skills.delete'))
-                                            <th width="10%">{{ __('action') }}</th>
+                                            <th scope="col" width="10%">{{ __('action') }}</th>
                                         @endif
                                     </tr>
                                 </thead>
@@ -66,50 +65,43 @@
                                                     @endforeach
                                                 </div>
                                             </td>
-                                            <td class="d-flex align-items-center">
-                                                @if (userCan('skills.update'))
-                                                    <a href="{{ route('skill.edit', $skill->id) }}" class="btn">
-                                                        <p class="text-dark"><i class="fa fa-edit"
-                                                                style="font-size: 26px;"></i></p>
-                                                    </a>
-                                                @endif
-                                                @if (userCan('skills.delete'))
-                                                    <form action="{{ route('skill.destroy', $skill->id) }}" method="POST"
-                                                        class="d-inline">
-                                                        @method('DELETE')
-                                                        @csrf
-                                                        <button
-                                                            onclick="return confirm('{{ __('are_you_sure_you_want_to_delete_this_item') }}');"
-                                                            class="btn">
-                                                            <i class="text-dark fa fa-trash-o" style="font-size: 26px;"></i>
-                                                        </button>
-                                                    </form>
-                                                @endif
+                                            <td>
+                                                <div class="d-flex">
+                                                    @if (userCan('skills.update'))
+                                                        <a href="{{ route('skill.edit', $skill->id) }}" class="btn">
+                                                            <p class="text-dark"><i class="fa fa-edit"
+                                                                    style="font-size: 26px;"></i></p>
+                                                        </a>
+                                                    @endif
+                                                    @if (userCan('skills.delete'))
+                                                        <form action="{{ route('skill.destroy', $skill->id) }}"
+                                                            method="POST">
+                                                            @method('DELETE')
+                                                            @csrf
+                                                            <button
+                                                                onclick="return confirm('{{ __('are_you_sure_you_want_to_delete_this_item') }}');"
+                                                                class="btn">
+                                                                <i class="text-dark fa fa-trash-o"
+                                                                    style="font-size: 26px;"></i>
+                                                            </button>
+                                                        </form>
+                                                    @endif
+                                                </div>
                                             </td>
                                         </tr>
                                     @empty
-                                        <tr>
-                                            <td colspan="10" class="text-center">
-                                                {{ __('no_data_found') }}
-                                            </td>
-                                        </tr>
                                     @endforelse
 
                                 </tbody>
-                                <tfoot>
-                                    <tr>
-                                        <th>{{ __('name') }}</th>
-                                        @if (userCan('skills.update') || userCan('skills.delete'))
-                                            <th width="10%">{{ __('action') }}</th>
-                                        @endif
-                                    </tr>
-                                </tfoot>
                             </table>
                         </div>
-                        <div class="mt-3 d-flex overflow-auto justify-content-center">
-                            {{ $skills->links() }}
-                        </div>
+
                     </div>
+
+                </div>
+                <div
+                    class="m-b-10 d-flex overflow-auto justify-content-center pagination pagination-primary pagin-border-primary">
+                    {{ $skills->links() }}
                 </div>
             </div>
 
@@ -134,7 +126,8 @@
                                             @endphp
                                             <div class="col-md-12">
                                                 <label class="form-label" name="$label" for="name"
-                                                    @required(true)>Name English<spna class="text-red"> * </spna></label>
+                                                    @required(true)>{{ __($label) }}<spna class="text-red"> * </spna>
+                                                </label>
                                                 <input id="name" type="text" name="{{ $name }}"
                                                     placeholder="{{ __('name') }}" value="{{ old('name') }}"
                                                     class="form-control @if ($errors->has($name)) is-invalid @endif">
@@ -190,8 +183,8 @@
                                         @endphp
 
                                         <div class="col-md-12">
-                                            <label class="form-label" name="$label" for="name" @required(true)>Name
-                                                English
+                                            <label class="form-label" name="$label" for="name"
+                                                @required(true)>{{ __($label) }}
                                                 <spna class="text-red"> * </spna>
                                             </label>
                                             <input id="name" type="text" name="{{ $name }}"

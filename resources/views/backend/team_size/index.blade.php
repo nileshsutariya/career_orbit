@@ -54,43 +54,32 @@
                                                     @endforeach
                                                 </div>
                                             </td>
-                                            <td class="d-flex align-items-center">
-                                                @if (userCan('team_sizes.update'))
-                                                    <a href="{{ route('teamSize.edit', $team->id) }}" class="btn">
-                                                        <i class="fa fa-edit fa-2x"> </i>
-                                                    </a>
-                                                @endif
-                                                @if (userCan('team_sizes.delete'))
-                                                    <form action="{{ route('teamSize.destroy', $team->id) }}" method="POST"
-                                                        class="d-inline">
-                                                        @method('DELETE')
-                                                        @csrf
-                                                        <button
-                                                            onclick="return confirm('{{ __('are_you_sure_you_want_to_delete_this_item') }}');"
-                                                            class="btn"><i class="text-dark fa fa-trash-o fa-2x"></i>
-                                                        </button>
-                                                    </form>
-                                                @endif
+                                            <td>
+                                                <div class="d-flex align-items-center">
+                                                    @if (userCan('team_sizes.update'))
+                                                        <a href="{{ route('teamSize.edit', $team->id) }}" class="btn">
+                                                            <i class="fa fa-edit fa-2x"> </i>
+                                                        </a>
+                                                    @endif
+                                                    @if (userCan('team_sizes.delete'))
+                                                        <form action="{{ route('teamSize.destroy', $team->id) }}"
+                                                            method="POST" class="d-inline">
+                                                            @method('DELETE')
+                                                            @csrf
+                                                            <button
+                                                                onclick="return confirm('{{ __('are_you_sure_you_want_to_delete_this_item') }}');"
+                                                                class="btn"><i class="text-dark fa fa-trash-o fa-2x"></i>
+                                                            </button>
+                                                        </form>
+                                                    @endif
+                                                </div>
+
                                             </td>
                                         </tr>
                                     @empty
-                                        <tr>
-                                            <td colspan="10" class="text-center">
-                                                {{ __('no_data_found') }}
-                                            </td>
-                                        </tr>
                                     @endforelse
                                 </tbody>
-                                <tfoot>
-                                    <tr>
-                                    <tr>
-                                        <th>{{ __('name') }}</th>
-                                        @if (userCan('team_sizes.update') || userCan('team_sizes.delete'))
-                                            <th width="10%">{{ __('action') }}</th>
-                                        @endif
-                                    </tr>
-                                    </tr>
-                                </tfoot>
+
                             </table>
                         </div>
                     </div>
@@ -130,8 +119,8 @@
 
                                         @endphp
                                         <div class="col-md-12">
-                                            <label class="form-label" name="$label" for="name" @required(true)>Name
-                                                English
+                                            <label class="form-label" name="$label" for="name"
+                                                @required(true)>{{ __($label) }}
                                                 <spna class="text-red"> * </spna>
                                             </label>
                                             <input id="name" type="text" name="{{ $name }}"
@@ -175,7 +164,8 @@
 
                                             <div class="col-md-12">
                                                 <label class="form-label" name="$label" for="name"
-                                                    @required(true)>Name English<spna class="text-red"> * </spna></label>
+                                                    @required(true)>{{ __($label) }}<spna class="text-red"> * </spna>
+                                                </label>
                                                 <input id="name" type="text" name="{{ $name }}"
                                                     placeholder="{{ __('name') }}" value="{{ old('name') }}"
                                                     class="form-control @if ($errors->has($name)) is-invalid @endif">
