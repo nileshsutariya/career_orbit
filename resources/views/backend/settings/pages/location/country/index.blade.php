@@ -39,23 +39,23 @@
 
                         </form>
                         <div class="card-body">
-                            <div class="dt-ext table-responsive theme-scrollbar">
 
-                                <table class="display" id="keytable">
+                            <div class="table-responsive theme-scrollbar signal-table">
+                                <table class="table table-hover">
 
                                     <thead>
-                                        <tr role="row" class="text-center">
-                                            <th>{{ __('country') }}</th>
+                                        <tr class="text-center">
+                                            <th scope="col">{{ __('country') }}</th>
                                             @if (userCan('post.edit') || userCan('post.delete'))
-                                                <th width="100px"> {{ __('actions') }}</th>
+                                                <th scope="col" width="100px"> {{ __('actions') }}</th>
                                             @endif
                                         </tr>
                                     </thead>
                                     <tbody>
                                         @if ($posts->count() > 0)
                                             @foreach ($posts as $post)
-                                                <tr role="row" class="odd">
-                                                    <td class=" text-center" tabindex="0">{{ $post->name }}
+                                                <tr class="text-center">
+                                                    <td>{{ $post->name }}
                                                     </td>
                                                     @if (userCan('post.update') || userCan('post.delete'))
                                                         <td class=" d-flex justify-items-center" tabindex="0">
@@ -86,17 +86,17 @@
                                         @endif
                                     </tbody>
                                 </table>
-                                {{-- @if (request('perpage') != 'all' && $posts->total() > $posts->count())
-                                    <div class="card-footer">
-                                        <div class="d-flex justify-content-center">
-                                            {{ $posts->appends(['state' => request('state')])->links() }}
-                                        </div>
-                                    </div>
-                                @endif --}}
+
                             </div>
                         </div>
                     </div>
                 </div>
+
+                @if (request('perpage') != 'all' && $posts->total() > $posts->count())
+                    <div class="d-flex m-b-10 justify-content-center pagination pagination-primary pagin-border-primary">
+                        {{ $posts->appends(['state' => request('state')])->links() }}
+                    </div>
+                @endif
             </div>
         </div>
     </div>

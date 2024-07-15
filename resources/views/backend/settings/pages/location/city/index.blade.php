@@ -54,15 +54,14 @@
 
                         </form>
                         <div class="card-body">
-                            <div class="dt-ext table-responsive theme-scrollbar">
-
-                                <table class="display" id="keytable">
+                            <div class="table-responsive theme-scrollbar signal-table">
+                                <table class="table table-hover">
                                     <thead>
                                         <tr>
-                                            <th>{{ __('city_lga') }}</th>
-                                            <th>{{ __('state') }}</th>
+                                            <th scope="col">{{ __('city_lga') }}</th>
+                                            <th scope="col">{{ __('state') }}</th>
                                             @if (userCan('post.edit') || userCan('post.delete'))
-                                                <th width="100px"> {{ __('actions') }}</th>
+                                                <th scope="col" width="100px"> {{ __('actions') }}</th>
                                             @endif
                                         </tr>
                                     </thead>
@@ -100,6 +99,9 @@
                                                 </tr>
                                             @endforeach
                                         @else
+                                            <tr>
+                                                <td class="text-center" colspan="4">{{ __('no_data_found') }}</td>
+                                            </tr>
                                         @endif
                                     </tbody>
                                 </table>
@@ -108,6 +110,11 @@
                         </div>
                     </div>
                 </div>
+                @if (request('perpage') != 'all' && $posts->total() > $posts->count())
+                    <div class="d-flex m-b-10 justify-content-center pagination pagination-primary pagin-border-primary">
+                        {{ $posts->appends(['state' => request('state')])->links() }}
+                    </div>
+                @endif
             </div>
         </div>
     </div>
