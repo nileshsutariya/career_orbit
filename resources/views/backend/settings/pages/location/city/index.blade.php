@@ -57,7 +57,7 @@
                             <div class="table-responsive theme-scrollbar signal-table">
                                 <table class="table table-hover">
                                     <thead>
-                                        <tr>
+                                        <tr class="text-center">
                                             <th scope="col">{{ __('city_lga') }}</th>
                                             <th scope="col">{{ __('state') }}</th>
                                             @if (userCan('post.edit') || userCan('post.delete'))
@@ -68,7 +68,7 @@
                                     <tbody>
                                         @if ($posts->count() > 0)
                                             @foreach ($posts as $post)
-                                                <tr>
+                                                <tr class="text-center">
                                                     <td>{{ $post->name }}
                                                     </td>
                                                     <td>

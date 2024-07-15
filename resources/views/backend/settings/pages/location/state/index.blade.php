@@ -58,7 +58,7 @@
                             <div class="table-responsive theme-scrollbar signal-table">
                                 <table class="table table-hover">
                                     <thead>
-                                        <tr>
+                                        <tr class="text-center">
                                             <th scope="col">{{ __('state') }}</th>
                                             <th scope="col">{{ __('country') }}</th>
                                             @if (userCan('post.edit') || userCan('post.delete'))
@@ -69,7 +69,7 @@
                                     <tbody>
                                         @if ($states->count() > 0)
                                             @foreach ($states as $state)
-                                                <tr>
+                                                <tr class="text-center">
                                                     <td>{{ $state->name }}
                                                     </td>
                                                     <td>
@@ -113,7 +113,7 @@
                 </div>
 
                 @if (request('perpage') != 'all' && $states->total() > $states->count())
-                    <div class="d-flex justify-content-center pagination pagination-primary pagin-border-primary">
+                    <div class="d-flex  m-b-10 justify-content-center pagination pagination-primary pagin-border-primary">
                         {{ $states->appends(['country' => request('country')])->links() }}
                     </div>
                 @endif

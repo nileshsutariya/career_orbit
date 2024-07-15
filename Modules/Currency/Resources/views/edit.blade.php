@@ -88,9 +88,8 @@
                                 </label>
                                 <div class="col-sm-9">
 
-                                    <input class="tgl tgl-flip" data-bootstrap-switch value="left" name="symbol_position"
-                                        id="symbol_position" type="checkbox"
-                                        {{ $currency->symbol_position == 'left' ? 'checked' : '' }}>
+                                    <input class="tgl tgl-flip" value="left" name="symbol_position" id="symbol_position"
+                                        type="checkbox" {{ $currency->symbol_position == 'left' ? 'checked' : '' }}>
                                     <label class="tgl-btn" data-tg-off="{{ __('right') }}"
                                         data-tg-on="{{ __('left') }}" for="symbol_position"></label>
                                 </div>
@@ -113,7 +112,7 @@
 @endsection
 
 @section('script')
-    <script src="{{ asset('backend') }}/plugins/bootstrap-switch/js/bootstrap-switch.min.js"></script>
+    {{-- <script src="{{ asset('backend') }}/plugins/bootstrap-switch/js/bootstrap-switch.min.js"></script>
     <script>
         $("input[data-bootstrap-switch]").each(function() {
             $(this).bootstrapSwitch('state', $(this).prop('checked'));
@@ -127,5 +126,5 @@
             let val = event.currentTarget.checked ? 'left' : 'right';
             $('input[name=symbol_position]').val(val);
         });
-    </script>
+    </script> --}}
 @endsection

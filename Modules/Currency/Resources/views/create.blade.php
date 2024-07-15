@@ -92,10 +92,17 @@
                                 </div> --}}
 
 
-                                <input class="tgl tgl-flip" data-bootstrap-switch value="left" name="symbol_position"
+                                {{-- <input class="tgl tgl-flip" data-bootstrap-switch value="left" name="symbol_position"
                                     id="symbol_position" type="checkbox" checked="0">
                                 <label class="tgl-btn" data-tg-off="{{ __('right') }}" data-tg-on="{{ __('left') }}"
-                                    for="symbol_position"></label>
+                                    for="symbol_position"></label> --}}
+
+
+                                <input class="tgl tgl-flip" id="cb5" type="checkbox" checked="0" value="left"
+                                    name="symbol_position" type="checkbox" checked="0">
+                                <label class="tgl-btn" data-tg-off="{{ __('right') }}" data-tg-on="{{ __('left') }}"
+                                    for="cb5"></label>
+
                             </div>
                         </div>
 

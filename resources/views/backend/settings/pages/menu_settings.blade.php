@@ -78,8 +78,8 @@
                     </div>
                 </div>
                 <div class="card-body">
-                    <div class="dt-ext dt-ext table-responsive theme-scrollbar">
-                        <table class="table" id="export-button">
+                    <div class="table-responsive theme-scrollbar signal-table">
+                        <table class="table table-hover">
                             <thead>
                                 <tr>
                                     <th>
@@ -96,7 +96,7 @@
                                     </th>
                                 </tr>
                             </thead>
-                            <tbody>
+                            <tbody id="sortable">
                                 @forelse ($menus as $menu)
                                     <tr data-id="{{ $menu->id }}">
                                         <td>
@@ -144,44 +144,54 @@
                                             @endif
                                         </td>
 
-                                        <td class="d-flex">
-                                            @if (userCan('menu-setting.update'))
-                                                <div class="btn">
-                                                    <i class="fa fa-hand-rock-o fa-2x" aria-hidden="true"></i>
+                                        <td>
+                                            <div class="d-flex">
+                                                @if (userCan('menu-setting.update'))
+                                                    <div class="btn">
+                                                        <i class="fa fa-hand-rock-o fa-2x" aria-hidden="true"></i>
 
-                                                </div>
-                                            @endif
-                                            @if (userCan('menu-setting.update'))
-                                                <a href="{{ route('menu-settings.edit', $menu->id) }}" class="btn">
-                                                    <i class="text-dark fa fa-edit fa-2x"></i>
-                                                </a>
-                                            @endif
-                                            @if (userCan('menu-setting.delete'))
-                                                @if (!$menu->default)
-                                                    <form action="{{ route('menu-settings.destroy', $menu->id) }}"
-                                                        class="d-inline" method="POST">
-                                                        @method('DELETE')
-                                                        @csrf
-                                                        <button data-toggle="tooltip" data-placement="top"
-                                                            title="{{ __('delete') }}"
-                                                            onclick="return confirm('{{ __('are_you_sure_want_to_delete_this_item') }}');"
-                                                            class="btn"> <i class="text-dark fa fa-trash-o fa-2x"></i>
-                                                        </button>
-                                                    </form>
+                                                    </div>
                                                 @endif
-                                            @endif
+                                                @if (userCan('menu-setting.update'))
+                                                    <a href="{{ route('menu-settings.edit', $menu->id) }}" class="btn">
+                                                        <i class="text-dark fa fa-edit fa-2x"></i>
+                                                    </a>
+                                                @endif
+                                                @if (userCan('menu-setting.delete'))
+                                                    @if (!$menu->default)
+                                                        <form action="{{ route('menu-settings.destroy', $menu->id) }}"
+                                                            class="d-inline" method="POST">
+                                                            @method('DELETE')
+                                                            @csrf
+                                                            <button data-toggle="tooltip" data-placement="top"
+                                                                title="{{ __('delete') }}"
+                                                                onclick="return confirm('{{ __('are_you_sure_want_to_delete_this_item') }}');"
+                                                                class="btn"> <i
+                                                                    class="text-dark fa fa-trash-o fa-2x"></i>
+                                                            </button>
+                                                        </form>
+                                                    @endif
+                                                @endif
+                                            </div>
+
                                         </td>
                                     </tr>
                                 @empty
+                                    <tr>
+                                        <td colspan="4" class="text-center">
+                                            <x-admin.not-found word="menu" route="" />
+                                        </td>
+                                    </tr>
                                 @endforelse
                             </tbody>
                         </table>
                     </div>
                 </div>
+            </div>
 
-
-
-
+            <div
+                class="d-flex justify-content-center align-items-center pagination pagination-primary pagin-border-primary{{ $menus->total() > 20 ? 'mt-3' : '' }}">
+                {{ $menus->links() }}
             </div>
         </div>
         <div class="col-md-4">
