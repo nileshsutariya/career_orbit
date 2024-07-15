@@ -137,7 +137,7 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <x-forms.label name="image" />
-                                <input name="image" type="file" class="form-control" data-show-errors="true"
+                                <input name="image" type="file"  data-show-errors="true"
                                     data-width="100%" data-default-file="{{ asset($candidate->photo) }}"
                                     class="dropify">
                             </div>
@@ -156,7 +156,7 @@
                                     <div class="custom-file">
                                         <input name="cv" type="file"
                                             class="custom-file-input form-control @error('cv') is-invalid @enderror">
-                                        <label class="custom-file-label" for="cvInputFile">{{ __('choose_cv') }}</label>
+                                        {{-- <label class="custom-file-label" for="cvInputFile">{{ __('choose_cv') }}</label> --}}
                                         @error('cv')
                                         <span class="error invalid-feedback">{{ $message }}</span>
                                         @enderror

@@ -349,7 +349,7 @@
                                     field data is missing, the system will generate it</p>
                             </div>
 
-                            <div class="col-md-12">
+                            <div class="col-md-12 mb-2">
                                 <label for="experience">{{ __('example_file') }}</label> <br>
                                 <div class="d-grid gap-2">
                                     <a href="/backend/dummy/tags_example.xlsx" target="_blank" class="btn btn-primary">

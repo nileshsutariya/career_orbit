@@ -773,7 +773,7 @@
                                 @php
                                     $active_countries = $countries->where('status', 1)->pluck('id')->toArray();
                                 @endphp
-                                <select name="multiple_country[]" class="custom-select mr-sm-2 multiple_country"
+                                <select name="multiple_country[]" class="custom-select mr-sm-2 select2"
                                     id="" multiple>
                                     <option value="">{{ __('select_one') }}</option>
                                     @foreach ($countries as $country)

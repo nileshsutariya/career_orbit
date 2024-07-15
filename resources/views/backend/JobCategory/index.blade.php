@@ -130,15 +130,17 @@
                         </div>
                         <div class="col-md-12">
                             <div>
-                                <label class="form-label" @required(true)>Icon</label>
+                                <label>{{ __('icon') }}
+                                    <x-forms.required />
+                                </label>
                             </div>
-
                             <div style="overflow-x: auto;">
-                                <input type="hidden" name="icon" id="icon" value="{{ old('icon') }}" />
+                                <input type="hidden" name="icon" id="icon"
+                                    value="{{ old('icon') }}" />
                                 <div id="target"></div>
                                 @error('icon')
-                                <span class="invalid-feedback d-block" role="alert"><strong>{{ $message
-                                        }}</strong></span>
+                                    <span class="invalid-feedback d-block"
+                                        role="alert"><strong>{{ $message }}</strong></span>
                                 @enderror
                             </div>
                         </div>
@@ -208,15 +210,15 @@
                             </div>
                             <div class="col-md-12">
                                 <div>
-                                    <label class="form-label" @required(true)>Icon</label>
+                                    <label>{{ __('icon') }}</label>
                                 </div>
-
                                 <div class="col-sm-12" style="overflow-x: auto;">
-                                    <input type="hidden" name="icon" id="icon" value="{{ $jobCategory->icon }}" />
+                                    <input type="hidden" name="icon" id="icon"
+                                        value="{{ $jobCategory->icon }}" />
                                     <div id="target"></div>
                                     @error('icon')
-                                    <span class="invalid-feedback d-block" role="alert"><strong>{{ $message
-                                            }}</strong></span>
+                                        <span class="invalid-feedback d-block"
+                                            role="alert"><strong>{{ $message }}</strong></span>
                                     @enderror
                                 </div>
                             </div>
@@ -250,7 +252,7 @@
                                 any
                                 field data is missing, the system will generate it</p>
                         </div>
-                        <div class="col-md-12">
+                        <div class="col-md-12 mb-2">
                             <label for="experience">{{ __('example_file') }}</label> <br>
                             <div class="d-grid gap-2">
                                 <a href="/backend/dummy/job_category_example.xlsx" target="_blank"
@@ -263,7 +265,7 @@
                         </div>
                         <div class="col-md-12">
                             <label for="experience">{{ __('choose_file') }}</label> <br>
-                            <input type="file" class="form-control" name="import_file"
+                            <input type="file" class="dropify" name="import_file"
                                 data-allowed-file-extensions='["csv", "xlsx","xls"]' accept=".csv,.xlsx,.xls"
                                 data-max-file-size="3M">
                             @error('import_file')

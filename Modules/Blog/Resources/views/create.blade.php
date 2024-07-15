@@ -101,24 +101,22 @@
                             </div>
 
                             <div class="col-md-12 mb-2">
-                                <label class="form-label">
+                                <label class="form-lebel">
                                     {{ __('thumbnail_image') }}
-                                    <span class="text-danger">*</span>
+                                    <small class="text-danger">*</small>
                                 </label>
-                                <div class="dropzone-wrapper">
-                                    <input type="file" class="form-control dropzone bg-light-primary"
-                                        data-default-file="" name="image"
-                                        accept="image/png, image/jpg, image/jpeg, image/gif"
+                                <div class="upload-btn-wrapper">
+                                    <input type="file" class="dropify" data-default-file=""
+                                        name="image" accept="image/png, image/jpg, image/jpeg, image/gif"
                                         data-allowed-file-extensions='["jpg", "jpeg","png", "gif"]'
                                         data-max-file-size="3M">
-                                    <p class="tw-text-gray-500 tw-text-xs tw-text-left mt-2 recommended-img-note mb-0">
-                                        Recommended Image Size: 800x500</p>
+                                        <p class="tw-text-gray-500 tw-text-xs tw-text-left mt-2 recommended-img-note mb-0">Recommended Image Size: 800x500</p>
                                 </div>
                                 @error('image')
-                                <span class="invalid-feedback d-block" role="alert"><strong>{{ $message }}</strong>
-                                </span>
+                                    <span class="invalid-feedback d-block"
+                                        role="alert"><strong>{{ $message }}</strong>
+                                    </span>
                                 @enderror
-
                             </div>
 
                         </div>
@@ -161,4 +159,13 @@
 
     </form>
 </div>
+@endsection
+@section('script')
+   <!-- Dropify-Script -->
+   <script src="{{ asset('backend') }}/js/dropify.min.js"></script>
+
+   <script>
+       //Dropify function
+       $('.dropify').dropify();
+   </script>
 @endsection
