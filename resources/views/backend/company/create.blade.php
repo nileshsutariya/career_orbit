@@ -123,7 +123,7 @@
                             {{ __('images') }}
                         </div>
                         <div class="card-body">
-                            <div class="row">
+                            {{-- <div class="row">
                                 <div class="col-xl-4 mb-2">
                                     <x-forms.label name="logo" :required="false" />
                                     <input name="logo" type="file" data-show-errors="true" data-width="50%"
@@ -135,6 +135,23 @@
                                     <x-forms.label name="banner" :required="false" />
                                     <input name="image" type="file" data-show-errors="true" data-width="100%"
                                         data-default-file="" class="form-control">
+                                    <p class="tw-text-gray-500 tw-text-xs tw-text-left mt-2 recommended-img-note mb-0">
+                                        Recommended Image Size: 1920x312</p>
+                                </div>
+                            </div> --}}
+
+                            <div class="row">
+                                <div class="form-group col-xl-4">
+                                    <x-forms.label name="logo" :required="false" />
+                                    <input name="logo" type="file" data-show-errors="true" data-width="50%"
+                                        data-default-file="" class="dropify">
+                                    <p class="tw-text-gray-500 tw-text-xs tw-text-left mt-2 recommended-img-note mb-0">
+                                        Recommended Image Size: 68x68</p>
+                                </div>
+                                <div class="form-group col-xl-8">
+                                    <x-forms.label name="banner" :required="false" />
+                                    <input name="image" type="file" data-show-errors="true" data-width="100%"
+                                        data-default-file="" class="dropify">
                                     <p class="tw-text-gray-500 tw-text-xs tw-text-left mt-2 recommended-img-note mb-0">
                                         Recommended Image Size: 1920x312</p>
                                 </div>
@@ -363,4 +380,14 @@
     {{-- Leaflet  --}}
     @include('map::set-leafletmap')
     @include('map::set-googlemap')
+
+   
+    <!-- Dropify-Script -->
+    <script src="{{ asset('backend') }}/js/dropify.min.js"></script>
+
+    <script>
+        //Dropify function
+        $('.dropify').dropify();
+    </script>
+
 @endsection

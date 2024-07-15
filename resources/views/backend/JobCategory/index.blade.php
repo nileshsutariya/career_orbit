@@ -157,6 +157,7 @@
                             @endif
 
                         </div>
+<<<<<<< HEAD
                     </div>
                 @endif
 
@@ -274,6 +275,21 @@
                                     data-max-file-size="3M">
                                 @error('import_file')
                                     <span class="invalid-feedback d-block" role="alert">{{ __($message) }}</span>
+=======
+                        <div class="col-md-12">
+                            <div>
+                                <label>{{ __('icon') }}
+                                    <x-forms.required />
+                                </label>
+                            </div>
+                            <div style="overflow-x: auto;">
+                                <input type="hidden" name="icon" id="icon"
+                                    value="{{ old('icon') }}" />
+                                <div id="target"></div>
+                                @error('icon')
+                                    <span class="invalid-feedback d-block"
+                                        role="alert"><strong>{{ $message }}</strong></span>
+>>>>>>> fabd8cabd5a5c54e8092ade6dda015322fe1b48c
                                 @enderror
                             </div>
                         </div>
@@ -284,6 +300,132 @@
                     </form>
                 </div>
             </div>
+<<<<<<< HEAD
+=======
+            @endif
+
+            @if (!empty($jobCategory) && userCan('job_category.update'))
+            <div class="card">
+                <div class="card-header">
+
+                    <div class="float-start">
+                        <h4>{{ __('edit') }} {{ 'category' }}</h4>
+                    </div>
+                    <div class="float-end">
+                        <a href="{{ route('jobCategory.index') }}" class="btn btn-primary"><i class="fa fa-plus"></i>{{
+                            __('create') }}
+                        </a>
+                    </div>
+
+                </div>
+                <div class="card-body">
+                    
+                        <form class="row g-3" action="{{ route('jobCategory.update', $jobCategory->id) }}" method="POST"
+                            enctype="multipart/form-data">
+                            @method('PUT')
+                            @csrf
+                            @foreach ($app_language as $key => $language)
+                            @php
+                            $label = __('name') . ' ' . getLanguageByCode($language->code);
+                            $name = "name_{$language->code}";
+                            $code = $jobCategory->translations[$key]['locale'] ?? '';
+                            $data = $jobCategory->translations
+                            ->where('locale', $language->code)
+                            ->first();
+                            $value = $data ? $data->name : '';
+                            @endphp
+
+                            <div class="col-md-12">
+                                <label class="form-label" name="$label" for="name" @required(true)>Name
+                                    <spna class="text-red"> * </spna>
+                                </label>
+                                <input id="name" type="text" name="{{ $name }}" placeholder="{{ __('name') }}"
+                                    value="{{ $value }}"
+                                    class="form-control @if ($errors->has($name)) is-invalid @endif">
+                                @if ($errors->has($name))
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $errors->first($name) }}</strong>
+                                </span>
+                                @endif
+                            </div>
+                            @endforeach
+
+                            <div class="col-md-12">
+                                <label class="form-label">Image</label>
+                                <input name="image" class="form-control" autocomplete="image" type="file" id="image">
+                            </div>
+                            <div class="col-md-12">
+                                <div>
+                                    <label>{{ __('icon') }}</label>
+                                </div>
+                                <div class="col-sm-12" style="overflow-x: auto;">
+                                    <input type="hidden" name="icon" id="icon"
+                                        value="{{ $jobCategory->icon }}" />
+                                    <div id="target"></div>
+                                    @error('icon')
+                                        <span class="invalid-feedback d-block"
+                                            role="alert"><strong>{{ $message }}</strong></span>
+                                    @enderror
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <button class="btn btn-primary" type="submit"><i class="fa fa-reload"> </i>
+                                    {{ __('save') }} </button>
+                            </div>
+                        </form>
+                    
+                </div>
+            </div>
+            @endif
+        </div>
+    </div>
+
+    <div class="modal fade" id="tooltipmodal" tabindex="-1" role="dialog" aria-labelledby="tooltipmodal"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">{{ __('bulk_import') }}</h4>
+                    <button class="btn-close py-0" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+
+                <form action="{{ route('admin.job.category.bulk.import') }}" method="post"
+                    enctype="multipart/form-data">
+                    @csrf
+                    <div class="modal-body">
+                        <div class="alert alert-warning dark" role="alert">
+                            <p> Before importing, please download the example file and match the fields structure. If
+                                any
+                                field data is missing, the system will generate it</p>
+                        </div>
+                        <div class="col-md-12 mb-2">
+                            <label for="experience">{{ __('example_file') }}</label> <br>
+                            <div class="d-grid gap-2">
+                                <a href="/backend/dummy/job_category_example.xlsx" target="_blank"
+                                    class="btn btn-primary">
+                                    <i class="fa fa-download"></i>
+                                    {{ __('download') }} {{ __('example_file') }}
+                                </a>
+
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <label for="experience">{{ __('choose_file') }}</label> <br>
+                            <input type="file" class="dropify" name="import_file"
+                                data-allowed-file-extensions='["csv", "xlsx","xls"]' accept=".csv,.xlsx,.xls"
+                                data-max-file-size="3M">
+                            @error('import_file')
+                            <span class="invalid-feedback d-block" role="alert">{{ __($message) }}</span>
+                            @enderror
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-secondary" type="button" data-bs-dismiss="modal">Close</button>
+                        <button class="btn btn-primary" type="submit">{{ __('submit') }}</button>
+                    </div>
+                </form>
+            </div>
+>>>>>>> fabd8cabd5a5c54e8092ade6dda015322fe1b48c
         </div>
     </div>
 @endsection

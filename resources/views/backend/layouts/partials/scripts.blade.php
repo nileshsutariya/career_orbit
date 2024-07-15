@@ -14,8 +14,15 @@
 <script src="{{ asset('backend/assets/js/rating/jquery.barrating.js') }}"></script>
 <script src="{{ asset('backend/assets/js/rating/rating-script.js') }}"></script>
 <script src="{{ asset('backend/assets/js/owlcarousel/owl.carousel.js') }}"></script>
-<script src="{{ asset('backend/assets/js/dropzone/dropzone.js') }}"></script>
-<script src="{{ asset('backend/assets/js/dropzone/dropzone-script.js') }}"></script>
+
+
+
+<script src="{{ asset('backend') }}/plugins/dropify/js/dropify.min.js"></script>
+
+<script src="{{asset('backend/assets/js/dropzone/dropzone.js')}}"></script>
+<script src="{{asset('backend/assets/js/dropzone/dropzone-script.js')}}"></script>
+
+
 <script src="{{ asset('backend/assets/js/map-js/leaflet.js') }}"></script>
 <script src="{{ asset('backend/assets/js/map-js/custom.js') }}"></script>
 <script src="{{ asset('backend/assets/js/tooltip-init.js') }}"></script>
@@ -196,6 +203,8 @@
     $('#filterForm').on('change', function() {
         $(this).submit();
     })
+
+    $('.dropify').dropify();
 </script>
 
 @yield('script')

@@ -1,5 +1,5 @@
 @yield('style')
-{{-- <link rel="stylesheet" href="{{ asset('backend') }}/plugins/dropify/css/dropify.min.css"> --}}
+<link rel="stylesheet" href="{{ asset('backend') }}/plugins/dropify/css/dropify.min.css">
 <link rel="icon" href="{{ $setting->favicon_image_url }}" type="image/x-icon">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
@@ -39,6 +39,10 @@
 
 <link rel="stylesheet" type="text/css" href="{{ asset('backend/assets/css/vendors/dropzone.css') }}">
 <link rel="stylesheet" type="text/css" href="{{ asset('backend/assets/css/vendors/filepond.css') }}">
+
+<link rel="stylesheet" href="{{ asset('backend') }}/plugins/flagicon/dist/css/flag-icon.min.css" />
+
+
 <link rel="stylesheet" type="text/css"
     href="{{ asset('backend/assets/css/vendors/filepond-plugin-image-preview.css') }}">
 

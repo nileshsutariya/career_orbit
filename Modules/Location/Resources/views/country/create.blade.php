@@ -41,10 +41,10 @@
                                 <div class="mb-3 row">
                                     <label class="col-sm-3">{{ __('image') }} <span class="text-danger">*</span></label>
                                     <div class="col-sm-9">
-                                        <div class="dropzone-wrapper">
+                                        <div class="">
                                             <input name="image" type="file" data-show-errors="true" data-width="100%"
                                                 data-default-file=""
-                                                class="form-control dropzone bg-light-primary @error('image') is-invalid @enderror border-0">
+                                                class="form-control dropify  @error('image') is-invalid @enderror border-0">
                                             @error('image')
                                                 <span class="invalid-feedback d-block" role="alert">
                                                     <strong>{{ $message }}</strong>
@@ -134,8 +134,8 @@
 @endsection
 @section('script')
     {{-- <script src="{{ asset('backend/plugins/select2/js/select2.full.min.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('backend') }}/plugins/flagicon/dist/js/bootstrap-iconpicker.bundle.min.js">
-    </script> --}}
+ <script type="text/javascript" src="{{ asset('backend') }}/plugins/flagicon/dist/js/bootstrap-iconpicker.bundle.min.js">
+    </script> --}} 
     <!-- Custom Script -->
 
     <script>

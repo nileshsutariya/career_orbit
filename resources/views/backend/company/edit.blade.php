@@ -155,14 +155,14 @@
                                 <div class="form-group col-xl-4">
                                     <x-forms.label name="logo" :required="false" />
                                     <input name="logo" type="file" data-show-errors="true" data-width="50%"
-                                        class="form-control" data-default-file="{{ $company->logo_url }}">
+                                        class="dropify" data-default-file="{{ $company->logo_url }}">
                                     <p class="tw-text-gray-500 tw-text-xs tw-text-left mt-2 recommended-img-note mb-0">
                                         Recommended Image Size: 68x68</p>
                                 </div>
                                 <div class="form-group col-xl-8">
                                     <x-forms.label name="banner" :required="false" />
                                     <input name="image" type="file" data-show-errors="true" data-width="100%"
-                                        data-default-file="{{ $company->banner_url }}" class="form-control">
+                                        data-default-file="{{ $company->banner_url }}" class="dropify">
                                     <p class="tw-text-gray-500 tw-text-xs tw-text-left mt-2 recommended-img-note mb-0">
                                         Recommended Image Size: 1920x312</p>
                                 </div>
@@ -369,20 +369,10 @@
 
 @section('script')
     @livewireScripts
-    {{-- <script>
-        $(document).ready(function() {
-            $('.select21').select2();
-        });
-        window.addEventListener('render-select2', event => {
-            console.log('fired');
-            $('.select21').select2();
-        })
-    </script> --}}
+  
     @stack('js')
-    {{-- <script src="{{ asset('backend/plugins/select2/js/select2.full.min.js') }}"></script>
-    <script src="{{ asset('backend/plugins/select2/js/select2.full.min.js') }}"></script>
-    <script src="{{ asset('frontend/assets/js/bootstrap-datepicker.min.js') }}"></script>
-    <script src="{{ asset('backend') }}/plugins/dropify/js/dropify.min.js"></script> --}}
+    
+    <script src="{{ asset('backend') }}/plugins/dropify/js/dropify.min.js"></script> 
     <script src="{{ asset('frontend') }}/assets/js/axios.min.js"></script>
     @if (app()->getLocale() == 'ar')
         <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/locales/bootstrap-datepicker.ar.min.js

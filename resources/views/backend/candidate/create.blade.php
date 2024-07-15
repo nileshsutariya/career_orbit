@@ -122,8 +122,8 @@
                                     <x-forms.label name="cv" :required="false" />
                                     <div class="custom-file">
                                         <input name="cv" type="file"
-                                            class="custom-file-input @error('cv') is-invalid @enderror">
-                                        <label class="custom-file-label" for="cvInputFile">{{ __('choose_cv') }}</label>
+                                            class="form-control  @error('cv') is-invalid @enderror">
+                                        {{-- <label class="custom-file-label" for="cvInputFile">{{ __('choose_cv') }}</label> --}}
                                         @error('cv')
                                         <span class="error invalid-feedback">{{ $message }}</span>
                                         @enderror
@@ -308,51 +308,19 @@
 @endif
 @endsection
 
-@section('style')
-{{--
-<link rel="stylesheet" href="{{ asset('backend') }}/plugins/select2/css/select2.min.css">
-<link rel="stylesheet" href="{{ asset('backend') }}/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">
-<link rel="stylesheet" href="{{ asset('frontend') }}/assets/css/bootstrap-datepicker.min.css"> --}}
-{{-- <style>
-    .ck-editor__editable_inline {
-        min-height: 300px;
-    }
+{{-- @section('style')
 
-    .select2-results__option[aria-selected=true] {
-        display: none;
-    }
-
-    .select2-container--bootstrap4 .select2-selection--multiple .select2-selection__choice {
-        color: #fff;
-        border: 1px solid #fff;
-        background: #007bff;
-        border-radius: 30px;
-    }
-
-    .select2-container--bootstrap4 .select2-selection--multiple .select2-selection__choice__remove {
-        color: #fff;
-    }
-</style> --}}
-<!-- >=>Leaflet Map<=< -->
 <x-map.leaflet.map_links />
 <x-map.leaflet.autocomplete_links />
 
 @include('map::links')
-@endsection
+@endsection --}}
 
 @section('script')
 @livewireScripts
-{{-- <script>
-    $(document).ready(function() {
-            $('.select21').select2();
-        });
-        window.addEventListener('render-select2', event => {
-            console.log('fired');
-            $('.select21').select2();
-        })
-</script> --}}
-{{-- @stack('js')
-<script src="{{ asset('backend') }}/plugins/dropify/js/dropify.min.js"></script> --}}
+
+@stack('js')
+<script src="{{ asset('backend') }}/plugins/dropify/js/dropify.min.js"></script>
 @if (app()->getLocale() == 'ar')
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/locales/bootstrap-datepicker.ar.min.js
                                                     "></script>
@@ -362,16 +330,9 @@
             $('#defaulthide').addClass('d-block')
             $('#defaulthide').removeClass('d-none')
         });
-        // dropify image
-        // $('.dropify').dropify();
-        //init datepicker
-        // $(document).ready(function() {
-        //     $('#birth_date').datepicker({
-        //         format: 'dd-mm-yyyy',
-        //         isRTL: "{{ app()->getLocale() == 'ar' ? true : false }}",
-        //         language: "{{ app()->getLocale() }}",
-        //     });
-        // });
+        //dropify image
+        $('.dropify').dropify();
+       
 </script>
 {{-- Leaflet --}}
 @include('map::set-leafletmap')

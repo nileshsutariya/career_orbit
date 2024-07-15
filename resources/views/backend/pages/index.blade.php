@@ -23,73 +23,89 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">
-                        <h3 class="card-title line-height-36">{{ __('pages') }}</h3>
-                        <a href="{{ route('settings.pages.create') }}" class="btn bg-primary float-right d-flex align-items-center justify-content-center">
-                            <i class="fas fa-plus"></i>
-                            {{ __('create') }}
-                        </a>
+                        <div class="float-start">
+                            <h3>{{ __('pages') }}</h3>
+                        </div>
+
+                        <div class="float-end">
+                            <a href="{{ route('settings.pages.create') }}" class="btn bg-primary">
+                                <i class="fa fa-plus"></i>
+                                {{ __('create') }}
+                            </a>
+                        </div>
+
                     </div>
-                    <div class="card-body dt-ext table-responsive theme-scrollbar">
-                        <table class="table" id="export-button">
-                            <thead>
-                                <tr>
-                                    <th>{{ __('title') }}</th>
-                                    <th>{{ __('page_url') }}</th>
-                                    <th>{{ __('show_on_header') }}</th>
-                                    <th>{{ __('show_on_footer') }}</th>
-                                    <th width="15%">{{ __('action') }}</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @forelse ($pages as $key => $page)
+                    <div class="card-body">
+                        <div class="dt-ext table-responsive theme-scrollbar">
+                            <table class="table" id="export-button">
+                                <thead>
                                     <tr>
-                                        <td>{{ $page->title }}</td>
-                                        <td><a href="{{ route('showCustomPage', $page->slug) }}" target="_blank">{{ route('showCustomPage', $page->slug) }}</a></td>
-                                        <td tabindex="0">
-                                            <a href="javascript:void(0)">
-                                                <label class="switch ">
-                                                    <input data-id="{{ $page->id }}" type="checkbox" class="success show_in_header" {{ $page->show_header ? 'checked' : '' }}>
-                                                    <span class="slider round"></span>
-                                                </label>
-                                            </a>
-                                        </td>
-                                        <td tabindex="0">
-                                            <a href="javascript:void(0)">
-                                                <label class="switch ">
-                                                    <input data-userid="{{ $page->id }}" type="checkbox" class="success show_in_footer" {{ $page->show_footer ? 'checked' : '' }}>
-                                                    <span class="slider round"></span>
-                                                </label>
-                                            </a>
-                                        </td>
-                                        <td class="d-flex  align-items-center">
-                                            <a href="{{ route('settings.pages.edit', $page->id) }}" class="btn btn-info mt-0 mr-2">
-                                                <i class="fas fa-edit"></i>
-                                            </a>
-                                            <form action="{{ route('settings.pages.delete', $page->id) }}"
-                                                class="d-inline" method="POST">
-                                                @method('DELETE')
-                                                @csrf
-                                                <button data-toggle="tooltip" data-placement="top"
-                                                    title="{{ __('delete') }}"
-                                                    onclick="return confirm('{{ __('are_you_sure_want_to_delete_this_item') }}');"
-                                                    class="btn bg-danger"><i class="fas fa-trash"></i></button>
-                                            </form>
-                                        </td>
+                                        <th>{{ __('title') }}</th>
+                                        <th>{{ __('page_url') }}</th>
+                                        <th>{{ __('show_on_header') }}</th>
+                                        <th>{{ __('show_on_footer') }}</th>
+                                        <th width="15%">{{ __('action') }}</th>
                                     </tr>
-                                @empty
-                                    <tr>
-                                        <td colspan="10" class="text-center">
-                                            @if (userCan('setting.pages.create'))
-                                                <x-admin.not-found word="{{ __('page') }}" route="setting.pages.create" />
-                                            @else
-                                                <x-admin.not-found word="page" route="" />
-                                            @endif
-                                        </td>
-                                    </tr>
-                                @endforelse
-                            </tbody>
-                        </table>
+                                </thead>
+                                <tbody>
+                                    @forelse ($pages as $key => $page)
+                                        <tr>
+                                            <td>{{ $page->title }}</td>
+                                            <td><a href="{{ route('showCustomPage', $page->slug) }}"
+                                                    target="_blank">{{ route('showCustomPage', $page->slug) }}</a></td>
+                                            <td tabindex="0">
+                                                <a href="javascript:void(0)">
+
+
+                                                    <div class="form-check-size">
+                                                        <div class="form-check form-switch form-check-inline">
+                                                            <input data-id="{{ $page->id }}"
+                                                                class="form-check-input switch-primary check-size success show_in_header"
+                                                                type="checkbox" role="switch"
+                                                                {{ $page->show_header ? 'checked' : '' }}>
+                                                        </div>
+                                                    </div>
+                                                </a>
+                                            </td>
+                                            <td tabindex="0">
+                                                <a href="javascript:void(0)">
+
+
+                                                    <div class="form-check-size">
+                                                        <div class="form-check form-switch form-check-inline ">
+                                                            <input data-userid="{{ $page->id }}"
+                                                                class="form-check-input switch-primary check-size success show_in_footer"
+                                                                type="checkbox" role="switch"
+                                                                {{ $page->show_footer ? 'checked' : '' }}>
+                                                        </div>
+                                                    </div>
+                                                </a>
+                                            </td>
+                                            <td class="d-flex  align-items-center">
+                                                <a href="{{ route('settings.pages.edit', $page->id) }}" class="btn">
+                                                    <i class="fa fa-edit fa-2x"></i>
+                                                </a>
+                                                <form action="{{ route('settings.pages.delete', $page->id) }}"
+                                                    class="d-inline" method="POST">
+                                                    @method('DELETE')
+                                                    @csrf
+                                                    <button data-bs-toggle="tooltip" data-placement="top"
+                                                        title="{{ __('delete') }}"
+                                                        onclick="return confirm('{{ __('are_you_sure_want_to_delete_this_item') }}');"
+                                                        class="btn"><i class="text-dark fa fa-trash fa-2x"></i></button>
+                                                </form>
+                                            </td>
+                                        </tr>
+                                    @empty
+                                    @endforelse
+                                </tbody>
+                            </table>
+                        </div>
+
                     </div>
+
+
+
                 </div>
             </div>
         </div>
@@ -98,8 +114,7 @@
 
 
 @section('style')
-    <link rel="stylesheet"
-        href="{{ asset('backend') }}/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
+    <link rel="stylesheet" href="{{ asset('backend') }}/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
     <style>
         .switch {
             position: relative;
