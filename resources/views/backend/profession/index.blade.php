@@ -62,7 +62,8 @@
                                                 </div>
                                             </td>
 
-                                            <td class="d-flex align-items-center">
+                                            <td>
+                                                <div class="d-flex align-items-center">
                                                 @if (userCan('professions.update'))
                                                     <a href="{{ route('profession.edit', $profession->id) }}"
                                                         class="btn">
@@ -84,6 +85,7 @@
                                                         </button>
                                                     </form>
                                                 @endif
+                                                </div>
                                             </td>
                                         </tr>
                                     @empty

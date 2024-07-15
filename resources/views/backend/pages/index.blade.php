@@ -81,7 +81,8 @@
                                                     </div>
                                                 </a>
                                             </td>
-                                            <td class="d-flex  align-items-center">
+                                            <td>
+                                                <div class="d-flex align-items-center">
                                                 <a href="{{ route('settings.pages.edit', $page->id) }}" class="btn">
                                                     <i class="fa fa-edit fa-2x"></i>
                                                 </a>
@@ -94,6 +95,7 @@
                                                         onclick="return confirm('{{ __('are_you_sure_want_to_delete_this_item') }}');"
                                                         class="btn"><i class="text-dark fa fa-trash fa-2x"></i></button>
                                                 </form>
+                                                </div>
                                             </td>
                                         </tr>
                                     @empty

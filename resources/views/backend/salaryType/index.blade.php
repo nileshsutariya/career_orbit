@@ -53,7 +53,8 @@
                                                     @endforeach
                                                 </div>
                                             </td>
-                                            <td class="d-flex align-items-center">
+                                            <td >
+                                                <div class="d-flex align-items-center">
                                                 <a href="{{ route('salaryType.edit', $salaryType->id) }}" class="btn">
                                                     <i class="fa fa-edit fa-2x"> </i>
                                                 </a>
@@ -67,19 +68,13 @@
                                                         class="btn"><i class="text-dark fa fa-trash-o fa-2x"></i>
                                                     </button>
                                                 </form>
+                                                </div>
                                             </td>
                                         </tr>
                                     @empty
                                     @endforelse
                                 </tbody>
-                                <tfoot>
-                                    <tr>
-                                    <tr>
-                                        <th>{{ __('name') }}</th>
-                                        <th width="10%">{{ __('action') }}</th>
-                                    </tr>
-                                    </tr>
-                                </tfoot>
+                               
                             </table>
                         </div>
                     </div>

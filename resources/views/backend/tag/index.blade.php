@@ -168,7 +168,8 @@
                                                     </div>
                                                 </a>
                                             </td>
-                                            <td class="d-flex align-items-center">
+                                            <td>
+                                                <div class="d-flex align-items-center">
                                                 @if (userCan('tags.update'))
                                                     <a href="{{ route('tags.edit', $item->id) }}" class="btn"><i
                                                             class="fa fa-edit fa-2x"></i></a>
@@ -184,6 +185,7 @@
                                                         </button>
                                                     </form>
                                                 @endif
+                                                </div>
                                             </td>
                                         </tr>
                                     @empty

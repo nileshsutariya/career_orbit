@@ -56,7 +56,8 @@
                                                 </div>
                                             </td>
 
-                                            <td class="d-flex align-items-center">
+                                            <td>
+                                                <div class="d-flex align-items-center">
                                                 @if (userCan('professions.update'))
                                                     <a href="{{ route('experience.edit', $exp->id) }}" class="btn"> <i
                                                             class="fa fa-edit fa-2x"> </i>
@@ -73,26 +74,14 @@
                                                         </button>
                                                     </form>
                                                 @endif
+                                                </div>
                                             </td>
                                         </tr>
                                     @empty
-                                        <tr>
-                                            <td colspan="10" class="text-center">
-                                                {{ __('no_data_found') }}
-                                            </td>
-                                        </tr>
+                                       
                                     @endforelse
                                 </tbody>
-                                <tfoot>
-                                    <tr>
-                                    <tr>
-                                        <th>{{ __('name') }}</th>
-                                        @if (userCan('professions.update') || userCan('professions.delete'))
-                                            <th width="10%">{{ __('action') }}</th>
-                                        @endif
-                                    </tr>
-                                    </tr>
-                                </tfoot>
+                                
                             </table>
                         </div>
                     </div>

@@ -198,7 +198,8 @@
                                                         </div>
                                                     @endif
                                                 </td>
-                                                <td class="d-flex align-items-center">
+                                                <td>
+                                                    <div class="d-flex align-items-center">
                                                     <a href="{{ route('order.show', $order->id) }}"
                                                         class="btn ll-btn ll-border-none">
                                                         {{ __('view_details') }}
@@ -228,6 +229,7 @@
                                                             </button>
                                                         </form>
                                                     @endif
+                                                    </div>
                                                 </td>
                                             </tr>
                                         @endif

@@ -60,7 +60,8 @@
                                                     @endforeach
                                                 </div>
                                             </td>
-                                            <td class="d-flex align-items-center">
+                                            <td>
+                                                <div class="d-flex align-items-center">
                                                 @if (userCan('industry_types.update'))
                                                     <a href="{{ route('industryType.edit', $industrytype->id) }}"
                                                         class="btn">
@@ -79,6 +80,7 @@
                                                         </button>
                                                     </form>
                                                 @endif
+                                                </div>
                                             </td>
                                         </tr>
                                     @empty

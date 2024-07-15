@@ -73,27 +73,28 @@
                                                 {{ $jobrole->jobs_count }} {{ __('jobs') }}
                                             </td>
 
-                                            <td class="d-flex align-items-center">
-
-                                                @if (userCan('job_role.update'))
-                                                    <a href="{{ route('jobRole.edit', $jobrole->id) }}" class="btn">
-                                                        <p class="text-dark"><i class="fa fa-edit"
-                                                                style="font-size: 26px;"></i></p>
-                                                    </a>
-                                                @endif
-                                                @if (userCan('job_role.delete'))
-                                                    <form action="{{ route('jobRole.destroy', $jobrole->id) }}"
-                                                        method="POST" class="d-inline">
-                                                        @method('DELETE')
-                                                        @csrf
-                                                        <button
-                                                            onclick="return confirm('{{ __('are_you_sure_you_want_to_delete_this_item') }}');"
-                                                            class="btn">
-                                                            <p class="text-dark"><i class="fa fa-trash-o"
+                                            <td>
+                                                <div class="d-flex align-items-center">
+                                                    @if (userCan('job_role.update'))
+                                                        <a href="{{ route('jobRole.edit', $jobrole->id) }}" class="btn">
+                                                            <p class="text-dark"><i class="fa fa-edit"
                                                                     style="font-size: 26px;"></i></p>
-                                                        </button>
-                                                    </form>
-                                                @endif
+                                                        </a>
+                                                    @endif
+                                                    @if (userCan('job_role.delete'))
+                                                        <form action="{{ route('jobRole.destroy', $jobrole->id) }}"
+                                                            method="POST" class="d-inline">
+                                                            @method('DELETE')
+                                                            @csrf
+                                                            <button
+                                                                onclick="return confirm('{{ __('are_you_sure_you_want_to_delete_this_item') }}');"
+                                                                class="btn">
+                                                                <p class="text-dark"><i class="fa fa-trash-o"
+                                                                        style="font-size: 26px;"></i></p>
+                                                            </button>
+                                                        </form>
+                                                    @endif
+                                                </div>
 
                                             </td>
                                         </tr>
@@ -262,71 +263,6 @@
                     </form>
                 </div>
             </div>
-<<<<<<< HEAD
         </div>
     </div>
-=======
-            @endif
-
-        </div>
-    </div>
-
-    <div class="modal fade" id="tooltipmodal" tabindex="-1" role="dialog" aria-labelledby="tooltipmodal"
-        aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h4 class="modal-title">{{ __('bulk_import') }}</h4>
-                    <button class="btn-close py-0" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-
-                <form action="{{ route('admin.job.role.bulk.import') }}" method="post" enctype="multipart/form-data">
-                    @csrf
-                    <div class="modal-body">
-                        <div class="alert alert-warning dark" role="alert">
-                            <p> Before importing, please download the example file and match the fields structure. If
-                                any
-                                field data is missing, the system will generate it</p>
-                        </div>
-
-                        <div class="col-md-12 mb-2">
-                            <label for="experience">{{ __('example_file') }}</label> <br>
-                            <div class="d-grid gap-2">
-                                <a href="/backend/dummy/job_role_example.xlsx" target="_blank" class="btn btn-primary">
-                                    <i class="fa fa-download"></i>
-                                    {{ __('download') }} {{ __('example_file') }}
-                                </a>
-
-                            </div>
-                        </div>
-
-                        <div class="col-md-12">
-                            <label for="experience">{{ __('choose_file') }}</label> <br>
-                            <input type="file" class="form-control dropify" name="import_file"
-                                data-allowed-file-extensions='["csv", "xlsx","xls"]' accept=".csv,.xlsx,.xls"
-                                data-max-file-size="3M">
-                            @error('import_file')
-                            <span class="invalid-feedback d-block" role="alert">{{ __($message) }}</span>
-                            @enderror
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button class="btn btn-secondary" type="button" data-bs-dismiss="modal">Close</button>
-                        <button class="btn btn-primary" type="submit">{{ __('submit') }}</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-</div>
-@endsection
-@section('script')
-    <!-- Dropify-Script -->
-    <script src="{{ asset('backend') }}/js/dropify.min.js"></script>
-
-    <script>
-        //Dropify function
-        $('.dropify').dropify();
-    </script>
->>>>>>> fabd8cabd5a5c54e8092ade6dda015322fe1b48c
 @endsection

@@ -161,31 +161,33 @@
                                 {{ Carbon\Carbon::parse($candidate->created_at)->format('d M, Y') }}
                             </td>
                             @if (userCan('candidate.update') || userCan('candidate.delete'))
-                            <td class="d-flex align-items-center">
-                                @if (userCan('candidate.view'))
-                                <a href="{{ route('candidate.show', $candidate->id) }}"
-                                    class="btn ll-btn ll-border-none">
-                                    {{__('view_profile')}}
-                                   
-                                </a>
-                                @endif
-                                @if (userCan('candidate.update'))
-                                <a href="{{ route('candidate.edit', $candidate->id) }}" class="btn ll-p-0">
-                                    <i class="fa fa-edit fa-2x text-success"></i>
-                                </a>
-                                @endif
-                                @if (userCan('candidate.delete'))
-                                <form action="{{ route('candidate.destroy', $candidate->id) }}" method="POST"
-                                    class="d-inline">
-                                    @method('DELETE')
-                                    @csrf
-                                    <button
-                                        onclick="return confirm('{{ __('are_you_sure_you_want_to_delete_this_item') }}');"
-                                        class="btn ll-p-0">
-                                       <i class="fa fa-trash-o fa-2x text-danger"></i>
-                                    </button>
-                                </form>
-                                @endif
+                            <td>
+                                <div class="d-flex align-items-center">
+                                    @if (userCan('candidate.view'))
+                                    <a href="{{ route('candidate.show', $candidate->id) }}"
+                                        class="btn ll-btn ll-border-none">
+                                        {{__('view_profile')}}
+
+                                    </a>
+                                    @endif
+                                    @if (userCan('candidate.update'))
+                                    <a href="{{ route('candidate.edit', $candidate->id) }}" class="btn ll-p-0">
+                                        <i class="fa fa-edit fa-2x text-success"></i>
+                                    </a>
+                                    @endif
+                                    @if (userCan('candidate.delete'))
+                                    <form action="{{ route('candidate.destroy', $candidate->id) }}" method="POST"
+                                        class="d-inline">
+                                        @method('DELETE')
+                                        @csrf
+                                        <button
+                                            onclick="return confirm('{{ __('are_you_sure_you_want_to_delete_this_item') }}');"
+                                            class="btn ll-p-0">
+                                            <i class="fa fa-trash-o fa-2x text-danger"></i>
+                                        </button>
+                                    </form>
+                                    @endif
+                                </div>
                             </td>
                             @endif
                         </tr>

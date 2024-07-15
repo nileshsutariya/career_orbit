@@ -337,23 +337,11 @@
 
                                                         <div class="form-check-size">
                                                             <div class="form-check form-switch form-check-inline">
-                                                            <input class="form-check-input switch-primary check-size success email-verification-switch" data-userid="{{ $company->user_id }}" 
-                                                            {{ $company->user->email_verified_at ? 'checked' : '' }}
-                                                            type="checkbox" role="switch" checked="">
-                                                             </div>
+                                                                <input class="form-check-input switch-primary check-size success email-verification-switch" data-userid="{{ $company->user_id }}" 
+                                                                {{ $company->user->email_verified_at ? 'checked' : '' }}
+                                                                type="checkbox" role="switch" checked="">
                                                             </div>
-
-
-                                                        {{-- <div class="flex-grow-1">
-                                                            <label class="switch">
-                                                                <input type="checkbox"
-                                                                    data-userid="{{ $company->user_id }}"
-                                                                    class="success email-verification-switch"
-                                                                    {{ $company->user->email_verified_at ? 'checked' : '' }}>
-
-                                                                <span class="switch-state"></span>
-                                                            </label>
-                                                        </div> --}}
+                                                        </div>
                                                         <p style="min-width:70px"
                                                             class="{{ $company->user->email_verified_at ? 'active' : '' }}"
                                                             id="verification_status_{{ $company->user_id }}">
@@ -372,16 +360,6 @@
                                                             {{ $company->is_profile_verified ? 'checked' : '' }} type="checkbox" role="switch" checked="">
                                                              </div>
                                                             </div>
-
-                                                        {{-- <div class="flex-grow-1">
-                                                            <label class="switch">
-                                                                <input type="checkbox" data-companyid="{{ $company->id }}"
-                                                                    class="success profile-verification-switch"
-                                                                    {{ $company->is_profile_verified ? 'checked' : '' }}>
-
-                                                                <span class="switch-state"></span>
-                                                            </label>
-                                                        </div> --}}
                                                         <p style="min-width:70px"
                                                             class="{{ $company->is_profile_verified ? 'active' : '' }}"
                                                             id="profile_status_{{ $company->id }}">
@@ -396,7 +374,8 @@
                                             @endif
 
                                             @if (userCan('company.update') || userCan('compnay.delete'))
-                                                <td class="d-flex align-items-center">
+                                                <td>
+                                                    <div class="d-flex align-items-center">
                                                     @if (userCan('company.view'))
                                                         <a href="{{ route('company.show', $company->id) }}"
                                                             class="btn ll-btn ll-border-none">
@@ -424,6 +403,7 @@
                                                             </button>
                                                         </form>
                                                     @endif
+                                                    </div>
                                                 </td>
                                             @endif
                                         </tr>

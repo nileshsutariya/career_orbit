@@ -61,7 +61,8 @@
                                                     @endforeach
                                                 </div>
                                             </td>
-                                            <td class="d-flex align-items-center">
+                                            <td>
+                                                <div class="d-flex align-items-center">
                                                 <a href="{{ route('organizationType.edit', $organizationtype->id) }}"
                                                     class="btn">
                                                     <i class="text-dark fa fa-edit fa-2x"></i>
@@ -77,6 +78,7 @@
                                                         class="btn"> <i class="text-dark fa fa-trash-o fa-2x"></i>
                                                     </button>
                                                 </form>
+                                                </div>
                                             </td>
                                         </tr>
                                     @empty

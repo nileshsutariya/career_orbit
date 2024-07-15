@@ -98,11 +98,7 @@
                                         @endif
                                     </tr>
                                 @empty
-                                    <tr>
-                                        <td colspan="10" class="text-center">
-                                            <x-admin.not-found word="roles" route="role.create" />
-                                        </td>
-                                    </tr>
+                                   
                                 @endforelse
                             </tbody>
                         </table>
