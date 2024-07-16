@@ -132,7 +132,7 @@
                                             <label for="deadline">
                                                 {{ __('deadline') }}
                                             </label>
-                                            <input id="deadline" type="text" name="deadline" placeholder="MM/DD/YYYY"
+                                            <input id="deadline" type="date" name="deadline" placeholder="MM/DD/YYYY"
                                                 value="{{ old('deadline', $job->deadline) }}"
                                                 class="form-control @error('deadline') is-invalid @enderror">
                                             @error('deadline')
@@ -761,15 +761,15 @@
         // });
 
         //init datepicker
-        $(document).ready(function() {
-            var dateToday = new Date();
-            $('#deadline').datepicker({
-                format: "yyyy-mm-dd",
-                minDate: dateToday,
-                startDate: dateToday,
-                todayHighlight: true,
-            });
-        });
+        // $(document).ready(function() {
+        //     var dateToday = new Date();
+        //     $('#deadline').datepicker({
+        //         format: "yyyy-mm-dd",
+        //         minDate: dateToday,
+        //         startDate: dateToday,
+        //         todayHighlight: true,
+        //     });
+        // });
 
         var salary_mode = "{!! old('salary_mode', $job->salary_mode) !!}";
 

@@ -18,7 +18,7 @@
                     @include('backend.layouts.partials.message')
                     <div class="row">
                         <div class="col-sm-12">
-                            sdas
+                            
                         </div>
                     </div>
                 </div>

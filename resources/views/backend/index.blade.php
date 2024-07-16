@@ -321,7 +321,7 @@
     <div class="col-12 col-lg-12">
         <div class="card">
             <div class="card-header">
-                <div class=" d-flex justify-content-between align-items-center">
+                <div class="d-flex justify-content-between align-items-center mb-2">
                     <h3 class="card-title">{{ __('latest_users') }}</h3>
                     <div class="d-flex justify-content-center align-items-center">
                         <a href="{{ route('candidate.index') }}" class="btn btn-secondary m-r-10  ">

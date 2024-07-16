@@ -374,14 +374,14 @@
                             Before importing, please download the example file and match the fields structure. If any field
                             data is missing, the system will generate it
                         </div>
-                        <div class="mb-2">
+                        <div class="d-grid mb-2">
                             <label for="experience">{{ __('example_file') }}</label> <br>
-                            <a href="/backend/dummy/job_example.xlsx" target="_blank" class="btn btn-primary btn-block">
+                            <a href="/backend/dummy/job_example.xlsx" target="_blank" class="btn btn-primary ">
                                 <i class="fa fa-download"></i>
                                 {{ __('download') }} {{ __('example_file') }}
                             </a>
                         </div>
-                        <hr>
+                       
                         <div class="mb-2">
                             <label for="company_id">{{ __('company') }}</label> <br>
                             <select required name="company"

@@ -135,7 +135,7 @@
                                         </div>
                                         <div class="col-sm-12 col-md-6 mb-2">
                                             <x-forms.label name="deadline" for="deadline" :required="true" />
-                                            <input id="deadline" type="text" name="deadline"
+                                            <input id="deadline" type="date" name="deadline"
                                                 placeholder="MM/DD/YYYY"
                                                 class="form-control @error('deadline') is-invalid @enderror"
                                                 value="{{ old('deadline') }}" required>
@@ -665,7 +665,7 @@
 
 
 @section('style')
-    <link rel="stylesheet" href="{{ asset('frontend') }}/assets/css/bootstrap-datepicker.min.css">
+    
 
     <style>
         .ck-editor__editable_inline {
@@ -861,17 +861,17 @@
         // });
 
         //init datepicker
-        $(document).ready(function() {
-            var dateToday = new Date();
-            $('#deadline').datepicker({
-                format: "yyyy-mm-dd",
-                minDate: dateToday,
-                startDate: dateToday,
-                todayHighlight: true,
-                isRTL: "{{ app()->getLocale() == 'ar' ? true : false }}",
-                language: "{{ app()->getLocale() }}",
-            });
-        });
+        // $(document).ready(function() {
+        //     var dateToday = new Date();
+        //     $('#deadline').datepicker({
+        //         format: "yyyy-mm-dd",
+        //         minDate: dateToday,
+        //         startDate: dateToday,
+        //         todayHighlight: true,
+        //         isRTL: "{{ app()->getLocale() == 'ar' ? true : false }}",
+        //         language: "{{ app()->getLocale() }}",
+        //     });
+        // });
     </script>
 
     <script>

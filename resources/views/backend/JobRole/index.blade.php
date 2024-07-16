@@ -221,9 +221,9 @@
                                 </div>
                             </div>
 
-                            <div class="col-md-12 dropzone  bg-light-primary">
+                            <div class="col-md-12 ">
                                 <label for="experience">{{ __('choose_file') }}</label> <br>
-                                <input type="file" class="form-control dropzone-wrapper" name="import_file"
+                                <input type="file" class="form-control dropify" name="import_file"
                                     data-allowed-file-extensions='["csv", "xlsx","xls"]' accept=".csv,.xlsx,.xls"
                                     data-max-file-size="3M">
                                 @error('import_file')
