@@ -154,7 +154,7 @@
                                                 @endif
                                                 @if (userCan('menu-setting.update'))
                                                     <a href="{{ route('menu-settings.edit', $menu->id) }}" class="btn">
-                                                        <i class="text-dark fa fa-edit fa-2x"></i>
+                                                        <i class="txt-success fa fa-edit fa-2x"></i>
                                                     </a>
                                                 @endif
                                                 @if (userCan('menu-setting.delete'))
@@ -167,7 +167,7 @@
                                                                 title="{{ __('delete') }}"
                                                                 onclick="return confirm('{{ __('are_you_sure_want_to_delete_this_item') }}');"
                                                                 class="btn"> <i
-                                                                    class="text-dark fa fa-trash-o fa-2x"></i>
+                                                                    class="txt-danger fa fa-trash-o fa-2x"></i>
                                                             </button>
                                                         </form>
                                                     @endif

@@ -13,12 +13,12 @@
                         </h3>
 
                     </div>
-
+                    <div class="card-body">
                     <div id="example1_wrapper" class="">
 
                             <div class="col-md-12">
                                 @if(!$company->getFirstMedia('document'))
-                                    <h4  class="mt-5 mb-5 ml-2">Document Not Given</h4>
+                                    <h4>Document Not Given</h4>
                                 @else
 
                                         <div class="form-group col-8" style="margin-left: auto ; margin-right: auto">
@@ -51,6 +51,7 @@
                             </div>
 
                     </div>
+                </div>
                 </div>
             </div>
         </div>

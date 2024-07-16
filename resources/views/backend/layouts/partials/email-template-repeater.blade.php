@@ -43,7 +43,7 @@
                 </div>
                 @if (userCan('setting.update'))
                     <div class="text-end">
-                        <button type="submit" class="btn btn-primary"><i class="fas fa-sync"></i>
+                        <button type="submit" class="btn btn-primary"><i class="fa fa-refresh"></i>
                             {{ __('update') }}
                         </button>
                     </div>

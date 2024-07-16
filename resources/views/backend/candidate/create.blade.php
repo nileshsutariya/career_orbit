@@ -1,23 +1,24 @@
 @extends('backend.layouts.app')
+
 @section('title')
 {{ __('create_candidate') }}
 @endsection
+
 @section('content')
+
 @if (userCan('candidate.create'))
 <div class="container-fluid">
     <form action="{{ route('candidate.store') }}" method="POST" enctype="multipart/form-data">
         @csrf
         <div class="card">
             <div class="card-body">
-                <h4 class="card-title line-height-36">{{ __('create') }}</h4>
+                <h4>{{ __('create') }}</h4>
             </div>
         </div>
         <div class="row">
             <div class="col-md-6">
                 <div class="card">
-                    <div class="card-header">
-                        {{ __('account_details') }}
-                    </div>
+                    <div class="card-header"> {{ __('account_details') }} </div>
                     <div class="card-body row">
                         <div class="col-md-12 mb-2">
                             <x-forms.label name="name" />
@@ -93,14 +94,11 @@
                         </div>
                     </div>
                     @endif
-
                 </div>
             </div>
             <div class="col-md-6">
                 <div class="card">
-                    <div class="card-header">
-                        {{ __('image') }}
-                    </div>
+                    <div class="card-header"> {{ __('image') }} </div>
                     <div class="card-body">
                         <div class="row">
                             <div class="col-md-12">
@@ -112,20 +110,16 @@
                     </div>
                 </div>
                 <div class="card">
-                    <div class="card-header">
-                        {{ __('files') }}
-                    </div>
+                    <div class="card-header"> {{ __('files') }} </div>
                     <div class="card-body">
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="form-group">
                                     <x-forms.label name="cv" :required="false" />
                                     <div class="custom-file">
-                                        <input name="cv" type="file"
-                                            class="form-control  @error('cv') is-invalid @enderror">
-                                        {{-- <label class="custom-file-label" for="cvInputFile">{{ __('choose_cv') }}</label> --}}
+                                        <input name="cv" type="file" class="form-control  @error('cv') is-invalid @enderror">
                                         @error('cv')
-                                        <span class="error invalid-feedback">{{ $message }}</span>
+                                            <span class="error invalid-feedback">{{ $message }}</span>
                                         @enderror
                                     </div>
                                 </div>
@@ -136,159 +130,129 @@
             </div>
             <div class="col-12">
                 <div class="card">
-                    <div class="card-header">
-                        {{ __('profile_details') }}
-                    </div>
+                    <div class="card-header"> {{ __('profile_details') }} </div>
                     <div class="card-body">
                         <div class="row">
                             <div class="col-md-4 mb-2">
-
                                 <x-forms.label name="profession" :required="false" />
-                                <select name="profession_id" id="profession"
-                                    class=" form-control select2 @error('profession_id') is-invalid @enderror">
+                                <select name="profession_id" id="profession" class=" form-control select2 @error('profession_id') is-invalid @enderror">
                                     @foreach ($professions as $profession)
-                                    <option {{ $profession->id == old('profession_id') ? 'selected' : '' }}
-                                        value="{{ $profession->id }}">
-                                        {{ $profession->name }}
-                                    </option>
+                                        <option {{ $profession->id == old('profession_id') ? 'selected' : '' }} value="{{ $profession->id }}"> {{ $profession->name }} </option>
                                     @endforeach
                                 </select>
                                 @error('profession_id')
-                                <span class="invalid-feedback" role="alert">{{ __($message) }}</span>
+                                    <span class="invalid-feedback" role="alert">{{ __($message) }}</span>
                                 @enderror
-
                             </div>
-                            <div class="col-md-4 mb-2">
 
+                            <div class="col-md-4 mb-2">
                                 <x-forms.label name="experience" :required="false" />
-                                <select name="experience" id="experience"
-                                    class="form-control select2  @error('experience') is-invalid @enderror">
+                                <select name="experience" id="experience" class="form-control select2  @error('experience') is-invalid @enderror">
                                     @foreach ($experiences as $experience)
-                                    <option {{ old('experience')==$experience->id ? 'selected' : '' }}
-                                        value="{{ $experience->id }}">{{ $experience->name }}
-                                    </option>
+                                        <option {{ old('experience')==$experience->id ? 'selected' : '' }} value="{{ $experience->id }}">{{ $experience->name }} </option>
                                     @endforeach
                                 </select>
                                 @error('experience')
-                                <span class="invalid-feedback" role="alert">{{ __($message) }}</span>
+                                    <span class="invalid-feedback" role="alert">{{ __($message) }}</span>
                                 @enderror
-
                             </div>
-                            <div class="col-md-4 mb-2">
 
+                            <div class="col-md-4 mb-2">
                                 <x-forms.label name="job_role" :required="false" />
-                                <select name="role_id"
-                                    class="form-control  select2 @error('role_id') is-invalid @enderror" id="role_id">
+                                <select name="role_id" class="form-control  select2 @error('role_id') is-invalid @enderror" id="role_id">
                                     @foreach ($job_roles as $role)
-                                    <option value="{{ $role->id }}"> {{ $role->name }}</option>
+                                        <option value="{{ $role->id }}"> {{ $role->name }}</option>
                                     @endforeach
                                 </select>
                                 @error('role_id')
-                                <span class="invalid-feedback" role="alert">{{ __($message) }}</span>
+                                    <span class="invalid-feedback" role="alert">{{ __($message) }}</span>
                                 @enderror
-
                             </div>
-                            <div class="col-md-4 mb-2">
 
+                            <div class="col-md-4 mb-2">
                                 <x-forms.label name="education" :required="false" />
-                                <select name="education" id="education"
-                                    class="form-control  select2 @error('education') is-invalid @enderror">
+                                <select name="education" id="education" class="form-control  select2 @error('education') is-invalid @enderror">
                                     @foreach ($educations as $education)
-                                    <option {{ $education->id == old('education_id') ? 'selected' : '' }}
-                                        value="{{ $education->id }}"> {{ $education->name }}</option>
+                                        <option {{ $education->id == old('education_id') ? 'selected' : '' }} value="{{ $education->id }}"> {{ $education->name }}</option>
                                     @endforeach
                                 </select>
                                 @error('education')
-                                <span class="invalid-feedback" role="alert">{{ __($message) }}</span>
+                                    <span class="invalid-feedback" role="alert">{{ __($message) }}</span>
                                 @enderror
-
                             </div>
-                            <div class="col-md-4 mb-2">
 
+                            <div class="col-md-4 mb-2">
                                 <x-forms.label name="gender" :required="false" />
-                                <select name="gender" id="gender"
-                                    class="form-control select2 @error('gender') is-invalid @enderror">
+                                <select name="gender" id="gender" class="form-control select2 @error('gender') is-invalid @enderror">
                                     <option value="male">{{ __('male') }}</option>
                                     <option value="female">{{ __('female') }}</option>
                                     <option value="other">{{ __('other') }}</option>
                                 </select>
                                 @error('gender')
-                                <span class="invalid-feedback" role="alert">{{ __($message) }}</span>
+                                    <span class="invalid-feedback" role="alert">{{ __($message) }}</span>
                                 @enderror
-
                             </div>
-                            <div class="col-md-4 mb-2">
 
+                            <div class="col-md-4 mb-2">
                                 <x-forms.label name="website" :required="false" />
-                                <input type="text" id="website" name="website" value="{{ old('website') }}"
-                                    class="form-control  @error('website') is-invalid @enderror"
+                                <input type="text" id="website" name="website" value="{{ old('website') }}" class="form-control  @error('website') is-invalid @enderror"
                                     placeholder="{{ __('website') }}">
                                 @error('website')
-                                <span class="invalid-feedback" role="alert">{{ __($message) }}</span>
+                                    <span class="invalid-feedback" role="alert">{{ __($message) }}</span>
                                 @enderror
-
                             </div>
-                            <div class="col-md-6 mb-2">
 
+                            <div class="col-md-6 mb-2">
                                 <x-forms.label name="birth_date" :required="false" />
-                                <input type="date" class="form-control @error('birth_date') is-invalid @enderror"
-                                    name="birth_date" id="birth_date" placeholder="{{ __('birth_date') }}">
+                                <input type="date" class="form-control @error('birth_date') is-invalid @enderror" name="birth_date" id="birth_date" placeholder="{{ __('birth_date') }}">
                                 @error('birth_date')
-                                <span class="invalid-feedback" role="alert">{{ __($message) }}</span>
+                                    <span class="invalid-feedback" role="alert">{{ __($message) }}</span>
                                 @enderror
-
                             </div>
-                            <div class="col-md-6 mb-2">
 
+                            <div class="col-md-6 mb-2">
                                 <x-forms.label name="marital_status" :required="false" />
-                                <select id="marital_status" name="marital_status"
-                                    class="form-control select2 @error('marital_status') is-invalid @enderror">
+                                <select id="marital_status" name="marital_status" class="form-control select2 @error('marital_status') is-invalid @enderror">
                                     <option value="married">{{ __('married') }}</option>
                                     <option value="single">{{ __('single') }}</option>
                                 </select>
                                 @error('marital_status')
-                                <span class="invalid-feedback" role="alert">{{ __($message) }}</span>
+                                    <span class="invalid-feedback" role="alert">{{ __($message) }}</span>
                                 @enderror
-
                             </div>
-                            <div class="col-md-12 mb-2">
 
+                            <div class="col-md-12 mb-2">
                                 <x-forms.label name="skills" :required="false" />
-                                <select id="skills" name="skills[]"
-                                    class="select2 form-control @error('skills') is-invalid @enderror" multiple>
+                                <select id="skills" name="skills[]" class="select2 form-control @error('skills') is-invalid @enderror" multiple>
                                     @foreach ($skills as $skill)
-                                    <option value="{{ $skill->id }}">{{ $skill->name }}</option>
+                                        <option value="{{ $skill->id }}">{{ $skill->name }}</option>
                                     @endforeach
                                 </select>
-                                @error('skills')
-                                <span class="invalid-feedback" role="alert">{{ __($message) }}</span>
-                                @enderror
 
+                                @error('skills')
+                                    <span class="invalid-feedback" role="alert">{{ __($message) }}</span>
+                                @enderror
                             </div>
                             <div class="col-md-12 mb-2">
-
                                 <x-forms.label name="languages" :required="false" />
-                                <select id="languages" name="languages[]" multiple
-                                    class=" form-control select2 @error('languages') is-invalid @enderror">
+                                <select id="languages" name="languages[]" multiple class=" form-control select2 @error('languages') is-invalid @enderror">
                                     @foreach ($candidate_languages as $language)
-                                    <option value="{{ $language->id }}">{{ $language->name }}</option>
+                                        <option value="{{ $language->id }}">{{ $language->name }}</option>
                                     @endforeach
                                 </select>
                                 @error('languages')
-                                <span class="invalid-feedback" role="alert">{{ __($message) }}</span>
+                                    <span class="invalid-feedback" role="alert">{{ __($message) }}</span>
                                 @enderror
-
                             </div>
+
                             <div class="col-md-12 mb-2">
-
                                 <x-forms.label name="bio" :required="false" />
-                                <textarea name="bio" id="image_ckeditor" placeholder="{{ __('bio') }}"
-                                    value="{{ old('bio') }}" class="form-control @error('bio') is-invalid @enderror"
-                                    id="bio" cols="1" rows="4"></textarea>
+                                <textarea name="bio" id="image_ckeditor" placeholder="{{ __('bio') }}" value="{{ old('bio') }}" class="form-control @error('bio') is-invalid @enderror"
+                                    id="bio" cols="1" rows="4">
+                                </textarea>
                                 @error('bio')
-                                <span class="invalid-feedback" role="alert">{{ __($message) }}</span>
+                                    <span class="invalid-feedback" role="alert">{{ __($message) }}</span>
                                 @enderror
-
                             </div>
                         </div>
                     </div>
@@ -298,8 +262,7 @@
         <div class="text-end mb-2">
             <div class="col-md-12">
                 <button type="submit" class="btn btn-block bg-primary">
-                    <i class="fa fa-plus mr-1"></i>
-                    {{ __('save') }}
+                    <i class="fa fa-plus mr-1"></i> {{ __('save') }}
                 </button>
             </div>
         </div>
@@ -308,13 +271,13 @@
 @endif
 @endsection
 
-{{-- @section('style')
+@section('style')
 
 <x-map.leaflet.map_links />
 <x-map.leaflet.autocomplete_links />
 
 @include('map::links')
-@endsection --}}
+@endsection
 
 @section('script')
 @livewireScripts
@@ -322,19 +285,19 @@
 @stack('js')
 <script src="{{ asset('backend') }}/plugins/dropify/js/dropify.min.js"></script>
 @if (app()->getLocale() == 'ar')
-<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/locales/bootstrap-datepicker.ar.min.js
-                                                    "></script>
+
 @endif
 <script>
     $('#customFile').on('change', function(event) {
-            $('#defaulthide').addClass('d-block')
-            $('#defaulthide').removeClass('d-none')
-        });
-        //dropify image
-        $('.dropify').dropify();
+        $('#defaulthide').addClass('d-block')
+        $('#defaulthide').removeClass('d-none')
+    });
+    
+    //dropify image
+    $('.dropify').dropify();
        
 </script>
-{{-- Leaflet --}}
+
 @include('map::set-leafletmap')
 @include('map::set-googlemap')
 @endsection

@@ -1,4 +1,5 @@
 @extends('backend.layouts.app')
+
 @section('title')
 {{ __('education_list') }}
 @endsection
@@ -17,23 +18,19 @@
                 <div class="card-header pb-0 card-no-border">
                     <div class="d-flex justify-content-between flex-sm-row flex-column">
                         <div class="pb-3 pb-md-0">
-                            <h4 class="title">{{ __('education_list') }}
-                                ({{ count($educations) }})</h4>
+                            <h4 class="title">{{ __('education_list') }} ({{ count($educations) }})</h4>
                         </div>
-
                     </div>
                 </div>
 
-
                 <div class="card-body">
                     <div class="dt-ext table-responsive theme-scrollbar">
-
                         <table class="table" id="export-button">
                             <thead>
                                 <tr>
                                     <th>{{ __('name') }}</th>
                                     @if (userCan('professions.update') || userCan('professions.delete'))
-                                    <th width="10%">{{ __('action') }}</th>
+                                        <th width="10%">{{ __('action') }}</th>
                                     @endif
                                 </tr>
                             </thead>
@@ -46,10 +43,10 @@
                                             @foreach ($edu->translations as $translation)
                                             @if (app()->getLocale() == $translation->locale)
                                             @else
-                                            <span class="d-block"><b>{{ getLanguageByCodeInLookUp($translation->locale,
-                                                    $app_language) }}</b>:
-                                                {{ $translation->name }}
-                                            </span>
+                                                <span class="d-block"><b>{{ getLanguageByCodeInLookUp($translation->locale,
+                                                        $app_language) }}</b>:
+                                                    {{ $translation->name }}
+                                                </span>
                                             @endif
                                             @endforeach
                                         </div>
@@ -59,7 +56,7 @@
                                         <div class="d-flex align-items-center">
                                             @if (userCan('professions.update'))
                                             <a href="{{ route('education.edit', $edu->id) }}" class="btn">
-                                                <i class="fa fa-edit fa-2x"> </i>
+                                                <i class="fa fa-edit fa-2x txt-success"> </i>
                                             </a>
                                             @endif
                                             @if (userCan('professions.delete'))
@@ -69,7 +66,7 @@
                                                 @csrf
                                                 <button
                                                     onclick="return confirm('{{ __('are_you_sure_you_want_to_delete_this_item') }}');"
-                                                    class="btn"><i class="text-dark fa fa-trash-o fa-2x"></i>
+                                                    class="btn"><i class="text-danger fa fa-trash-o fa-2x"></i>
                                                 </button>
                                             </form>
                                             @endif
@@ -79,12 +76,10 @@
                                 @empty
                                 @endforelse
                             </tbody>
-                            
                         </table>
                     </div>
                 </div>
             </div>
-
         </div>
 
         <div class="col-md-4">
@@ -92,18 +87,15 @@
             @if (!empty($education) && userCan('professions.update'))
             <div class="card">
                 <div class="card-header">
-
                     <div class="float-start">
                         <h4>{{ __('edit') }} {{ __('education') }}</h4>
                     </div>
                     <div class="float-end">
-                        <a href="{{ route('education.index') }}" class="btn btn-primary"><i class="fa fa-plus"></i>{{
-                            __('create') }}
-                        </a>
+                        <a href="{{ route('education.index') }}" class="btn btn-primary"><i class="fa fa-plus"></i>{{__('create') }}</a>
                     </div>
                 </div>
                 <div class="card-body">
-                    <div class="card-wrapper border rounded-3">
+              
                         @if (userCan('job_role.create'))
                         <form class="row g-3" action="{{ route('education.update', $education->id) }}" method="POST">
                             @method('PUT')
@@ -145,7 +137,7 @@
                         @else
                         <p>{{ __('dont_have_permission') }}</p>
                         @endif
-                    </div>
+                    
                 </div>
             </div>
             @else
@@ -154,12 +146,9 @@
                     <h4>{{ __('create') }} {{ __('education') }}</h4>
                 </div>
                 <div class="card-body">
-                    <div class="card-wrapper border rounded-3">
-
+                  
                         <form class="row g-3" action="{{ route('education.store') }}" method="POST">
                             @csrf
-
-
                             @foreach ($app_language as $key => $language)
                             @php
                             $label =
@@ -182,21 +171,16 @@
                                 @endif
                             </div>
                             @endforeach
-
-
                             <div class="col-12">
                                 <button class="btn btn-primary" type="submit"><i class="fa fa-plus"> </i>
                                     {{ __('save') }} </button>
                             </div>
                         </form>
-
-                    </div>
+                    
                 </div>
             </div>
             @endif
-
         </div>
     </div>
-
 </div>
 @endsection

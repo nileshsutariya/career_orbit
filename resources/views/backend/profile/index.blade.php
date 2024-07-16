@@ -1,7 +1,9 @@
 @extends('backend.layouts.app')
+
 @section('title')
 {{ __('profile') }}
 @endsection
+
 @section('breadcrumbs')
 <div class="row mb-2">
     <div class="col-sm-6">
@@ -21,9 +23,10 @@
     <div class="card">
         <div class="card-header">
             <h4 class="card-title mb-0">My Profile</h4>
-            <div class="card-options"><a class="card-options-collapse" href="#" data-bs-toggle="card-collapse"><i
-                        class="fe fe-chevron-up"></i></a><a class="card-options-remove" href="#"
-                    data-bs-toggle="card-remove"><i class="fe fe-x"></i></a></div>
+            <div class="card-options"><a class="card-options-collapse" href="#" data-bs-toggle="card-collapse">
+                <i class="fe fe-chevron-up"></i></a><a class="card-options-remove" href="#"
+                    data-bs-toggle="card-remove"><i class="fe fe-x"></i></a>
+            </div>
         </div>
         <div class="card-body">
             <form>
@@ -64,7 +67,6 @@
                         auth()->user()->created_at->format('M d, Y') . ' )' }}</a>
                 </div>
                 <div class="form-footer">
-
                     <a href="{{ route('profile.setting') }}" class="btn btn-primary btn-block">Setting</a>
                 </div>
             </form>

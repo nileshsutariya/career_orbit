@@ -1,18 +1,20 @@
 @extends('backend.layouts.app')
+
 @section('title')
     {{ __('candidate_list') }}
 @endsection
+
 @section('content')
     <div class="row">
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
                     <div class="d-flex justify-content-between">
-                        <h3 class="card-title line-height-36">{{ __('candidate_list') }}</h3>
+                        <h3 class="card-title">{{ __('candidate_list') }}</h3>
                         <div>
                             <div class="btn-group">
                                 <a href="#" class="btn bg-primary">
-                                    <i class="fa fa-download mr-1"></i> Export
+                                    <i class="fa fa-download"></i> Export
                                 </a>
                                 <button type="button" class="btn bg-primary dropdown-toggle dropdown-toggle-split"
                                     data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -22,13 +24,12 @@
                                     <a class="dropdown-item" href="{{ route('candidate.export', 'csv') }}">CSV</a>
                                     <a class="dropdown-item" href="{{ route('candidate.export', 'pdf') }}">PDF</a>
                                     <a class="dropdown-item" href="{{ route('candidate.export', 'xlsx') }}">Excel</a>
-                                    <!-- Add more options for different export formats if needed -->
                                 </div>
                             </div>
 
                             @if (userCan('candidate.create'))
                                 <a href="{{ route('candidate.create') }}" class="btn bg-primary"><i
-                                        class="fa fa-plus mr-1"></i>
+                                        class="fa fa-plus "></i>
                                     {{ __('create') }}
                                 </a>
                             @endif
@@ -170,25 +171,23 @@
                                                     @if (userCan('candidate.view'))
                                                         <a href="{{ route('candidate.show', $candidate->id) }}"
                                                             class="btn ll-btn ll-border-none">
-                                                            <i class="fa fa-eye fa-2x"></i>
+                                                            <i class="fa fa-eye fa-2x txt-secondary"></i>
 
                                                         </a>
                                                     @endif
                                                     @if (userCan('candidate.update'))
                                                         <a href="{{ route('candidate.edit', $candidate->id) }}"
                                                             class="btn ll-p-0">
-                                                            <i class="fa fa-edit fa-2x text-success"></i>
+                                                            <i class="fa fa-edit fa-2x txt-success"></i>
                                                         </a>
                                                     @endif
                                                     @if (userCan('candidate.delete'))
                                                         <form action="{{ route('candidate.destroy', $candidate->id) }}"
-                                                            method="POST" class="d-inline">
+                                                            method="POST">
                                                             @method('DELETE')
                                                             @csrf
-                                                            <button
-                                                                onclick="return confirm('{{ __('are_you_sure_you_want_to_delete_this_item') }}');"
-                                                                class="btn ll-p-0">
-                                                                <i class="fa fa-trash-o fa-2x text-danger"></i>
+                                                            <button onclick="return confirm('{{ __('are_you_sure_you_want_to_delete_this_item') }}');" class="btn ll-p-0">
+                                                                <i class="fa fa-trash-o fa-2x txt-danger"></i>
                                                             </button>
                                                         </form>
                                                     @endif
@@ -213,68 +212,9 @@
 
 @endsection
 
-@section('style')
-    <style>
-        .switch {
-            position: relative;
-            display: inline-block;
-            width: 35px;
-            height: 19px;
-        }
-
-        /* Hide default HTML checkbox */
-        .switch input {
-            display: none;
-        }
-
-        /* The slider */
-        .slider {
-            position: absolute;
-            cursor: pointer;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-color: #ccc;
-            -webkit-transition: .4s;
-            transition: .4s;
-        }
-
-        .slider:before {
-            position: absolute;
-            content: "";
-            height: 15px;
-            width: 15px;
-            left: 3px;
-            bottom: 2px;
-            background-color: white;
-            -webkit-transition: .4s;
-            transition: .4s;
-        }
-
-        input.success:checked+.slider {
-            background-color: #28a745;
-        }
-
-        input:checked+.slider:before {
-            -webkit-transform: translateX(15px);
-            -ms-transform: translateX(15px);
-            transform: translateX(15px);
-        }
-
-        /* Rounded sliders */
-        .slider.round {
-            border-radius: 34px;
-        }
-
-        .slider.round:before {
-            border-radius: 50%;
-        }
-    </style>
-@endsection
-
 @section('script')
     <script src="{{ asset('backend') }}/plugins/bootstrap-switch/js/bootstrap-switch.min.js"></script>
+    
     <script>
         $('.status-switch').on('change', function() {
             var status = $(this).prop('checked') == true ? 1 : 0;

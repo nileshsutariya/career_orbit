@@ -1,7 +1,9 @@
 @extends('backend.layouts.app')
+
 @section('title')
     {{ __('update_page') }}
 @endsection
+
 @section('breadcrumbs')
     <div class="row mb-2 mt-4">
         <div class="col-sm-6">
@@ -16,6 +18,7 @@
         </div>
     </div>
 @endsection
+
 @section('content')
     <div class="container-fluid">
         <div class="row justify-content-center ">
@@ -37,8 +40,6 @@
                         @csrf
                         @method('PUT')
                         <div class="card-body">
-
-
                             <div class="mb-2 row">
                                 <x-forms.label name="title" class="col-sm-2" />
                                 <div class="col-sm-10">
@@ -138,14 +139,9 @@
                                     @enderror
                                 </div>
                             </div>
-
                         </div>
                         <div class="card-footer text-end">
-
-                            <button type="submit" class="btn btn-primary">
-                                <i class="fa fa-plus"></i>&nbsp;{{ __('update_page') }}
-                            </button>
-
+                            <button type="submit" class="btn btn-primary"> <i class="fa fa-plus"></i>&nbsp;{{ __('update_page') }} </button>
                         </div>
                     </form>
                 </div>
@@ -153,7 +149,6 @@
         </div>
     </div>
 @endsection
-
 
 @section('style')
     <link rel="stylesheet" href="{{ asset('backend/plugins/dropify/css/dropify.min.css') }}">

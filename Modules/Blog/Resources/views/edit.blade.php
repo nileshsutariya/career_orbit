@@ -120,15 +120,6 @@
 
                                             <p class="tw-text-gray-500 tw-text-xs tw-text-left mt-2 recommended-img-note mb-0">Recommended Image Size: 800x500</p>
                                     </div>
-{{-- 
-                                    <div class="upload-btn-wrapper">
-                                        <input type="file" class="dropify" data-default-file=""
-                                            name="image" accept="image/png, image/jpg, image/jpeg, image/gif"
-                                            data-allowed-file-extensions='["jpg", "jpeg","png", "gif"]'
-                                            data-max-file-size="3M">
-                                            <p class="tw-text-gray-500 tw-text-xs tw-text-left mt-2 recommended-img-note mb-0">Recommended Image Size: 800x500</p>
-                                    </div> --}}
-
 
                                     @error('image')
                                         <span class="invalid-feedback d-block"

@@ -61,8 +61,8 @@
                                                             @if (userCan('testimonial.update'))
                                                                 <a title="{{ __('edit') }}"
                                                                     href="{{ route('module.testimonial.edit', $testimonial->id) }}"
-                                                                    class="btn btn-sm btn-success"><i
-                                                                        class="fa fa-edit"></i></a>
+                                                                    class="btn "><i
+                                                                        class="txt-success fa fa-edit fa-2x"></i></a>
                                                             @endif
                                                             @if (userCan('testimonial.delete'))
                                                                 <form
@@ -72,8 +72,8 @@
                                                                     @csrf
                                                                     <button title="{{ __('delete') }}"
                                                                         onclick="return confirm('{{ __('are_you_sure_you_want_to_delete_this_item') }}');"
-                                                                        class="btn btn-sm btn-danger"><i
-                                                                            class="fa fa-trash"></i></button>
+                                                                        class="btn"><i
+                                                                            class="txt-danger fa fa-trash fa-2x"></i></button>
                                                                 </form>
                                                             @endif
                                                         </div>
@@ -125,8 +125,8 @@
                                                                 @if (userCan('testimonial.update'))
                                                                     <a title="{{ __('edit') }}"
                                                                         href="{{ route('module.testimonial.edit', $testimonial->id) }}"
-                                                                        class="btn btn-sm btn-success"><i
-                                                                            class="fa fa-edit"></i></a>
+                                                                        class="btn"><i
+                                                                            class="txt-success fa fa-edit fa-2x"></i></a>
                                                                 @endif
                                                                 @if (userCan('testimonial.delete'))
                                                                     <form
@@ -136,8 +136,8 @@
                                                                         @csrf
                                                                         <button title="{{ __('delete') }}"
                                                                             onclick="return confirm('{{ __('are_you_sure_you_want_to_delete_this_item') }}');"
-                                                                            class="btn btn-sm btn-danger"><i
-                                                                                class="fa fa-trash"></i></button>
+                                                                            class="btn"><i
+                                                                                class="txt-danger fa fa-trash fa-2x"></i></button>
                                                                     </form>
                                                                 @endif
                                                             </div>

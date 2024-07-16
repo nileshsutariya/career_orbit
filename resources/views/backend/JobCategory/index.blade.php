@@ -1,4 +1,5 @@
 @extends('backend.layouts.app')
+
 @section('title')
     {{ __('job_category_list') }}
 @endsection
@@ -15,10 +16,9 @@
                             </div>
                             <div>
                                 <div class="d-flex flex-row">
-                                    <button class="btn btn-primary" type="button" data-bs-toggle="modal"
-                                        data-bs-target="#tooltipmodal"><i class="fa fa-plus"> </i>
-                                        {{ __('bulk_import') }}</button>
-
+                                    <button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#tooltipmodal"><i class="fa fa-plus"> </i>
+                                        {{ __('bulk_import') }}
+                                    </button>
                                 </div>
                             </div>
                         </div>
@@ -26,7 +26,6 @@
 
                     <div class="card-body">
                         <div class="dt-ext table-responsive theme-scrollbar">
-
                             <table class="table" id="export-button">
                                 <thead>
                                     <tr>
@@ -65,8 +64,7 @@
                                                 @if (userCan('job_category.update'))
                                                     <a href="{{ route('jobCategory.edit', $category->id) }}"
                                                         class="btn">
-                                                        <p class="text-dark"><i class="fa fa-edit"
-                                                                style="font-size: 26px;"></i></p>
+                                                        <i class="fa fa-edit fa-2x txt-success"></i>
                                                     </a>
                                                 @endif
                                                 @if (userCan('job_category.delete'))
@@ -77,8 +75,7 @@
                                                         <button
                                                             onclick="return confirm('{{ __('are_you_sure_you_want_to_delete_this_item') }}');"
                                                             class="btn">
-                                                            <p class="text-dark"><i class="fa fa-trash-o"
-                                                                    style="font-size: 26px;"></i></p>
+                                                            <i class="fa fa-trash-o fa-2x txt-danger"></i>
                                                         </button>
                                                     </form>
                                                 @endif

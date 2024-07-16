@@ -48,9 +48,8 @@
             <div class="col-12 p-0">
                 <div class="login-card login-dark">
                     <div>
-                        <div><a class="logo" href="{{ route('admin.login') }}">
-                                {{-- <img class="img-fluid for-light"
-                                    src="../assets/images/logo/logo.png" alt="looginpage"> --}}
+                        <div>
+                            <a class="logo" href="{{ route('admin.login') }}">
                                 <img class="img-fluid for-dark" src="{{ $setting->dark_logo_url }}"
                                     alt="{{ __('logo') }}">
                             </a>
@@ -62,25 +61,19 @@
                 </div>
             </div>
         </div>
-        <!-- latest jquery-->
+
         <script src="{{ asset('backend/assets/js/jquery.min.js') }}"></script>
-        <!-- Bootstrap js-->
+
         <script src="{{ asset('backend/assets/js/bootstrap/bootstrap.bundle.min.js') }}"></script>
-        <!-- feather icon js-->
+
         <script src="{{ asset('backend/assets/js/icons/feather-icon/feather.min.js') }}"></script>
         <script src="{{ asset('backend/assets/js/icons/feather-icon/feather-icon.js') }}"></script>
-        <!-- scrollbar js-->
-        <!-- Sidebar jquery-->
+
         <script src="{{ asset('backend/assets/js/config.js') }}"></script>
-        <!-- Plugins JS start-->
-        <!-- calendar js-->
-        <!-- Plugins JS Ends-->
-        <!-- Theme js-->
+
         <script src="{{ asset('backend/assets/js/script.js') }}"></script>
-        <!-- Plugin used-->
+
     </div>
-
-
 </body>
 
 </html>

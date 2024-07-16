@@ -71,20 +71,6 @@
     <link rel="manifest" href="{{ asset('/manifest.json') }}">
 @endif
 <!-- PWA Meta Theme color and link End -->
-
-<style>
-    :root {
-        --sidebar-bg-color: {{ $setting->sidebar_color }} !important;
-        --sidebar-txt-color: {{ $setting->sidebar_txt_color }} !important;
-        --top-nav-bg-color: {{ $setting->nav_color }} !important;
-        --top-nav-txt-color: {{ $setting->nav_txt_color }} !important;
-        --main-color: {{ $setting->main_color }} !important;
-        --accent-color: {{ $setting->accent_color }} !important;
-
-        /* For PWA Theme Color as it is Frontend  */
-        --primary-500: {{ $primaryColor }} !important;
-    }
-</style>
 <style>
     .text-red {
         color: red;

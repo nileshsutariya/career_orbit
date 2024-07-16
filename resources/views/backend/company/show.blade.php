@@ -120,7 +120,7 @@
 
                                                             <p class="{{ $company->user->status == 1 ? 'active' : '' }}"
                                                                 id="status_{{ $company->user_id }}">
-                                                                {{ $company->user->status == 1 ? __('activated') : __('deactivated') }}
+                                                                {{ $company->user->status == 1 ? _('activated') : _('deactivated') }}
                                                             </p>
                                                         </a>
                                                     </div>
@@ -140,7 +140,7 @@
 
                                                             <p class="{{ $company->user->email_verified_at ? 'active' : '' }}"
                                                                 id="verification_status_{{ $company->user_id }}">
-                                                                {{ $company->user->email_verified_at ? __('verified') : __('unverified') }}
+                                                                {{ $company->user->email_verified_at ? _('verified') : _('unverified') }}
                                                             </p>
                                                         </a>
                                                     </div>
@@ -201,17 +201,18 @@
                                                 </li>
 
                                                 <li class="d-flex align-items-center col-md-4">
-                                                    @if ($company->website)
+                                                   
                                                         <div class="flex-shrink-0 m-r-10"> <x-svg.details-globe-simple />
                                                         </div>
                                                         <div class="flex-grow-1">
                                                             <h5> {{ __('website') }}</h5>
-
+                                                            @if ($company->website)
                                                             <p> <strong> <a href="{{ $company->website }}"
                                                                         target="_blank">{{ $company->website ? $company->website : '' }}</a></strong>
                                                             </p>
+                                                            @endif
                                                         </div>
-                                                    @endif
+                                                    
                                                 </li>
 
                                                 <li class="d-flex align-items-center col-md-4">
@@ -242,7 +243,7 @@
                                                     @endif
                                                 </li>
                                                 <li class="d-flex align-items-center col-md-4">
-                                                    @if ($user->contactInfo && $user->contactInfo->phone)
+                                                   
                                                         <div class="flex-shrink-0 m-r-10"> <svg width="24"
                                                                 height="25" xmlns="http://www.w3.org/2000/svg"
                                                                 fill="none" viewBox="0 0 24 24" stroke-width="1.5"
@@ -260,7 +261,7 @@
                                                                     </a>
                                                                 </strong> </p>
                                                         </div>
-                                                    @endif
+                                                    
                                                 </li>
 
                                             </div>
@@ -270,26 +271,6 @@
                                     </div>
                                 </div>
                             </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
                             <div class="col-md-6">
                                 <div class="card">

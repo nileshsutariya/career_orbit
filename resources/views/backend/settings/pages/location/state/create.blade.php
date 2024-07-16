@@ -1,7 +1,9 @@
 @extends('backend.settings.setting-layout')
+
 @section('title')
     {{ __('create_state') }}
 @endsection
+
 @section('website-settings')
     <div class="container-fluid">
         <div class="row justify-content-center">
@@ -12,11 +14,8 @@
                             <h4>{{ __('create_state') }}</h4>
                         </div>
                         <div class="float-end">
-                            <a href="{{ route('location.state.state') }}" class="btn bg-primary "><i
-                                    class="fa fa-arrow-left"></i>&nbsp; {{ __('back') }}</a>
+                            <a href="{{ route('location.state.state') }}" class="btn bg-primary "><i class="fa fa-arrow-left"></i>&nbsp; {{ __('back') }}</a>
                         </div>
-
-
                     </div>
                     <div class="card-body">
 
@@ -73,8 +72,7 @@
                             </div>
                             <div class="form-group row">
                                 <div class="text-end">
-                                    <button type="submit" class="btn btn-primary"><i
-                                            class="fa fa-plus"></i>&nbsp;{{ __('create') }}</button>
+                                    <button type="submit" class="btn btn-primary"><i class="fa fa-plus"></i>&nbsp;{{ __('create') }}</button>
                                 </div>
                             </div>
                         </form>
@@ -84,66 +82,4 @@
             </div>
         </div>
     </div>
-@endsection
-
-
-@section('style')
-    {{-- <link rel="stylesheet"
-        href="{{ asset('backend') }}/plugins/bootstrap-iconpicker/dist/css/bootstrap-iconpicker.min.css" />
-    <link rel="stylesheet" href="{{ asset('backend') }}/plugins/select2/css/select2.min.css">
-    <link rel="stylesheet" href="{{ asset('backend') }}/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">
-
-    <style>
-        .select2-results__option[aria-selected=true] {
-            display: none;
-        }
-
-        .select2-container--bootstrap4 .select2-selection--multiple .select2-selection__choice {
-            color: #fff;
-            border: 1px solid #fff;
-            background: #007bff;
-            border-radius: 30px;
-        }
-
-        .select2-container--bootstrap4 .select2-selection--multiple .select2-selection__choice__remove {
-            color: #fff;
-        }
-    </style> --}}
-@endsection
-
-@section('script')
-    <script type="text/javascript"
-        src="{{ asset('backend') }}/plugins/bootstrap-iconpicker/dist/js/bootstrap-iconpicker.bundle.min.js"></script>
-    <script src="{{ asset('backend') }}/plugins/select2/js/select2.full.min.js"></script>
-    <script>
-        // //Initialize Select2 Elements
-        // $('.select2bs4').select2({
-        //     theme: 'bootstrap4'
-        // })
-
-
-        $('#target').iconpicker({
-            align: 'left', // Only in div tag
-            arrowClass: 'btn-danger',
-            arrowPrevIconClass: 'fas fa-angle-left',
-            arrowNextIconClass: 'fas fa-angle-right',
-            cols: 15,
-            footer: true,
-            header: true,
-            icon: 'flag-icon-gb',
-            iconset: 'flagicon',
-            labelHeader: '{0} of {1} pages',
-            labelFooter: '{0} - {1} of {2} icons',
-            placement: 'bottom', // Only in button tag
-            rows: 5,
-            search: true,
-            searchText: 'Search',
-            selectedClass: 'btn-success',
-            unselectedClass: ''
-        });
-
-        $('#target').on('change', function(e) {
-            $('#icon').val(e.icon)
-        });
-    </script>
 @endsection

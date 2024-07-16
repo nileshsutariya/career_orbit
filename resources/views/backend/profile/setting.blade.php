@@ -1,7 +1,9 @@
 @extends('backend.layouts.app')
+
 @section('title')
     {{ __('settings') }}
 @endsection
+
 @section('breadcrumbs')
     <div class="row mb-2">
         <div class="col-sm-6">
@@ -96,11 +98,7 @@
                             <label for="change-password-visibility">
                             </label>
                         </div>
-
-
                     </div>
-
-
 
                     <div id="password_visibility" class="{{ old('isPasswordChange') ? 'd-block' : 'd-none' }}">
                         <div class="mb-3">
@@ -140,14 +138,9 @@
                         <button class="btn btn-primary btn-block">Update</button>
                     </div>
 
-
-
-
-
                 </form>
 
             </div>
-
 
         </div>
     </div>

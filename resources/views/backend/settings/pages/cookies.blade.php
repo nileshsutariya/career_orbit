@@ -1,4 +1,5 @@
 @extends('backend.settings.setting-layout')
+
 @section('title')
     {{ __('gdpr_cookie_consent') }}
 @endsection

@@ -4,8 +4,6 @@ $languages = loadLanguage();
 $current_language = currentLanguage() ? currentLanguage() : loadDefaultLanguage();
 @endphp
 
-
-
 <div class="row">
     <div class="nav-right col-xxl-8 col-xl-6 col-md-7 col-8 pull-right right-header p-0 ms-auto">
         <ul class="nav-menus">
@@ -96,7 +94,6 @@ $current_language = currentLanguage() ? currentLanguage() : loadDefaultLanguage(
                     </svg>
                 </div>
             </li>
-
 
             <li class="profile-nav onhover-dropdown px-0 py-0">
                 <div class="d-flex profile-media align-items-center"><img class="img-30"

@@ -386,13 +386,13 @@
                                                         @if (userCan('company.view'))
                                                             <a href="{{ route('company.show', $company->id) }}"
                                                                 class="btn ll-btn ll-border-none">
-                                                                <i class="fa fa-eye fa-2x"></i>
+                                                                <i class="txt-secondary fa fa-eye fa-2x"></i>
                                                             </a>
                                                         @endif
                                                         @if (userCan('company.update'))
                                                             <a href="{{ route('company.edit', $company->id) }}"
                                                                 class="btn ll-p-0">
-                                                                <p class="text-dark"><i class="fa fa-edit fa-2x"></i></p>
+                                                                <i class="txt-success fa fa-edit fa-2x"></i>
                                                             </a>
                                                         @endif
                                                         @if (userCan('company.delete'))
@@ -403,8 +403,7 @@
                                                                 <button
                                                                     onclick="return confirm('{{ __('are_you_sure_you_want_to_delete_this_item') }}');"
                                                                     class="btn ll-p-0">
-                                                                    <p class="text-dark"><i
-                                                                            class="fa fa-trash-o fa-2x"></i></p>
+                                                                    <i class="txt-danger fa fa-trash-o fa-2x"></i>
                                                                 </button>
                                                             </form>
                                                         @endif

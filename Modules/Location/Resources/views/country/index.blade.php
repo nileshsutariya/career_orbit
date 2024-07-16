@@ -3,109 +3,6 @@
     {{ __('country_list') }}
 @endsection
 
-@section('style')
-    <style>
-        /* Extra small devices (phones, 600px and down) */
-        @media only screen and (max-width: 600px) {
-            .customRow1 {
-                margin-top: 10px;
-            }
-
-            .customRow2 {
-                margin-top: 10px;
-                padding-left: 15px;
-                padding-right: 15px;
-            }
-
-            .customdiv1 {
-                margin-top: 5px;
-                margin-right: .5rem !important;
-            }
-
-            .customdiv2 {
-                margin-top: 5px;
-                margin-right: .5rem !important;
-            }
-
-            .customdiv3 {
-                margin-top: 5px;
-                margin-bottom: 5px;
-                margin-right: .5rem !important;
-            }
-        }
-    </style>
-
-    <link rel="stylesheet" href="{{ asset('backend') }}/plugins/flagicon/dist/css/flag-icon.min.css" />
-    <link rel="stylesheet" href="{{ asset('backend') }}/plugins/flagicon/dist/css/bootstrap-iconpicker.min.css" />
-    <link rel="stylesheet" href="{{ asset('backend') }}/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
-@endsection
-
-@section('script')
-    {{-- Flat Icon Css Link --}}
-    <script src="{{ asset('backend') }}/plugins/flagicon/dist/js/bootstrap-iconpicker.bundle.min.js"></script>
-
-    <script>
-        $("#checkboxAll").on('click', function() {
-            $('input:checkbox').not(this).prop('checked', this.checked);
-            SelectIds();
-        });
-        $(".sub_chk").on('click', function() {
-            SelectIds();
-        });
-
-        function SelectIds() {
-
-            var Ids = [];
-            $(".sub_chk:checked").each(function() {
-                Ids.push($(this).attr('data-id'));
-            });
-            $('#selectedCount').html(parseInt(Ids.length));
-            if (Ids != 0) {
-                // Show Delete Button
-                $('#DeleteButton').removeClass('d-none');
-            } else {
-                // Hide Delete Button
-                $('#DeleteButton').addClass('d-none');
-            }
-        }
-
-        function MultiDelete() {
-
-            var Ids = [];
-            $(".sub_chk:checked").each(function() {
-                Ids.push($(this).attr('data-id'));
-            });
-
-            if (Ids != 0) {
-
-                if (confirm("{{ __('are_you_sure_you_want_to_delete_this_item') }}") == true) {
-                    AjaxCall(Ids);
-                } else {
-                    return false;
-                }
-
-            } else {
-                alert('Please Select First');
-            }
-        }
-
-        function AjaxCall(value) {
-            $.ajax({
-                url: "{{ route('module.country.multiple.delete') }}",
-                type: "Delete",
-                data: {
-                    ids: value,
-                    _token: '{{ csrf_token() }}'
-                },
-                dataType: 'json',
-                success: function(result) {
-                    location.reload();
-                }
-            });
-        };
-    </script>
-@endsection
-
 
 
 @section('content')
@@ -232,15 +129,11 @@
                                                     {{ $country->id }}
                                                 </td>
                                                 <td>
-
                                                     <img class="img-60 img-h-60" src="{{ asset($country->image) }}"
                                                         alt="{{ $country->name }}">
-
                                                 </td>
                                                 <td>
-
                                                     {{ $country->name }}
-
                                                 </td>
                                                 @if (userCan('country.update') || userCan('country.delete'))
                                                     <td>
@@ -250,7 +143,7 @@
                                                                     title="{{ __('edit') }}"
                                                                     href="{{ route('module.country.edit', $country->id) }}"
                                                                     class="btn"> <i
-                                                                        class="text-dark fa fa-edit fa-2x"></i>
+                                                                        class="txt-success fa fa-edit fa-2x"></i>
                                                                 </a>
                                                             @endif
                                                             @if (userCan('country.delete'))
@@ -263,7 +156,7 @@
                                                                         title="{{ __('delete') }}"
                                                                         onclick="return confirm('{{ __('are_you_sure_you_want_to_delete_this_item') }}');"
                                                                         class="btn"> <i
-                                                                            class="text-dark fa fa-trash-o fa-2x"></i></button>
+                                                                            class="txt-danger fa fa-trash-o fa-2x"></i></button>
                                                                 </form>
                                                             @endif
                                                         </div>
@@ -293,3 +186,109 @@
 
     </div>
 @endsection
+
+
+@section('style')
+    <style>
+        /* Extra small devices (phones, 600px and down) */
+        @media only screen and (max-width: 600px) {
+            .customRow1 {
+                margin-top: 10px;
+            }
+
+            .customRow2 {
+                margin-top: 10px;
+                padding-left: 15px;
+                padding-right: 15px;
+            }
+
+            .customdiv1 {
+                margin-top: 5px;
+                margin-right: .5rem !important;
+            }
+
+            .customdiv2 {
+                margin-top: 5px;
+                margin-right: .5rem !important;
+            }
+
+            .customdiv3 {
+                margin-top: 5px;
+                margin-bottom: 5px;
+                margin-right: .5rem !important;
+            }
+        }
+    </style>
+
+    <link rel="stylesheet" href="{{ asset('backend') }}/plugins/flagicon/dist/css/flag-icon.min.css" />
+    <link rel="stylesheet" href="{{ asset('backend') }}/plugins/flagicon/dist/css/bootstrap-iconpicker.min.css" />
+    <link rel="stylesheet" href="{{ asset('backend') }}/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
+@endsection
+
+@section('script')
+    {{-- Flat Icon Css Link --}}
+    <script src="{{ asset('backend') }}/plugins/flagicon/dist/js/bootstrap-iconpicker.bundle.min.js"></script>
+
+    <script>
+        $("#checkboxAll").on('click', function() {
+            $('input:checkbox').not(this).prop('checked', this.checked);
+            SelectIds();
+        });
+        $(".sub_chk").on('click', function() {
+            SelectIds();
+        });
+
+        function SelectIds() {
+
+            var Ids = [];
+            $(".sub_chk:checked").each(function() {
+                Ids.push($(this).attr('data-id'));
+            });
+            $('#selectedCount').html(parseInt(Ids.length));
+            if (Ids != 0) {
+                // Show Delete Button
+                $('#DeleteButton').removeClass('d-none');
+            } else {
+                // Hide Delete Button
+                $('#DeleteButton').addClass('d-none');
+            }
+        }
+
+        function MultiDelete() {
+
+            var Ids = [];
+            $(".sub_chk:checked").each(function() {
+                Ids.push($(this).attr('data-id'));
+            });
+
+            if (Ids != 0) {
+
+                if (confirm("{{ __('are_you_sure_you_want_to_delete_this_item') }}") == true) {
+                    AjaxCall(Ids);
+                } else {
+                    return false;
+                }
+
+            } else {
+                alert('Please Select First');
+            }
+        }
+
+        function AjaxCall(value) {
+            $.ajax({
+                url: "{{ route('module.country.multiple.delete') }}",
+                type: "Delete",
+                data: {
+                    ids: value,
+                    _token: '{{ csrf_token() }}'
+                },
+                dataType: 'json',
+                success: function(result) {
+                    location.reload();
+                }
+            });
+        };
+    </script>
+@endsection
+
+

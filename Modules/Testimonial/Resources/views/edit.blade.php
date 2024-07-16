@@ -85,14 +85,25 @@
                                 <div class="mb-3 row">
                                     <label class="col-sm-3">{{ __('stars') }}<span class="text-danger">*</span></label>
                                     <div class="col-sm-9">
-                                        {{--  <div id="rateYo"></div>
+                                        
+
+                                        <div class="main-star-rating">
+                                            <div class="common-flex star-box justify-content-center">
+                                                <i class="fa fa-star" data-index="1"></i>
+                                                <i class="fa fa-star" data-index="2"></i>
+                                                <i class="fa fa-star" data-index="3"></i>
+                                                <i class="fa fa-star" data-index="4"></i>
+                                                <i class="fa fa-star" data-index="5"></i>
+                                            </div>
+                                        </div>
+    
+                                      
                                         <input value="{{ $testimonial->stars }}" type="hidden" name="stars"
                                             id="rating" class="form-control @error('stars') is-invalid @enderror">
                                         @error('stars')
                                             <span class="invalid-feedback"
                                                 role="alert"><strong>{{ $message }}</strong></span>
-                                        @enderror --}}
-
+                                        @enderror 
                                     </div>
                                 </div>
 
@@ -147,17 +158,25 @@
 @endsection
 
 @section('script')
-    <script src="{{ asset('backend/js/jquery.rateyo.min.js') }}"></script>
-    <script>
-        $("#rateYo").rateYo({
-            starWidth: '30px',
-            fullStar: true,
-            mormalFill: 'yellow',
-            ratedFill: '#ffc107',
-            rating: {{ $testimonial->stars }},
-            onSet: function(rating, rateYoInstance) {
-                $('#rating').val(rating);
-            }
-        });
-    </script>
+<script>
+    $(document).ready(function() {
+    $('.fa-star').click(function() {
+        var index = $(this).data('index');
+        var isActive = $(this).hasClass('active');
+
+        if (isActive) {
+            $(this).removeClass('active');
+            $(this).nextAll('.fa-star').removeClass('active');
+            var rating = $('.fa-star.active').length;
+            $('#rating').val(rating);
+        } else {
+            $('.fa-star').removeClass('active');
+            $(this).addClass('active');
+            $(this).prevAll('.fa-star').addClass('active');
+            var rating = $('.fa-star.active').length;
+            $('#rating').val(rating);
+        }
+    });
+});
+</script>
 @endsection

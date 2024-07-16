@@ -32,7 +32,7 @@
                 <div class="card-body">
                     <div class="dt-ext table-responsive theme-scrollbar">
 
-                        <table class="display" id="keytable">
+                        <table class="display" id="export-button">
                             @if ($emails->count() > 0)
                                 <thead>
                                     <tr>
@@ -60,8 +60,8 @@
                                                     <button data-toggle="tooltip" data-placement="top"
                                                         title="{{ __('delete_email') }}"
                                                         onclick="return confirm('{{ __('are_you_sure_you_want_to_delete_this_item') }}');"
-                                                        class="btn btn-danger">
-                                                        <i class="fa fa-trash"></i>
+                                                        class="btn">
+                                                        <i class="txt-danger fa fa-trash"></i>
                                                     </button>
                                                 </form>
                                             </td>

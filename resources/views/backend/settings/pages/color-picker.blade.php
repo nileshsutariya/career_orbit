@@ -1,4 +1,5 @@
 @extends('backend.settings.setting-layout')
+
 @section('title')
     {{ __('color_settings') }}
 @endsection

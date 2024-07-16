@@ -216,7 +216,7 @@
                                         <a data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Edit"
                                             title="{{ __('edit') }}" href="{{ route('module.blog.edit', $post->id) }}"
                                             class="btn">
-                                            <i class="fa fa-edit fa-2x"> </i></a>
+                                            <i class="txt-success fa fa-edit fa-2x"> </i></a>
                                         @endif
                                         @if (userCan('post.delete'))
                                         <form action="{{ route('module.blog.destroy', $post->id) }}" method="POST"
@@ -227,7 +227,7 @@
                                                 data-bs-title="Delete" title="{{ __('delete') }}"
                                                 onclick="return confirm('{{ __('are_you_sure_you_want_to_delete_this_item') }}');"
                                                 class="btn">
-                                                <i class="text-dark fa fa-trash-o fa-2x"></i>
+                                                <i class="txt-danger fa fa-trash-o fa-2x"></i>
                                             </button>
 
 

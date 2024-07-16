@@ -1,8 +1,11 @@
 @extends('backend.layouts.app')
+
 @section('title')
 {{ __('edit_candidate') }}
 @endsection
+
 @section('content')
+
 @if (userCan('candidate.create'))
 <div class="container-fluid">
     <form action="{{ route('candidate.update', $candidate->id) }}" method="POST" enctype="multipart/form-data">
@@ -14,10 +17,8 @@
                     <h4 class="card-title">{{ __('edit_candidate') }}</h4>
                 </div>
                 <div class="float-end">
-                    <button type="submit"
-                        class="btn bg-primary float-right d-flex align-items-center justify-content-center">
-                        <i class="fa fa-refresh"></i>&nbsp;
-                        {{ __('save') }}
+                    <button type="submit" class="btn bg-primary float-right d-flex align-items-center justify-content-center">
+                        <i class="fa fa-refresh"></i>&nbsp; {{ __('save') }}
                     </button>
                 </div>
             </div>
@@ -25,22 +26,18 @@
         <div class="row">
             <div class="col-md-6">
                 <div class="card">
-                    <div class="card-header">
-                        {{ __('account_details') }}
-                    </div>
+                    <div class="card-header"> {{ __('account_details') }} </div>
                     <div class="card-body row">
                         <div class="col-md-12 mb-2">
                             <div class="form-group">
                                 <x-forms.label name="name" />
-                                <x-forms.input type="text" name="name" placeholder="name"
-                                    value="{{ old('name', $user->name) }}" />
+                                <x-forms.input type="text" name="name" placeholder="name" value="{{ old('name', $user->name) }}" />
                             </div>
                         </div>
                         <div class="col-md-6 mb-2">
                             <div class="form-group">
                                 <x-forms.label name="email" />
-                                <x-forms.input type="email" value="{{ old('email', $user->email) }}" name="email"
-                                    placeholder="email" />
+                                <x-forms.input type="email" value="{{ old('email', $user->email) }}" name="email" placeholder="email" />
                             </div>
                         </div>
                         <div class="col-md-6">
@@ -55,16 +52,12 @@
                 </div>
                 <div class="card">
                     @if (config('templatecookie.map_show'))
-                    <div class="card-header">
-                        {{ __('location') }}
+                    <div class="card-header"> {{ __('location') }}
                         <span class="text-red font-weight-bold">*</span>
-                        <small class="h6">
-                            ({{ __('click_to_add_a_pointer') }})
-                        </small>
+                        <small class="h6"> ({{ __('click_to_add_a_pointer') }}) </small>
                     </div>
                     <div class="card-body map-z-index">
                         <x-website.map.map-warning />
-
                         @php
                         $map = $setting->default_map;
                         @endphp
@@ -80,7 +73,6 @@
                         @error('location')
                         <span class="ml-3 text-md text-danger">{{ $message }}</span>
                         @enderror
-
                     </div>
                     @php
                     $location = session()->get('location');
@@ -130,35 +122,28 @@
             </div>
             <div class="col-md-6">
                 <div class="card">
-                    <div class="card-header">
-                        {{ __('image') }}
-                    </div>
+                    <div class="card-header"> {{ __('image') }} </div>
                     <div class="card-body">
                         <div class="row">
                             <div class="col-md-12">
                                 <x-forms.label name="image" />
-                                <input name="image" type="file"  data-show-errors="true"
-                                    data-width="100%" data-default-file="{{ asset($candidate->photo) }}"
-                                    class="dropify">
+                                <input name="image" type="file" data-show-errors="true" data-width="100%"
+                                    data-default-file="{{ asset($candidate->photo) }}" class="dropify">
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="card">
-                    <div class="card-header">
-                        {{ __('files') }}
-                    </div>
+                    <div class="card-header"> {{ __('files') }} </div>
                     <div class="card-body">
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <x-forms.label name="cv" />
                                     <div class="custom-file">
-                                        <input name="cv" type="file"
-                                            class="custom-file-input form-control @error('cv') is-invalid @enderror">
-                                        {{-- <label class="custom-file-label" for="cvInputFile">{{ __('choose_cv') }}</label> --}}
+                                        <input name="cv" type="file" class="custom-file-input form-control @error('cv') is-invalid @enderror">
                                         @error('cv')
-                                        <span class="error invalid-feedback">{{ $message }}</span>
+                                            <span class="error invalid-feedback">{{ $message }}</span>
                                         @enderror
                                     </div>
                                 </div>
@@ -169,9 +154,7 @@
             </div>
             <div class="col-12">
                 <div class="card">
-                    <div class="card-header">
-                        {{ __('profile_details') }}
-                    </div>
+                    <div class="card-header"> {{ __('profile_details') }} </div>
                     <div class="card-body">
                         <div class="row">
                             <div class="col-md-4 mb-2">
@@ -180,15 +163,15 @@
                                     <select name="profession_id" id="profession"
                                         class="select2 form-control @error('profession_id') is-invalid @enderror">
                                         @foreach ($professions as $profession)
-                                        <option {{ $profession->id == old('profession_id', $candidate->profession_id) ?
-                                            'selected' : '' }}
-                                            value="{{ $profession->id }}">
-                                            {{ $profession->name }}
-                                        </option>
+                                            <option {{ $profession->id == old('profession_id', $candidate->profession_id) ?
+                                                'selected' : '' }}
+                                                value="{{ $profession->id }}">
+                                                {{ $profession->name }}
+                                            </option>
                                         @endforeach
                                     </select>
                                     @error('profession_id')
-                                    <span class="invalid-feedback" role="alert">{{ __($message) }}</span>
+                                        <span class="invalid-feedback" role="alert">{{ __($message) }}</span>
                                     @enderror
                                 </div>
                             </div>
@@ -198,47 +181,44 @@
                                     <select name="experience" id="experience"
                                         class="form-control select2 @error('experience') is-invalid @enderror">
                                         @foreach ($experiences as $experience)
-                                        <option {{ old('experience', $candidate->experience_id) == $experience->id ?
-                                            'selected' : '' }}
-                                            value="{{ $experience->id }}">{{ $experience->name }}
-                                        </option>
+                                            <option {{ old('experience', $candidate->experience_id) == $experience->id ?
+                                                'selected' : '' }}
+                                                value="{{ $experience->id }}">{{ $experience->name }}
+                                            </option>
                                         @endforeach
                                     </select>
                                     @error('experience')
-                                    <span class="invalid-feedback" role="alert">{{ __($message) }}</span>
+                                        <span class="invalid-feedback" role="alert">{{ __($message) }}</span>
                                     @enderror
                                 </div>
                             </div>
                             <div class="col-md-4 mb-2">
                                 <div class="form-group">
                                     <x-forms.label name="job_role" />
-                                    <select name="role_id"
-                                        class="form-control select2 @error('role_id') is-invalid @enderror"
-                                        id="role_id">
+                                    <select name="role_id" class="form-control select2 @error('role_id') is-invalid @enderror" id="role_id">
                                         <option value=""> {{ __('select_one') }}</option>
                                         @foreach ($job_roles as $role)
-                                        <option {{ old('role_id', $candidate->role_id) == $role->id ? 'selected' : '' }}
-                                            value="{{ $role->id }}"> {{ $role->name }}</option>
+                                            <option {{ old('role_id', $candidate->role_id) == $role->id ? 'selected' : '' }}
+                                                value="{{ $role->id }}"> {{ $role->name }}</option>
                                         @endforeach
                                     </select>
                                     @error('role_id')
-                                    <span class="invalid-feedback" role="alert">{{ __($message) }}</span>
+                                        <span class="invalid-feedback" role="alert">{{ __($message) }}</span>
                                     @enderror
                                 </div>
                             </div>
                             <div class="col-md-4 mb-2">
                                 <div class="form-group">
                                     <x-forms.label name="education" />
-                                    <select name="education" id="education"
-                                        class="form-control select2 @error('education') is-invalid @enderror">
+                                    <select name="education" id="education" class="form-control select2 @error('education') is-invalid @enderror">
                                         @foreach ($educations as $education)
-                                        <option {{ $education->id == old('education_id', $candidate->education_id) ?
-                                            'selected' : '' }}
-                                            value="{{ $education->id }}"> {{ $education->name }}</option>
+                                            <option {{ $education->id == old('education_id', $candidate->education_id) ? 'selected' : '' }}
+                                                value="{{ $education->id }}"> {{ $education->name }}
+                                            </option>
                                         @endforeach
                                     </select>
                                     @error('education')
-                                    <span class="invalid-feedback" role="alert">{{ __($message) }}</span>
+                                        <span class="invalid-feedback" role="alert">{{ __($message) }}</span>
                                     @enderror
                                 </div>
                             </div>
@@ -255,19 +235,17 @@
                                             {{ __('other') }}</option>
                                     </select>
                                     @error('gender')
-                                    <span class="invalid-feedback" role="alert">{{ __($message) }}</span>
+                                        <span class="invalid-feedback" role="alert">{{ __($message) }}</span>
                                     @enderror
                                 </div>
                             </div>
                             <div class="col-md-4 mb-2">
                                 <div class="form-group">
                                     <x-forms.label name="website" />
-                                    <input type="text" id="website" name="website"
-                                        value="{{ old('website', $candidate->website) }}"
-                                        class="form-control @error('website') is-invalid @enderror"
-                                        placeholder="{{ __('website') }}">
+                                    <input type="text" id="website" name="website" value="{{ old('website', $candidate->website) }}"
+                                        class="form-control @error('website') is-invalid @enderror" placeholder="{{ __('website') }}">
                                     @error('website')
-                                    <span class="invalid-feedback" role="alert">{{ __($message) }}</span>
+                                        <span class="invalid-feedback" role="alert">{{ __($message) }}</span>
                                     @enderror
                                 </div>
                             </div>
@@ -278,7 +256,7 @@
                                         class="form-control @error('birth_date') is-invalid @enderror" name="birth_date"
                                         id="birth_date" placeholder="{{ __('birth_date') }}">
                                     @error('birth_date')
-                                    <span class="invalid-feedback" role="alert">{{ __($message) }}</span>
+                                        <span class="invalid-feedback" role="alert">{{ __($message) }}</span>
                                     @enderror
                                 </div>
                             </div>
@@ -296,7 +274,7 @@
                                             {{ __('single') }}</option>
                                     </select>
                                     @error('marital_status')
-                                    <span class="invalid-feedback" role="alert">{{ __($message) }}</span>
+                                        <span class="invalid-feedback" role="alert">{{ __($message) }}</span>
                                     @enderror
                                 </div>
                             </div>
@@ -306,13 +284,14 @@
                                     <select id="skills" name="skills[]"
                                         class="select2 form-control @error('skills') is-invalid @enderror" multiple>
                                         @foreach ($skills as $skill)
-                                        <option {{ $candidate->skills ? (in_array($skill->id,
-                                            $candidate->skills->pluck('id')->toArray()) ? 'selected' : '') : '' }}
-                                            value="{{ $skill->id }}">{{ $skill->name }}</option>
+                                            <option {{ $candidate->skills ? (in_array($skill->id,
+                                                $candidate->skills->pluck('id')->toArray()) ? 'selected' : '') : '' }}
+                                                value="{{ $skill->id }}">{{ $skill->name }}
+                                            </option>
                                         @endforeach
                                     </select>
                                     @error('skills')
-                                    <span class="invalid-feedback" role="alert">{{ __($message) }}</span>
+                                        <span class="invalid-feedback" role="alert">{{ __($message) }}</span>
                                     @enderror
                                 </div>
                             </div>
@@ -322,13 +301,14 @@
                                     <select id="languages" name="languages[]" multiple
                                         class="select2 form-control @error('languages') is-invalid @enderror">
                                         @foreach ($candidate_languages as $language)
-                                        <option {{ $candidate->languages ? (in_array($language->id,
-                                            $candidate->languages->pluck('id')->toArray()) ? 'selected' : '') : '' }}
-                                            value="{{ $language->id }}">{{ $language->name }}</option>
+                                            <option {{ $candidate->languages ? (in_array($language->id,
+                                                $candidate->languages->pluck('id')->toArray()) ? 'selected' : '') : '' }}
+                                                value="{{ $language->id }}">{{ $language->name }}
+                                            </option>
                                         @endforeach
                                     </select>
                                     @error('languages')
-                                    <span class="invalid-feedback" role="alert">{{ __($message) }}</span>
+                                        <span   span class="invalid-feedback" role="alert">{{ __($message) }}</span>
                                     @enderror
                                 </div>
                             </div>
@@ -339,7 +319,7 @@
                                         value="{{ old('bio') }}" class="form-control @error('bio') is-invalid @enderror"
                                         id="bio" cols="1" rows="4">{!! $candidate->bio !!}</textarea>
                                     @error('bio')
-                                    <span class="invalid-feedback" role="alert">{{ __($message) }}</span>
+                                        <span class="invalid-feedback" role="alert">{{ __($message) }}</span>
                                     @enderror
                                 </div>
                             </div>
@@ -353,30 +333,7 @@
 @endif
 @endsection
 @section('style')
-{{--
-<link rel="stylesheet" href="{{ asset('backend') }}/plugins/select2/css/select2.min.css">
-<link rel="stylesheet" href="{{ asset('backend') }}/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">
-<link rel="stylesheet" href="{{ asset('frontend') }}/assets/css/bootstrap-datepicker.min.css"> --}}
-{{-- <style>
-    .ck-editor__editable_inline {
-        min-height: 300px;
-    }
 
-    .select2-results__option[aria-selected=true] {
-        display: none;
-    }
-
-    .select2-container--bootstrap4 .select2-selection--multiple .select2-selection__choice {
-        color: #fff;
-        border: 1px solid #fff;
-        background: #007bff;
-        border-radius: 30px;
-    }
-
-    .select2-container--bootstrap4 .select2-selection--multiple .select2-selection__choice__remove {
-        color: #fff;
-    }
-</style> --}}
 <!-- >=>Leaflet Map<=< -->
 <x-map.leaflet.map_links />
 <x-map.leaflet.autocomplete_links />
@@ -386,47 +343,26 @@
 
 @section('script')
 @livewireScripts
-<script>
-    // $(document).ready(function() {
-        //     $('.select21').select2();
-        // });
-        // window.addEventListener('render-select2', event => {
-        //     console.log('fired');
-        //     $('.select21').select2();
-        // })
-</script>
+
 @stack('js')
-{{-- <script src="{{ asset('backend/plugins/select2/js/select2.full.min.js') }}"></script>
-<script src="{{ asset('frontend/assets/js/bootstrap-datepicker.min.js') }}"></script>
-<script src="{{ asset('frontend') }}/assets/js/axios.min.js"></script>
-<script src="{{ asset('backend') }}/plugins/dropify/js/dropify.min.js"></script> --}}
-@if (app()->getLocale() == 'ar')
-<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/locales/bootstrap-datepicker.ar.min.js
-                                            "></script>
-@endif
+
 <script>
     $('#customFile').on('change', function(event) {
-            $('#defaulthide').addClass('d-block')
-            $('#defaulthide').removeClass('d-none')
+        $('#defaulthide').addClass('d-block')
+        $('#defaulthide').removeClass('d-none')
+    });
+    
+    // dropify image
+    $('.dropify').dropify();
+
+    //init datepicker
+    $(document).ready(function() {
+        $('#birth_date').datepicker({
+            format: 'dd-mm-yyyy',
+            isRTL: "{{ app()->getLocale() == 'ar' ? true : false }}",
+            language: "{{ app()->getLocale() }}",
         });
-        // dropify image
-        $('.dropify').dropify();
-        //init datepicker
-        $(document).ready(function() {
-            $('#birth_date').datepicker({
-                format: 'dd-mm-yyyy',
-                isRTL: "{{ app()->getLocale() == 'ar' ? true : false }}",
-                language: "{{ app()->getLocale() }}",
-            });
-        });
-        //Initialize Select2 Elements
-        // $('.select2').select2({
-        //     theme: 'bootstrap4'
-        // })
-        // $('.select2-taggable').select2({
-        //     theme: 'bootstrap4',
-        //     tags: true
-        // })
+    });
 </script>
 {{-- Leaflet --}}
 @include('map::set-edit-leafletmap', ['lat' => $lat, 'long' => $long])
@@ -435,83 +371,81 @@
 <x-website.map.google-map-check />
 <script>
     function initMap() {
-            var token = "{{ $setting->google_map_key }}";
-            var oldlat = {!! $lat !!};
-            var oldlng = {!! $long !!};
+        var token = "{{ $setting->google_map_key }}";
+        var oldlat = {!! $lat !!};
+        var oldlng = {!! $long !!};
 
-            // Create a Google Map instance
+        // Create a Google Map instance
 
-            const map = new google.maps.Map(document.getElementById("google-map"), {
-                zoom: 5,
-                center: {
-                    lat: oldlat,
-                    lng: oldlng
-                },
-            });
+        const map = new google.maps.Map(document.getElementById("google-map"), {
+            zoom: 5,
+            center: {
+                lat: oldlat,
+                lng: oldlng
+            },
+        });
 
-            const image = "https://gisgeography.com/wp-content/uploads/2018/01/map-marker-3-116x200.png";
+        const image = "https://gisgeography.com/wp-content/uploads/2018/01/map-marker-3-116x200.png";
 
-            // Create a marker on the map
-            const beachMarker = new google.maps.Marker({
+        // Create a marker on the map
+        const beachMarker = new google.maps.Marker({
 
-                draggable: true,
-                position: {
-                    lat: oldlat,
-                    lng: oldlng
-                },
-                map,
+            draggable: true,
+            position: {
+                lat: oldlat,
+                lng: oldlng
+            },
+            map,
                 // icon: image
+        });
+
+        // Function to handle updating the map marker and fetching location data
+        function handleMapUpdate(lat, lng) {
+            // Update the position of the existing marker with the new latitude and longitude
+            beachMarker.setPosition({
+                lat: lat,
+                lng: lng
             });
 
-            // Function to handle updating the map marker and fetching location data
-            function handleMapUpdate(lat, lng) {
-                // Update the position of the existing marker with the new latitude and longitude
-                beachMarker.setPosition({
-                    lat: lat,
-                    lng: lng
-                });
+            // Fetch location information using Google Maps Geocoding API
+            axios.post( `https://maps.googleapis.com/maps/api/geocode/json?latlng=${lat},${lng}&key=${token}`).then((data) => {
+            // Check if there's an error message in the API response
+            if (data.data.error_message) {
+                toastr.error(data.data.error_message, 'Error!');
+                toastr.error('Your location is not set due to an incorrect API key.', 'Error!');
+            }
 
-                // Fetch location information using Google Maps Geocoding API
-                axios.post(
-                    `https://maps.googleapis.com/maps/api/geocode/json?latlng=${lat},${lng}&key=${token}`
-                ).then((data) => {
-                    // Check if there's an error message in the API response
-                    if (data.data.error_message) {
-                        toastr.error(data.data.error_message, 'Error!');
-                        toastr.error('Your location is not set due to an incorrect API key.', 'Error!');
+            // Extract relevant location data from the API response
+            const total = data.data.results.length;
+            let amount = '';
+            if (total > 4) {
+                amount = total - 3;
+            }
+            const result = data.data.results.slice(amount);
+                let country = '';
+                let region = '';
+                 let district = '';
+
+            // Iterate through the results to extract country, region, and district
+            for (let index = 0; index < result.length; index++) {
+                const element = result[index];
+
+                    if (element.types[0] == 'country') {
+                        country = element.formatted_address;
                     }
-
-                    // Extract relevant location data from the API response
-                    const total = data.data.results.length;
-                    let amount = '';
-                    if (total > 4) {
-                        amount = total - 3;
+                    if (element.types[0] == 'administrative_area_level_1') {
+                        const str = element.formatted_address;
+                        const first = str.split(' ').shift();
+                        region = first;
                     }
-                    const result = data.data.results.slice(amount);
-                    let country = '';
-                    let region = '';
-                    let district = '';
-
-                    // Iterate through the results to extract country, region, and district
-                    for (let index = 0; index < result.length; index++) {
-                        const element = result[index];
-
-                        if (element.types[0] == 'country') {
-                            country = element.formatted_address;
-                        }
-                        if (element.types[0] == 'administrative_area_level_1') {
-                            const str = element.formatted_address;
-                            const first = str.split(' ').shift();
-                            region = first;
-                        }
-                        if (element.types[0] == 'administrative_area_level_2') {
-                            const str = element.formatted_address;
-                            const first = str.split(' ').shift();
-                            district = first;
-                        }
+                    if (element.types[0] == 'administrative_area_level_2') {
+                        const str = element.formatted_address;
+                        const first = str.split(' ').shift();
+                        district = first;
                     }
+                }
 
-                    // Create a form and populate it with location data
+                // Create a form and populate it with location data
                     var form = new FormData();
                     form.append('lat', lat);
                     form.append('lng', lng);
@@ -742,9 +676,7 @@
             });
 
         }
-
-
-        window.initMap = initMap;
+window.initMap = initMap;
 </script>
 <script>
     @php

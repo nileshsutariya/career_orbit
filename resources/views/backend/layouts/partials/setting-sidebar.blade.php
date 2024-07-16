@@ -132,8 +132,8 @@
                     <li class="sidebar-list"><i class="fa fa-thumb-tack"></i>
                         <a class="sidebar-link sidebar-title link-nav {{ Route::is('settings.general') ? 'active' : 'nav' }}"
                             href="{{ route('settings.general') }}">
-                            <i class="fa fa-cogs text-light">
-                                <span>{{ __('general') }}</span></i></a>
+                            <i class="fa fa-cogs text-light"></i>
+                                <span>{{ __('general') }}</span></a>
                     </li>
 
                     @if (auth()->user()->can('setting.view') || auth()->user()->can('setting.update'))

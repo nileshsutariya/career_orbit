@@ -1,17 +1,7 @@
 @extends('backend.layouts.app')
+
 @section('title')
     {{ __('job_role_list') }}
-@endsection
-
-
-@section('script')
-    <!-- Dropify-Script -->
-    <script src="{{ asset('backend') }}/js/dropify.min.js"></script>
-
-    <script>
-        //Dropify function
-        $('.dropify').dropify();
-    </script>
 @endsection
 
 @section('content')
@@ -26,21 +16,16 @@
                             </div>
                             <div>
                                 <div class="d-flex flex-row">
-
-                                    <button class="btn btn-primary" type="button" data-bs-toggle="modal"
-                                        data-bs-target="#tooltipmodal"><i class="fa fa-plus"> </i>
-                                        {{ __('bulk_import') }}</button>
-
-
+                                    <button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#tooltipmodal"><i class="fa fa-plus"> </i>
+                                        {{ __('bulk_import') }}
+                                    </button>
                                 </div>
                             </div>
                         </div>
                     </div>
 
-
                     <div class="card-body">
                         <div class="dt-ext table-responsive theme-scrollbar">
-
                             <table class="table" id="export-button">
                                 <thead>
                                     <tr>
@@ -67,7 +52,6 @@
                                                         @endif
                                                     @endforeach
                                                 </div>
-
                                             </td>
                                             <td>
                                                 {{ $jobrole->jobs_count }} {{ __('jobs') }}
@@ -77,8 +61,7 @@
                                                 <div class="d-flex align-items-center">
                                                     @if (userCan('job_role.update'))
                                                         <a href="{{ route('jobRole.edit', $jobrole->id) }}" class="btn">
-                                                            <p class="text-dark"><i class="fa fa-edit"
-                                                                    style="font-size: 26px;"></i></p>
+                                                           <i class="fa fa-edit fa-2x txt-success"></i>
                                                         </a>
                                                     @endif
                                                     @if (userCan('job_role.delete'))
@@ -89,20 +72,16 @@
                                                             <button
                                                                 onclick="return confirm('{{ __('are_you_sure_you_want_to_delete_this_item') }}');"
                                                                 class="btn">
-                                                                <p class="text-dark"><i class="fa fa-trash-o"
-                                                                        style="font-size: 26px;"></i></p>
+                                                               <i class="fa fa-trash-o fa-2x txt-danger"></i>
                                                             </button>
                                                         </form>
                                                     @endif
                                                 </div>
-
                                             </td>
                                         </tr>
                                     @empty
                                     @endforelse
-
                                 </tbody>
-
                             </table>
                         </div>
                     </div>
@@ -121,7 +100,6 @@
                                 <form class="row g-3" action="{{ route('jobRole.store') }}" method="POST"
                                     enctype="multipart/form-data">
                                     @csrf
-
 
                                     @foreach ($app_language as $key => $language)
                                         @php
@@ -144,7 +122,6 @@
                                         </div>
                                     @endforeach
 
-
                                     <div class="col-12">
                                         <button class="btn btn-primary" type="submit"><i class="fa fa-plus"> </i>
                                             {{ __('save') }} </button>
@@ -153,7 +130,6 @@
                             @else
                                 <p>{{ __('dont_have_permission') }}</p>
                             @endif
-
                         </div>
                     </div>
                 @endif
@@ -170,7 +146,6 @@
                                         class="fa fa-plus"></i>{{ __('create') }}
                                 </a>
                             </div>
-
                         </div>
                         <div class="card-body">
 
@@ -265,4 +240,14 @@
             </div>
         </div>
     </div>
+@endsection
+
+@section('script')
+    <!-- Dropify-Script -->
+    <script src="{{ asset('backend') }}/js/dropify.min.js"></script>
+
+    <script>
+        //Dropify function
+        $('.dropify').dropify();
+    </script>
 @endsection

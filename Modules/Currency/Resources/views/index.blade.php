@@ -92,7 +92,7 @@
                                     @if ($currency->code != 'USD')
                                         <a data-bs-toggle="tooltip" data-placement="top" title="{{ __('edit') }}"
                                             href="{{ route('module.currency.edit', $currency->id) }}" class="btn"><i
-                                                class="text-dark fa fa-edit fa-2x"></i></a>
+                                                class="txt-success fa fa-edit fa-2x"></i></a>
                                         <form action="{{ route('module.currency.delete', $currency->id) }}"
                                             class="d-inline" method="POST">
                                             @method('DELETE')
@@ -100,7 +100,7 @@
                                             <button data-bs-toggle="tooltip" data-placement="top"
                                                 title="{{ __('delete') }}"
                                                 onclick="return confirm('{{ __('are_you_sure_you_want_to_delete_this_item') }}');"
-                                                class="btn"><i class="text-dark fa fa-trash fa-2x"></i></button>
+                                                class="btn"><i class="txt-danger fa fa-trash fa-2x"></i></button>
                                         </form>
                                     @endif
                                 </td>

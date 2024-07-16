@@ -6,7 +6,7 @@
                 <img class="img-fluid m-r-5" src="{{ $setting->favicon_image_url }}" width="25%"
                     alt="{{ __('logo') }}" />
                 <h3><span class="text-light mt-3">{{ config('app.name') }}</span></h3>
-                {{-- <img class="img-fluid" src="{{asset('/assets/images/logo/mplogo.png')}}" alt=""> --}}
+
                 <div class="back-btn"><i class="fa fa-angle-left"></i></div>
                 <div class="toggle-sidebar">
                     <svg class="stroke-icon sidebar-toggle status_toggle middle">

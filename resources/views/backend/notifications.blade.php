@@ -1,7 +1,9 @@
 @extends('backend.layouts.app')
+
 @section('title')
     {{ __('notifications') }}
 @endsection
+
 @section('breadcrumbs')
     <div class="row mb-2">
         <div class="col-sm-6">
@@ -9,6 +11,7 @@
         </div>
     </div>
 @endsection
+
 @section('content')
     <div class="row justify-content-center">
         <div class="col-md-10">

@@ -60,10 +60,10 @@
                                         <td class="d-flex">
                                             <a href="javascript:void(0)"
                                                 onclick="contactDetail({{ json_encode($payment) }})" data-bs-toggle="modal"
-                                                data-bs-target="#tooltipmodal" class="btn   m-r-10"> <i
-                                                    class="icon-eye fa-2x"></i> </a>
+                                                data-bs-target="#tooltipmodal" class="btn"> <i
+                                                    class="fa fa-eye txt-secondary fa-2x"></i> </a>
                                             <a href="{{ route('settings.payment.manual.edit', $payment->id) }}"
-                                                class="btn  m-r-10"><i class="fa fa-edit fa-2x"></i></a>
+                                                class="btn "><i class="txt-success fa fa-edit fa-2x"></i></a>
                                             <form action="{{ route('settings.payment.manual.delete', $payment->id) }}"
                                                 class="d-inline" method="POST">
                                                 @method('DELETE')
@@ -71,7 +71,7 @@
                                                 <button data-bs-toggle="tooltip" data-placement="top"
                                                     title="{{ __('delete') }}"
                                                     onclick="return confirm('{{ __('are_you_sure_want_to_delete_this_item') }}');"
-                                                    class="btn"><i class="text-dark fa fa-trash fa-2x"></i></button>
+                                                    class="btn"><i class="txt-danger fa fa-trash fa-2x"></i></button>
                                             </form>
                                         </td>
                                     </tr>

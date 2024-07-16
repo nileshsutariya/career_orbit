@@ -55,8 +55,6 @@
                                                     target="_blank">{{ route('showCustomPage', $page->slug) }}</a></td>
                                             <td tabindex="0">
                                                 <a href="javascript:void(0)">
-
-
                                                     <div class="form-check-size">
                                                         <div class="form-check form-switch form-check-inline">
                                                             <input data-id="{{ $page->id }}"
@@ -69,8 +67,6 @@
                                             </td>
                                             <td tabindex="0">
                                                 <a href="javascript:void(0)">
-
-
                                                     <div class="form-check-size">
                                                         <div class="form-check form-switch form-check-inline ">
                                                             <input data-userid="{{ $page->id }}"
@@ -84,7 +80,7 @@
                                             <td>
                                                 <div class="d-flex align-items-center">
                                                 <a href="{{ route('settings.pages.edit', $page->id) }}" class="btn">
-                                                    <i class="fa fa-edit fa-2x"></i>
+                                                    <i class="txt-secondary fa fa-edit fa-2x"></i>
                                                 </a>
                                                 <form action="{{ route('settings.pages.delete', $page->id) }}"
                                                     class="d-inline" method="POST">
@@ -93,7 +89,7 @@
                                                     <button data-bs-toggle="tooltip" data-placement="top"
                                                         title="{{ __('delete') }}"
                                                         onclick="return confirm('{{ __('are_you_sure_want_to_delete_this_item') }}');"
-                                                        class="btn"><i class="text-dark fa fa-trash fa-2x"></i></button>
+                                                        class="btn"><i class="txt-danger fa fa-trash fa-2x"></i></button>
                                                 </form>
                                                 </div>
                                             </td>
@@ -103,77 +99,11 @@
                                 </tbody>
                             </table>
                         </div>
-
                     </div>
-
-
-
                 </div>
             </div>
         </div>
     </div>
-@endsection
-
-
-@section('style')
-    <link rel="stylesheet" href="{{ asset('backend') }}/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
-    <style>
-        .switch {
-            position: relative;
-            display: inline-block;
-            width: 35px;
-            height: 19px;
-        }
-
-        /* Hide default HTML checkbox */
-        .switch input {
-            display: none;
-        }
-
-        /* The slider */
-        .slider {
-            position: absolute;
-            cursor: pointer;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-color: #ccc;
-            -webkit-transition: .4s;
-            transition: .4s;
-        }
-
-        .slider:before {
-            position: absolute;
-            content: "";
-            height: 15px;
-            width: 15px;
-            left: 3px;
-            bottom: 2px;
-            background-color: white;
-            -webkit-transition: .4s;
-            transition: .4s;
-        }
-
-        input.success:checked+.slider {
-            background-color: #28a745;
-        }
-
-        input:checked+.slider:before {
-            -webkit-transform: translateX(15px);
-            -ms-transform: translateX(15px);
-            transform: translateX(15px);
-        }
-
-        /* Rounded sliders */
-        .slider.round {
-            border-radius: 34px;
-        }
-
-        .slider.round:before {
-            border-radius: 50%;
-        }
-    </style>
 @endsection
 
 @section('script')

@@ -153,18 +153,6 @@
 </div>
 @endsection
 @section('script')
-{{-- <script src="{{ asset('backend/js/jquery.rateyo.min.js') }}"></script>
-<script>
-    $("#rateYo").rateYo({
-            starWidth: '30px',
-            fullStar: true,
-            mormalFill: 'yellow',
-            ratedFill: '#ffc107',
-            onSet: function(rating, rateYoInstance) {
-                $('#rating').val(rating);
-            }
-        });
-</script> --}}
 
 
 <script>

@@ -41,8 +41,8 @@
                 <nav>
 
                     <ol class="breadcrumb justify-content-sm-start align-items-center mb-0">
-                        <li class="breadcrumb-item"><a id="nav_collapse" class="nav-link" data-widget="pushmenu"
-                                href="#" role="button"> <i class="fa fa-bars"></i> </a></li>
+                        {{-- <li class="breadcrumb-item"><a id="nav_collapse" class="nav-link" data-widget="pushmenu"
+                                href="#" role="button"> <i class="fa fa-bars"></i> </a></li> --}}
                         <li class="breadcrumb-item f-w-400"><a href="{{ url('/') }}"> <i
                                     class="fa fa-globe"></i></a>
                         </li>

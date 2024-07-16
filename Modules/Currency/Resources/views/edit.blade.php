@@ -110,21 +110,3 @@
         </div>
     </div>
 @endsection
-
-@section('script')
-    {{-- <script src="{{ asset('backend') }}/plugins/bootstrap-switch/js/bootstrap-switch.min.js"></script>
-    <script>
-        $("input[data-bootstrap-switch]").each(function() {
-            $(this).bootstrapSwitch('state', $(this).prop('checked'));
-        })
-
-        $(function() {
-            $('[data-toggle="tooltip"]').tooltip()
-        })
-
-        $("input[name=symbol_position]").on('switchChange.bootstrapSwitch', function(event, state) {
-            let val = event.currentTarget.checked ? 'left' : 'right';
-            $('input[name=symbol_position]').val(val);
-        });
-    </script> --}}
-@endsection

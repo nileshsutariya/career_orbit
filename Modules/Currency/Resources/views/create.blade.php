@@ -85,18 +85,6 @@
                             </div>
                             <div class="form-group row mb-2">
                                 <x-forms.label name="position" class="col-sm-3" />
-                                {{-- <div class="col-sm-9">
-                                    <x-forms.switch-input button="buttonOne" oldvalue="oldalue" name="symbol_position"
-                                        onText="{{ __('left') }}" offText="{{ __('right') }}" value="left"
-                                        :checked="0" />
-                                </div> --}}
-
-
-                                {{-- <input class="tgl tgl-flip" data-bootstrap-switch value="left" name="symbol_position"
-                                    id="symbol_position" type="checkbox" checked="0">
-                                <label class="tgl-btn" data-tg-off="{{ __('right') }}" data-tg-on="{{ __('left') }}"
-                                    for="symbol_position"></label> --}}
-
 
                                 <input class="tgl tgl-flip" id="cb5" type="checkbox" checked="0" value="left"
                                     name="symbol_position" type="checkbox" checked="0">
@@ -120,20 +108,3 @@
     </div>
 @endsection
 
-@section('script')
-    <script src="{{ asset('backend') }}/plugins/bootstrap-switch/js/bootstrap-switch.min.js"></script>
-    <script>
-        $("input[data-bootstrap-switch]").each(function() {
-            $(this).bootstrapSwitch('state', $(this).prop('checked'));
-        })
-
-        $(function() {
-            $('[data-toggle="tooltip"]').tooltip()
-        })
-
-        $("input[name=symbol_position]").on('switchChange.bootstrapSwitch', function(event, state) {
-            let val = event.currentTarget.checked ? 'left' : 'right';
-            $('input[name=symbol_position]').val(val);
-        });
-    </script>
-@endsection

@@ -1,4 +1,5 @@
 @extends('backend.settings.setting-layout')
+
 @section('title')
 {{ __('custom_css_and_js') }}
 @endsection

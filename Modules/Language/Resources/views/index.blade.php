@@ -79,7 +79,7 @@
                                         <td><i class="flag-icon {{ $language->icon }}"></i></td>
                                         <td class="d-flex justify-content-center align-items-center">
                                             <a href="{{ route('languages.view', $language->code) }}"
-                                                class="btn border m-r-10">
+                                                class="btn">
                                                 <i class="fa fa-cog fa-2x"></i>
                                             </a>
                                             @if ($language->code == 'en')
@@ -87,7 +87,7 @@
                                                     title="{{ __('translate_language') }}" href="javascript:void(0)"
                                                     class="btn border m-r-10" data-bs-toggle="tooltip"
                                                     title="You can't delete or edit this language">
-                                                    <i class="fa fa-lock fa-2x"></i>
+                                                    <i class="txt-secondary fa fa-lock fa-2x"></i>
                                                 </a>
                                             @endif
                                             @if ($language->code != 'en')
@@ -102,7 +102,7 @@
                                                     title="{{ __('edit_language') }}"
                                                     href="{{ route('languages.edit', $language->id) }}"
                                                     class="btn border m-r-10">
-                                                    <i class="fa fa-edit fa-2x"></i>
+                                                    <i class="txt-success fa fa-edit fa-2x"></i>
                                                 </a>
                                                 @if ($language->code !== 'en')
                                                     <form action="{{ route('languages.destroy', $language->id) }}"
@@ -113,7 +113,7 @@
                                                             title="{{ __('delete_language') }}"
                                                             onclick="return confirm('{{ __('are_you_sure_want_to_delete_this_item') }}');"
                                                             class="btn border m-r-10"><i
-                                                                class="text-dark fa fa-trash fa-2x"></i></button>
+                                                                class="txt-danger fa fa-trash fa-2x"></i></button>
                                                     </form>
                                                 @endif
                                             @endif

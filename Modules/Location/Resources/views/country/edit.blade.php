@@ -9,14 +9,6 @@
     </script>
     <!-- Custom Script -->
 
-    <script>
-        // //Initialize Select2 Elements
-        // $('.select2').select2({
-        //     theme: 'bootstrap4'
-        // })
-    </script>
-
-
     {{-- Image upload and Preview --}}
     <script src="{{ asset('backend') }}/plugins/dropify/js/dropify.min.js"></script>
     <script>
@@ -106,32 +98,7 @@
 
                                 <div class="mb-3 row">
                                     <label class="col-sm-3">{{ __('image') }} <span class="text-danger">*</span></label>
-                                    {{-- <div class="col-sm-9">
-                                        <div class="dropzone-wrapper">
-                                            <input name="image" type="file" data-show-errors="true" data-width="100%"
-                                                data-default-file=""
-                                                class="form-control dropzone bg-light-primary @error('image') is-invalid @enderror border-0">
-                                            @error('image')
-                                                <span class="invalid-feedback d-block" role="alert">
-                                                    <strong>{{ $message }}</strong>
-                                                </span>
-                                            @enderror
-                                            <div class="dropify-preview">
-                                                <span class="dropify-render"></span>
-                                                <div class="dropify-infos">
-                                                    <div class="dropify-infos-inner">
-                                                        <p class="dropify-filename">
-                                                            <span class="file-icon">
-                                                            </span>
-                                                            <span class="dropify-filename-inner"></span>
-                                                        </p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-
-
-                                    </div> --}}
+                                   
                                     <div class="col-sm-9">
                                         <div class="">
                                             <input name="image" type="file" data-show-errors="true" data-width="100%"

@@ -1,4 +1,5 @@
 @extends('backend.layouts.app')
+
 @section('title')
 {{ __('create_role') }}
 @endsection

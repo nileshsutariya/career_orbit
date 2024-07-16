@@ -138,10 +138,11 @@
                     </div>
                     <div class="row">
 
-                        <div class="col-sm-12 card-body dt-ext table-responsive theme-scrollbar">
+                        <div class="col-sm-12 card-body dt-ext table-responsive theme-scrollbar text-nowrap">
                             <table class="table" id="export-button">
                                 <thead>
                                     <tr>
+                                        <th width="2%"></th>
                                         <th width="5%">{{ __('job') }}</th>
                                         <th width="10%">{{ __('category') }}/{{ __('role') }}</th>
                                         <th width="10%">{{ __('salary') }}</th>
@@ -156,7 +157,7 @@
                                     @if ($jobs->count() > 0)
                                         @foreach ($jobs as $job)
                                             <tr>
-                                                <td>
+                                                <td tabindex="0">
                                                     <input type="checkbox" class="job-checkbox"
                                                         value="{{ $job->id }}">
                                                 </td>
@@ -288,7 +289,7 @@
                                                                             {{ $job->status == 'expired' ? 'checked' : '' }}>
                                                                         <label
                                                                             @if ($job->status == 'expired') class="custom-control-label
-                                                        expired_radio" @else class="custom-control-label " @endif
+                                                                                expired_radio" @else class="custom-control-label " @endif
                                                                             data-bs-toggle="tooltip"
                                                                             title="{{ __('expired_status_depend_on_deadline') }}"
                                                                             for="status_input_unpublish_{{ $job->id }}">{{ __('expired') }}</label>
@@ -309,21 +310,21 @@
                                                         title="{{ __('clone') }}"
                                                         href="{{ route('admin.job.clone', $job->slug) }}"
                                                         class="btn ll-mr-4 ll-p-0">
-                                                        <x-svg.table-clone /> {{ __('clone') }}
+                                                        <i class="fa fa-clone fa-2x"></i>
                                                     </a>
 
                                                     <a target="_blank" data-bs-toggle="tooltip" data-placement="top"
                                                         title="{{ __('view_frontend') }}"
                                                         href="{{ route('website.job.details', $job->slug) }}"
                                                         class="btn ll-mr-4 ll-p-0">
-                                                        <x-svg.table-link />
+                                                        <i class="fa fa-link fa-2x txt-secondary"></i>
                                                     </a>
                                                     @if (userCan('job.update'))
                                                         <a data-bs-toggle="tooltip" data-placement="top"
                                                             title="{{ __('edit') }}"
                                                             href="{{ route('job.edit', $job->id) }}"
                                                             class="btn ll-mr-4 ll-p-0">
-                                                            <x-svg.table-edit />
+                                                            <i class="fa fa-edit fa-2x txt-success"></i>
                                                         </a>
                                                     @endif
                                                     @if (userCan('job.delete'))
@@ -335,7 +336,7 @@
                                                                 title="{{ __('delete') }}"
                                                                 onclick="return confirm('{{ __('are_you_sure_you_want_to_delete_this_item') }}');"
                                                                 class="btn ll-p-0">
-                                                                <x-svg.table-delete />
+                                                                <i class="fa fa-trash-o fa-2x text-danger"></i>
                                                             </button>
                                                         </form>
                                                     @endif

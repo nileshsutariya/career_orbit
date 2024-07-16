@@ -1,4 +1,5 @@
 @extends('backend.layouts.app')
+
 @section('title')
     {{ __('user_create') }}
 @endsection
@@ -8,14 +9,10 @@
         <div class="col-md-6 ">
             <div class="card">
                 <div class="card-header">
-
-                    <div class="float-start">
-                        <h4>{{ __('order_create') }}</h4>
-                    </div>
+                    <div class="float-start"> <h4>{{ __('order_create') }}</h4> </div>
                     <div class="float-end"> <a href="{{ route('order.index') }}" class="btn btn-primary">
-                            <i class="icofont icofont-arrow-left"></i>
-                            {{ __('back') }}
-                        </a></div>
+                        <i class="icofont icofont-arrow-left"></i> {{ __('back') }} </a>
+                    </div>
                 </div>
                 <form class="form theme-form" action="{{ route('order.store') }}" method="POST">
                     @csrf
@@ -36,7 +33,6 @@
                                             <span class="invalid-feedback"
                                                 role="alert"><strong>{{ $message }}</strong></span>
                                         @enderror
-
                                     </div>
                                 </div>
 
@@ -54,7 +50,6 @@
                                             <span class="invalid-feedback"
                                                 role="alert"><strong>{{ $message }}</strong></span>
                                         @enderror
-
                                     </div>
                                 </div>
 
@@ -71,7 +66,6 @@
                                             <span class="invalid-feedback"
                                                 role="alert"><strong>{{ $message }}</strong></span>
                                         @enderror
-
                                     </div>
                                 </div>
 
@@ -97,7 +91,6 @@
                                             <span class="invalid-feedback"
                                                 role="alert"><strong>{{ $message }}</strong></span>
                                         @enderror
-
                                     </div>
                                 </div>
 
@@ -115,19 +108,15 @@
                                             <span class="invalid-feedback"
                                                 role="alert"><strong>{{ $message }}</strong></span>
                                         @enderror
-
                                     </div>
                                 </div>
-
-
                             </div>
                         </div>
                     </div>
                     <div class="card-footer text-end">
                         <div class="col-sm-9 offset-sm-3">
                             <button class="btn btn-primary me-3" type="submit"><i class="icofont icofont-plus"></i>
-                                {{ __('save') }}</button>
-
+                                {{ __('save') }}</button>s
                         </div>
                     </div>
                 </form>
@@ -138,7 +127,6 @@
 
 @section('script')
     <script>
-       
         
         $(document).ready(function() {
             $('#payment_type').hide();

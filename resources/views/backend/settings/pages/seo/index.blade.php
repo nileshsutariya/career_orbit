@@ -57,12 +57,9 @@
             </div>
         </div>
         <div class="card-body">
-
-
-
             <div class="dt-ext table-responsive theme-scrollbar">
 
-                <table class="display" id="keytable">
+                <table class="table" id="export-button">
 
                     <thead>
                         <tr>
@@ -106,7 +103,7 @@
                                     <td>
                                         <a href="{{ route('settings.seo.edit', [$seo->id, 'lang_query' => request('lang_query') ?? 'en']) }}"
                                             class="btn border">
-                                            <i class="icon-settings fa-2x "></i>
+                                            <i class="fa fa-gear fa-2x "></i>
                                         </a>
                                     </td>
                                 </tr>

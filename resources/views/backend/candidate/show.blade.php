@@ -128,14 +128,10 @@
                                     </div>
                                 </div>
                             </div>
-
-
                         </div>
-
 
                         <div class="col-md-6">
                             <div class="card dashboard-3">
-
                                 <div class="card-body pt-0">
                                     <ul class="recent">
                                         <div class="row d-flex border-bottom">
@@ -144,8 +140,7 @@
                                                 <div class="flex-grow-1">
                                                     <h5> {{ __('profession') }}</h5>
 
-                                                    <p> <strong>{{ $candidate->profession ? $candidate->profession->name : '-' }}
-                                                        </strong> </p>
+                                                    <p> <strong>{{ $candidate->profession ? $candidate->profession->name : '-' }} </strong> </p>
                                                 </div>
 
                                             </li>
@@ -153,9 +148,7 @@
                                                 <div class="flex-shrink-0 m-r-10"> <x-svg.details-experience /> </div>
                                                 <div class="flex-grow-1">
                                                     <h5> {{ __('experience') }}</h5>
-
-                                                    <p> <strong>{{ $candidate->experience ? $candidate->experience->name : '' }}</strong>
-                                                    </p>
+                                                    <p> <strong>{{ $candidate->experience ? $candidate->experience->name : '' }}</strong></p>
                                                 </div>
                                             </li>
                                             <li class="d-flex align-items-center col-md-4">
@@ -163,8 +156,7 @@
                                                 <div class="flex-grow-1">
                                                     <h5> {{ __('marital_status') }}</h5>
 
-                                                    <p> <strong>{{ $candidate->marital_status }}
-                                                        </strong> </p>
+                                                    <p> <strong>{{ $candidate->marital_status }} </strong> </p>
                                                 </div>
                                             </li>
                                         </div>
@@ -174,32 +166,24 @@
                                                 <div class="flex-grow-1">
                                                     <h5> {{ __('education') }}</h5>
 
-                                                    <p> <strong>{{ $candidate->education ? $candidate->education->name : '' }}
-                                                        </strong>
-                                                    </p>
+                                                    <p><strong>{{ $candidate->education ? $candidate->education->name : '' }} </strong> </p>
                                                 </div>
-
                                             </li>
                                             <li class="d-flex align-items-center col-md-4">
                                                 <div class="flex-shrink-0 m-r-10"> <x-svg.details-leyers /></div>
                                                 <div class="flex-grow-1">
                                                     <h5> {{ __('gender') }}</h5>
 
-                                                    <p> <strong>{{ ucfirst($candidate->gender) }}</a></strong>
-                                                    </p>
+                                                    <p> <strong>{{ ucfirst($candidate->gender) }}</a></strong></p>
                                                 </div>
-
                                             </li>
                                             <li class="d-flex align-items-center col-md-4">
                                                 <div class="flex-shrink-0 m-r-10"> <x-svg.details-calendar-blank /></div>
                                                 <div class="flex-grow-1">
                                                     <h5> {{ __('birth_date') }}</h5>
 
-                                                    <p> <strong>
-                                                            {{ date('D, d M Y', strtotime($candidate->birth_date)) }}
-                                                        </strong> </p>
+                                                    <p> <strong>{{ date('D, d M Y', strtotime($candidate->birth_date)) }}</strong> </p>
                                                 </div>
-
                                             </li>
                                         </div>
                                         <div class="row d-flex">
@@ -207,10 +191,8 @@
                                                 <div class="flex-shrink-0 m-r-10"><x-svg.details-globe-simple /></div>
                                                 <div class="flex-grow-1">
                                                     <h5> {{ __('website') }}</h5>
-                                                    <p> <a href="{{ $candidate->website }}">{{ $candidate->website }}</a>
-                                                    </p>
+                                                    <p> <a href="{{ $candidate->website }}">{{ $candidate->website }}</a> </p>
                                                 </div>
-
                                             </li>
                                             <li class="d-flex align-items-center col-md-4">
                                                 @if ($user->contactInfo && $user->contactInfo->phone)
@@ -218,9 +200,7 @@
                                                     <div class="flex-grow-1">
                                                         <h5> {{ __('phone') }}</h5>
 
-                                                        <p> <a
-                                                                href="tel: {{ $user->contactInfo->phone }}">{{ $user->contactInfo->phone }}</a>
-                                                        </p>
+                                                        <p> <a href="tel: {{ $user->contactInfo->phone }}">{{ $user->contactInfo->phone }}</a> </p>
                                                     </div>
                                                 @endif
                                             </li>
@@ -230,23 +210,15 @@
                                                     <div class="flex-grow-1">
                                                         <h5> {{ __('contact_email') }}</h5>
 
-                                                        <p> <a
-                                                                href="mailto: {{ $user->contactInfo->email }}">{{ $user->contactInfo->email }}</a>
-                                                        </p>
+                                                        <p> <a href="mailto: {{ $user->contactInfo->email }}">{{ $user->contactInfo->email }}</a></p>
                                                     </div>
                                                 @endif
-
-
                                             </li>
                                         </div>
-
-
                                     </ul>
                                 </div>
                             </div>
                         </div>
-
-
 
                         <div class="col-md-6">
                             <div class="card">
@@ -254,16 +226,12 @@
                                     <h3> {{ __('description') }} </h3>
                                 </div>
                                 <div class="card-body">
-
-                                    <p>
-                                        {!! nl2br($candidate->bio) !!}
-                                    </p>
+                                    <p> {!! nl2br($candidate->bio) !!} </p>
                                 </div>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="card">
-
                                 <div class="card-body">
                                     <h3 class="mb-2">{{ __('skills') }} </h3>
                                     <p class="flex">
@@ -280,26 +248,16 @@
                                     </p>
 
                                     <h3 class="mb-2">{{ __('location') }} </h3>
-                                    <p><strong>{{ $candidate->exact_location ? $candidate->exact_location : $candidate->full_address }}</strong>
-                                    </p>
+                                    <p><strong>{{ $candidate->exact_location ? $candidate->exact_location : $candidate->full_address }}</strong> </p>
                                 </div>
-
-
                             </div>
                         </div>
 
-                        <x-admin.candidate.card-component title="{{ __('applied_jobs') }}" :jobs="$appliedJobs"
-                            link="website.job.apply" />
+                        <x-admin.candidate.card-component title="{{ __('applied_jobs') }}" :jobs="$appliedJobs" link="website.job.apply" />
 
-                        <x-admin.candidate.card-component title="{{ __('bookmark_jobs') }}" :jobs="$bookmarkJobs"
-                            link="website.job.bookmark" />
-
-
+                        <x-admin.candidate.card-component title="{{ __('bookmark_jobs') }}" :jobs="$bookmarkJobs" link="website.job.bookmark" />
                     </div>
-
-
                 </div>
-
             </div>
         </div>
     </div>
@@ -307,68 +265,12 @@
 
 
 @section('style')
-    <style>
-        .switch {
-            position: relative;
-            display: inline-block;
-            width: 35px;
-            height: 19px;
-        }
-
-        /* Hide default HTML checkbox */
-        .switch input {
-            display: none;
-        }
-
-        /* The slider */
-        .slider {
-            position: absolute;
-            cursor: pointer;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-color: #ccc;
-            -webkit-transition: .4s;
-            transition: .4s;
-        }
-
-        .slider:before {
-            position: absolute;
-            content: "";
-            height: 15px;
-            width: 15px;
-            left: 3px;
-            bottom: 2px;
-            background-color: white;
-            -webkit-transition: .4s;
-            transition: .4s;
-        }
-
-        input.success:checked+.slider {
-            background-color: #28a745;
-        }
-
-        input:checked+.slider:before {
-            -webkit-transform: translateX(15px);
-            -ms-transform: translateX(15px);
-            transform: translateX(15px);
-        }
-
-        /* Rounded sliders */
-        .slider.round {
-            border-radius: 34px;
-        }
-
-        .slider.round:before {
-            border-radius: 50%;
-        }
-    </style>
     <!-- >=>Leaflet Map<=< -->
     <x-map.leaflet.map_links />
 
     @include('map::links')
 @endsection
+
 @section('script')
     {{-- Leaflet  --}}
     <script src="{{ asset('backend/assets/js/dashboard/dashboard_2.js') }}"></script>
@@ -405,6 +307,7 @@
 
     <!-- ================ google map ============== -->
     <x-website.map.google-map-check />
+
     <script>
         function initMap() {
             var token = "{{ $setting->google_map_key }}";
@@ -435,6 +338,7 @@
         }
         window.initMap = initMap;
     </script>
+
     <script>
         @php
             $link1 = 'https://maps.googleapis.com/maps/api/js?key=';
@@ -443,6 +347,7 @@
             $scr = $link1 . $link2 . $Link3;
         @endphp;
     </script>
+    
     <script src="{{ $scr }}" async defer></script>
     <!-- ================ google map ============== -->
 @endsection

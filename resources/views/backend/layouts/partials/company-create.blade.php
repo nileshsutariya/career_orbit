@@ -52,7 +52,7 @@ $show_class = !empty($active) || $is_new ? "show active" : "";
                 </div>
                 @if (userCan('setting.update'))
                     <div class="row mt-3 mx-auto justify-content-center">
-                        <button type="submit" class="btn btn-success"><i class="fas fa-sync"></i>
+                        <button type="submit" class="btn btn-success"><i class="fa fa-refresh"></i>
                             {{ __('update') }}
                         </button>
                     </div>

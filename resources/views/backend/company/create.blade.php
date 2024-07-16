@@ -318,10 +318,6 @@
     @livewireScripts
  
     @stack('js')
-    @if (app()->getLocale() == 'ar')
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/locales/bootstrap-datepicker.ar.min.js
-                                    "></script>
-    @endif
     <script>
         //init datepicker
         $(document).ready(function() {

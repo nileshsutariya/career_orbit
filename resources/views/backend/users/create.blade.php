@@ -1,4 +1,5 @@
 @extends('backend.layouts.app')
+
 @section('title')
 {{ __('user_create') }}
 @endsection
@@ -9,7 +10,6 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
-
                     <div class="float-start">
                         <h3 class="card-title line-height-36">{{ __('user_create') }}</h3>
                     </div>
@@ -102,23 +102,4 @@
         </div>
     </div>
 </div>
-@endsection
-
-@section('style')
-<style>
-    /* .select2-results__option[aria-selected=true] {
-            display: none;
-        }
-
-        .select2-container--bootstrap4 .select2-selection--multiple .select2-selection__choice {
-            color: #fff;
-            border: 1px solid #fff;
-            background: #007bff;
-            border-radius: 30px;
-        }
-
-        .select2-container--bootstrap4 .select2-selection--multiple .select2-selection__choice__remove {
-            color: #fff;
-        } */
-</style>
 @endsection

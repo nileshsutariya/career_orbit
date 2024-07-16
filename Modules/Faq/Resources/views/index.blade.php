@@ -27,14 +27,14 @@
                 <li class="nav-item mr-3" role="presentation">
                     <a href="{{ route('module.faq.index') }}" class="nav-link bg-secondary m-r-10">
                         @lang('all_faqs')
-                        <span class="badge  badge-warning">{{ $all_faqs_count }}</span>
+                        <span class="badge  badge-danger">{{ $all_faqs_count }}</span>
                     </a>
                 </li>
                 @foreach ($faq_category as $category)
                     <li class="nav-item mr-3" role="presentation">
                         <a class="nav-link bg-secondary m-r-10" href="{{ route('module.faq.index', $category->slug) }}">
                             {{ $category->name }}
-                            <span class="badge badge-warning">{{ $category->faqs_count }}</span>
+                            <span class="badge badge-danger">{{ $category->faqs_count }}</span>
                         </a>
                     </li>
                 @endforeach
@@ -67,7 +67,7 @@
                             <div class="accordion" id="accordionExample">
                                 @forelse($faqs as $faq)
                                     <div class="card mb-0">
-                                        <div class="card-header p-0 d-flex align-items-center justify-content-between">
+                                        <div class="card-body p-0 d-flex align-items-center justify-content-between">
                                             <h4 class="card-title pt-2 w-100 py-3 px-3 pointer"
                                                 id="heading{{ $faq->id }}" data-bs-toggle="collapse"
                                                 data-target="#collapse{{ $faq->id }}" aria-expanded="true"
@@ -75,6 +75,14 @@
                                                 {{ $loop->iteration }}. {{ $faq->question }}
                                             </h4>
                                             <div class="d-flex align-items-center py-2 pr-3">
+                                                @if (userCan('faq.update'))
+                                                <a data-bs-toggle="tooltip" data-placement="top"
+                                                    title="{{ __('edit') }}"
+                                                    href="{{ route('module.faq.edit', $faq->id) }}"
+                                                    class="btn">
+                                                    <i class="txt-success fa fa-edit fa-2x"></i>
+                                                </a>
+                                            @endif
                                                 @if (userCan('faq.delete'))
                                                     <form action="{{ route('module.faq.destroy', $faq->id) }}"
                                                         method="POST" class="d-inline">
@@ -83,19 +91,12 @@
                                                         <button data-bs-toggle="tooltip" data-placement="top"
                                                             title="{{ __('delete') }}"
                                                             onclick="return confirm('{{ __('are_you_sure_you_want_to_delete_this_item') }}');"
-                                                            class="btn bg-danger">
-                                                            <i class="fa fa-trash"></i>
+                                                            class="btn">
+                                                            <i class="txt-danger fa fa-trash fa-2x"></i>
                                                         </button>
                                                     </form>
                                                 @endif
-                                                @if (userCan('faq.update'))
-                                                    <a data-bs-toggle="tooltip" data-placement="top"
-                                                        title="{{ __('edit') }}"
-                                                        href="{{ route('module.faq.edit', $faq->id) }}"
-                                                        class="btn bg-info m-l-10">
-                                                        <i class="fa fa-edit"></i>
-                                                    </a>
-                                                @endif
+                                               
                                             </div>
                                         </div>
                                         <div id="collapse{{ $faq->id }}" class="collapse"
@@ -131,6 +132,12 @@
                                                     {{ $loop->iteration }}. {{ $faq->question }}
                                                 </h4>
                                                 <div class="d-flex align-items-center py-2 pr-3">
+                                                    @if (userCan('faq.update'))
+                                                        <a href="{{ route('module.faq.edit', $faq->id) }}"
+                                                            class="btn">
+                                                            <i class="txt-success fa fa-edit fa-2x"></i>
+                                                        </a>
+                                                    @endif
                                                     @if (userCan('faq.delete'))
                                                         <form action="{{ route('module.faq.destroy', $faq->id) }}"
                                                             method="POST" class="d-inline">
@@ -139,17 +146,12 @@
                                                             <button data-bs-toggle="tooltip" data-placement="top"
                                                                 title="{{ __('delete') }}"
                                                                 onclick="return confirm('{{ __('are_you_sure_you_want_to_delete_this_item') }}');"
-                                                                class="btn bg-danger">
-                                                                <i class="fa fa-trash fa-2x"></i>
+                                                                class="btn">
+                                                                <i class="txt-danger fa fa-trash fa-2x"></i>
                                                             </button>
                                                         </form>
                                                     @endif
-                                                    @if (userCan('faq.update'))
-                                                        <a href="{{ route('module.faq.edit', $faq->id) }}"
-                                                            class="btn bg-info m-l-10">
-                                                            <i class="fa fa-edit fa-2x"></i>
-                                                        </a>
-                                                    @endif
+                                                    
                                                 </div>
                                             </div>
                                             <div id="collapse{{ $faq->id }}" class="collapse"
