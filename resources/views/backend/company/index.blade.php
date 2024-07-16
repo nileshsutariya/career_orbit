@@ -154,14 +154,14 @@
                                         {{ __('create') }}
                                     </a>
 
-                                    {{-- @if (request('company') || request('provider') || request('plan') || request('sort_by'))
+                                    @if (request('company') || request('provider') || request('plan') || request('sort_by'))
                                         <div>
                                             <a href="{{ route('order.index') }}" class="btn bg-danger"><i
-                                                    class="fas fa-times"></i>
+                                                    class="fa fa-times"></i>
                                                 &nbsp;{{ __('clear') }}
                                             </a>
                                         </div>
-                                    @endif --}}
+                                    @endif
 
                                 </div>
                             </div>
@@ -305,9 +305,12 @@
 
                                                         <div class="form-check-size">
                                                             <div class="form-check form-switch form-check-inline">
-                                                            <input class="form-check-input switch-primary check-size success status-switch"  data-id="{{ $company->user_id }}"
-                                                            {{ $company->user->status == 1 ? 'checked' : '' }} type="checkbox" role="switch" checked="">
-                                                             </div>
+                                                                <input
+                                                                    class="form-check-input switch-primary check-size success status-switch"
+                                                                    data-id="{{ $company->user_id }}"
+                                                                    {{ $company->user->status == 1 ? 'checked' : '' }}
+                                                                    type="checkbox" role="switch" checked="">
+                                                            </div>
                                                         </div>
 
                                                         {{-- <div class="flex-grow-1">
@@ -337,9 +340,11 @@
 
                                                         <div class="form-check-size">
                                                             <div class="form-check form-switch form-check-inline">
-                                                                <input class="form-check-input switch-primary check-size success email-verification-switch" data-userid="{{ $company->user_id }}" 
-                                                                {{ $company->user->email_verified_at ? 'checked' : '' }}
-                                                                type="checkbox" role="switch" checked="">
+                                                                <input
+                                                                    class="form-check-input switch-primary check-size success email-verification-switch"
+                                                                    data-userid="{{ $company->user_id }}"
+                                                                    {{ $company->user->email_verified_at ? 'checked' : '' }}
+                                                                    type="checkbox" role="switch" checked="">
                                                             </div>
                                                         </div>
                                                         <p style="min-width:70px"
@@ -356,10 +361,12 @@
 
                                                         <div class="form-check-size">
                                                             <div class="form-check form-switch form-check-inline">
-                                                            <input class="form-check-input switch-primary check-size success profile-verification-switch"data-companyid="{{ $company->id }}"
-                                                            {{ $company->is_profile_verified ? 'checked' : '' }} type="checkbox" role="switch" checked="">
-                                                             </div>
+                                                                <input
+                                                                    class="form-check-input switch-primary check-size success profile-verification-switch"data-companyid="{{ $company->id }}"
+                                                                    {{ $company->is_profile_verified ? 'checked' : '' }}
+                                                                    type="checkbox" role="switch" checked="">
                                                             </div>
+                                                        </div>
                                                         <p style="min-width:70px"
                                                             class="{{ $company->is_profile_verified ? 'active' : '' }}"
                                                             id="profile_status_{{ $company->id }}">
@@ -376,43 +383,40 @@
                                             @if (userCan('company.update') || userCan('compnay.delete'))
                                                 <td>
                                                     <div class="d-flex align-items-center">
-                                                    @if (userCan('company.view'))
-                                                        <a href="{{ route('company.show', $company->id) }}"
-                                                            class="btn ll-btn ll-border-none">
-                                                            {{ __('view_profile') }}
-
-                                                        </a>
-                                                    @endif
-                                                    @if (userCan('company.update'))
-                                                        <a href="{{ route('company.edit', $company->id) }}"
-                                                            class="btn ll-p-0">
-                                                            <p class="text-dark"><i class="fa fa-edit"
-                                                                    style="font-size: 26px;"></i></p>
-                                                        </a>
-                                                    @endif
-                                                    @if (userCan('company.delete'))
-                                                        <form action="{{ route('company.destroy', $company->id) }}"
-                                                            method="POST" class="d-inline">
-                                                            @method('DELETE')
-                                                            @csrf
-                                                            <button
-                                                                onclick="return confirm('{{ __('are_you_sure_you_want_to_delete_this_item') }}');"
+                                                        @if (userCan('company.view'))
+                                                            <a href="{{ route('company.show', $company->id) }}"
+                                                                class="btn ll-btn ll-border-none">
+                                                                <i class="fa fa-eye fa-2x"></i>
+                                                            </a>
+                                                        @endif
+                                                        @if (userCan('company.update'))
+                                                            <a href="{{ route('company.edit', $company->id) }}"
                                                                 class="btn ll-p-0">
-                                                                <p class="text-dark"><i class="fa fa-trash-o fa-2x"
-                                                                        style="font-size: 26px;"></i></p>
-                                                            </button>
-                                                        </form>
-                                                    @endif
+                                                                <p class="text-dark"><i class="fa fa-edit fa-2x"></i></p>
+                                                            </a>
+                                                        @endif
+                                                        @if (userCan('company.delete'))
+                                                            <form action="{{ route('company.destroy', $company->id) }}"
+                                                                method="POST" class="d-inline">
+                                                                @method('DELETE')
+                                                                @csrf
+                                                                <button
+                                                                    onclick="return confirm('{{ __('are_you_sure_you_want_to_delete_this_item') }}');"
+                                                                    class="btn ll-p-0">
+                                                                    <p class="text-dark"><i
+                                                                            class="fa fa-trash-o fa-2x"></i></p>
+                                                                </button>
+                                                            </form>
+                                                        @endif
                                                     </div>
                                                 </td>
                                             @endif
                                         </tr>
                                     @empty
-                                        
                                     @endforelse
                                 </tbody>
                                 <tfoot>
-                                   
+
                                 </tfoot>
                             </table>
                         </div>

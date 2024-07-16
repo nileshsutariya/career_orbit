@@ -185,7 +185,7 @@
                 <div class="card-header">
                     <div class=" d-flex justify-content-between align-items-center">
                         <h3 class="card-title">{{ __('recently_published_jobs') }}</h3>
-                        <a href="{{ route('job.index') }}" class="btn btn-dark">{{ __('view_all') }}</a>
+                        <a href="{{ route('job.index') }}" class="btn btn-secondary">{{ __('view_all') }}</a>
                     </div>
                 </div>
                 <div class="card-body dt-ext table-responsive theme-scrollbar">
@@ -212,8 +212,8 @@
                                         <td class="text-muted">{{ $latest->job_type ? $latest->job_type->name : '' }}
                                         </td>
                                         <td class="text-muted">
-                                            <a href="{{ route('job.show', $latest->id) }}" class="btn bg-info ml-1">
-                                                <i class="fas fa-eye"></i>
+                                            <a href="{{ route('job.show', $latest->id) }}" class="btn  ml-1">
+                                                <i class="fa fa-eye"></i>
                                             </a>
                                         </td>
                                     </tr>
@@ -237,7 +237,7 @@
                 <div class="card-header">
                     <div class=" d-flex justify-content-between align-items-center">
                         <h3 class="card-title">{{ __('recently_purchased_orders') }}</h3>
-                        <a href="{{ route('order.index') }}" class="btn btn-dark">{{ __('view_all') }}</a>
+                        <a href="{{ route('order.index') }}" class="btn btn-secondary">{{ __('view_all') }}</a>
                     </div>
                 </div>
                 <div class="card-body dt-ext table-responsive theme-scrollbar">
@@ -298,15 +298,14 @@
                                         </td>
                                         <td class="text-muted">
                                         <td class="d-flex">
-                                            <a href="{{ route('order.show', $earning->id) }}"
-                                                class="btn bg-primary mr-1">
-                                                <i class="fas fa-eye"></i>
+                                            <a href="{{ route('order.show', $earning->id) }}" class="btn mr-1">
+                                                <i class="fa fa-eye"></i>
                                             </a>
                                             <form action="{{ route('admin.transaction.invoice.download', $earning->id) }}"
                                                 method="POST">
                                                 @csrf
-                                                <button type="submit" class="btn btn-info">
-                                                    <i class=" fas fa-download"></i>
+                                                <button type="submit" class="btn">
+                                                    <i class="text-dark fa fa-download"></i>
                                                 </button>
                                             </form>
                                         </td>
@@ -332,9 +331,10 @@
                     <div class=" d-flex justify-content-between align-items-center">
                         <h3 class="card-title">{{ __('latest_users') }}</h3>
                         <div class="d-flex justify-content-center align-items-center">
-                            <a href="{{ route('candidate.index') }}" class="btn btn-success mr-1">
+                            <a href="{{ route('candidate.index') }}" class="btn btn-secondary m-r-10  ">
                                 {{ __('view_all_candidates') }}</a>
-                            <a href="{{ route('company.index') }}" class="btn btn-info">{{ __('view_all_company') }}</a>
+                            <a href="{{ route('company.index') }}"
+                                class="btn btn-primary">{{ __('view_all_company') }}</a>
                         </div>
                     </div>
                     <div class="card-body dt-ext table-responsive theme-scrollbar">
@@ -368,11 +368,11 @@
                                             </td>
                                             <td class="text-muted">
                                                 @if ($user->role == 'company')
-                                                    <span class="badge badge-info">
+                                                    <span class="badge badge-primary">
                                                         {{ ucfirst($user->role) }}
                                                     </span>
                                                 @else
-                                                    <span class="badge badge-success">
+                                                    <span class="badge badge-secondary">
                                                         {{ ucfirst($user->role) }}
                                                     </span>
                                                 @endif
@@ -392,8 +392,8 @@
                                                 @if ($user->role == 'company')
                                                     @if ($user->company && $user->company->id)
                                                         <a href="{{ route('company.show', $user->company->id) }}"
-                                                            class="btn bg-primary mr-1">
-                                                            <i class="fas fa-eye"></i>
+                                                            class="btn  mr-1">
+                                                            <i class="fa fa-eye"></i>
                                                         </a>
                                                     @else
                                                         -
@@ -401,8 +401,8 @@
                                                 @else
                                                     @if ($user->candidate && $user->candidate->id)
                                                         <a href="{{ route('candidate.show', $user->candidate->id) }}"
-                                                            class="btn bg-primary mr-1">
-                                                            <i class="fas fa-eye"></i>
+                                                            class="btn  mr-1">
+                                                            <i class="fa fa-eye"></i>
                                                         </a>
                                                     @else
                                                         -

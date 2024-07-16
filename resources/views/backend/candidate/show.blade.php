@@ -2,243 +2,309 @@
 @section('title')
     {{ $user->name }} {{ __('details') }}
 @endsection
-{{-- @section('content')
-    <div class="row">
-        <div class="col-md-12">
-            <div class="ll-card">
-                <div class="ll-card-header d-flex justify-content-between align-items-center">
-                    <h3 class="ll-card-title line-height-36">{{ $candidate->user->name }}'s
-                        {{ __('details') }}</h3>
-                    <div>
-                        <a href="{{ route('candidate.edit', $candidate->id) }}">
-                            <x-svg.table-edit />
-                        </a>
-                        <form action="{{ route('candidate.destroy', $candidate->id) }}" method="POST" class="d-inline">
-                            @method('DELETE')
-                            @csrf
-                            <button onclick="return confirm('{{ __('are_you_sure_you_want_to_delete_this_item') }}');"
-                                class="border-0 bg-transparent">
-                                <x-svg.table-delete />
-                            </button>
-                        </form>
+
+@section('content')
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="float-start">
+                            <h4>{{ $candidate->user->name }}'s
+                                {{ __('details') }}</h4>
+                        </div>
+
+                        <div class="float-end">
+                            <a href="{{ route('candidate.edit', $candidate->id) }}">
+                                <i class="fa fa-edit fa-2x text-success"></i>
+                            </a>
+                            <form action="{{ route('candidate.destroy', $candidate->id) }}" method="POST" class="d-inline">
+                                @method('DELETE')
+                                @csrf
+                                <button onclick="return confirm('{{ __('are_you_sure_you_want_to_delete_this_item') }}');"
+                                    class="border-0 bg-transparent">
+                                    <i class="fa fa-trash-o fa-2x text-danger"></i>
+                                </button>
+                            </form>
+                        </div>
                     </div>
                 </div>
-                <div class="ll-card-body table-responsive">
-                    <div class="ll-flex my-2">
-                        <div class="ll-flex-item">
-                            <div class="candidate-details__left">
-                                <div class="candidate-logo">
-                                    <img src="{{ $candidate->photo }}" alt="candidate_profile">
-                                </div>
-                                <div>
-                                    <h3>{{ $candidate->user->name }}</h3>
-                                    <p>{{ $candidate->user->email }}</p>
-                                    @if ($user->socialInfo && $candidate->user->socialInfo->count() > 0)
-                                        <div class="d-flex">
-                                            @foreach ($user->socialInfo as $contact)
-                                                <a class="social-media" target="__blank" href="{{ $contact->url }}">
-                                                    @switch($contact)
-                                                        @case($contact->social_media === 'facebook')
-                                                            <x-svg.facebook-icon />
-                                                        @break
-
-                                                        @case($contact->social_media === 'twitter')
-                                                            <x-svg.twitter-icon />
-                                                        @break
-
-                                                        @case($contact->social_media === 'instagram')
-                                                            <x-svg.instagram-icon />
-                                                        @break
-
-                                                        @case($contact->social_media === 'youtube')
-                                                            <x-svg.youtube-icon />
-                                                        @break
-
-                                                        @case($contact->social_media === 'linkedin')
-                                                            <x-svg.linkedin-icon />
-                                                        @break
-
-                                                        @case($contact->social_media === 'pinterest')
-                                                            <x-svg.pinterest-icon />
-                                                        @break
-
-                                                        @case($contact->social_media === 'reddit')
-                                                            <x-svg.reddit-icon />
-                                                        @break
-
-                                                        @case($contact->social_media === 'github')
-                                                            <x-svg.github-icon />
-                                                        @break
-
-                                                        @case($contact->social_media === 'other')
-                                                            <x-svg.link-icon />
-                                                        @break
-
-                                                        @default
-                                                    @endswitch
-                                                </a>
-                                            @endforeach
-                                        </div>
-                                    @endif
-                                    <div class="d-flex align-items-center" style="gap: 16px;">
-                                        <div>
-                                            <a href="javascript:void(0)" class="active-status">
-                                                <label class="switch ">
-                                                    <input data-id="{{ $user->id }}" type="checkbox"
-                                                        class="success status-switch"
-                                                        {{ $user->status == 1 ? 'checked' : '' }}>
-                                                    <span class="slider round"></span>
-                                                </label>
-                                                <p class="{{ $user->status == 1 ? 'active' : '' }}"
-                                                    id="status_{{ $candidate->user_id }}">
-                                                    {{ $user->status == 1 ? __('activated') : __('deactivated') }}</p>
-                                            </a>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="d-flex">
+                                        <div class="candidate-logo m-r-20">
+                                            <img src="{{ $candidate->photo }}" alt="candidate_profile">
                                         </div>
                                         <div>
-                                            <a href="javascript:void(0)" class="active-status">
-                                                <label class="switch ">
-                                                    <input data-userid="{{ $user->id }}" type="checkbox"
-                                                        class="success email-verification-switch"
-                                                        {{ $user->email_verified_at ? 'checked' : '' }}>
-                                                    <span class="slider round"></span>
-                                                </label>
-                                                <p class="{{ $user->email_verified_at ? 'active' : '' }}"
-                                                    id="verification_status_{{ $candidate->user_id }}">
-                                                    {{ $user->email_verified_at ? __('verified') : __('unverified') }}
-                                                </p>
-                                            </a>
+                                            <h3>{{ $candidate->user->name }}</h3>
+                                            <p>{{ $candidate->user->email }}</p>
+
+                                            @if ($user->socialInfo && $candidate->user->socialInfo->count() > 0)
+                                                <div class="d-flex flex-wrap">
+                                                    @foreach ($user->socialInfo as $contact)
+                                                        <a class="social-media" target="__blank"
+                                                            href="{{ $contact->url }}">
+                                                            @switch($contact)
+                                                                @case($contact->social_media === 'facebook')
+                                                                    <x-svg.facebook-icon />
+                                                                @break
+
+                                                                @case($contact->social_media === 'twitter')
+                                                                    <x-svg.twitter-icon />
+                                                                @break
+
+                                                                @case($contact->social_media === 'instagram')
+                                                                    <x-svg.instagram-icon />
+                                                                @break
+
+                                                                @case($contact->social_media === 'youtube')
+                                                                    <x-svg.youtube-icon />
+                                                                @break
+
+                                                                @case($contact->social_media === 'linkedin')
+                                                                    <x-svg.linkedin-icon />
+                                                                @break
+
+                                                                @case($contact->social_media === 'pinterest')
+                                                                    <x-svg.pinterest-icon />
+                                                                @break
+
+                                                                @case($contact->social_media === 'reddit')
+                                                                    <x-svg.reddit-icon />
+                                                                @break
+
+                                                                @case($contact->social_media === 'github')
+                                                                    <x-svg.github-icon />
+                                                                @break
+
+                                                                @case($contact->social_media === 'other')
+                                                                    <x-svg.link-icon />
+                                                                @break
+
+                                                                @default
+                                                            @endswitch
+                                                        </a>
+                                                    @endforeach
+                                                </div>
+                                            @endif
+                                            <div class="d-flex align-items-center" style="gap: 16px;">
+                                                <div>
+                                                    <a href="javascript:void(0)" class="active-status">
+                                                        <div class="form-check form-switch form-check-inline">
+                                                            <input class="form-check-input switch-primary check-size"
+                                                                type="checkbox" role="switch"
+                                                                data-id="{{ $user->id }}"
+                                                                {{ $user->status == 1 ? 'checked' : '' }}>
+                                                        </div>
+
+                                                        <p class="{{ $user->status == 1 ? 'active' : '' }}"
+                                                            id="status_{{ $candidate->user_id }}">
+                                                            {{ $user->status == 1 ? __('activated') : __('deactivated') }}
+                                                        </p>
+                                                    </a>
+                                                </div>
+
+                                                <div>
+                                                    <a href="javascript:void(0)" class="active-status">
+
+                                                        <div class="form-check form-switch form-check-inline">
+                                                            <input class="form-check-input switch-primary check-size"
+                                                                type="checkbox" role="switch"
+                                                                data-userid="{{ $user->id }}"
+                                                                {{ $user->email_verified_at ? 'checked' : '' }}>
+                                                        </div>
+                                                        <p class="{{ $user->email_verified_at ? 'active' : '' }}"
+                                                            id="verification_status_{{ $candidate->user_id }}">
+                                                            {{ $user->email_verified_at ? __('verified') : __('unverified') }}
+                                                        </p>
+                                                    </a>
+                                                </div>
+
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
+
+
                         </div>
-                        <div class="ll-flex-item">
-                            <div class="candidate-details__right">
-                                <div class="one">
-                                    <div class="mb-4 d-flex">
-                                        <x-svg.details-profession />
-                                        <div>
-                                            <p>{{ __('profession') }}</p>
-                                            <h4>{{ $candidate->profession ? $candidate->profession->name : '-' }}</h4>
+
+
+                        <div class="col-md-6">
+                            <div class="card dashboard-3">
+
+                                <div class="card-body pt-0">
+                                    <ul class="recent">
+                                        <div class="row d-flex border-bottom">
+                                            <li class="d-flex align-items-center col-md-4">
+                                                <div class="flex-shrink-0 m-r-10"> <x-svg.details-profession /></div>
+                                                <div class="flex-grow-1">
+                                                    <h5> {{ __('profession') }}</h5>
+
+                                                    <p> <strong>{{ $candidate->profession ? $candidate->profession->name : '-' }}
+                                                        </strong> </p>
+                                                </div>
+
+                                            </li>
+                                            <li class="d-flex align-items-center col-md-4">
+                                                <div class="flex-shrink-0 m-r-10"> <x-svg.details-experience /> </div>
+                                                <div class="flex-grow-1">
+                                                    <h5> {{ __('experience') }}</h5>
+
+                                                    <p> <strong>{{ $candidate->experience ? $candidate->experience->name : '' }}</strong>
+                                                    </p>
+                                                </div>
+                                            </li>
+                                            <li class="d-flex align-items-center col-md-4">
+                                                <div class="flex-shrink-0 m-r-10"> <x-svg.details-package /></div>
+                                                <div class="flex-grow-1">
+                                                    <h5> {{ __('marital_status') }}</h5>
+
+                                                    <p> <strong>{{ $candidate->marital_status }}
+                                                        </strong> </p>
+                                                </div>
+                                            </li>
                                         </div>
-                                    </div>
-                                    <div class="d-flex">
-                                        <x-svg.details-experience />
-                                        <div>
-                                            <p>{{ __('experience') }}</p>
-                                            <h4>{{ $candidate->experience ? $candidate->experience->name : '' }}</h4>
+                                        <div class="row d-flex border-bottom">
+                                            <li class="d-flex align-items-center col-md-4">
+                                                <div class="flex-shrink-0 m-r-10"> <x-svg.details-education /></div>
+                                                <div class="flex-grow-1">
+                                                    <h5> {{ __('education') }}</h5>
+
+                                                    <p> <strong>{{ $candidate->education ? $candidate->education->name : '' }}
+                                                        </strong>
+                                                    </p>
+                                                </div>
+
+                                            </li>
+                                            <li class="d-flex align-items-center col-md-4">
+                                                <div class="flex-shrink-0 m-r-10"> <x-svg.details-leyers /></div>
+                                                <div class="flex-grow-1">
+                                                    <h5> {{ __('gender') }}</h5>
+
+                                                    <p> <strong>{{ ucfirst($candidate->gender) }}</a></strong>
+                                                    </p>
+                                                </div>
+
+                                            </li>
+                                            <li class="d-flex align-items-center col-md-4">
+                                                <div class="flex-shrink-0 m-r-10"> <x-svg.details-calendar-blank /></div>
+                                                <div class="flex-grow-1">
+                                                    <h5> {{ __('birth_date') }}</h5>
+
+                                                    <p> <strong>
+                                                            {{ date('D, d M Y', strtotime($candidate->birth_date)) }}
+                                                        </strong> </p>
+                                                </div>
+
+                                            </li>
                                         </div>
-                                    </div>
-                                </div>
-                                <div class="two">
-                                    <div class="mb-4 d-flex">
-                                        <x-svg.details-package />
-                                        <div>
-                                            <p>{{ __('marital_status') }}</p>
-                                            <h4>{{ __($candidate->marital_status) }}</h4>
+                                        <div class="row d-flex">
+                                            <li class="d-flex align-items-center col-md-4">
+                                                <div class="flex-shrink-0 m-r-10"><x-svg.details-globe-simple /></div>
+                                                <div class="flex-grow-1">
+                                                    <h5> {{ __('website') }}</h5>
+                                                    <p> <a href="{{ $candidate->website }}">{{ $candidate->website }}</a>
+                                                    </p>
+                                                </div>
+
+                                            </li>
+                                            <li class="d-flex align-items-center col-md-4">
+                                                @if ($user->contactInfo && $user->contactInfo->phone)
+                                                    <div class="flex-shrink-0 m-r-10"> <x-svg.details-phone-call /></div>
+                                                    <div class="flex-grow-1">
+                                                        <h5> {{ __('phone') }}</h5>
+
+                                                        <p> <a
+                                                                href="tel: {{ $user->contactInfo->phone }}">{{ $user->contactInfo->phone }}</a>
+                                                        </p>
+                                                    </div>
+                                                @endif
+                                            </li>
+                                            <li class="d-flex align-items-center col-md-4">
+                                                @if ($user->contactInfo && $user->contactInfo->email)
+                                                    <div class="flex-shrink-0 m-r-10"> <x-svg.details-envelop /></div>
+                                                    <div class="flex-grow-1">
+                                                        <h5> {{ __('contact_email') }}</h5>
+
+                                                        <p> <a
+                                                                href="mailto: {{ $user->contactInfo->email }}">{{ $user->contactInfo->email }}</a>
+                                                        </p>
+                                                    </div>
+                                                @endif
+
+
+                                            </li>
                                         </div>
-                                    </div>
-                                    <div class="d-flex">
-                                        <x-svg.details-education />
-                                        <div>
-                                            <p>{{ __('education') }}</p>
-                                            <h4>{{ $candidate->education ? $candidate->education->name : '' }}</h4>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="three">
-                                    <div class="mb-4 d-flex">
-                                        <x-svg.details-leyers />
-                                        <div>
-                                            <p>{{ __('gender') }}</p>
-                                            <h4>{{ ucfirst($candidate->gender) }}</h4>
-                                        </div>
-                                    </div>
-                                    <div class="d-flex">
-                                        <x-svg.details-calendar-blank />
-                                        <div>
-                                            <p>{{ __('birth_date') }}</p>
-                                            <h4>{{ date('D, d M Y', strtotime($candidate->birth_date)) }}</h4>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="four">
-                                    <div class="mb-4 d-flex">
-                                        <x-svg.details-globe-simple />
-                                        <div>
-                                            <p>{{ __('website') }}</p>
-                                            <a href="{{ $candidate->website }}">{{ $candidate->website }}</a>
-                                        </div>
-                                    </div>
-                                    @if ($user->contactInfo && $user->contactInfo->phone)
-                                        <div class="mb-4 d-flex">
-                                            <x-svg.details-phone-call />
-                                            <div>
-                                                <p>{{ __('phone') }}</p>
-                                                <a
-                                                    href="tel: {{ $user->contactInfo->phone }}">{{ $user->contactInfo->phone }}</a>
-                                            </div>
-                                        </div>
-                                    @endif
-                                    @if ($user->contactInfo && $user->contactInfo->email)
-                                        <div class="d-flex">
-                                            <x-svg.details-envelop/>
-                                            <div>
-                                                <p>{{ __('contact_email') }}</p>
-                                                <a
-                                                    href="mailto: {{ $user->contactInfo->email }}">{{ $user->contactInfo->email }}</a>
-                                            </div>
-                                        </div>
-                                    @endif
+
+
+                                    </ul>
                                 </div>
                             </div>
                         </div>
+
+
+
+                        <div class="col-md-6">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h3> {{ __('description') }} </h3>
+                                </div>
+                                <div class="card-body">
+
+                                    <p>
+                                        {!! nl2br($candidate->bio) !!}
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="card">
+
+                                <div class="card-body">
+                                    <h3 class="mb-2">{{ __('skills') }} </h3>
+                                    <p class="flex">
+                                        @foreach ($candidate->skills as $skill)
+                                            <span class="badge badge-light-success">{{ $skill->name }}</span>
+                                        @endforeach
+                                    </p>
+
+                                    <h3 class="mb-2">{{ __('languages') }} </h3>
+                                    <p class="flex">
+                                        @foreach ($candidate->languages as $language)
+                                            <span class="badge badge-light-success">{{ $language->name }}</span>
+                                        @endforeach
+                                    </p>
+
+                                    <h3 class="mb-2">{{ __('location') }} </h3>
+                                    <p><strong>{{ $candidate->exact_location ? $candidate->exact_location : $candidate->full_address }}</strong>
+                                    </p>
+                                </div>
+
+
+                            </div>
+                        </div>
+
+                        <x-admin.candidate.card-component title="{{ __('applied_jobs') }}" :jobs="$appliedJobs"
+                            link="website.job.apply" />
+
+                        <x-admin.candidate.card-component title="{{ __('bookmark_jobs') }}" :jobs="$bookmarkJobs"
+                            link="website.job.bookmark" />
+
+
                     </div>
+
+
                 </div>
-                <div class="desc-skills-wrapper">
-                    <div class="desc-wrap">
-                        <div class="text-bold">
-                            {{ __('description') }}
-                        </div>
-                        <p>
-                            {!! nl2br($candidate->bio) !!}
-                        </p>
-                    </div>
-                    <div class="skills-wrap">
-                        <div class="ll-mb-6">
-                            <h4 class="text-bold">
-                                {{ __('skills') }}
-                            </h4>
-                            <p>
-                                @foreach ($candidate->skills as $skill)
-                                    <span class="skill-badge">{{ $skill->name }}</span>
-                                @endforeach
-                            </p>
-                        </div>
-                        <div class="ll-mb-6">
-                            <h4 class="text-bold">
-                                {{ __('languages') }}
-                            </h4>
-                            <p>
-                                @foreach ($candidate->languages as $language)
-                                    <span class="language-badge">{{ $language->name }}</span>
-                                @endforeach
-                            </p>
-                        </div>
-                        <div>
-                            <h4 class="text-bold"> {{ __('location') }} </h4>
-                            <p>{{ $candidate->exact_location ? $candidate->exact_location: $candidate->full_address }}</p>
-                        </div>
-                    </div>
-                </div>
+
             </div>
-            <x-admin.candidate.card-component title="{{ __('applied_jobs') }}" :jobs="$appliedJobs"
-                link="website.job.apply" />
-            <x-admin.candidate.card-component title="{{ __('bookmark_jobs') }}" :jobs="$bookmarkJobs"
-                link="website.job.bookmark" />
         </div>
     </div>
-@endsection --}}
+@endsection
+
 
 @section('style')
     <style>
@@ -305,6 +371,7 @@
 @endsection
 @section('script')
     {{-- Leaflet  --}}
+    <script src="{{ asset('backend/assets/js/dashboard/dashboard_2.js') }}"></script>
     <script src="{{ asset('frontend') }}/assets/js/axios.min.js"></script>
     <x-map.leaflet.map_scripts />
     <script>
@@ -378,296 +445,4 @@
     </script>
     <script src="{{ $scr }}" async defer></script>
     <!-- ================ google map ============== -->
-@endsection
-
-@section('content')
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="card">
-                    <div class="card-header">
-                        <h4>{{ $candidate->user->name }}'s
-                            {{ __('details') }}</h4>
-
-                        <div class="card-header-right">
-                            <a href="{{ route('candidate.edit', $candidate->id) }}">
-                                <x-svg.table-edit />
-                            </a>
-                            <form action="{{ route('candidate.destroy', $candidate->id) }}" method="POST" class="d-inline">
-                                @method('DELETE')
-                                @csrf
-                                <button onclick="return confirm('{{ __('are_you_sure_you_want_to_delete_this_item') }}');"
-                                    class="border-0 bg-transparent">
-                                    <x-svg.table-delete />
-                                </button>
-                            </form>
-                        </div>
-                    </div>
-                    <div class="card-body">
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="card">
-                                    <div class="card-body">
-                                        <div class="d-flex">
-                                            <div class="candidate-logo">
-                                                <img src="{{ $candidate->photo }}" alt="candidate_profile">
-                                            </div>
-                                            <div>
-                                                <h3>{{ $candidate->user->name }}</h3>
-                                                <p>{{ $candidate->user->email }}</p>
-
-                                                @if ($user->socialInfo && $candidate->user->socialInfo->count() > 0)
-                                                    <div class="d-flex flex-wrap">
-                                                        @foreach ($user->socialInfo as $contact)
-                                                            <a class="social-media" target="__blank"
-                                                                href="{{ $contact->url }}">
-                                                                @switch($contact)
-                                                                    @case($contact->social_media === 'facebook')
-                                                                        <x-svg.facebook-icon />
-                                                                    @break
-
-                                                                    @case($contact->social_media === 'twitter')
-                                                                        <x-svg.twitter-icon />
-                                                                    @break
-
-                                                                    @case($contact->social_media === 'instagram')
-                                                                        <x-svg.instagram-icon />
-                                                                    @break
-
-                                                                    @case($contact->social_media === 'youtube')
-                                                                        <x-svg.youtube-icon />
-                                                                    @break
-
-                                                                    @case($contact->social_media === 'linkedin')
-                                                                        <x-svg.linkedin-icon />
-                                                                    @break
-
-                                                                    @case($contact->social_media === 'pinterest')
-                                                                        <x-svg.pinterest-icon />
-                                                                    @break
-
-                                                                    @case($contact->social_media === 'reddit')
-                                                                        <x-svg.reddit-icon />
-                                                                    @break
-
-                                                                    @case($contact->social_media === 'github')
-                                                                        <x-svg.github-icon />
-                                                                    @break
-
-                                                                    @case($contact->social_media === 'other')
-                                                                        <x-svg.link-icon />
-                                                                    @break
-
-                                                                    @default
-                                                                @endswitch
-                                                            </a>
-                                                        @endforeach
-                                                    </div>
-                                                @endif
-                                                <div class="d-flex align-items-center" style="gap: 16px;">
-                                                    <div>
-                                                        <a href="javascript:void(0)" class="active-status">
-                                                            <div class="form-check form-switch form-check-inline">
-                                                                <input class="form-check-input switch-primary check-size"
-                                                                    type="checkbox" role="switch"
-                                                                    data-id="{{ $user->id }}"
-                                                                    {{ $user->status == 1 ? 'checked' : '' }}>
-                                                            </div>
-
-                                                            <p class="{{ $user->status == 1 ? 'active' : '' }}"
-                                                                id="status_{{ $candidate->user_id }}">
-                                                                {{ $user->status == 1 ? __('activated') : __('deactivated') }}
-                                                            </p>
-                                                        </a>
-                                                    </div>
-
-                                                    <div>
-                                                        <a href="javascript:void(0)" class="active-status">
-
-                                                            <div class="form-check form-switch form-check-inline">
-                                                                <input class="form-check-input switch-primary check-size"
-                                                                    type="checkbox" role="switch"
-                                                                    data-userid="{{ $user->id }}"
-                                                                    {{ $user->email_verified_at ? 'checked' : '' }}>
-                                                            </div>
-                                                            <p class="{{ $user->email_verified_at ? 'active' : '' }}"
-                                                                id="verification_status_{{ $candidate->user_id }}">
-                                                                {{ $user->email_verified_at ? __('verified') : __('unverified') }}
-                                                            </p>
-                                                        </a>
-                                                    </div>
-
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="card">
-                                    <div class="card-body">
-                                        <div class="d-flex">
-                                            <div class="one">
-                                                <div class="d-flex">
-                                                    <x-svg.details-profession />
-                                                    <div>
-                                                        {{ __('profession') }}
-                                                        <p> <strong>{{ $candidate->profession ? $candidate->profession->name : '-' }}
-                                                            </strong> </p>
-
-                                                    </div>
-                                                </div>
-                                                <div class="d-flex">
-                                                    <x-svg.details-experience />
-                                                    <div>
-                                                        {{ __('experience') }}
-                                                        <p> <strong>{{ $candidate->experience ? $candidate->experience->name : '' }}</strong>
-                                                        </p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="two">
-                                                <div class="d-flex">
-                                                    <x-svg.details-package />
-                                                    <div>
-                                                        {{ __('marital_status') }}
-                                                        <p> <strong>{{ $candidate->marital_status }}
-                                                            </strong> </p>
-
-                                                    </div>
-                                                </div>
-                                                <div class="d-flex">
-                                                    <x-svg.details-education />
-                                                    <div>
-                                                        {{ __('education') }}
-                                                        <p> <strong>{{ $candidate->education ? $candidate->education->name : '' }}
-                                                            </strong>
-                                                        </p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="three">
-
-                                                <div class="d-flex">
-                                                    <x-svg.details-leyers />
-                                                    <div>
-                                                        {{ __('gender') }}
-                                                        <p> <strong>{{ ucfirst($candidate->gender) }}</a></strong>
-                                                        </p>
-                                                    </div>
-                                                </div>
-
-                                                <div class="d-flex">
-                                                    <x-svg.details-calendar-blank />
-                                                    <div>
-                                                        {{ __('birth_date') }}
-                                                        <p> <strong>
-                                                                {{ date('D, d M Y', strtotime($candidate->birth_date)) }}
-                                                            </strong> </p>
-                                                    </div>
-                                                </div>
-
-
-                                            </div>
-
-                                            <div class="four">
-
-
-                                                <div class="d-flex">
-                                                    <x-svg.details-globe-simple />
-                                                    <div>
-                                                        {{ __('website') }}
-                                                        <p> <a
-                                                                href="{{ $candidate->website }}">{{ $candidate->website }}</a>
-                                                        </p>
-
-                                                    </div>
-                                                </div>
-
-
-                                                @if ($user->contactInfo && $user->contactInfo->phone)
-                                                    <div class="d-flex">
-                                                        <x-svg.details-phone-call />
-                                                        <div>
-                                                            {{ __('phone') }}
-                                                            <p> <a
-                                                                    href="tel: {{ $user->contactInfo->phone }}">{{ $user->contactInfo->phone }}</a>
-                                                            </p>
-                                                        </div>
-                                                    </div>
-                                                @endif
-
-                                                @if ($user->contactInfo && $user->contactInfo->email)
-                                                    <div class="d-flex">
-                                                        <x-svg.details-envelop />
-                                                        <div>
-                                                            {{ __('contact_email') }}
-                                                            <a
-                                                                href="mailto: {{ $user->contactInfo->email }}">{{ $user->contactInfo->email }}</a>
-
-                                                        </div>
-                                                    </div>
-                                                @endif
-
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-md-6">
-                                <div class="card">
-                                    <div class="card-header">
-                                        <h3> {{ __('description') }} </h3>
-                                    </div>
-                                    <div class="card-body">
-
-                                        <p>
-                                            {!! nl2br($candidate->bio) !!}
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="card">
-
-                                    <div class="card-body">
-                                        <h3>{{ __('skills') }} </h3>
-                                        <p class="flex">
-                                            @foreach ($candidate->skills as $skill)
-                                                <span class="badge badge-light-success">{{ $skill->name }}</span>
-                                            @endforeach
-                                        </p>
-
-                                        <h3>{{ __('languages') }} </h3>
-                                        <p class="flex">
-                                            @foreach ($candidate->languages as $language)
-                                                <span class="badge badge-light-success">{{ $language->name }}</span>
-                                            @endforeach
-                                        </p>
-
-                                        <h3>{{ __('location') }} </h3>
-                                        <p>{{ $candidate->exact_location ? $candidate->exact_location : $candidate->full_address }}
-                                        </p>
-                                    </div>
-
-
-                                </div>
-                            </div>
-
-                            <x-admin.candidate.card-component title="{{ __('applied_jobs') }}" :jobs="$appliedJobs"
-                                link="website.job.apply" />
-
-                            <x-admin.candidate.card-component title="{{ __('bookmark_jobs') }}" :jobs="$bookmarkJobs"
-                                link="website.job.bookmark" />
-
-
-                        </div>
-
-
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
 @endsection
