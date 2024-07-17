@@ -17,14 +17,14 @@
                             <div>
                                 <div class="d-flex flex-row">
 
-                                    <a class="btn btn-primary" href="{{ route('order.create') }}"><i class="fa fa-plus"></i>
+                                    <a class="btn btn-primary m-r-5" href="{{ route('order.create') }}"><i class="fa fa-plus"></i>
                                         {{ __('create') }}
                                     </a>
 
                                     @if (request('company') || request('provider') || request('plan') || request('sort_by'))
                                         <div>
                                             <a href="{{ route('order.index') }}" class="btn bg-danger"><i
-                                                    class="fas fa-times"></i>
+                                                    class="fa fa-times"></i>
                                                 &nbsp;{{ __('clear') }}
                                             </a>
                                         </div>

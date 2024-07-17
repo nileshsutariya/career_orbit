@@ -3,138 +3,6 @@
     {{ __('company_list') }}
 @endsection
 
-@section('style')
-    <style>
-        .switch {
-            position: relative;
-            display: inline-block;
-            width: 35px;
-            height: 19px;
-        }
-
-        /* Hide default HTML checkbox */
-        .switch input {
-            display: none;
-        }
-
-        /* The slider */
-        .slider {
-            position: absolute;
-            cursor: pointer;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-color: #ccc;
-            -webkit-transition: .4s;
-            transition: .4s;
-        }
-
-        .slider:before {
-            position: absolute;
-            content: "";
-            height: 15px;
-            width: 15px;
-            left: 3px;
-            bottom: 2px;
-            background-color: white;
-            -webkit-transition: .4s;
-            transition: .4s;
-        }
-
-        input.success:checked+.slider {
-            background-color: #28a745;
-        }
-
-        input:checked+.slider:before {
-            -webkit-transform: translateX(15px);
-            -ms-transform: translateX(15px);
-            transform: translateX(15px);
-        }
-
-        /* Rounded sliders */
-        .slider.round {
-            border-radius: 34px;
-        }
-
-        .slider.round:before {
-            border-radius: 50%;
-        }
-    </style>
-@endsection
-
-@section('script')
-    <script>
-        $('.status-switch').on('change', function() {
-            var status = $(this).prop('checked') == true ? 1 : 0;
-            var id = $(this).data('id');
-            $.ajax({
-                type: "GET",
-                dataType: "json",
-                url: '{{ route('company.status.change') }}',
-                data: {
-                    'status': status,
-                    'id': id
-                },
-                success: function(response) {
-                    toastr.success(response.message, 'Success');
-                }
-            });
-
-            if (status == 1) {
-                $(`#status_${id}`).text("{{ __('activated') }}")
-            } else {
-                $(`#status_${id}`).text("{{ __('deactivated') }}")
-            }
-        });
-        $('.email-verification-switch').on('change', function() {
-            var status = $(this).prop('checked') == true ? 1 : 0;
-            var id = $(this).data('userid');
-            $.ajax({
-                type: "GET",
-                dataType: "json",
-                url: '{{ route('company.verify.change') }}',
-                data: {
-                    'status': status,
-                    'id': id
-                },
-                success: function(response) {
-                    toastr.success(response.message, 'Success');
-                }
-            });
-
-            if (status == 1) {
-                $(`#verification_status_${id}`).text("{{ __('verified') }}")
-            } else {
-                $(`#verification_status_${id}`).text("{{ __('unverified') }}")
-            }
-        });
-
-        $('.profile-verification-switch').on('change', function() {
-            var status = $(this).prop('checked') == true ? 1 : 0;
-            var id = $(this).data('companyid');
-            $.ajax({
-                type: "GET",
-                dataType: "json",
-                url: '{{ route('company.profile.verify.change') }}',
-                data: {
-                    'status': status,
-                    'id': id
-                },
-                success: function(response) {
-                    toastr.success(response.message, 'Success');
-                }
-            });
-
-            if (status == 1) {
-                $(`profile_status_${id}`).text("{{ __('verified') }}")
-            } else {
-                $(`profile_status_${id}`).text("{{ __('unverified') }}")
-            }
-        });
-    </script>
-@endsection
-
 @section('content')
     <div class="container-fluid">
         <div class="row">
@@ -149,7 +17,7 @@
                                 <div class="d-flex flex-row">
 
 
-                                    <a class="btn btn-primary" href="{{ route('company.create') }}"><i
+                                    <a class="btn btn-primary m-r-5" href="{{ route('company.create') }}"><i
                                             class="fa fa-plus"></i>
                                         {{ __('create') }}
                                     </a>
@@ -177,7 +45,7 @@
                             </div>
                             <div class="col-xl-2 col-md-6 col-12">
                                 <label>{{ __('organization_type') }}</label>
-                                <select name="organization_type" class="form-control select2bs4">
+                                <select name="organization_type" class="form-control select2">
                                     <option value="">
                                         {{ __('all') }}
                                     </option>
@@ -192,7 +60,7 @@
                             </div>
                             <div class="col-xl-2 col-md-6 col-12">
                                 <label>{{ __('industry_type') }}</label>
-                                <select name="industry_type" class="form-control select2bs4">
+                                <select name="industry_type" class="form-control select2">
                                     <option value="">
                                         {{ __('all') }}
                                     </option>
@@ -206,7 +74,7 @@
                             </div>
                             <div class="col-xl-2 col-md-6 col-12">
                                 <label>{{ __('email_verification') }}</label>
-                                <select name="ev_status" class="form-control select2bs4">
+                                <select name="ev_status" class="form-control select2">
                                     <option value="">
                                         {{ __('all') }}
                                     </option>
@@ -220,7 +88,7 @@
                             </div>
                             <div class="col-xl-3 col-md-6 col-12">
                                 <label>{{ __('sort_by') }}</label>
-                                <select name="sort_by" class="form-control select2bs4">
+                                <select name="sort_by" class="form-control select2">
                                     <option {{ !request('sort_by') || request('sort_by') == 'latest' ? 'selected' : '' }}
                                         value="latest" selected>
                                         {{ __('latest') }}
@@ -424,4 +292,75 @@
             </div>
         </div>
     </div>
+@endsection
+@section('script')
+    <script>
+        $('.status-switch').on('change', function() {
+            var status = $(this).prop('checked') == true ? 1 : 0;
+            var id = $(this).data('id');
+            $.ajax({
+                type: "GET",
+                dataType: "json",
+                url: '{{ route('company.status.change') }}',
+                data: {
+                    'status': status,
+                    'id': id
+                },
+                success: function(response) {
+                    toastr.success(response.message, 'Success');
+                }
+            });
+
+            if (status == 1) {
+                $(`#status_${id}`).text("{{ __('activated') }}")
+            } else {
+                $(`#status_${id}`).text("{{ __('deactivated') }}")
+            }
+        });
+        $('.email-verification-switch').on('change', function() {
+            var status = $(this).prop('checked') == true ? 1 : 0;
+            var id = $(this).data('userid');
+            $.ajax({
+                type: "GET",
+                dataType: "json",
+                url: '{{ route('company.verify.change') }}',
+                data: {
+                    'status': status,
+                    'id': id
+                },
+                success: function(response) {
+                    toastr.success(response.message, 'Success');
+                }
+            });
+
+            if (status == 1) {
+                $(`#verification_status_${id}`).text("{{ __('verified') }}")
+            } else {
+                $(`#verification_status_${id}`).text("{{ __('unverified') }}")
+            }
+        });
+
+        $('.profile-verification-switch').on('change', function() {
+            var status = $(this).prop('checked') == true ? 1 : 0;
+            var id = $(this).data('companyid');
+            $.ajax({
+                type: "GET",
+                dataType: "json",
+                url: '{{ route('company.profile.verify.change') }}',
+                data: {
+                    'status': status,
+                    'id': id
+                },
+                success: function(response) {
+                    toastr.success(response.message, 'Success');
+                }
+            });
+
+            if (status == 1) {
+                $(`profile_status_${id}`).text("{{ __('verified') }}")
+            } else {
+                $(`profile_status_${id}`).text("{{ __('unverified') }}")
+            }
+        });
+    </script>
 @endsection

@@ -123,23 +123,6 @@
                             {{ __('images') }}
                         </div>
                         <div class="card-body">
-                            {{-- <div class="row">
-                                <div class="col-xl-4 mb-2">
-                                    <x-forms.label name="logo" :required="false" />
-                                    <input name="logo" type="file" data-show-errors="true" data-width="50%"
-                                        data-default-file="" class="form-control">
-                                    <p class="tw-text-gray-500 tw-text-xs tw-text-left mt-2 recommended-img-note mb-0">
-                                        Recommended Image Size: 68x68</p>
-                                </div>
-                                <div class="col-xl-8 mb-2">
-                                    <x-forms.label name="banner" :required="false" />
-                                    <input name="image" type="file" data-show-errors="true" data-width="100%"
-                                        data-default-file="" class="form-control">
-                                    <p class="tw-text-gray-500 tw-text-xs tw-text-left mt-2 recommended-img-note mb-0">
-                                        Recommended Image Size: 1920x312</p>
-                                </div>
-                            </div> --}}
-
                             <div class="row">
                                 <div class="form-group col-xl-4">
                                     <x-forms.label name="logo" :required="false" />
@@ -272,7 +255,7 @@
                                 </div>
                                 <div class="datepicker col-md-6">
                                     <x-forms.label name="establishment_date" :required="false" />
-                                    <x-forms.input type="text" name="establishment_date" placeholder="select_one"
+                                    <x-forms.input type="date" name="establishment_date" placeholder="select_one"
                                         id="establishment_date" />
                                     <x-forms.error name="establishment_date" />
                                 </div>
@@ -320,13 +303,13 @@
     @stack('js')
     <script>
         //init datepicker
-        $(document).ready(function() {
-            $('#establishment_date').datepicker({
-                format: 'dd-mm-yyyy',
-                isRTL: "{{ app()->getLocale() == 'ar' ? true : false }}",
-                language: "{{ app()->getLocale() }}",
-            });
-        });
+        // $(document).ready(function() {
+        //     $('#establishment_date').datepicker({
+        //         format: 'dd-mm-yyyy',
+        //         isRTL: "{{ app()->getLocale() == 'ar' ? true : false }}",
+        //         language: "{{ app()->getLocale() }}",
+        //     });
+        // });
 
         $(document).on("click", "#remove_item", function() {
             $(this).parent().parent('div').remove();
