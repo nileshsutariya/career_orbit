@@ -22,13 +22,14 @@
                                         {{ __('create') }}
                                     </a>
 
-                                    @if (request('company') || request('provider') || request('plan') || request('sort_by'))
-                                        <div>
-                                            <a href="{{ route('order.index') }}" class="btn bg-danger"><i
-                                                    class="fa fa-times"></i>
-                                                &nbsp;{{ __('clear') }}
-                                            </a>
-                                        </div>
+                                    @if (request('keyword') ||
+                                            request('ev_status') ||
+                                            request('sort_by') ||
+                                            request('organization_type') ||
+                                            request('industry_type'))
+                                        <a href="{{ route('company.index') }}" class="btn bg-danger"><i
+                                                class="fa fa-times"></i>&nbsp; {{ __('clear') }}
+                                        </a>
                                     @endif
 
                                 </div>
@@ -132,7 +133,8 @@
                                     @forelse ($companies as $company)
                                         <tr>
                                             <td>
-                                                <a href='{{ route('company.show', $company->id) }}' class="company">
+
+                                                <a href='{{ route('company.show', $company->id) }}' class="d-flex">
                                                     <img src="{{ $company->logo_url }}" class="img-fluid table-avtar"
                                                         alt="Logo">
                                                     <div>
@@ -151,6 +153,7 @@
                                                     </div>
 
                                                 </a>
+
                                             </td>
                                             <td>
                                                 <a href="{{ route('company.show', $company->id) }}">
