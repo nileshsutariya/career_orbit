@@ -74,7 +74,7 @@
                                             type="file"
                                             class="form-control form-control-sm @error('image') is-invalid @enderror"
                                             id="customFile">
-                                        <label class="custom-file-label" for="customFile">{{ __('choose_file') }}</label>
+
                                         @error('image')
                                             <span class="text-danger invalid-feedback"
                                                 role="alert"><strong>{{ $message }}</strong></span>
@@ -85,7 +85,6 @@
                                 <div class="mb-3 row">
                                     <label class="col-sm-3">{{ __('stars') }}<span class="text-danger">*</span></label>
                                     <div class="col-sm-9">
-                                        
 
                                         <div class="main-star-rating">
                                             <div class="common-flex star-box justify-content-center">
@@ -96,14 +95,14 @@
                                                 <i class="fa fa-star" data-index="5"></i>
                                             </div>
                                         </div>
-    
-                                      
+
+
                                         <input value="{{ $testimonial->stars }}" type="hidden" name="stars"
                                             id="rating" class="form-control @error('stars') is-invalid @enderror">
                                         @error('stars')
                                             <span class="invalid-feedback"
                                                 role="alert"><strong>{{ $message }}</strong></span>
-                                        @enderror 
+                                        @enderror
                                     </div>
                                 </div>
 
@@ -158,25 +157,26 @@
 @endsection
 
 @section('script')
-<script>
-    $(document).ready(function() {
-    $('.fa-star').click(function() {
-        var index = $(this).data('index');
-        var isActive = $(this).hasClass('active');
+    <script>
+        $(document).ready(function() {
+            $('.fa-star').click(function() {
+                var index = $(this).data('index');
+                var isActive = $(this).hasClass('active');
 
-        if (isActive) {
-            $(this).removeClass('active');
-            $(this).nextAll('.fa-star').removeClass('active');
-            var rating = $('.fa-star.active').length;
-            $('#rating').val(rating);
-        } else {
-            $('.fa-star').removeClass('active');
-            $(this).addClass('active');
-            $(this).prevAll('.fa-star').addClass('active');
-            var rating = $('.fa-star.active').length;
-            $('#rating').val(rating);
-        }
-    });
-});
-</script>
+                if (isActive) {
+                    $(this).removeClass('active');
+                    $(this).nextAll('.fa-star').removeClass('active');
+                    var rating = $('.fa-star.active').length;
+                    $('#rating').val(rating);
+
+                } else {
+                    $('.fa-star').removeClass('active');
+                    $(this).addClass('active');
+                    $(this).prevAll('.fa-star').addClass('active');
+                    var rating = $('.fa-star.active').length;
+                    $('#rating').val(rating);
+                }
+            });
+        });
+    </script>
 @endsection

@@ -61,6 +61,8 @@
                 </div>
             </div>
         </div>
+        @yield('backend_auth_script')
+
 
         <script src="{{ asset('backend/assets/js/jquery.min.js') }}"></script>
 

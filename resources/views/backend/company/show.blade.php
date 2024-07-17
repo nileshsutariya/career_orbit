@@ -201,18 +201,18 @@
                                                 </li>
 
                                                 <li class="d-flex align-items-center col-md-4">
-                                                   
-                                                        <div class="flex-shrink-0 m-r-10"> <x-svg.details-globe-simple />
-                                                        </div>
-                                                        <div class="flex-grow-1">
-                                                            <h5> {{ __('website') }}</h5>
-                                                            @if ($company->website)
+
+                                                    <div class="flex-shrink-0 m-r-10"> <x-svg.details-globe-simple />
+                                                    </div>
+                                                    <div class="flex-grow-1">
+                                                        <h5> {{ __('website') }}</h5>
+                                                        @if ($company->website)
                                                             <p> <strong> <a href="{{ $company->website }}"
                                                                         target="_blank">{{ $company->website ? $company->website : '' }}</a></strong>
                                                             </p>
-                                                            @endif
-                                                        </div>
-                                                    
+                                                        @endif
+                                                    </div>
+
                                                 </li>
 
                                                 <li class="d-flex align-items-center col-md-4">
@@ -243,25 +243,25 @@
                                                     @endif
                                                 </li>
                                                 <li class="d-flex align-items-center col-md-4">
-                                                   
-                                                        <div class="flex-shrink-0 m-r-10"> <svg width="24"
-                                                                height="25" xmlns="http://www.w3.org/2000/svg"
-                                                                fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                                                                stroke="#0A65CC" fill="#0A65CC" class="w-6 h-6">
-                                                                <path stroke-linecap="round" stroke-linejoin="round"
-                                                                    d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m2.25 0H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z" />
-                                                            </svg>
 
-                                                        </div>
-                                                        <div class="flex-grow-1">
-                                                            <h5> {{ __('documents') }}</h5>
+                                                    <div class="flex-shrink-0 m-r-10"> <svg width="24" height="25"
+                                                            xmlns="http://www.w3.org/2000/svg" fill="none"
+                                                            viewBox="0 0 24 24" stroke-width="1.5" stroke="#0A65CC"
+                                                            fill="#0A65CC" class="w-6 h-6">
+                                                            <path stroke-linecap="round" stroke-linejoin="round"
+                                                                d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m2.25 0H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z" />
+                                                        </svg>
 
-                                                            <p> <strong> <a
-                                                                        href="{{ route('admin.company.documents', $company) }}">{{ __('verification_documents') }}
-                                                                    </a>
-                                                                </strong> </p>
-                                                        </div>
-                                                    
+                                                    </div>
+                                                    <div class="flex-grow-1">
+                                                        <h5> {{ __('documents') }}</h5>
+
+                                                        <p> <strong> <a
+                                                                    href="{{ route('admin.company.documents', $company) }}">{{ __('verification_documents') }}
+                                                                </a>
+                                                            </strong> </p>
+                                                    </div>
+
                                                 </li>
 
                                             </div>
@@ -522,6 +522,21 @@
 
 @section('style')
     <style>
+        .social-media {
+            padding: 10px;
+            width: 40px;
+            height: 40px;
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            background: #e7f0fa;
+            color: #0a65cc;
+            border-radius: 4px;
+            transition: .3s ease-in-out;
+            margin-bottom: 10px;
+
+        }
+
         .switch {
             position: relative;
             display: inline-block;

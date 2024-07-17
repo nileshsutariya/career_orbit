@@ -56,7 +56,7 @@
                                             value="">
                                         @foreach ($languages as $key => $language)
                                             <button type="button" onclick="createContent('{{ $language->code }}')"
-                                                class="c-btn btn btn-sm btn-outline-primary {{ request('lang_query') == $language->code ? 'btn-primary text-white' : 'btn-outline-primary' }}">
+                                                class="btn btn-sm btn-light {{ request('lang_query') == $language->code ? 'btn-primary text-white' : 'btn-light' }}">
                                                 {{ $language->name }}
                                             </button>
                                         @endforeach
@@ -114,92 +114,13 @@
                         </div>
                     </div>
                 </div>
-                {{-- <div class="col-md-4">
-                    <div class="card-body card border table-responsive p-0">
-                        <table class="table table-hover text-nowrap">
-                            <thead>
-                                <tr>
-                                    <th>{{ __('translation_available_in') }}</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @forelse ($contents as $content)
-                                    <tr>
-                                        <td>
-                                            {{ $content->name }}
-                                            ({{ Str::ucfirst($content->language_code) }})
-                                        </td>
-                                        <td>
-                                            <a
-                                                href="{{ route('settings.seo.edit', [$seo->id, 'lang_query' => $content->language_code]) }}">
-                                                <button class="btn bg-info">
-                                                    <i class="fas fa-edit"></i>
-                                                </button>
-                                            </a>
-                                            @if ($content->language_code !== 'en')
-                                                <form action="{{ route('module.seo.content.delete') }}" method="POST"
-                                                    class="d-inline">
-                                                    @method('DELETE')
-                                                    @csrf
-                                                    <input type="hidden" name="page_id" value="{{ $seo->id }}">
-                                                    <input type="hidden" name="content_id" value="{{ $content->id }}">
-                                                    <button
-                                                        onclick="return confirm('Are you sure you want to delete this item?');"
-                                                        class="btn bg-danger"><i class="fas fa-trash"></i>
-                                                    </button>
-                                                </form>
-                                            @endif
-                                        </td>
-                                    </tr>
-                                @empty
-                                    <tr>
-                                        <td colspan="2" class="text-center">
-                                            {{ __('no_data_found') }}
-                                        </td>
-                                    </tr>
-                                @endforelse
-                            </tbody>
-                        </table>
-                    </div>
-                </div> --}}
+
             </div>
         </div>
     </section>
 @endsection
 
 @section('style')
-    <style>
-        .card-header1 {
-            background-color: transparent;
-            border-bottom: 1px solid rgba(52, 38, 38, 0.125);
-            padding: 0.75rem 1.25rem;
-            position: relative;
-            border-top-left-radius: 0.25rem;
-            border-top-right-radius: 0.25rem;
-        }
-
-        /* .select2-results__option[aria-selected=true] {
-            display: none;
-        }
-
-        .select2-container--bootstrap4 .select2-selection--multiple .select2-selection__choice {
-            color: #fff;
-            border: 1px solid #fff;
-            background: #007bff;
-            border-radius: 30px;
-        }
-
-        .select2-container--bootstrap4 .select2-selection--multiple .select2-selection__choice__remove {
-            color: #fff;
-        } */
-
-        .c-btn {
-            padding-left: 22px;
-            padding-right: 22px;
-            border-radius: 15px;
-            margin-right: 8px;
-        }
-    </style>
     <link rel="stylesheet" href="{{ asset('backend') }}/plugins/dropify/dropify.css">
 @endsection
 
