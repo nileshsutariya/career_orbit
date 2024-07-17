@@ -540,7 +540,7 @@ $tab_part = session('tab_part');
                                                                 <input type="hidden" name="session" value="terms">
                                                                 <input type="hidden" name="type" value="terms-page">
                                                                 <button class="btn">
-                                                                    <i class="text-dark icon-pencil-alt"></i>
+                                                                    <i class="text-success icon-pencil-alt"></i>
                                                                 </button>
                                                             </form>
                                                             @if ($list->language && $list->language->code !== 'en')
@@ -552,7 +552,7 @@ $tab_part = session('tab_part');
                                                                     value="{{ $list->id }}">
                                                                 <button
                                                                     onclick="return confirm('Are you sure you want to delete this item?');"
-                                                                    class="btn"><i class="text-dark icon-trash"></i>
+                                                                    class="btn"><i class="text-danger icon-trash"></i>
                                                                 </button>
                                                             </form>
                                                             @endif
@@ -653,7 +653,7 @@ $tab_part = session('tab_part');
                                                                 <input type="hidden" name="session" value="privacy">
                                                                 <input type="hidden" name="type" value="privacy-page">
                                                                 <button class="btn">
-                                                                    <i class="text-dark icon-pencil-alt"></i>
+                                                                    <i class="text-success icon-pencil-alt"></i>
                                                                 </button>
                                                             </form>
                                                             @if ($listt->language && $listt->language->code !== 'en')
@@ -665,7 +665,7 @@ $tab_part = session('tab_part');
                                                                     value="{{ $listt->id }}">
                                                                 <button
                                                                     onclick="return confirm('Are you sure you want to delete this item?');"
-                                                                    class="btn"><i class="text-dark icon-trash"></i>
+                                                                    class="btn"><i class="text-danger icon-trash"></i>
                                                                 </button>
                                                             </form>
                                                             @endif
@@ -766,7 +766,7 @@ $tab_part = session('tab_part');
                                                                 <input type="hidden" name="session" value="privacy">
                                                                 <input type="hidden" name="type" value="privacy-page">
                                                                 <button class="btn">
-                                                                    <i class=" text-dark icon-pencil-alt"></i>
+                                                                    <i class=" text-success icon-pencil-alt"></i>
                                                                 </button>
                                                             </form>
                                                             @if ($listt->language && $listt->language->code !== 'en')
@@ -778,7 +778,7 @@ $tab_part = session('tab_part');
                                                                     value="{{ $listt->id }}">
                                                                 <button
                                                                     onclick="return confirm('Are you sure you want to delete this item?');"
-                                                                    class="btn"><i class="text-dark icon-trash"></i>
+                                                                    class="btn"><i class="text-danger icon-trash"></i>
                                                                 </button>
                                                             </form>
                                                             @endif
@@ -1024,36 +1024,14 @@ $tab_part = session('tab_part');
 </div>
 @endsection
 
-@section('style')
-<link rel="stylesheet" href="{{ asset('backend') }}/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">
-<style>
-    /* .select2-results__option[aria-selected=true] {
-            display: none;
-        }
-
-        .select2-container--bootstrap4 .select2-selection--multiple .select2-selection__choice {
-            color: #fff;
-            border: 1px solid #fff;
-            background: #007bff;
-            border-radius: 30px;
-        }
-
-        .select2-container--bootstrap4 .select2-selection--multiple .select2-selection__choice__remove {
-            color: #fff;
-        } */
-</style>
-@endsection
-
 @section('script')
 <script>
     $("#export-button2").DataTable({
-      dom: "Bfrtip",
-     
+    
     });
 
     $("#export-button3").DataTable({
-      dom: "Bfrtip",
-      
+     
     });
 
         $('.dropify').dropify({

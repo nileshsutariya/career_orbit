@@ -7,7 +7,7 @@
         <div class="col-md-8 mx-auto">
             <div class="row">
                 <div class="card col-md-8">
-                    <div class="card-header">
+                    <div class="card-body">
                         <h4 class="card-title">{{ __('create') }} {{ __('job') }}</h4>
                     </div>
                 </div>
@@ -154,50 +154,7 @@
                         </div>
                         <div class="section pt-3" id="location">
                             <div class="card mb-0">
-                                {{-- <div class="card-header">
-                                    <div class="card-title">
-                                        {{ __('location') }}
-                                        <span class="text-red font-weight-bold">*</span>
-                                        <small class="h6">
-                                            ({{ __('click_to_add_a_pointer') }})
-                                        </small>
-                                    </div>
-                                </div>
-                                <div class="card-body">
-                                    <x-website.map.map-warning />
-                                    @php
-                                        $map = $setting->default_map;
-                                    @endphp
-                                    <div id="google-map-div" class="{{ $map == 'google-map' ? '' : 'd-none' }}">
-                                        <input id="searchInput" class="mapClass" type="text"
-                                            placeholder="Enter a location">
-                                        <div class="map mymap" id="google-map"></div>
-                                    </div>
-                                    <div class="{{ $map == 'leaflet' ? '' : 'd-none' }}">
-                                        <input type="text" autocomplete="off" id="leaflet_search"
-                                            placeholder="{{ __('enter_city_name') }}" class="form-control" /> <br>
-                                        <div id="leaflet-map"></div>
-                                    </div>
-                                    @error('location')
-                                        <span class="ml-3 text-md text-danger">{{ $message }}</span>
-                                    @enderror
-                                </div>
-                                @php
-                                    $location = session()->get('location');
-                                @endphp
-                                <div class="card-footer location_footer d-none">
-                                    <span>
-                                        <img src="{{ asset('frontend/assets/images/loader.gif') }}" alt="loading"
-                                            width="50px" height="50px" class="loader_position d-none">
-                                    </span>
-                                    <div class="location_secion">
-                                        {{ __('country') }}: <span
-                                            class="location_country">{{ $location && array_key_exists('country', $location) ? $location['country'] : '-' }}</span>
-                                        <br>
-                                        {{ __('full_address') }}: <span
-                                            class="location_full_address">{{ $location && array_key_exists('exact_location', $location) ? $location['exact_location'] : '-' }}</span>
-                                    </div>
-                                </div> --}}
+                                
                                 @if (config('templatecookie.map_show'))
                                     <div class="card-header">
                                         <div class="card-title">
@@ -778,15 +735,7 @@
 
 @section('script')
     @livewireScripts
-    <script>
-        $(document).ready(function() {
-            $('.select21').select2();
-        });
-        window.addEventListener('render-select2', event => {
-            console.log('fired');
-            $('.select21').select2();
-        })
-    </script>
+   
     @stack('js')
     <script>
         const stepMenus = document.querySelectorAll('.step-menu');
@@ -843,47 +792,7 @@
 
         updateActiveStepMenuItem();
     </script>
-    <script type="text/javascript"
-        src="{{ asset('backend') }}/plugins/flagicon/dist/js/bootstrap-iconpicker.bundle.min.js"></script>
-    <!-- Custom Script -->
-    @if (app()->getLocale() == 'ar')
-        <script
-            src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/locales/bootstrap-datepicker.ar.min.js
-                                                                                                                                                                                                                                                                                                                                                                                                                                                            ">
-        </script>
-    @endif
-    <script>
-        $('#benefits').select2({
-            theme: 'bootstrap4',
-            tags: true,
-            placeholder: 'Select Benefits'
-        });
-
-        $('#skills').select2({
-            theme: 'bootstrap4',
-            tags: true,
-            placeholder: 'Select Skill'
-        });
-
-        $('#tags').select2({
-            theme: 'bootstrap4',
-            tags: true,
-            placeholder: 'Select Tag',
-        });
-
-        //init datepicker
-        $(document).ready(function() {
-            var dateToday = new Date();
-            $('#deadline').datepicker({
-                format: "yyyy-mm-dd",
-                minDate: dateToday,
-                startDate: dateToday,
-                todayHighlight: true,
-                isRTL: "{{ app()->getLocale() == 'ar' ? true : false }}",
-                language: "{{ app()->getLocale() }}",
-            });
-        });
-    </script>
+   
 
     <script>
         var salary_mode = "{!! old('salary_mode') !!}";

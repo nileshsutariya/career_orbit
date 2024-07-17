@@ -252,7 +252,7 @@
                             <div class="col-md-6 mb-2">
                                 <div class="form-group">
                                     <x-forms.label name="birth_date" />
-                                    <input type="text" value="{{ date('d-m-Y', strtotime($candidate->birth_date)) }}"
+                                    <input type="date" value="{{ date('d-m-Y', strtotime($candidate->birth_date)) }}"
                                         class="form-control @error('birth_date') is-invalid @enderror" name="birth_date"
                                         id="birth_date" placeholder="{{ __('birth_date') }}">
                                     @error('birth_date')
@@ -355,14 +355,7 @@
     // dropify image
     $('.dropify').dropify();
 
-    //init datepicker
-    $(document).ready(function() {
-        $('#birth_date').datepicker({
-            format: 'dd-mm-yyyy',
-            isRTL: "{{ app()->getLocale() == 'ar' ? true : false }}",
-            language: "{{ app()->getLocale() }}",
-        });
-    });
+    
 </script>
 {{-- Leaflet --}}
 @include('map::set-edit-leafletmap', ['lat' => $lat, 'long' => $long])

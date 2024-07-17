@@ -134,11 +134,11 @@
                                         <tr>
                                             <td>
 
-                                                <a href='{{ route('company.show', $company->id) }}' class="d-flex">
+                                                <a href='{{ route('company.show', $company->id) }}' class="company d-flex gap-1">
                                                     <img src="{{ $company->logo_url }}" class="img-fluid table-avtar"
                                                         alt="Logo">
                                                     <div>
-                                                        <h5>{{ $company->user->name }}
+                                                        <h5 class="d-flex">{{ $company->user->name }}
                                                             @if ($company->is_profile_verified)
                                                                 <svg style="width: 24px ; height: 24px ; color: green"
                                                                     xmlns="http://www.w3.org/2000/svg" fill="none"
@@ -161,18 +161,20 @@
                                                 </a>
                                             </td>
                                             <td>
-                                                <p class="highlight">{{ $company->organization->name }}</p>
-                                                <p class="highlight mb-0"><x-svg.table-country />{{ $company->country }}
+                                               
+                                                <p class="mb-0">{{ $company->organization->name }}</p>
+                                                <p class="d-flex gap-2"><x-svg.table-country />{{ $company->country }}
                                                 </p>
+                                                
                                             </td>
                                             <td>
-                                                <p class="highlight mb-0">
+                                                <p class="d-flex gap-1 mb-0">
                                                     {{ $company->establishment_date ? date('j F, Y', strtotime($company->establishment_date)) : '-' }}
                                                 </p>
                                             </td>
                                             @if (userCan('company.update'))
                                                 <td tabindex="0">
-                                                    <a href="#" class="active-status">
+                                                    <a href="#" class="active-status d-flex gap-1">
 
                                                         <div class="form-check-size">
                                                             <div class="form-check form-switch form-check-inline">
@@ -184,16 +186,6 @@
                                                             </div>
                                                         </div>
 
-                                                        {{-- <div class="flex-grow-1">
-                                                            <label class="switch">
-                                                                <input type="checkbox" data-id="{{ $company->user_id }}"
-                                                                    class="success status-switch"
-                                                                    {{ $company->user->status == 1 ? 'checked' : '' }}>
-
-                                                                <span class="switch-state"></span>
-                                                            </label>
-                                                        </div> --}}
-
                                                         <p style="min-width:70px;"
                                                             class="{{ $company->user->status == 1 ? 'active' : '' }}"
                                                             id="status_{{ $company->user_id }}">
@@ -201,12 +193,11 @@
                                                         </p>
                                                     </a>
 
-
                                                 </td>
                                             @endif
                                             @if (userCan('company.update'))
                                                 <td tabindex="0">
-                                                    <a href="#" class="active-status">
+                                                    <a href="#" class="active-status d-flex gap-1">
 
 
                                                         <div class="form-check-size">
@@ -219,7 +210,6 @@
                                                             </div>
                                                         </div>
 
-
                                                         <p style="min-width:70px"
                                                             class="{{ $company->user->email_verified_at ? 'active' : '' }}"
                                                             id="verification_status_{{ $company->user_id }}">
@@ -231,9 +221,9 @@
 
                                             @if (userCan('company.update') || userCan('compnay.delete'))
                                                 <td tabindex="0">
-                                                    <a href="#" class="active-status">
+                                                    <a href="#" class="active-status d-flex gap-1">
 
-                                                        <div class="form-check-size mb-1">
+                                                        <div class="form-check-size">
                                                             <div class="form-check form-switch form-check-inline">
                                                                 <input data-companyid="{{ $company->id }}"
                                                                     class="form-check-input switch-primary check-size success profile-verification-switch"
@@ -247,7 +237,7 @@
                                                             {{ $company->is_profile_verified ? __('verified') : __('unverified') }}
                                                         </p>
                                                     </a>
-                                                    <div class="mt-2">
+                                                    <div>
                                                         <a href="{{ route('admin.company.documents', $company) }}">View
                                                             Documents</a>
                                                     </div>

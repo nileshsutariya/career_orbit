@@ -5,8 +5,8 @@
 @section('content')
     <div class="row">
         <div class="col-md-8 mx-auto">
-            <div class="card">
-                <div class="card-header">
+            <div class="card col-md-8">
+                <div class="card-body">
                     <h4 class="card-title line-height-36">{{ __('edit') }} {{ __('job') }}</h4>
                 </div>
             </div>
@@ -21,7 +21,7 @@
                                     <div class="card-title">{{ __('job_details') }}</div>
                                 </div>
                                 <div class="card-body">
-                                    <div class="row form-group">
+                                    <div class="row mb-2">
                                         <div class="col-12">
                                             <label for="title">
                                                 {{ __('title') }}
@@ -38,8 +38,8 @@
                                     </div>
 
                                     {{-- Just Company Name  --}}
-                                    <div class="row form-group" id="company-input-container">
-                                        <div class="col-sm-6 form-group {{ !$job->company_id ? 'hidden' : '' }}"
+                                    <div class="row mb-2" id="company-input-container">
+                                        <div class="col-sm-6  {{ !$job->company_id ? 'hidden' : '' }}"
                                             id="company-input-select">
                                             <label for="company_id" id="company_label">
                                                 {{ __('select') }} {{ __('company') }}
@@ -60,7 +60,7 @@
                                                 </span>
                                             @enderror
                                         </div>
-                                        <div class="col-md-6 form-group {{ $job->company_id ? 'hidden' : '' }}"
+                                        <div class="col-md-6  {{ $job->company_id ? 'hidden' : '' }}"
                                             id="company_name_container">
                                             <label for="company_name"> :required="true"
                                                 {{ __('company_name') }}
@@ -76,7 +76,7 @@
                                             @enderror
 
                                         </div>
-                                        <div class="col-sm-6 form-group">
+                                        <div class="col-sm-6 mb-2">
                                             <div class="form-check" style="margin-top: 38px">
                                                 <div class="icheck-success d-inline">
                                                     <input value="range" name="is_just_name" type="checkbox"
@@ -90,9 +90,7 @@
                                         </div>
                                     </div>
 
-
-
-                                    <div class="row form-group">
+                                    <div class="row mb-2">
                                         <div class="col-md-12">
                                             <label for="category_id">
                                                 {{ __('category') }}
@@ -114,7 +112,7 @@
                                             @enderror
                                         </div>
                                     </div>
-                                    <div class="row form-group">
+                                    <div class="row ">
                                         <div class="col-sm-12 col-md-6">
                                             <x-forms.label name="vacancies" for="vacancies" :required="true" />
                                             <input id="vacancies" type="text" name="vacancies"
@@ -146,17 +144,78 @@
                             </div>
                         </div>
                         <div class="section pt-3" id="location">
-                            <div class="card-body">
-                                <div class="alert alert-danger d-none mt-0" role="alert" id="map_wrong_key_warning"></div>
-                                                                    <div id="google-map-div" class="d-none">
-                                    <input id="searchInput" class="mapClass pac-target-input" type="text" placeholder="Enter a location" autocomplete="off">
-                                    <div class="map mymap" id="google-map"><div style="height: 100%; width: 100%;"><div style="overflow: hidden;"></div></div></div>
-                                </div>
-                                <div class="">
-                                    <input type="text" autocomplete="off" id="leaflet_search" placeholder="Enter city name" class="form-control"><div class="auto-results-wrapper"><ul id="auto-leaflet_search-results" tabindex="0" role="listbox"></ul></div><button class="auto-clear hidden" type="button" title="clear the search query" aria-label="clear the search query"></button> <br>
-                                    <div id="leaflet-map" class="leaflet-container leaflet-fade-anim leaflet-grab leaflet-touch-drag" tabindex="0" style="height: 300px; position: relative;"><div class="leaflet-pane leaflet-map-pane" style="transform: translate3d(-146px, 0px, 0px);"><div class="leaflet-pane leaflet-tile-pane"><div class="leaflet-layer " style="z-index: 1; opacity: 1;"><div class="leaflet-tile-container leaflet-zoom-animated" style="z-index: 18; transform: translate3d(0px, 0px, 0px) scale(1);"><img alt="" role="presentation" src="http://c.tile.osm.org/7/95/54.png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(43px, -183px, 0px); opacity: 1;"><img alt="" role="presentation" src="http://a.tile.osm.org/7/96/54.png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(299px, -183px, 0px); opacity: 1;"><img alt="" role="presentation" src="http://a.tile.osm.org/7/95/55.png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(43px, 73px, 0px); opacity: 1;"><img alt="" role="presentation" src="http://b.tile.osm.org/7/96/55.png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(299px, 73px, 0px); opacity: 1;"><img alt="" role="presentation" src="http://b.tile.osm.org/7/94/54.png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(-213px, -183px, 0px); opacity: 1;"><img alt="" role="presentation" src="http://b.tile.osm.org/7/97/54.png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(555px, -183px, 0px); opacity: 1;"><img alt="" role="presentation" src="http://c.tile.osm.org/7/94/55.png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(-213px, 73px, 0px); opacity: 1;"><img alt="" role="presentation" src="http://c.tile.osm.org/7/97/55.png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(555px, 73px, 0px); opacity: 1;"></div></div></div><div class="leaflet-pane leaflet-shadow-pane"><img src="https://unpkg.com/leaflet@1.6.0/dist/images/marker-shadow.png" class="leaflet-marker-shadow leaflet-zoom-animated" alt="" style="margin-left: -12px; margin-top: -41px; width: 41px; height: 41px; transform: translate3d(336px, 150px, 0px);"><img src="https://unpkg.com/leaflet@1.6.0/dist/images/marker-shadow.png" class="leaflet-marker-shadow leaflet-zoom-animated" alt="" style="margin-left: -12px; margin-top: -41px; width: 41px; height: 41px; transform: translate3d(336px, 150px, 0px);"></div><div class="leaflet-pane leaflet-overlay-pane"></div><div class="leaflet-pane leaflet-marker-pane"><img src="https://unpkg.com/leaflet@1.6.0/dist/images/marker-icon.png" class="leaflet-marker-icon leaflet-zoom-animated leaflet-interactive leaflet-marker-draggable" alt="" tabindex="0" style="margin-left: -12px; margin-top: -41px; width: 25px; height: 41px; transform: translate3d(336px, 150px, 0px); z-index: 150;"><img src="https://unpkg.com/leaflet@1.6.0/dist/images/marker-icon.png" class="leaflet-marker-icon leaflet-zoom-animated leaflet-interactive leaflet-marker-draggable" alt="" tabindex="0" style="margin-left: -12px; margin-top: -41px; width: 25px; height: 41px; transform: translate3d(336px, 150px, 0px); z-index: 150;"></div><div class="leaflet-pane leaflet-tooltip-pane"></div><div class="leaflet-pane leaflet-popup-pane"></div><div class="leaflet-proxy leaflet-zoom-animated" style="transform: translate3d(24614px, 14157px, 0px) scale(64);"></div></div><div class="leaflet-control-container"><div class="leaflet-top leaflet-left"><div class="leaflet-control-zoom leaflet-bar leaflet-control"><a class="leaflet-control-zoom-in" href="#" title="Zoom in" role="button" aria-label="Zoom in">+</a><a class="leaflet-control-zoom-out" href="#" title="Zoom out" role="button" aria-label="Zoom out">−</a></div></div><div class="leaflet-top leaflet-right"></div><div class="leaflet-bottom leaflet-left"></div><div class="leaflet-bottom leaflet-right"><div class="leaflet-control-attribution leaflet-control"><a href="https://leafletjs.com" title="A JS library for interactive maps">Leaflet</a> | © <a href="http://osm.org/copyright">OpenStreetMap</a> contributors</div></div></div></div>
-                                </div>
-                                                                </div>
+                            <div class="card">
+                                @if (config('templatecookie.map_show'))
+                                    <div class="card-header">
+                                        <div class="card-title">
+                                            {{ __('location') }}
+                                            <span class="text-red font-weight-bold">*</span>
+                                            <small class="h6">
+                                                ({{ __('click_to_add_a_pointer') }})
+                                            </small>
+                                        </div>
+                                    </div>
+                                    <div class="card-body map-z-index">
+                                        <x-website.map.map-warning />
+                                        @php
+                                            $map = $setting->default_map;
+                                        @endphp
+                                        <div id="google-map-div" class="{{ $map == 'google-map' ? '' : 'd-none' }}">
+                                            <input id="searchInput" class="mapClass" type="text"
+                                                placeholder="Enter a location">
+                                            <div class="map mymap" id="google-map"></div>
+                                        </div>
+                                        <div class="{{ $map == 'leaflet' ? '' : 'd-none' }}">
+                                            <input type="text" autocomplete="off" id="leaflet_search"
+                                                placeholder="{{ __('enter_city_name') }}" class="form-control" /> <br>
+                                            <div id="leaflet-map"></div>
+                                        </div>
+                                        @error('location')
+                                            <span class="ml-3 text-md text-danger">{{ $message }}</span>
+                                        @enderror
+                                    </div>
+                                    @php
+                                        $location = session()->get('location');
+                                    @endphp
+                                    <div class="card-footer location_footer d-none">
+                                        <span>
+                                            <img src="{{ asset('frontend/assets/images/loader.gif') }}" alt="loading"
+                                                width="50px" height="50px" class="loader_position d-none">
+                                        </span>
+                                        <div class="location_secion">
+                                            {{ __('country') }}: <span
+                                                class="location_country">{{ $location && array_key_exists('country', $location) ? $location['country'] : '-' }}</span>
+                                            <br>
+                                            {{ __('full_address') }}: <span
+                                                class="location_full_address">{{ $location && array_key_exists('exact_location', $location) ? $location['exact_location'] : '-' }}</span>
+                                        </div>
+                                    </div>
+                                @else
+                                    @php
+                                        session([
+                                            'selectedCountryId' => null,
+                                            'selectedStateId' => null,
+                                            'selectedCityId' => null,
+                                        ]);
+                                        session([
+                                            'selectedCountryId' => $job->country,
+                                            'selectedStateId' => $job->region,
+                                            'selectedCityId' => $job->district,
+                                        ]);
+                                    @endphp
+                                    <div class="card-header border-0">
+                                        {{ __('location') }}
+                                    </div>
+                                    <div class="card-body pt-0 row">
+                                        <div class="col-12">
+                                            @livewire('country-state-city')
+                                            @error('location')
+                                                <span class="ml-3 text-md text-danger">{{ $message }}</span>
+                                            @enderror
+                                        </div>
+                                    </div>
+                                @endif
+                            </div>
                         </div>
                         <div class="section pt-3" id="salary-details">
                             <div class="card mb-0">
@@ -182,8 +241,8 @@
                                         </div>
                                     </div>
 
-                                    <div class="row">
-                                        <div class="col-sm-6 form-group salary_range_part">
+                                    <div class="row mb-2">
+                                        <div class="col-sm-6 mb-2 salary_range_part">
                                             <label for="min_salary">
                                                 {{ __('min_salary') }} ({{ $currency_symbol }})
                                             </label>
@@ -197,7 +256,7 @@
                                                 </span>
                                             @enderror
                                         </div>
-                                        <div class="col-sm-6 form-group salary_range_part">
+                                        <div class="col-sm-6 mb-2 salary_range_part">
                                             <label for="max_salary">
                                                 {{ __('max_salary') }} ({{ $currency_symbol }})
                                             </label>
@@ -210,7 +269,7 @@
                                                 </span>
                                             @enderror
                                         </div>
-                                        <div class="col-sm-6 form-group d-none" id="custom_salary_part">
+                                        <div class="col-sm-6 mb-2 d-none" id="custom_salary_part">
                                             <label for="custom_salary">
                                                 {{ __('custom_salary') }}
                                             </label>
@@ -218,7 +277,7 @@
                                                 class="form-control @error('custom_salary') is-invalid @enderror"
                                                 value="{{ old('custom_salary', $job->custom_salary) }}">
                                         </div>
-                                        <div class="col-sm-6 form-group">
+                                        <div class="col-sm-6 mb-2">
                                             <label for="salary_type">
                                                 {{ __('salary_type') }}
                                                 <span class="text-red font-weight-bold">*</span>
@@ -249,7 +308,7 @@
                                     <div class="card-title">{{ __('attributes') }}</div>
                                 </div>
                                 <div class="card-body">
-                                    <div class="row form-group">
+                                    <div class="row mb-2">
                                         <div class="col-md-6">
                                             <label for="experience">
                                                 {{ __('experience') }}
@@ -286,7 +345,7 @@
                                             </select>
                                         </div>
                                     </div>
-                                    <div class="row form-group">
+                                    <div class="row mb-2">
                                         <div class="col-md-6">
                                             <label for="education">
                                                 {{ __('education') }}
@@ -324,11 +383,11 @@
                                             @enderror
                                         </div>
                                     </div>
-                                    <div class="row form-group">
+                                    <div class="row mb-2">
                                         <div class="col-md-12 mb-2">
                                             <x-forms.label name="tags" for="tags" :required="true" />
                                             <select name="tags[]"
-                                                class="form-control select2tags @error('tags') is-invalid @enderror"
+                                                class="form-control select2 @error('tags') is-invalid @enderror"
                                                 multiple id="tags">
                                                 @foreach ($tags as $tag)
                                                     <option
@@ -348,8 +407,8 @@
                                         <div class="col-md-12 mb-2">
                                             <x-forms.label name="benefits" for="benefits" :required="true" />
                                             <select name="benefits[]"
-                                                class="form-control @error('benefits') is-invalid @enderror"
-                                                id="benefits" multiple>
+                                                class="form-control select2 @error('benefits') is-invalid @enderror"
+                                                id="benefits" >
                                                 @foreach ($benefits as $benefit)
                                                     <option
                                                         @foreach ($job->benefits as $job_benefit)
@@ -367,8 +426,8 @@
                                         <div class="col-md-12">
                                             <x-forms.label name="skills" for="skill" :required="true" />
                                             <select name="skills[]"
-                                                class="form-control @error('skills') is-invalid @enderror" id="skills"
-                                                multiple>
+                                                class="form-control select2 @error('skills') is-invalid @enderror" id="skills"
+                                                >
                                                 @foreach ($skills as $skill)
                                                     <option
                                                         @foreach ($job->skills as $job_skill)
@@ -397,7 +456,7 @@
                                         <div class="col-sm-12 col-md-12">
                                             <x-forms.label name="receive_applications" for="apply_on" :required="true" />
                                             <select name="apply_on"
-                                                class="form-control @error('apply_on') is-invalid @enderror"
+                                                class="form-control select2 @error('apply_on') is-invalid @enderror"
                                                 id="apply_on">
                                                 <option value="" {{ $job->apply_on === '' ? 'selected' : '' }}>
                                                     {{ __('select_one') }}</option>
@@ -522,7 +581,7 @@
                         <div class="section pt-3">
                             <button type="submit"
                                 class="btn bg-success d-flex align-items-center justify-content-center">
-                                <i class="fas fa-sync mr-1"></i> {{ __('save') }}
+                                <i class="fa fa-refesh mr-1"></i> {{ __('save') }}
                             </button>
                         </div>
                     </form>
@@ -563,116 +622,106 @@
         </div>
     </div>
 @endsection
-@section('style')
-    <link rel="stylesheet" href="{{ asset('frontend') }}/assets/css/bootstrap-datepicker.min.css">
-    <style>
-        /* .ck-editor__editable_inline {
-            min-height: 400px;
-        }
+<style>
+    .ck-editor__editable_inline {
+        min-height: 400px;
+    }
 
-        .select2-results__option[aria-selected=true] {
-            display: none;
-        }
+    .select2-results__option[aria-selected=true] {
+        display: none;
+    }
 
-        .select2-container--bootstrap4 .select2-selection--multiple .select2-selection__choice {
-            color: #fff;
-            border: 1px solid #fff;
-            background: #007bff;
-            border-radius: 30px;
-        }
+    .select2-container--bootstrap4 .select2-selection--multiple .select2-selection__choice {
+        color: #fff;
+        border: 1px solid #fff;
+        background: #007bff;
+        border-radius: 30px;
+    }
 
-        .select2-container--bootstrap4 .select2-selection--multiple .select2-selection__choice__remove {
-            color: #fff;
-        } */
+    .select2-container--bootstrap4 .select2-selection--multiple .select2-selection__choice__remove {
+        color: #fff;
+    }
 
-        .tc-vertical-step,
-        .tc-vertical-step-link {
-            position: relative;
-        }
+    .tc-vertical-step,
+    .tc-vertical-step-link {
+        position: relative;
+    }
 
-        .tc-vertical-step ul:before,
-        .tc-vertical-step-link ul:before {
-            content: "";
-            position: absolute;
-            left: 5px;
-            top: 10px;
-            width: 2px;
-            height: 100%;
-            background: #dfe3e8;
-        }
+    .tc-vertical-step ul:before,
+    .tc-vertical-step-link ul:before {
+        content: "";
+        position: absolute;
+        left: 5px;
+        top: 10px;
+        width: 2px;
+        height: 100%;
+        background: #dfe3e8;
+    }
 
-        .tc-vertical-step ul li:not(:last-child),
-        .tc-vertical-step-link ul li:not(:last-child) {
-            padding-bottom: 1rem;
-        }
+    .tc-vertical-step ul li:not(:last-child),
+    .tc-vertical-step-link ul li:not(:last-child) {
+        padding-bottom: 1rem;
+    }
 
-        .tc-vertical-step ul li a,
-        .tc-vertical-step-link ul li a {
-            position: relative;
-            display: block;
-            color: #454f5b;
-            padding-left: 26px;
-            -webkit-transition: all 0.3s ease-in-out;
-            transition: all 0.3s ease-in-out;
-        }
+    .tc-vertical-step ul li a,
+    .tc-vertical-step-link ul li a {
+        position: relative;
+        display: block;
+        color: #454f5b;
+        padding-left: 26px;
+        -webkit-transition: all 0.3s ease-in-out;
+        transition: all 0.3s ease-in-out;
+    }
 
-        .tc-vertical-step ul li a:before,
-        .tc-vertical-step-link ul li a:before {
-            content: "";
-            position: absolute;
-            left: 1px;
-            top: 50%;
-            -webkit-transform: translateY(-50%);
-            transform: translateY(-50%);
-            width: 10px;
-            height: 10px;
-            background: #dfe3e8;
-            border-radius: 50%;
-            z-index: 2;
-        }
+    .tc-vertical-step ul li a:before,
+    .tc-vertical-step-link ul li a:before {
+        content: "";
+        position: absolute;
+        left: 1px;
+        top: 50%;
+        -webkit-transform: translateY(-50%);
+        transform: translateY(-50%);
+        width: 10px;
+        height: 10px;
+        background: #dfe3e8;
+        border-radius: 50%;
+        z-index: 2;
+    }
 
-        .tc-vertical-step ul li a:after,
-        .tc-vertical-step-link ul li a:after {
-            content: "";
-            position: absolute;
-            left: -3px;
-            top: 50%;
-            -webkit-transform: translateY(-50%);
-            transform: translateY(-50%);
-            width: 18px;
-            height: 18px;
-            border-radius: 50%;
-            border: 1px solid var(--main-color);
-            z-index: 1;
-            opacity: 0;
-        }
+    .tc-vertical-step ul li a:after,
+    .tc-vertical-step-link ul li a:after {
+        content: "";
+        position: absolute;
+        left: -3px;
+        top: 50%;
+        -webkit-transform: translateY(-50%);
+        transform: translateY(-50%);
+        width: 18px;
+        height: 18px;
+        border-radius: 50%;
+        border: 1px solid #007bff;
+        z-index: 1;
+        opacity: 0;
+    }
 
-        .step-menu.active:before,
-        .step-menu.active:before {
-            background-color: var(--main-color) !important;
-        }
+    .step-menu.active:before,
+    .step-menu.active:before {
+        background-color: #007bff !important;
+    }
 
-        .step-menu.active:after,
-        .step-menu.active:after {
-            opacity: 1;
-        }
+    .step-menu.active:after,
+    .step-menu.active:after {
+        opacity: 1;
+    }
 
-        .tc-sticky-sidebar {
-            position: sticky !important;
-            top: 1rem;
-            -webkit-transition: all 0.3s ease-in-out;
-            transition: all 0.3s ease-in-out;
-            z-index: 8;
-        }
-    </style>
-
-    <!-- >=>Leaflet Map<=< -->
-    <x-map.leaflet.map_links />
-    <x-map.leaflet.autocomplete_links />
-
-    @include('map::links')
-@endsection
-
+    div.tc-sticky-sidebar {
+        position: fixed !important;
+        top: 7rem;
+        -webkit-transition: all 0.3s ease-in-out;
+        transition: all 0.3s ease-in-out;
+        z-index: 11;
+    }
+</style>
 @section('script')
     @livewireScripts
     <script>

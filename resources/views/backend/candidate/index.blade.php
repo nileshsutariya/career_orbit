@@ -34,7 +34,7 @@
                                 </a>
                             @endif
                             @if (request('keyword') || request('ev_status') || request('sort_by'))
-                                <a href="{{ route('company.index') }}" class="btn bg-danger"><i
+                                <a href="{{ route('candidate.index') }}" class="btn bg-danger"><i
                                         class="fa fa-times"></i>&nbsp;
                                     {{ __('clear') }}
                                 </a>
@@ -105,7 +105,7 @@
                                 @foreach ($candidates as $candidate)
                                     <tr>
                                         <td tabindex="0">
-                                            <a href="{{ route('candidate.show', $candidate->id) }}" class="company">
+                                            <a href="{{ route('candidate.show', $candidate->id) }}" class="company d-flex gap-1">
                                                 <img src="{{ $candidate->photo }}" class="img-fluid table-avtar"
                                                     alt="image">
                                                 <div>
@@ -122,7 +122,7 @@
                                         </td>
                                         @if (userCan('candidate.update'))
                                             <td tabindex="0">
-                                                <a href="javascript:void(0)" class="active-status">
+                                                <a href="javascript:void(0)" class="active-status d-flex gap-1">
 
                                                     <div class="form-check-size">
                                                         <div class="form-check form-switch form-check-inline">
@@ -143,7 +143,7 @@
                                         @endif
                                         @if (userCan('candidate.update'))
                                             <td tabindex="0">
-                                                <a href="javascript:void(0)" class="active-status">
+                                                <a href="javascript:void(0)" class="active-status d-flex gap-1">
 
                                                     <div class="form-check-size">
                                                         <div class="form-check form-switch form-check-inline">

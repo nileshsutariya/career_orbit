@@ -146,7 +146,7 @@
                                                 </td>
                                                 <td>
                                                     <a href="{{ route('company.show', $order->company->id) }}"
-                                                        class="company">
+                                                        class="company d-flex gap-1">
                                                         <img class="img-fluid table-avtar"
                                                             src="{{ $order->company->logo_url }}" alt="logo">
                                                         <div>
@@ -189,7 +189,7 @@
                                                         <span class="badge badge-light-success">{{ __('paid') }}</span>
                                                     @else
                                                         <span class="badge badge-light-warning">{{ __('unpaid') }}</span>
-                                                        <br><br>
+                                                       
                                                         <div>
                                                             <a onclick="return confirm('{{ __('are_you_sure') }}')"
                                                                 href="{{ route('manual.payment.mark.paid', $order->id) }}">

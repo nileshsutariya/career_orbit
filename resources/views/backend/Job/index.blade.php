@@ -124,7 +124,7 @@
                         </div>
                     </div>
                 </form>
-                <div class="dt-ext table-responsive theme-scrollbar">
+              
                     @include('backend.layouts.partials.message')
                     <div class="row">
                         <div class="col-sm-12 py-2" style="padding-left: 32px;">
@@ -162,7 +162,7 @@
                                                         value="{{ $job->id }}">
                                                 </td>
                                                 <td>
-                                                    <a href="{{ route('job.show', $job->id) }}" class="company">
+                                                    <a href="{{ route('job.show', $job->id) }}" class="company d-flex gap-1">
                                                         @if ($job->company)
                                                             <img src="{{ asset($job->company->logo_url) }}"
                                                                 class="img-fluid table-avtar" alt="image">
@@ -185,7 +185,7 @@
                                                     </a>
                                                 </td>
                                                 <td tabindex="0">
-                                                    <div class="category">
+                                                    <div class="category d-flex gap-1">
                                                         <x-svg.table-layer />
                                                         <div>
                                                             <h5>{{ $job->category->name }}</h5>
@@ -194,7 +194,7 @@
                                                     </div>
                                                 </td>
                                                 <td tabindex="0">
-                                                    <div class="category">
+                                                    <div class="category d-flex gap-1">
                                                         <x-svg.table-money />
                                                         <div>
                                                             @if ($job->salary_mode == 'range')
@@ -303,8 +303,8 @@
                                                     <a data-bs-toggle="tooltip" data-placement="top"
                                                         title="{{ __('details') }}"
                                                         href="{{ route('job.show', $job->id) }}"
-                                                        class="btn ll-btn ll-border-none">{{ __('view_details') }}
-                                                        <x-svg.table-btn-arrow />
+                                                        class="btn ll-btn ll-border-none"><i class="fa fa-eye fa-2x txt-secondary"></i>
+                                                        
                                                     </a>
                                                     <a data-bs-toggle="tooltip" data-placement="top"
                                                         title="{{ __('clone') }}"
@@ -317,7 +317,7 @@
                                                         title="{{ __('view_frontend') }}"
                                                         href="{{ route('website.job.details', $job->slug) }}"
                                                         class="btn ll-mr-4 ll-p-0">
-                                                        <i class="fa fa-link fa-2x txt-secondary"></i>
+                                                        <i class="fa fa-link fa-2x txt-info"></i>
                                                     </a>
                                                     @if (userCan('job.update'))
                                                         <a data-bs-toggle="tooltip" data-placement="top"
@@ -354,7 +354,7 @@
                             {{ $jobs->links() }}
                         </div>
                     @endif
-                </div>
+                
             </div>
         </div>
     </div>
