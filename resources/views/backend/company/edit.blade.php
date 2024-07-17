@@ -324,7 +324,7 @@
                                 </div>
                                 <div class="form-group datepicker col-md-6">
                                     <x-forms.label name="establishment_date" :required="false" />
-                                    <x-forms.input type="text" name="establishment_date" placeholder="select_one"
+                                    <x-forms.input type="date" name="establishment_date" placeholder="select_one"
                                         id="establishment_date"
                                         value="{{ old('establishment_date', formatTime($company->establishment_date, 'd-m-Y')) }}" />
                                     <x-forms.error name="establishment_date" />
@@ -382,13 +382,7 @@
         $('.dropify').dropify();
 
         //init datepicker
-        $(document).ready(function() {
-            $('#establishment_date').datepicker({
-                format: 'dd-mm-yyyy',
-                isRTL: "{{ app()->getLocale() == 'ar' ? true : false }}",
-                language: "{{ app()->getLocale() }}",
-            });
-        });
+      
 
         $(document).on("click", "#remove_item", function() {
             $(this).parent().parent('div').remove();

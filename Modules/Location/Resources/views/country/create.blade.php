@@ -107,28 +107,7 @@
     <script>
         $('.dropify').dropify();
 
-        $('#target').iconpicker({
-            align: 'left', // Only in div tag
-            arrowClass: 'btn-danger',
-            arrowPrevIconClass: 'fas fa-angle-left',
-            arrowNextIconClass: 'fas fa-angle-right',
-            cols: 16,
-            footer: true,
-            header: true,
-            icon: '',
-            iconset: 'flagicon',
-            labelHeader: '{0} of {1} pages',
-            labelFooter: '{0} - {1} of {2} icons',
-            placement: 'bottom', // Only in button tag
-            rows: 6,
-            search: true,
-            searchText: 'Search',
-            selectedClass: 'btn-success',
-            unselectedClass: ''
-        });
-        $('#target').on('change', function(e) {
-            $('#icon').val(e.icon)
-        });
+      
         // dropify
         var drEvent = $('.dropify').dropify();
         drEvent.on('dropify.error.fileSize', function(event, element) {
