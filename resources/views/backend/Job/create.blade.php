@@ -5,11 +5,14 @@
 @section('content')
     <div class="row">
         <div class="col-md-8 mx-auto">
-            <div class="card">
-                <div class="card-body">
-                    <h4 class="card-title">{{ __('create') }} {{ __('job') }}</h4>
+            <div class="row">
+                <div class="card col-md-8">
+                    <div class="card-header">
+                        <h4 class="card-title">{{ __('create') }} {{ __('job') }}</h4>
+                    </div>
                 </div>
             </div>
+
             <div class="row">
                 <div class="col-md-8">
                     <form class="form-horizontal" id="myForm" action="{{ route('job.store') }}" method="POST">
@@ -196,63 +199,63 @@
                                     </div>
                                 </div> --}}
                                 @if (config('templatecookie.map_show'))
-                                <div class="card-header">
-                                    <div class="card-title">
-                                        {{ __('location') }}
-                                        <span class="text-red font-weight-bold">*</span>
-                                        <small class="h6">
-                                            ({{ __('click_to_add_a_pointer') }})
-                                        </small>
+                                    <div class="card-header">
+                                        <div class="card-title">
+                                            {{ __('location') }}
+                                            <span class="text-red font-weight-bold">*</span>
+                                            <small class="h6">
+                                                ({{ __('click_to_add_a_pointer') }})
+                                            </small>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="card-body map-z-index">
-                                    <x-website.map.map-warning />
-                                    @php
-                                        $map = $setting->default_map;
-                                    @endphp
-                                    <div id="google-map-div" class="{{ $map == 'google-map' ? '' : 'd-none' }}">
-                                        <input id="searchInput" class="mapClass" type="text"
-                                            placeholder="Enter a location">
-                                        <div class="map mymap" id="google-map"></div>
-                                    </div>
-                                    <div class="{{ $map == 'leaflet' ? '' : 'd-none' }}">
-                                        <input type="text" autocomplete="off" id="leaflet_search"
-                                            placeholder="{{ __('enter_city_name') }}" class="form-control" /> <br>
-                                        <div id="leaflet-map"></div>
-                                    </div>
-                                    @error('location')
-                                        <span class="ml-3 text-md text-danger">{{ $message }}</span>
-                                    @enderror
-                                </div>
-                                @php
-                                    $location = session()->get('location');
-                                @endphp
-                                <div class="card-footer location_footer d-none">
-                                    <span>
-                                        <img src="{{ asset('frontend/assets/images/loader.gif') }}" alt="loader"
-                                            width="50px" height="50px" class="loader_position d-none">
-                                    </span>
-                                    <div class="location_secion">
-                                        {{ __('country') }}: <span
-                                            class="location_country">{{ $location && array_key_exists('country', $location) ? $location['country'] : '-' }}</span>
-                                        <br>
-                                        {{ __('full_address') }}: <span
-                                            class="location_full_address">{{ $location && array_key_exists('exact_location', $location) ? $location['exact_location'] : '-' }}</span>
-                                    </div>
-                                </div>
-                                @else
-                                <div class="card-header border-0">
-                                    {{ __('location') }}
-                                    <span class="text-red font-weight-bold">*</span>
-                                </div>
-                                <div class="card-body pt-0 row">
-                                    <div class="col-12">
-                                        @livewire('country-state-city')
+                                    <div class="card-body map-z-index">
+                                        <x-website.map.map-warning />
+                                        @php
+                                            $map = $setting->default_map;
+                                        @endphp
+                                        <div id="google-map-div" class="{{ $map == 'google-map' ? '' : 'd-none' }}">
+                                            <input id="searchInput" class="mapClass" type="text"
+                                                placeholder="Enter a location">
+                                            <div class="map mymap" id="google-map"></div>
+                                        </div>
+                                        <div class="{{ $map == 'leaflet' ? '' : 'd-none' }}">
+                                            <input type="text" autocomplete="off" id="leaflet_search"
+                                                placeholder="{{ __('enter_city_name') }}" class="form-control" /> <br>
+                                            <div id="leaflet-map"></div>
+                                        </div>
                                         @error('location')
                                             <span class="ml-3 text-md text-danger">{{ $message }}</span>
                                         @enderror
                                     </div>
-                                </div>
+                                    @php
+                                        $location = session()->get('location');
+                                    @endphp
+                                    <div class="card-footer location_footer d-none">
+                                        <span>
+                                            <img src="{{ asset('frontend/assets/images/loader.gif') }}" alt="loader"
+                                                width="50px" height="50px" class="loader_position d-none">
+                                        </span>
+                                        <div class="location_secion">
+                                            {{ __('country') }}: <span
+                                                class="location_country">{{ $location && array_key_exists('country', $location) ? $location['country'] : '-' }}</span>
+                                            <br>
+                                            {{ __('full_address') }}: <span
+                                                class="location_full_address">{{ $location && array_key_exists('exact_location', $location) ? $location['exact_location'] : '-' }}</span>
+                                        </div>
+                                    </div>
+                                @else
+                                    <div class="card-header border-0">
+                                        {{ __('location') }}
+                                        <span class="text-red font-weight-bold">*</span>
+                                    </div>
+                                    <div class="card-body pt-0 row">
+                                        <div class="col-12">
+                                            @livewire('country-state-city')
+                                            @error('location')
+                                                <span class="ml-3 text-md text-danger">{{ $message }}</span>
+                                            @enderror
+                                        </div>
+                                    </div>
                                 @endif
                             </div>
                         </div>
@@ -427,8 +430,8 @@
                                         <div class="col-md-12 mb-2">
                                             <x-forms.label name="tags" for="tags" :required="true" />
                                             <select name="tags[]"
-                                                class="form-control select2 @error('tags') is-invalid @enderror"
-                                                multiple id="tags">
+                                                class="form-control select2 @error('tags') is-invalid @enderror" multiple
+                                                id="tags">
                                                 @foreach ($tags as $tag)
                                                     <option
                                                         {{ old('tags') ? (in_array($tag->id, old('tags')) ? 'selected' : '') : '' }}
@@ -464,8 +467,8 @@
                                         <div class="col-md-12 mb-2">
                                             <x-forms.label name="skills" for="skill" :required="true" />
                                             <select name="skills[]"
-                                                class="form-control select2 @error('skills') is-invalid @enderror" id="skills"
-                                                multiple>
+                                                class="form-control select2 @error('skills') is-invalid @enderror"
+                                                id="skills" multiple>
                                                 @foreach ($skills as $skill)
                                                     <option
                                                         {{ old('skills') ? (in_array($skill->id, old('skills')) ? 'selected' : '') : '' }}
@@ -665,7 +668,7 @@
 
 
 @section('style')
-    
+    <link rel="stylesheet" href="{{ asset('frontend') }}/assets/css/bootstrap-datepicker.min.css">
 
     <style>
         .ck-editor__editable_inline {
@@ -744,14 +747,14 @@
             width: 18px;
             height: 18px;
             border-radius: 50%;
-            border: 1px solid var(--main-color);
+            border: 1px solid #007bff;
             z-index: 1;
             opacity: 0;
         }
 
         .step-menu.active:before,
         .step-menu.active:before {
-            background-color: var(--main-color) !important;
+            background-color: #007bff !important;
         }
 
         .step-menu.active:after,
@@ -759,12 +762,12 @@
             opacity: 1;
         }
 
-        .tc-sticky-sidebar {
-            position: sticky !important;
-            top: 1rem;
+        div.tc-sticky-sidebar {
+            position: fixed !important;
+            top: 7rem;
             -webkit-transition: all 0.3s ease-in-out;
             transition: all 0.3s ease-in-out;
-            z-index: 8;
+            z-index: 11;
         }
     </style>
     <!-- >=>Leaflet Map<=< -->
@@ -775,7 +778,15 @@
 
 @section('script')
     @livewireScripts
-    
+    <script>
+        $(document).ready(function() {
+            $('.select21').select2();
+        });
+        window.addEventListener('render-select2', event => {
+            console.log('fired');
+            $('.select21').select2();
+        })
+    </script>
     @stack('js')
     <script>
         const stepMenus = document.querySelectorAll('.step-menu');
@@ -838,40 +849,40 @@
     @if (app()->getLocale() == 'ar')
         <script
             src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/locales/bootstrap-datepicker.ar.min.js
-                                                                                                                                                                                                            ">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                            ">
         </script>
     @endif
     <script>
-        // $('#benefits').select2({
-        //     theme: 'bootstrap4',
-        //     tags: true,
-        //     placeholder: 'Select Benefits'
-        // });
+        $('#benefits').select2({
+            theme: 'bootstrap4',
+            tags: true,
+            placeholder: 'Select Benefits'
+        });
 
-        // $('#skills').select2({
-        //     theme: 'bootstrap4',
-        //     tags: true,
-        //     placeholder: 'Select Skill'
-        // });
+        $('#skills').select2({
+            theme: 'bootstrap4',
+            tags: true,
+            placeholder: 'Select Skill'
+        });
 
-        // $('#tags').select2({
-        //     theme: 'bootstrap4',
-        //     tags: true,
-        //     placeholder: 'Select Tag',
-        // });
+        $('#tags').select2({
+            theme: 'bootstrap4',
+            tags: true,
+            placeholder: 'Select Tag',
+        });
 
         //init datepicker
-        // $(document).ready(function() {
-        //     var dateToday = new Date();
-        //     $('#deadline').datepicker({
-        //         format: "yyyy-mm-dd",
-        //         minDate: dateToday,
-        //         startDate: dateToday,
-        //         todayHighlight: true,
-        //         isRTL: "{{ app()->getLocale() == 'ar' ? true : false }}",
-        //         language: "{{ app()->getLocale() }}",
-        //     });
-        // });
+        $(document).ready(function() {
+            var dateToday = new Date();
+            $('#deadline').datepicker({
+                format: "yyyy-mm-dd",
+                minDate: dateToday,
+                startDate: dateToday,
+                todayHighlight: true,
+                isRTL: "{{ app()->getLocale() == 'ar' ? true : false }}",
+                language: "{{ app()->getLocale() }}",
+            });
+        });
     </script>
 
     <script>

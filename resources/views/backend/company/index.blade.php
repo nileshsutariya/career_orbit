@@ -347,6 +347,8 @@
                                                                     type="checkbox" role="switch" checked="">
                                                             </div>
                                                         </div>
+
+
                                                         <p style="min-width:70px"
                                                             class="{{ $company->user->email_verified_at ? 'active' : '' }}"
                                                             id="verification_status_{{ $company->user_id }}">
@@ -355,16 +357,17 @@
                                                     </a>
                                                 </td>
                                             @endif
+
                                             @if (userCan('company.update') || userCan('compnay.delete'))
                                                 <td tabindex="0">
                                                     <a href="#" class="active-status">
 
-                                                        <div class="form-check-size">
+                                                        <div class="form-check-size mb-1">
                                                             <div class="form-check form-switch form-check-inline">
-                                                                <input
-                                                                    class="form-check-input switch-primary check-size success profile-verification-switch"data-companyid="{{ $company->id }}"
-                                                                    {{ $company->is_profile_verified ? 'checked' : '' }}
-                                                                    type="checkbox" role="switch" checked="">
+                                                                <input data-companyid="{{ $company->id }}"
+                                                                    class="form-check-input switch-primary check-size success profile-verification-switch"
+                                                                    type="checkbox" role="switch"
+                                                                    {{ $company->is_profile_verified ? 'checked' : '' }}>
                                                             </div>
                                                         </div>
                                                         <p style="min-width:70px"
