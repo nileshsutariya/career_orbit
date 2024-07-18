@@ -26,7 +26,7 @@
                 @enderror
             </div>
         </div>
-        @if (config('captcha.active'))
+        {{-- @if (config('captcha.active'))
             <div class="input-group mt-3 text-center">
                 {!! NoCaptcha::display() !!}
                 @if ($errors->has('g-recaptcha-response'))
@@ -35,7 +35,7 @@
                     </span>
                 @endif
             </div>
-        @endif
+        @endif --}}
 
         <div class="form-group mb-0">
             <div class="checkbox p-0">

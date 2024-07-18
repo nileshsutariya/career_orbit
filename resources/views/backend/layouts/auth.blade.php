@@ -10,9 +10,9 @@
     <meta name="keywords"
         content="admin template, Mofi admin template, dashboard template, flat admin template, responsive admin template, web app">
     <meta name="author" content="pixelstrap">
-    <link rel="icon" href="{{ asset('/assets/images/favicon.png" type="image/x-icon') }}">
-    <link rel="shortcut icon" href="{{ asset('/assets/images/favicon.png" type="image/x-icon') }}">
-    <title>Mofi - Premium Admin Template</title>
+    {{-- <link rel="icon" href="{{ asset('/assets/images/favicon.png" type="image/x-icon') }}">
+    <link rel="shortcut icon" href="{{ asset('/assets/images/favicon.png') }}" type="image/x-icon"> --}}
+    <title> Career Orbit</title>
     <!-- Google font-->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
@@ -61,7 +61,7 @@
                 </div>
             </div>
         </div>
-        @yield('backend_auth_script')
+        {{-- @yield('backend_auth_script') --}}
 
 
         <script src="{{ asset('backend/assets/js/jquery.min.js') }}"></script>
