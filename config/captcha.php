@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'secret' => 'Secret',
+    'secret' => 'Secretr',
     'sitekey' => 'Testing',
     'active' => false,
     'options' => [
