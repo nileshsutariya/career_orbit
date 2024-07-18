@@ -51,7 +51,7 @@
                                                         <label onclick="pushClass('lang_code_button_{{ $lang->id }}')"
                                                             for="lang_code_{{ $lang->id }}">
                                                             <span type="button" id="lang_code_button_{{ $lang->id }}"
-                                                                class="c-btn btn btn-sm btn-outline-primary m-r-10 {{ $lang->code == $faq->code ? 'btn-primary text-white' : '' }}">
+                                                                class="c-btn btn btn-sm btn-light  m-r-10 {{ $lang->code == $faq->code ? 'btn-primary text-white' : '' }}">
                                                                 {{ $lang->name }}
                                                             </span>
                                                         </label>

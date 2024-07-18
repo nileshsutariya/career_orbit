@@ -61,8 +61,8 @@
                                                             @if (userCan('testimonial.update'))
                                                                 <a title="{{ __('edit') }}"
                                                                     href="{{ route('module.testimonial.edit', $testimonial->id) }}"
-                                                                    class="btn "><i
-                                                                        class="txt-success fa fa-edit fa-2x"></i></a>
+                                                                    class="btn"><i
+                                                                        class="txt-success fa fa-edit fa-2x "></i></a>
                                                             @endif
                                                             @if (userCan('testimonial.delete'))
                                                                 <form
@@ -137,7 +137,7 @@
                                                                         <button title="{{ __('delete') }}"
                                                                             onclick="return confirm('{{ __('are_you_sure_you_want_to_delete_this_item') }}');"
                                                                             class="btn"><i
-                                                                                class="txt-danger fa fa-trash fa-2x"></i></button>
+                                                                                class="txt-danger fa fa-trash   m-l-10 fa-2x"></i></button>
                                                                     </form>
                                                                 @endif
                                                             </div>
@@ -172,3 +172,17 @@
         </div>
     </div>
 @endsection
+
+<style>
+    .card {
+        border-radius: 10px;
+    }
+
+    .card img {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        margin: 20px auto 0;
+
+    }
+</style>

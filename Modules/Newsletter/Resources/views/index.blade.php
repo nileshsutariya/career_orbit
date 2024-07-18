@@ -61,7 +61,7 @@
                                                         title="{{ __('delete_email') }}"
                                                         onclick="return confirm('{{ __('are_you_sure_you_want_to_delete_this_item') }}');"
                                                         class="btn">
-                                                        <i class="txt-danger fa fa-trash"></i>
+                                                        <i class="txt-danger  fa fa-trash fa-2x"></i>
                                                     </button>
                                                 </form>
                                             </td>

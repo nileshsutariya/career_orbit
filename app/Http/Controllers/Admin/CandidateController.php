@@ -37,9 +37,9 @@ class CandidateController extends Controller
     public function index(Request $request)
     {
         try {
-            abort_if(! userCan('candidate.view'), 403);
+            abort_if(!userCan('candidate.view'), 403);
 
-        $query = Candidate::withCount('appliedJobs')->with('user', 'jobRole');
+            $query = Candidate::withCount('appliedJobs')->with('user', 'jobRole');
 
             // verified status
             if ($request->has('ev_status') && $request->ev_status != null) {
@@ -72,7 +72,7 @@ class CandidateController extends Controller
 
             return view('backend.candidate.index', compact('candidates'));
         } catch (\Exception $e) {
-            flashError('An error occurred: '.$e->getMessage());
+            flashError('An error occurred: ' . $e->getMessage());
 
             return back();
         }
@@ -86,7 +86,7 @@ class CandidateController extends Controller
     public function create()
     {
         try {
-            abort_if(! userCan('candidate.create'), 403);
+            abort_if(!userCan('candidate.create'), 403);
 
             $data['countries'] = Country::all();
             $data['job_roles'] = JobRole::all()->sortBy('name');
@@ -98,7 +98,7 @@ class CandidateController extends Controller
 
             return view('backend.candidate.create', $data);
         } catch (\Exception $e) {
-            flashError('An error occurred: '.$e->getMessage());
+            flashError('An error occurred: ' . $e->getMessage());
 
             return back();
         }
@@ -123,7 +123,7 @@ class CandidateController extends Controller
             $data = User::create([
                 'role' => 'candidate',
                 'name' => $request->name,
-                'username' => Str::slug('K'.$request->name.'122'),
+                'username' => Str::slug('K' . $request->name . '122'),
                 'email' => $request->email,
                 'email_verified_at' => now(),
                 'password' => bcrypt($password),
@@ -132,7 +132,7 @@ class CandidateController extends Controller
 
             return [$password, $data];
         } catch (\Exception $e) {
-            flashError('An error occurred: '.$e->getMessage());
+            flashError('An error occurred: ' . $e->getMessage());
 
             return back();
         }
@@ -210,6 +210,7 @@ class CandidateController extends Controller
 
     public function candidateCreate($request, $data)
     {
+
         try {
             $dateTime = Carbon::parse($request->birth_date);
             $date = $request['birth_date'] = $dateTime->format('Y-m-d H:i:s');
@@ -257,13 +258,14 @@ class CandidateController extends Controller
             // skills insert
             $skills = $request->skills;
 
+
             if ($skills) {
                 $skillsArray = [];
 
                 foreach ($skills as $skill) {
                     $skill_exists = Skill::where('id', $skill)->orWhere('name', $skill)->first();
 
-                    if (! $skill_exists) {
+                    if (!$skill_exists) {
                         $select_tag = Skill::create(['name' => $skill]);
                         array_push($skillsArray, $select_tag->id);
                     } else {
@@ -279,7 +281,7 @@ class CandidateController extends Controller
 
             return $candidate;
         } catch (\Exception $e) {
-            flashError('An error occurred: '.$e->getMessage());
+            flashError('An error occurred: ' . $e->getMessage());
 
             return back();
         }
@@ -292,9 +294,9 @@ class CandidateController extends Controller
      */
     public function store(CandidateRequest $request)
     {
-        abort_if(! userCan('candidate.create'), 403);
+        abort_if(!userCan('candidate.create'), 403);
         $location = session()->get('location');
-        if (! $location) {
+        if (!$location) {
             $request->validate(['location' => 'required']);
         }
 
@@ -342,7 +344,7 @@ class CandidateController extends Controller
     public function show($candidate)
     {
         try {
-            abort_if(! userCan('candidate.view'), 403);
+            abort_if(!userCan('candidate.view'), 403);
 
             $candidate = Candidate::with('skills', 'languages:id,name', 'profession')->findOrFail($candidate);
             $user = User::with('socialInfo', 'contactInfo')->findOrFail($candidate->user_id);
@@ -351,7 +353,7 @@ class CandidateController extends Controller
 
             return view('backend.candidate.show', compact('candidate', 'user', 'appliedJobs', 'bookmarkJobs'));
         } catch (\Exception $e) {
-            flashError('An error occurred: '.$e->getMessage());
+            flashError('An error occurred: ' . $e->getMessage());
 
             return back();
         }
@@ -365,7 +367,7 @@ class CandidateController extends Controller
     public function edit(Candidate $candidate)
     {
         try {
-            abort_if(! userCan('candidate.update'), 403);
+            abort_if(!userCan('candidate.update'), 403);
 
             $user = User::with('contactInfo')->findOrFail($candidate->user_id);
             $contactInfo = ContactInfo::where('user_id', $user->id)->first();
@@ -381,7 +383,7 @@ class CandidateController extends Controller
 
             return view('backend.candidate.edit', compact('contactInfo', 'candidate', 'user', 'job_roles', 'professions', 'experiences', 'educations', 'skills', 'candidate_languages', 'lat', 'long'));
         } catch (\Exception $e) {
-            flashError('An error occurred: '.$e->getMessage());
+            flashError('An error occurred: ' . $e->getMessage());
 
             return back();
         }
@@ -513,11 +515,11 @@ class CandidateController extends Controller
     public function update(Request $request, Candidate $candidate)
     {
         try {
-            abort_if(! userCan('candidate.update'), 403);
+            abort_if(!userCan('candidate.update'), 403);
 
             $request->validate([
                 'name' => 'required',
-                'email' => 'required|email|unique:users,email,'.$candidate->user_id,
+                'email' => 'required|email|unique:users,email,' . $candidate->user_id,
             ]);
 
             // user update
@@ -590,7 +592,7 @@ class CandidateController extends Controller
                 foreach ($skills as $skill) {
                     $skill_exists = SkillTranslation::where('skill_id', $skill)->orWhere('name', $skill)->first();
 
-                    if (! $skill_exists) {
+                    if (!$skill_exists) {
                         $select_tag = Skill::create(['name' => $skill]);
 
                         $languages = loadLanguage();
@@ -623,7 +625,7 @@ class CandidateController extends Controller
 
             return back();
         } catch (\Exception $e) {
-            flashError('An error occurred: '.$e->getMessage());
+            flashError('An error occurred: ' . $e->getMessage());
 
             return back();
         }
@@ -637,7 +639,7 @@ class CandidateController extends Controller
     public function destroy(Candidate $candidate)
     {
         try {
-            abort_if(! userCan('candidate.delete'), 403);
+            abort_if(!userCan('candidate.delete'), 403);
 
             $user = User::FindOrFail($candidate->user_id);
             CandidateCvView::query()
@@ -660,7 +662,7 @@ class CandidateController extends Controller
 
             return redirect()->route('candidate.index');
         } catch (\Exception $e) {
-            flashError('An error occurred: '.$e->getMessage());
+            flashError('An error occurred: ' . $e->getMessage());
 
             return back();
         }
@@ -684,7 +686,7 @@ class CandidateController extends Controller
                 return responseSuccess(__('candidate_deactivated_successfully'));
             }
         } catch (\Exception $e) {
-            flashError('An error occurred: '.$e->getMessage());
+            flashError('An error occurred: ' . $e->getMessage());
 
             return back();
         }
@@ -710,7 +712,7 @@ class CandidateController extends Controller
 
             return responseSuccess($message);
         } catch (\Exception $e) {
-            flashError('An error occurred: '.$e->getMessage());
+            flashError('An error occurred: ' . $e->getMessage());
 
             return back();
         }
@@ -718,11 +720,11 @@ class CandidateController extends Controller
 
     public function candidateExport($type)
     {
-        $name = time().'_candidates.'.$type;
+        $name = time() . '_candidates.' . $type;
         try {
             return Excel::download(new CandidateExport(), $name);
         } catch (\Exception $e) {
-            flashError('An error occurred: '.$e->getMessage());
+            flashError('An error occurred: ' . $e->getMessage());
 
             return back();
         }

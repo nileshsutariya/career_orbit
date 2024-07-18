@@ -57933,6 +57933,7 @@ html[dir=rtl] body.dark-only .page-wrapper .page-body-wrapper .page-body .card:n
 /*# sourceMappingURL=style.css.map */
 
 
+
 .badge .single-tag {
   padding: 6px 16px;
   display: inline-block;
@@ -57953,7 +57954,7 @@ html[dir=rtl] body.dark-only .page-wrapper .page-body-wrapper .page-body .card:n
 
 .badge .single-tag:hover,
 .single-tag-active {
-  background-color: var(--main-color) !important;
+  background-color: #48A3D7 !important;
   color: #fff !important
 }
 
@@ -57966,7 +57967,7 @@ html[dir=rtl] body.dark-only .page-wrapper .page-body-wrapper .page-body .card:n
 }
 
 .badge .single-tag:hover .close-tag path {
-  fill: var(--primary-500);
+  fill: #48A3D7;
   stroke: #fff
 }
 
