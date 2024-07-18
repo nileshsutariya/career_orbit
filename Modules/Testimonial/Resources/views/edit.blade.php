@@ -88,14 +88,15 @@
 
                                         <div class="main-star-rating">
                                             <div class="common-flex star-box justify-content-center">
-                                                <i class="fa fa-star" data-index="1"></i>
-                                                <i class="fa fa-star" data-index="2"></i>
-                                                <i class="fa fa-star" data-index="3"></i>
-                                                <i class="fa fa-star" data-index="4"></i>
-                                                <i class="fa fa-star" data-index="5"></i>
+                                                @for ($i = 1; $i <= 5; $i++)
+                                                    @if ($i <= $testimonial->stars)
+                                                        <i class="fa fa-star active" data-index="{{ $i }}"></i>
+                                                    @else
+                                                        <i class="fa fa-star" data-index="{{ $i }}"></i>
+                                                    @endif
+                                                @endfor
                                             </div>
                                         </div>
-
 
                                         <input value="{{ $testimonial->stars }}" type="hidden" name="stars"
                                             id="rating" class="form-control @error('stars') is-invalid @enderror">
@@ -155,6 +156,15 @@
         </div>
     </div>
 @endsection
+<style>
+    .fa-star {
+        font-size: 32px !important;
+    }
+
+    .active {
+        color: #D77748 !important;
+    }
+</style>
 
 @section('script')
     <script>

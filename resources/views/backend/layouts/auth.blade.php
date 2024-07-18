@@ -49,9 +49,9 @@
                 <div class="login-card login-dark">
                     <div>
                         <div>
+
                             <a class="logo" href="{{ route('admin.login') }}">
-                                <img class="img-fluid for-dark" src="{{ $setting->dark_logo_url }}"
-                                    alt="{{ __('logo') }}">
+                                <img height="200px" src="{{ $setting->dark_logo_url }}" alt="{{ __('logo') }}">
                             </a>
                         </div>
                         <div class="login-main">

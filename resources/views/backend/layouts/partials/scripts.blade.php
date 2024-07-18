@@ -19,8 +19,8 @@
 
 <script src="{{ asset('backend') }}/plugins/dropify/js/dropify.min.js"></script>
 
-<script src="{{asset('backend/assets/js/dropzone/dropzone.js')}}"></script>
-<script src="{{asset('backend/assets/js/dropzone/dropzone-script.js')}}"></script>
+<script src="{{ asset('backend/assets/js/dropzone/dropzone.js') }}"></script>
+<script src="{{ asset('backend/assets/js/dropzone/dropzone-script.js') }}"></script>
 
 
 <script src="{{ asset('backend/assets/js/map-js/leaflet.js') }}"></script>
@@ -30,30 +30,30 @@
 <script src="{{ asset('backend/assets/js/bootstrap-datepicker.min.js') }}"></script>
 <script src="{{ asset('backend/assets/js/flat-pickr/custom-flatpickr.js') }}"></script>
 <script src="{{ asset('backend/assets/js/height-equal.js') }}"></script>
-<script src="{{asset('backend/assets/js/editor/summernote/summernote.js')}}"></script>
-<script src="{{asset('backend/assets/js/editor/summernote/summernote.custom.js')}}"></script>
-<script src="{{asset('backend/assets/js/editor/summernote/summernote-custom1.js')}}"></script>
+<script src="{{ asset('backend/assets/js/editor/summernote/summernote.js') }}"></script>
+<script src="{{ asset('backend/assets/js/editor/summernote/summernote.custom.js') }}"></script>
+<script src="{{ asset('backend/assets/js/editor/summernote/summernote-custom1.js') }}"></script>
 
-<script src="{{ asset('backend/assets/js/datatable/datatables/jquery.dataTables.min.js')}}"></script>
-<script src="{{ asset('backend/assets/js/datatable/datatable-extension/dataTables.buttons.min.js')}}"></script>
-<script src="{{ asset('backend/assets/js/datatable/datatable-extension/jszip.min.js')}}"></script>
-<script src="{{ asset('backend/assets/js/datatable/datatable-extension/buttons.colVis.min.js')}}"></script>
-<script src="{{ asset('backend/assets/js/datatable/datatable-extension/pdfmake.min.js')}}"></script>
-<script src="{{ asset('backend/assets/js/datatable/datatable-extension/vfs_fonts.js')}}"></script>
-<script src="{{ asset('backend/assets/js/datatable/datatable-extension/dataTables.autoFill.min.js')}}"></script>
-<script src="{{ asset('backend/assets/js/datatable/datatable-extension/dataTables.select.min.js')}}"></script>
-<script src="{{ asset('backend/assets/js/datatable/datatable-extension/buttons.bootstrap4.min.js')}}"></script>
-<script src="{{ asset('backend/assets/js/datatable/datatable-extension/buttons.html5.min.js')}}"></script>
-<script src="{{ asset('backend/assets/js/datatable/datatable-extension/buttons.print.min.js')}}"></script>
-<script src="{{ asset('backend/assets/js/datatable/datatable-extension/dataTables.bootstrap4.min.js')}}"></script>
-<script src="{{ asset('backend/assets/js/datatable/datatable-extension/dataTables.responsive.min.js')}}"></script>
-<script src="{{ asset('backend/assets/js/datatable/datatable-extension/responsive.bootstrap4.min.js')}}"></script>
-<script src="{{ asset('backend/assets/js/datatable/datatable-extension/dataTables.keyTable.min.js')}}"></script>
-<script src="{{ asset('backend/assets/js/datatable/datatable-extension/dataTables.colReorder.min.js')}}"></script>
-<script src="{{ asset('backend/assets/js/datatable/datatable-extension/dataTables.fixedHeader.min.js')}}"></script>
-<script src="{{ asset('backend/assets/js/datatable/datatable-extension/dataTables.rowReorder.min.js')}}"></script>
-<script src="{{ asset('backend/assets/js/datatable/datatable-extension/dataTables.scroller.min.js')}}"></script>
-<script src="{{ asset('backend/assets/js/datatable/datatable-extension/custom.js')}}"></script>
+<script src="{{ asset('backend/assets/js/datatable/datatables/jquery.dataTables.min.js') }}"></script>
+<script src="{{ asset('backend/assets/js/datatable/datatable-extension/dataTables.buttons.min.js') }}"></script>
+<script src="{{ asset('backend/assets/js/datatable/datatable-extension/jszip.min.js') }}"></script>
+<script src="{{ asset('backend/assets/js/datatable/datatable-extension/buttons.colVis.min.js') }}"></script>
+<script src="{{ asset('backend/assets/js/datatable/datatable-extension/pdfmake.min.js') }}"></script>
+<script src="{{ asset('backend/assets/js/datatable/datatable-extension/vfs_fonts.js') }}"></script>
+<script src="{{ asset('backend/assets/js/datatable/datatable-extension/dataTables.autoFill.min.js') }}"></script>
+<script src="{{ asset('backend/assets/js/datatable/datatable-extension/dataTables.select.min.js') }}"></script>
+<script src="{{ asset('backend/assets/js/datatable/datatable-extension/buttons.bootstrap4.min.js') }}"></script>
+<script src="{{ asset('backend/assets/js/datatable/datatable-extension/buttons.html5.min.js') }}"></script>
+<script src="{{ asset('backend/assets/js/datatable/datatable-extension/buttons.print.min.js') }}"></script>
+<script src="{{ asset('backend/assets/js/datatable/datatable-extension/dataTables.bootstrap4.min.js') }}"></script>
+<script src="{{ asset('backend/assets/js/datatable/datatable-extension/dataTables.responsive.min.js') }}"></script>
+<script src="{{ asset('backend/assets/js/datatable/datatable-extension/responsive.bootstrap4.min.js') }}"></script>
+<script src="{{ asset('backend/assets/js/datatable/datatable-extension/dataTables.keyTable.min.js') }}"></script>
+<script src="{{ asset('backend/assets/js/datatable/datatable-extension/dataTables.colReorder.min.js') }}"></script>
+<script src="{{ asset('backend/assets/js/datatable/datatable-extension/dataTables.fixedHeader.min.js') }}"></script>
+<script src="{{ asset('backend/assets/js/datatable/datatable-extension/dataTables.rowReorder.min.js') }}"></script>
+<script src="{{ asset('backend/assets/js/datatable/datatable-extension/dataTables.scroller.min.js') }}"></script>
+<script src="{{ asset('backend/assets/js/datatable/datatable-extension/custom.js') }}"></script>
 <script src="{{ asset('backend/assets/js/tooltip-init.js') }}"></script>
 
 <script src="{{ asset('backend/assets/js/select2/tagify.js') }}"></script>
@@ -61,32 +61,53 @@
 <script src="{{ asset('backend/assets/js/select2/intltelinput.min.js') }}"></script>
 
 
-<script src="{{asset('backend/assets/js/jquery.ui.min.js')}}"></script>
-<script src="{{asset('backend/assets/js/slick/slick.min.js')}}"></script>
-<script src="{{asset('backend/assets/js/slick/slick.js')}}"></script>
-<script src="{{asset('backend/assets/js/header-slick.js')}}"></script>
+<script src="{{ asset('backend/assets/js/jquery.ui.min.js') }}"></script>
+<script src="{{ asset('backend/assets/js/slick/slick.min.js') }}"></script>
+<script src="{{ asset('backend/assets/js/slick/slick.js') }}"></script>
+<script src="{{ asset('backend/assets/js/header-slick.js') }}"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"
     integrity="sha512-2ImtlRlf2VVmiGZsjm9bEyhjGW4dU7B6TNwh/hx/iSByxNENtj3WVE6o/9Lj4TJeVXPi4bnOIMXFIJJAeufa0A=="
     crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+
 <script>
     new WOW().init();
 </script>
 
-<script>$('.select2').select2();</script>
 <script>
-    @if (Session::has('success'))
-        toastr.success("{{ Session::get('success') }}", 'Success!')
-    @endif
+    $('.select2').select2();
+</script>
+<script>
+    @if (Session::has('message'))
+        var type = "{{ Session::get('alert-type', 'info') }}"
+        switch (type) {
+            case 'success':
 
-    @if (Session::has('warning'))
-        toastr.warning("{{ Session::get('warning') }}", 'Warning!')
-    @endif
 
-    @if (Session::has('error'))
-        toastr.error("{{ Session::get('error') }}", 'Error!')
-    @endif
+                toastr.options.timeOut = 10000;
+                // toastr.options.style = {
+                //     "background-color": "blue",
+                //     "color": "yellow"
+                // };
+                toastr.success("{{ Session::get('message') }}");
+                break;
+            case 'warning':
 
-    // toast config
+                toastr.options.timeOut = 10000;
+                toastr.warning("{{ Session::get('message') }}");
+
+                break;
+            case 'error':
+
+                toastr.options.timeOut = 10000;
+                toastr.error("{{ Session::get('message') }}");
+
+
+                break;
+        }
+    @endif
+</script>
+<script>
     // toastr.options = {
     //     "closeButton": false,
     //     "debug": false,
@@ -104,18 +125,13 @@
     //     "hideMethod": "fadeOut"
     // }
 
+
+
+
     $.ajaxSetup({
         headers: {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
         }
-    });
-
-    // Navbar Collapse Toggle
-    var isNavCollapse = JSON.parse(localStorage.getItem("sidebar_collapse"))
-    isNavCollapse ? $('body').addClass('sidebar-collapse') : null;
-
-    $('#nav_collapse').on('click', function() {
-        localStorage.setItem("sidebar_collapse", isNavCollapse == true ? false : true);
     });
 </script>
 <!-- Custom Script -->
