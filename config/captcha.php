@@ -3,7 +3,7 @@
 return [
     'secret' => 'Secretr',
     'sitekey' => 'Testing',
-    'active' => true,
+    'active' => false,
     'options' => [
         'timeout' => 30,
     ],
