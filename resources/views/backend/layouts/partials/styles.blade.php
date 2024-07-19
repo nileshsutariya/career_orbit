@@ -1,5 +1,6 @@
 @yield('style')
 <link rel="stylesheet" href="{{ asset('backend') }}/plugins/dropify/css/dropify.min.css">
+
 <link rel="icon" href="{{ $setting->favicon_image_url }}" type="image/x-icon">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
@@ -57,7 +58,9 @@
     integrity="sha512-nMNlpuaDPrqlEls3IX/Q56H36qvBASwb3ipuo3MxeWbsQB1881ox0cRv7UPTgBlriqoynt35KjEwgGUeUXIPnw=="
     crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-<link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css" rel="stylesheet">
+<link rel="stylesheet" href="{{ asset('backend/plugins/toastr/toastr.css') }}">
+<link rel="stylesheet"
+    href="{{ asset('backend') }}/plugins/bootstrap-iconpicker/dist/css/bootstrap-iconpicker.min.css" />
 
 <!-- For PWA Theme Color as it is Frontend Start  -->
 @php

@@ -20,53 +20,53 @@
 @endsection
 
 @section('website-settings')
-<div class="card">
-    <div class="card-body">
-        <div class="row">
-            <div class="col-12 col-sm-12 col-md-3">
-                <ul class="nav nav-pills flex-column">
-                    @foreach ($email_templates as $key => $email_template)
-                        @php
-                            $type = $email_template->type ?? "new";
-                        @endphp
-                        <li class="nav-item border rounded mb-1">
-                            <a class="nav-link {{ $loop->first  ? 'active' : '' }}" data-bs-toggle="tab"
-                                href="#{{ $type }}">{{ $email_template->name }}</a>
-                        </li>
-                    @endforeach
-                </ul>
-            </div>
-            <div class="col-12 col-sm-12 col-md-9">
-                <div class="tab-content no-padding">
-                    @foreach ($email_templates as $key => $email_template)
-                        @include("backend.layouts.partials.email-template-repeater", [
-                            "active" => $loop->first,
-                            "id" => $email_template->id,
-                            "name" => $email_template->name ?? "",
-                            "type" => $email_template->type ?? "",
-                            "subject" => $email_template->subject ?? "",
-                            "message" => $email_template->message ?? "",
-                            "flags" => getEmailTemplateFormatFlagsByType($email_template->type ?? "")
-                        ])
-                    @endforeach
-                    {{-- note: developer use only. uncomment add new email type. --}}
-                    {{-- @include("backend.layouts.partials.email-template-repeater", [
+    <div class="card">
+        <div class="card-body">
+            <div class="row">
+                <div class="col-12 col-sm-12 col-md-3">
+                    <ul class="nav nav-pills flex-column">
+                        @foreach ($email_templates as $key => $email_template)
+                            @php
+                                $type = $email_template->type ?? 'new';
+                            @endphp
+                            <li class="nav-item border rounded mb-1">
+                                <a class="nav-link {{ $loop->first ? 'active' : '' }}" data-bs-toggle="tab"
+                                    href="#{{ $type }}">{{ $email_template->name }}</a>
+                            </li>
+                        @endforeach
+                    </ul>
+                </div>
+                <div class="col-12 col-sm-12 col-md-9">
+                    <div class="tab-content no-padding">
+                        @foreach ($email_templates as $key => $email_template)
+                            @include('backend.layouts.partials.email-template-repeater', [
+                                'active' => $loop->first,
+                                'id' => $email_template->id,
+                                'name' => $email_template->name ?? '',
+                                'type' => $email_template->type ?? '',
+                                'subject' => $email_template->subject ?? '',
+                                'message' => $email_template->message ?? '',
+                                'flags' => getEmailTemplateFormatFlagsByType($email_template->type ?? ''),
+                            ])
+                        @endforeach
+                        {{-- note: developer use only. uncomment add new email type. --}}
+                        {{-- @include("backend.layouts.partials.email-template-repeater", [
                         "is_new" => true
                     ]) --}}
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
-
 @endsection
 
 @section('script')
+    <script src="https://cdn.ckeditor.com/ckeditor5/34.2.0/classic/ckeditor.js"></script>
     <script>
-        (function ($) {
+        (function($) {
             "use strict"
-            $(document).ready(function () {
-                $(".classic-editor").map(function (i, elem) {
+            $(document).ready(function() {
+                $(".classic-editor").map(function(i, elem) {
                     console.log(elem);
                     ClassicEditor.create(elem)
                         .then(editor => {

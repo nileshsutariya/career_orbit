@@ -3,14 +3,6 @@
     {{ __('edit') }}
 @endsection
 
-@section('script')
-    <script>
-        function pushClass(arg) {
-            $('.c-btn').removeClass('btn-primary text-white');
-            $('#' + arg).addClass('btn-primary text-white');
-        }
-    </script>
-@endsection
 
 @section('content')
     <div class="container-fluid">
@@ -131,4 +123,33 @@
             </div>
         </div>
     </div>
+@endsection
+@section('script')
+    <script>
+        $(document).ready(function() {
+            $('#image_ckeditor').summernote({
+                height: 300, // Set the height of the editor
+                toolbar: [
+                    ['style', ['style']],
+                    ['font', ['bold', 'italic', 'underline', 'clear']],
+                    ['fontname', ['fontname']],
+                    ['fontsize', ['fontsize']],
+                    ['color', ['color']],
+                    ['para', ['ul', 'ol', 'paragraph']],
+                    ['table', ['table']],
+                    ['insert', ['link', 'picture', 'video']],
+                    ['view', ['fullscreen', 'codeview', 'help']]
+                ]
+            });
+
+
+        });
+    </script>
+
+    <script>
+        function pushClass(arg) {
+            $('.c-btn').removeClass('btn-primary text-white');
+            $('#' + arg).addClass('btn-primary text-white');
+        }
+    </script>
 @endsection

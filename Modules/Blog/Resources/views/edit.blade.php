@@ -112,13 +112,13 @@
                                     </label>
 
                                     <div class="upload-btn-wrapper">
-                                        <input type="file" class="dropify"
-                                            data-default-file="{{ $post->image_url }}" name="image"
-                                            accept="image/png, image/jpg, image/jpeg, image/gif"
+                                        <input type="file" class="dropify" data-default-file="{{ $post->image_url }}"
+                                            name="image" accept="image/png, image/jpg, image/jpeg, image/gif"
                                             data-allowed-file-extensions='["jpg", "jpeg","png", "gif"]'
                                             data-max-file-size="3M">
 
-                                            <p class="tw-text-gray-500 tw-text-xs tw-text-left mt-2 recommended-img-note mb-0">Recommended Image Size: 800x500</p>
+                                        <p class="tw-text-gray-500 tw-text-xs tw-text-left mt-2 recommended-img-note mb-0">
+                                            Recommended Image Size: 800x500</p>
                                     </div>
 
                                     @error('image')
@@ -170,11 +170,32 @@
     </div>
 @endsection
 @section('script')
-   <!-- Dropify-Script -->
-   <script src="{{ asset('backend') }}/js/dropify.min.js"></script>
+    <!-- Dropify-Script -->
+    <script src="{{ asset('backend') }}/js/dropify.min.js"></script>
 
-   <script>
-       //Dropify function
-       $('.dropify').dropify();
-   </script>
+    <script>
+        //Dropify function
+        $('.dropify').dropify();
+    </script>
+
+    <script>
+        $(document).ready(function() {
+            $('#image_ckeditor').summernote({
+                height: 300, // Set the height of the editor
+                toolbar: [
+                    ['style', ['style']],
+                    ['font', ['bold', 'italic', 'underline', 'clear']],
+                    ['fontname', ['fontname']],
+                    ['fontsize', ['fontsize']],
+                    ['color', ['color']],
+                    ['para', ['ul', 'ol', 'paragraph']],
+                    ['table', ['table']],
+                    ['insert', ['link', 'picture', 'video']],
+                    ['view', ['fullscreen', 'codeview', 'help']]
+                ]
+            });
+
+
+        });
+    </script>
 @endsection

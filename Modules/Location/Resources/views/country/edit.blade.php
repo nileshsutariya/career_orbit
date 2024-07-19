@@ -3,56 +3,10 @@
     {{ __('edit') }}
 @endsection
 
-@section('script')
-    <script src="{{ asset('backend/plugins/select2/js/select2.full.min.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('backend') }}/plugins/flagicon/dist/js/bootstrap-iconpicker.bundle.min.js">
-    </script>
-    <!-- Custom Script -->
-
-    {{-- Image upload and Preview --}}
-    <script src="{{ asset('backend') }}/plugins/dropify/js/dropify.min.js"></script>
-    <script>
-        $('.dropify').dropify();
-
-        $('#target').iconpicker({
-            align: 'left', // Only in div tag
-            arrowClass: 'btn-danger',
-            arrowPrevIconClass: 'fas fa-angle-left',
-            arrowNextIconClass: 'fas fa-angle-right',
-            cols: 16,
-            footer: true,
-            header: true,
-            icon: '{{ $country->icon }}',
-            iconset: 'flagicon',
-            labelHeader: '{0} of {1} pages',
-            labelFooter: '{0} - {1} of {2} icons',
-            placement: 'bottom', // Only in button tag
-            rows: 4,
-            search: true,
-            searchText: 'Search',
-            selectedClass: 'btn-success',
-            unselectedClass: ''
-        });
-        $('#target').on('change', function(e) {
-            $('#icon').val(e.icon)
-        });
-        // dropify
-        var drEvent = $('.dropify').dropify();
-        drEvent.on('dropify.error.fileSize', function(event, element) {
-            alert('Filesize error message!');
-        });
-        drEvent.on('dropify.error.imageFormat', function(event, element) {
-            alert('Image format error message!');
-        });
-        $('.search-control').val('{{ $country->icon }}');
-    </script>
-@endsection
-
-
 
 @section('content')
     <div class="row justify-content-center">
-        <div class="col-md-6 ">
+        <div class="col-md-7">
             <div class="card">
                 <div class="card-header">
 
@@ -98,7 +52,7 @@
 
                                 <div class="mb-3 row">
                                     <label class="col-sm-3">{{ __('image') }} <span class="text-danger">*</span></label>
-                                   
+
                                     <div class="col-sm-9">
                                         <div class="">
                                             <input name="image" type="file" data-show-errors="true" data-width="100%"
@@ -127,7 +81,7 @@
                                         {{ __('icon') }}
                                         <span class="text-danger">*</span>
                                     </label>
-                                    <div class="col-sm-9">
+                                    <div class="col-sm-9" style="overflow-x: auto;">
                                         <input type="hidden" name="icon" id="icon"
                                             value="{{ old('icon', $country->icon) }}" class="form-control" />
                                         <div class="" data-icon="fab fa-twitter" id="target"></div>
@@ -154,4 +108,56 @@
             </div>
         </div>
     </div>
+@endsection
+
+
+@section('style')
+    {{-- Flat Icon Css Link --}}
+    <link rel="stylesheet" href="{{ asset('backend') }}/plugins/flagicon/dist/css/flag-icon.min.css" />
+    <link rel="stylesheet" href="{{ asset('backend') }}/plugins/flagicon/dist/css/bootstrap-iconpicker.min.css" />
+@endsection
+@section('script')
+    <script type="text/javascript"
+        src="{{ asset('backend') }}/plugins/flagicon/dist/js/bootstrap-iconpicker.bundle.min.js"></script>
+
+    <script src="{{ asset('backend/plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ asset('backend') }}/plugins/flagicon/dist/js/bootstrap-iconpicker.bundle.min.js"></script>
+
+    {{-- Image upload and Preview --}}
+    <script src="{{ asset('backend') }}/plugins/dropify/js/dropify.min.js"></script>
+    <script>
+        $('.dropify').dropify();
+
+        $('#target').iconpicker({
+            align: 'left', // Only in div tag
+            arrowClass: 'btn-danger',
+            arrowPrevIconClass: 'fa fa-angle-left',
+            arrowNextIconClass: 'fa fa-angle-right',
+            cols: 16,
+            footer: true,
+            header: true,
+            icon: '{{ $country->icon }}',
+            iconset: 'flagicon',
+            labelHeader: '{0} of {1} pages',
+            labelFooter: '{0} - {1} of {2} icons',
+            placement: 'bottom', // Only in button tag
+            rows: 4,
+            search: true,
+            searchText: 'Search',
+            selectedClass: 'btn-success',
+            unselectedClass: ''
+        });
+        $('#target').on('change', function(e) {
+            $('#icon').val(e.icon)
+        });
+        // dropify
+        var drEvent = $('.dropify').dropify();
+        drEvent.on('dropify.error.fileSize', function(event, element) {
+            alert('Filesize error message!');
+        });
+        drEvent.on('dropify.error.imageFormat', function(event, element) {
+            alert('Image format error message!');
+        });
+        $('.search-control').val('{{ $country->icon }}');
+    </script>
 @endsection

@@ -387,8 +387,8 @@
                                         <div class="col-md-12 mb-2">
                                             <x-forms.label name="tags" for="tags" :required="true" />
                                             <select name="tags[]"
-                                                class="form-control select2 @error('tags') is-invalid @enderror"
-                                                multiple id="tags">
+                                                class="form-control select2 @error('tags') is-invalid @enderror" multiple
+                                                id="tags">
                                                 @foreach ($tags as $tag)
                                                     <option
                                                         @foreach ($job->tags as $job_tag)
@@ -408,7 +408,7 @@
                                             <x-forms.label name="benefits" for="benefits" :required="true" />
                                             <select name="benefits[]"
                                                 class="form-control select2 @error('benefits') is-invalid @enderror"
-                                                id="benefits" >
+                                                id="benefits">
                                                 @foreach ($benefits as $benefit)
                                                     <option
                                                         @foreach ($job->benefits as $job_benefit)
@@ -426,8 +426,8 @@
                                         <div class="col-md-12">
                                             <x-forms.label name="skills" for="skill" :required="true" />
                                             <select name="skills[]"
-                                                class="form-control select2 @error('skills') is-invalid @enderror" id="skills"
-                                                >
+                                                class="form-control select2 @error('skills') is-invalid @enderror"
+                                                id="skills">
                                                 @foreach ($skills as $skill)
                                                     <option
                                                         @foreach ($job->skills as $job_skill)
@@ -1201,6 +1201,27 @@
                 $('#company_label').find('span').show();
                 $('#company-input-container').show();
             }
+        });
+    </script>
+
+    <script>
+        $(document).ready(function() {
+            $('#image_ckeditor').summernote({
+                height: 300, // Set the height of the editor
+                toolbar: [
+                    ['style', ['style']],
+                    ['font', ['bold', 'italic', 'underline', 'clear']],
+                    ['fontname', ['fontname']],
+                    ['fontsize', ['fontsize']],
+                    ['color', ['color']],
+                    ['para', ['ul', 'ol', 'paragraph']],
+                    ['table', ['table']],
+                    ['insert', ['link', 'picture', 'video']],
+                    ['view', ['fullscreen', 'codeview', 'help']]
+                ]
+            });
+
+
         });
     </script>
 @endsection

@@ -11,14 +11,14 @@
             <div class="card">
                 <div class="card-body">
                     <div class="float-start">
-                    <h4 class="card-title ">{{ __('update') }} {{ __('employer') }}</h4>
+                        <h4 class="card-title ">{{ __('update') }} {{ __('employer') }}</h4>
                     </div>
                     <div class="float-end">
-                    <button type="submit"
-                        class="btn bg-primary float-right d-flex align-items-center justify-content-center">
-                        <i class="fa fa-refresh m-r-5"></i>
-                        {{ __('save') }}
-                    </button>
+                        <button type="submit"
+                            class="btn bg-primary float-right d-flex align-items-center justify-content-center">
+                            <i class="fa fa-refresh m-r-5"></i>
+                            {{ __('save') }}
+                        </button>
                     </div>
                 </div>
             </div>
@@ -177,8 +177,7 @@
                             <div id="multiple_feature_part">
                                 <div class="row justify-content-center">
                                     <div class="form-group col-md-4 mb-2">
-                                        <select
-                                            class="form-control select2 @error('social_media') border-danger @enderror"
+                                        <select class="form-control select2 @error('social_media') border-danger @enderror"
                                             name="social_media[]">
                                             <option value="" class="d-none" disabled>{{ __('select_one') }}
                                             </option>
@@ -215,7 +214,8 @@
                                 @forelse($socials as $social)
                                     <div class="row justify-content-center">
                                         <div class="form-group col-md-4">
-                                            <select class="form-control select2 @error('social_media') border-danger @enderror"
+                                            <select
+                                                class="form-control select2 @error('social_media') border-danger @enderror"
                                                 name="social_media[]">
                                                 <option value="" class="d-none" disabled>{{ __('select_one') }}
                                                 </option>
@@ -369,20 +369,20 @@
 
 @section('script')
     @livewireScripts
-  
+
     @stack('js')
-    
-    <script src="{{ asset('backend') }}/plugins/dropify/js/dropify.min.js"></script> 
+
+    <script src="{{ asset('backend') }}/plugins/dropify/js/dropify.min.js"></script>
     <script src="{{ asset('frontend') }}/assets/js/axios.min.js"></script>
     @if (app()->getLocale() == 'ar')
         <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/locales/bootstrap-datepicker.ar.min.js
-                    "></script>
+                            "></script>
     @endif
     <script>
         $('.dropify').dropify();
 
         //init datepicker
-      
+
 
         $(document).on("click", "#remove_item", function() {
             $(this).parent().parent('div').remove();
@@ -761,5 +761,39 @@
         $(document).ready(function() {
             $("[data-toggle=tooltip]").tooltip()
         })
+    </script>
+
+    <script>
+        $(document).ready(function() {
+            $('#image_ckeditor').summernote({
+                height: 300, // Set the height of the editor
+                toolbar: [
+                    ['style', ['style']],
+                    ['font', ['bold', 'italic', 'underline', 'clear']],
+                    ['fontname', ['fontname']],
+                    ['fontsize', ['fontsize']],
+                    ['color', ['color']],
+                    ['para', ['ul', 'ol', 'paragraph']],
+                    ['table', ['table']],
+                    ['insert', ['link', 'picture', 'video']],
+                    ['view', ['fullscreen', 'codeview', 'help']]
+                ]
+            });
+
+            $('#image_ckeditor_2').summernote({
+                height: 300, // Set the height of the editor
+                toolbar: [
+                    ['style', ['style']],
+                    ['font', ['bold', 'italic', 'underline', 'clear']],
+                    ['fontname', ['fontname']],
+                    ['fontsize', ['fontsize']],
+                    ['color', ['color']],
+                    ['para', ['ul', 'ol', 'paragraph']],
+                    ['table', ['table']],
+                    ['insert', ['link', 'picture', 'video']],
+                    ['view', ['fullscreen', 'codeview', 'help']]
+                ]
+            });
+        });
     </script>
 @endsection

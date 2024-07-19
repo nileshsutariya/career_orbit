@@ -16,7 +16,8 @@
                             </div>
                             <div>
                                 <div class="d-flex flex-row">
-                                    <button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#tooltipmodal"><i class="fa fa-plus"> </i>
+                                    <button class="btn btn-primary" type="button" data-bs-toggle="modal"
+                                        data-bs-target="#tooltipmodal"><i class="fa fa-plus"> </i>
                                         {{ __('bulk_import') }}
                                     </button>
                                 </div>
@@ -61,24 +62,24 @@
                                             </td>
                                             <td>
                                                 <div class="d-flex align-items-center">
-                                                @if (userCan('job_category.update'))
-                                                    <a href="{{ route('jobCategory.edit', $category->id) }}"
-                                                        class="btn">
-                                                        <i class="fa fa-edit fa-2x txt-success"></i>
-                                                    </a>
-                                                @endif
-                                                @if (userCan('job_category.delete'))
-                                                    <form action="{{ route('jobCategory.destroy', $category->id) }}"
-                                                        method="POST" class="d-inline">
-                                                        @method('DELETE')
-                                                        @csrf
-                                                        <button
-                                                            onclick="return confirm('{{ __('are_you_sure_you_want_to_delete_this_item') }}');"
+                                                    @if (userCan('job_category.update'))
+                                                        <a href="{{ route('jobCategory.edit', $category->id) }}"
                                                             class="btn">
-                                                            <i class="fa fa-trash-o fa-2x txt-danger"></i>
-                                                        </button>
-                                                    </form>
-                                                @endif
+                                                            <i class="fa fa-edit fa-2x txt-success"></i>
+                                                        </a>
+                                                    @endif
+                                                    @if (userCan('job_category.delete'))
+                                                        <form action="{{ route('jobCategory.destroy', $category->id) }}"
+                                                            method="POST" class="d-inline">
+                                                            @method('DELETE')
+                                                            @csrf
+                                                            <button
+                                                                onclick="return confirm('{{ __('are_you_sure_you_want_to_delete_this_item') }}');"
+                                                                class="btn">
+                                                                <i class="fa fa-trash-o fa-2x txt-danger"></i>
+                                                            </button>
+                                                        </form>
+                                                    @endif
                                                 </div>
                                             </td>
                                         </tr>
@@ -132,18 +133,20 @@
                                     </div>
                                     <div class="col-md-12">
                                         <div>
-                                            <label class="form-label" @required(true)>Icon</label>
+                                            <label class="form-label">{{ __('icon') }}
+                                                <x-forms.required /></label>
                                         </div>
 
                                         <div style="overflow-x: auto;">
                                             <input type="hidden" name="icon" id="icon"
                                                 value="{{ old('icon') }}" />
-                                            <div id="target"></div>
+                                            <div id="target" class="iconpicker-container"></div>
                                             @error('icon')
                                                 <span class="invalid-feedback d-block"
                                                     role="alert"><strong>{{ $message }}</strong></span>
                                             @enderror
                                         </div>
+
                                     </div>
 
                                     <div class="col-12">
@@ -217,7 +220,9 @@
                                     <div class="col-sm-12" style="overflow-x: auto;">
                                         <input type="hidden" name="icon" id="icon"
                                             value="{{ $jobCategory->icon }}" />
-                                        <div id="target"></div>
+                                        <div id="target">
+                                            <div class="iconpicker-container"></div>
+                                        </div>
                                         @error('icon')
                                             <span class="invalid-feedback d-block"
                                                 role="alert"><strong>{{ $message }}</strong></span>
@@ -291,43 +296,43 @@
     <!-- Bootstrap-Iconpicker -->
     <link rel="stylesheet"
         href="{{ asset('backend') }}/plugins/bootstrap-iconpicker/dist/css/bootstrap-iconpicker.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+    <style>
+        .vertical-middle {
+            vertical-align: middle !important;
+        }
+    </style>
 @endsection
 
 @section('script')
     <!-- Bootstrap-Iconpicker Bundle -->
-    <script type="text/javascript"
-        src="{{ asset('backend') }}/plugins/bootstrap-iconpicker/dist/js/bootstrap-iconpicker.bundle.min.js"></script>
-    <script type="text/javascript"
-        src="{{ asset('backend') }}/plugins/bootstrap-iconpicker/dist/js/bootstrap-iconpicker.min.js"></script>
+    <script src="{{ asset('backend') }}/plugins/bootstrap-iconpicker/dist/js/bootstrap-iconpicker.bundle.min.js"></script>
 
     <script>
-        // iconpicker call
-        $('#target').iconpicker({
-            align: 'center', // Only in div tag
-            arrowClass: 'btn-danger',
-            arrowPrevIconClass: 'fas fa-angle-left',
-            arrowNextIconClass: 'fas fa-angle-right',
-            cols: 12,
-            footer: true,
-            header: true,
-            icon: '{{ $jobCategory->icon ?? 'fas fa-bomb' }}',
-            iconset: 'fontawesome5',
-            labelHeader: '{0} of {1} pages',
-            labelFooter: '{0} - {1} of {2} icons',
-            placement: 'bottom', // Only in button tag
-            rows: 4,
-            search: true,
-            searchText: 'Search',
-            selectedClass: 'btn-success',
-            unselectedClass: '',
-        });
+        $(document).ready(function() {
+            $('#target').iconpicker({
+                align: 'center', // Only in div tag
+                arrowClass: 'btn-danger',
+                arrowPrevIconClass: 'fas fa-angle-left',
+                arrowNextIconClass: 'fas fa-angle-right',
+                cols: 12,
+                footer: true,
+                header: true,
+                icon: '{{ $jobCategory->icon ?? 'fas fa-bomb' }}',
+                iconset: 'fontawesome5',
+                labelHeader: '{0} of {1} pages',
+                labelFooter: '{0} - {1} of {2} icons',
+                placement: 'bottom', // Only in button tag
+                rows: 4,
+                search: true,
+                searchText: 'Search',
+                selectedClass: 'btn-success',
+                unselectedClass: '',
+            });
 
-        $('#target').on('change', function(e) {
-            $('#icon').val(e.icon)
-        });
-
-        $('#target').on('change', function(e) {
-            $('#icon').val(e.icon)
+            $('#target').on('change', function(e) {
+                $('#icon').val(e.icon);
+            });
         });
     </script>
 @endsection

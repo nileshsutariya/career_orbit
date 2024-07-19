@@ -31,8 +31,7 @@
 <script src="{{ asset('backend/assets/js/flat-pickr/custom-flatpickr.js') }}"></script>
 <script src="{{ asset('backend/assets/js/height-equal.js') }}"></script>
 <script src="{{ asset('backend/assets/js/editor/summernote/summernote.js') }}"></script>
-<script src="{{ asset('backend/assets/js/editor/summernote/summernote.custom.js') }}"></script>
-<script src="{{ asset('backend/assets/js/editor/summernote/summernote-custom1.js') }}"></script>
+
 
 <script src="{{ asset('backend/assets/js/datatable/datatables/jquery.dataTables.min.js') }}"></script>
 <script src="{{ asset('backend/assets/js/datatable/datatable-extension/dataTables.buttons.min.js') }}"></script>
@@ -68,7 +67,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"
     integrity="sha512-2ImtlRlf2VVmiGZsjm9bEyhjGW4dU7B6TNwh/hx/iSByxNENtj3WVE6o/9Lj4TJeVXPi4bnOIMXFIJJAeufa0A=="
     crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+<script src="{{ asset('backend/plugins/toastr/toastr.min.js') }}"></script>
 
 <script>
     new WOW().init();
@@ -78,60 +77,48 @@
     $('.select2').select2();
 </script>
 <script>
-    @if (Session::has('message'))
-        var type = "{{ Session::get('alert-type', 'info') }}"
-        switch (type) {
-            case 'success':
-
-
-                toastr.options.timeOut = 10000;
-                // toastr.options.style = {
-                //     "background-color": "blue",
-                //     "color": "yellow"
-                // };
-                toastr.success("{{ Session::get('message') }}");
-                break;
-            case 'warning':
-
-                toastr.options.timeOut = 10000;
-                toastr.warning("{{ Session::get('message') }}");
-
-                break;
-            case 'error':
-
-                toastr.options.timeOut = 10000;
-                toastr.error("{{ Session::get('message') }}");
-
-
-                break;
-        }
+    @if (Session::has('success'))
+        toastr.success("{{ Session::get('success') }}", 'Success!')
     @endif
-</script>
-<script>
-    // toastr.options = {
-    //     "closeButton": false,
-    //     "debug": false,
-    //     "newestOnTop": true,
-    //     "progressBar": true,
-    //     "positionClass": "toast-top-right",
-    //     "preventDuplicates": true,
-    //     "onclick": null,
-    //     "showDuration": "300",
-    //     "hideDuration": "1000",
-    //     "timeOut": "5000",
-    //     "extendedTimeOut": "1000",
-    //     "showEasing": "swing",
-    //     "hideEasing": "linear",
-    //     "hideMethod": "fadeOut"
-    // }
 
+    @if (Session::has('warning'))
+        toastr.warning("{{ Session::get('warning') }}", 'Warning!')
+    @endif
 
+    @if (Session::has('error'))
+        toastr.error("{{ Session::get('error') }}", 'Error!')
+    @endif
 
+    // toast config
+    toastr.options = {
+        "closeButton": false,
+        "debug": false,
+        "newestOnTop": true,
+        "progressBar": true,
+        "positionClass": "toast-top-right",
+        "preventDuplicates": true,
+        "onclick": null,
+        "showDuration": "300",
+        "hideDuration": "1000",
+        "timeOut": "5000",
+        "extendedTimeOut": "1000",
+        "showEasing": "swing",
+        "hideEasing": "linear",
+        "hideMethod": "fadeOut"
+    }
 
     $.ajaxSetup({
         headers: {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
         }
+    });
+
+    // Navbar Collapse Toggle
+    var isNavCollapse = JSON.parse(localStorage.getItem("sidebar_collapse"))
+    isNavCollapse ? $('body').addClass('sidebar-collapse') : null;
+
+    $('#nav_collapse').on('click', function() {
+        localStorage.setItem("sidebar_collapse", isNavCollapse == true ? false : true);
     });
 </script>
 <!-- Custom Script -->

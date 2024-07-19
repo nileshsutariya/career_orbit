@@ -154,7 +154,7 @@
                         </div>
                         <div class="section pt-3" id="location">
                             <div class="card mb-0">
-                                
+
                                 @if (config('templatecookie.map_show'))
                                     <div class="card-header">
                                         <div class="card-title">
@@ -735,7 +735,7 @@
 
 @section('script')
     @livewireScripts
-   
+
     @stack('js')
     <script>
         const stepMenus = document.querySelectorAll('.step-menu');
@@ -792,7 +792,7 @@
 
         updateActiveStepMenuItem();
     </script>
-   
+
 
     <script>
         var salary_mode = "{!! old('salary_mode') !!}";
@@ -861,6 +861,26 @@
             } else {
                 errorMessage.textContent = ""; // Clear any previous error message
             }
+        });
+    </script>
+
+    <script>
+        $(document).ready(function() {
+            $('#image_ckeditor').summernote({
+                height: 300, // Set the height of the editor
+                toolbar: [
+                    ['style', ['style']],
+                    ['font', ['bold', 'italic', 'underline', 'clear']],
+                    ['fontname', ['fontname']],
+                    ['fontsize', ['fontsize']],
+                    ['color', ['color']],
+                    ['para', ['ul', 'ol', 'paragraph']],
+                    ['table', ['table']],
+                    ['insert', ['link', 'picture', 'video']],
+                    ['view', ['fullscreen', 'codeview', 'help']]
+                ]
+            });
+
         });
     </script>
     @include('map::set-leafletmap')

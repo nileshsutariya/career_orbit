@@ -149,8 +149,7 @@
                             <div id="multiple_feature_part">
                                 <div class="row justify-content-center">
                                     <div class="col-md-4 mb-2">
-                                        <select
-                                            class="form-control select2 @error('social_media') border-danger @enderror"
+                                        <select class="form-control select2 @error('social_media') border-danger @enderror"
                                             name="social_media[]">
                                             <option value="" class="d-none" disabled>{{ __('select_one') }}
                                             </option>
@@ -232,8 +231,7 @@
                                 </div>
                                 <div class="col-sm-6 mb-2">
                                     <x-forms.label name="team_size" :required="false" />
-                                    <select name="team_size_id"
-                                        class="form-control  select2 {{ error('team_size_id') }}"
+                                    <select name="team_size_id" class="form-control  select2 {{ error('team_size_id') }}"
                                         id="organization_type_id">
                                         <option value="" class="d-none">
                                             {{ __('select_one') }}
@@ -260,16 +258,17 @@
                                     <x-forms.error name="establishment_date" />
                                 </div>
                             </div>
-                            <div class="row mb-2">
-                                <div class="col-md-6">
+
+                            <div class="row">
+                                <div class="form-group col-md-6">
                                     <x-forms.label name="bio" :required="false" />
                                     <textarea id="image_ckeditor" rows="8" name="bio" placeholder="{{ __('bio') }}"
-                                        class="form-control">{{ old('bio') }}</textarea>
+                                        class="form-control summernote">{{ old('bio') }}</textarea>
                                 </div>
-                                <div class="col-md-6">
+                                <div class="form-group col-md-6">
                                     <x-forms.label name="vision" :required="false" />
                                     <textarea id="image_ckeditor_2" rows="8" name="vision" placeholder="{{ __('vision') }}"
-                                        class="form-control">{{ old('vision') }}</textarea>
+                                        class="form-control summernote">{{ old('vision') }}</textarea>
                                 </div>
                             </div>
                         </div>
@@ -289,7 +288,6 @@
 @endsection
 
 @section('style')
-    
     <!-- >=>Leaflet Map<=< -->
     <x-map.leaflet.map_links />
     <x-map.leaflet.autocomplete_links />
@@ -299,7 +297,7 @@
 
 @section('script')
     @livewireScripts
- 
+
     @stack('js')
     <script>
         //init datepicker
@@ -359,8 +357,11 @@
     {{-- Leaflet  --}}
     @include('map::set-leafletmap')
     @include('map::set-googlemap')
-
-   
+    {{-- <script src="https://cdn.ckeditor.com/4.16.2/standard/ckeditor.js"></script>
+    <script>
+        CKEDITOR.replace('image_ckeditor');
+        CKEDITOR.replace('image_ckeditor_2');
+    </script> --}}
     <!-- Dropify-Script -->
     <script src="{{ asset('backend') }}/js/dropify.min.js"></script>
 
@@ -369,4 +370,38 @@
         $('.dropify').dropify();
     </script>
 
+
+    <script>
+        $(document).ready(function() {
+            $('#image_ckeditor').summernote({
+                height: 300, // Set the height of the editor
+                toolbar: [
+                    ['style', ['style']],
+                    ['font', ['bold', 'italic', 'underline', 'clear']],
+                    ['fontname', ['fontname']],
+                    ['fontsize', ['fontsize']],
+                    ['color', ['color']],
+                    ['para', ['ul', 'ol', 'paragraph']],
+                    ['table', ['table']],
+                    ['insert', ['link', 'picture', 'video']],
+                    ['view', ['fullscreen', 'codeview', 'help']]
+                ]
+            });
+
+            $('#image_ckeditor_2').summernote({
+                height: 300, // Set the height of the editor
+                toolbar: [
+                    ['style', ['style']],
+                    ['font', ['bold', 'italic', 'underline', 'clear']],
+                    ['fontname', ['fontname']],
+                    ['fontsize', ['fontsize']],
+                    ['color', ['color']],
+                    ['para', ['ul', 'ol', 'paragraph']],
+                    ['table', ['table']],
+                    ['insert', ['link', 'picture', 'video']],
+                    ['view', ['fullscreen', 'codeview', 'help']]
+                ]
+            });
+        });
+    </script>
 @endsection

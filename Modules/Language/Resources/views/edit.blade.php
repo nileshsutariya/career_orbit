@@ -19,7 +19,7 @@
 @section('website-settings')
     <div class="container-fluid">
         <div class="row justify-content-center">
-            <div class="col-md-6">
+            <div class="col-md-7">
                 <div class="card">
                     <div class="card-header">
                         <div class="float-start">
@@ -43,7 +43,8 @@
                             <div class="form-group row">
                                 <x-forms.label name="name" class="col-sm-3" />
                                 <div class="col-sm-9">
-                                    <select name="name" class="form-control select2 m-b-10 @error('name') is-invalid @enderror">
+                                    <select name="name"
+                                        class="form-control select2 m-b-10 @error('name') is-invalid @enderror">
                                         @foreach ($translations as $key => $country)
                                             <option {{ $country['name'] == $language->name ? 'selected' : '' }}
                                                 data-key="{{ $key }}" value="{{ $country['name'] }}">
@@ -61,7 +62,8 @@
                             <div class="form-group row">
                                 <x-forms.label name="direction" required="true" class="col-sm-3" />
                                 <div class="col-sm-9">
-                                    <select name="direction" class="form-control select2  @error('direction') is-invalid @enderror">
+                                    <select name="direction"
+                                        class="form-control select2  @error('direction') is-invalid @enderror">
                                         <option {{ $language->direction == 'ltr' ? 'selected' : '' }} value="ltr">
                                             {{ __('ltr') }}
                                         </option>
@@ -77,10 +79,12 @@
                             </div>
                             <div class="form-group row">
                                 <x-forms.label name="flag" required="true" class="col-sm-3" />
-                                <div class="col-sm-9">
+                                <div class="col-sm-9" style="overflow-x: auto;">
                                     <input type="hidden" name="icon" id="icon"
                                         value="{{ old('icon', $language->icon) }}" />
-                                    <div id="target"></div>
+                                    <div id="target">
+                                        <div class="iconpicker-container"></div>
+                                    </div>
                                     @error('icon')
                                         <span class="invalid-feedback d-block"
                                             role="alert"><strong>{{ $message }}</strong></span>
@@ -102,8 +106,18 @@
     </div>
 @endsection
 
+@section('style')
+    <link rel="stylesheet"
+        href="{{ asset('backend') }}/plugins/bootstrap-iconpicker/dist/css/bootstrap-iconpicker.min.css" />
+    <link rel="stylesheet" href="{{ asset('backend') }}/plugins/select2/css/select2.min.css">
+    <link rel="stylesheet" href="{{ asset('backend') }}/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">
+    <link rel="stylesheet" href="{{ asset('backend') }}/plugins/flagicon/dist/css/flag-icon.min.css" />
+    <link rel="stylesheet" href="{{ asset('backend') }}/plugins/flagicon/dist/css/bootstrap-iconpicker.min.css" />
+@endsection
+
 @section('script')
-    
+    <script src="{{ asset('backend/plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ asset('backend') }}/plugins/flagicon/dist/js/bootstrap-iconpicker.bundle.min.js"></script>
     <script>
         $(document).ready(function() {
             // Set the initial value of the hidden input field
@@ -124,5 +138,28 @@
             });
         });
 
+        $('#target').iconpicker({
+            align: 'left', // Only in div tag
+            arrowClass: 'btn-danger',
+            arrowPrevIconClass: 'fa fa-angle-left',
+            arrowNextIconClass: 'fa fa-angle-right',
+            cols: 15,
+            footer: true,
+            header: true,
+            icon: '{{ $language->icon }}',
+            iconset: 'flagicon',
+            labelHeader: '{0} of {1} pages',
+            labelFooter: '{0} - {1} of {2} icons',
+            placement: 'bottom', // Only in button tag
+            rows: 5,
+            search: true,
+            searchText: 'Search',
+            selectedClass: 'btn-success',
+            unselectedClass: ''
+        });
+
+        $('#target').on('change', function(e) {
+            $('#icon').val(e.icon)
+        });
     </script>
 @endsection

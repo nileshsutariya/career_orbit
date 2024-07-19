@@ -3,15 +3,6 @@
     {{ __('create') }}
 @endsection
 
-@section('script')
-    <script>
-        function pushClass(arg) {
-            $('.c-btn').removeClass('btn-primary text-white');
-            $('#' + arg).addClass('btn-primary text-white');
-        }
-    </script>
-@endsection
-
 @section('content')
     <div class="container-fluid">
         <div class="row justify-content-center">
@@ -99,17 +90,15 @@
 
                                         </div>
                                     </div>
-                                    <div class="mb-3 row">
-                                        <label class="col-sm-3"> {{ __('answer') }} <span
-                                                class="text-danger">*</span></label>
+                                    <div class="form-group row">
+                                        <label class="col-sm-3 col-form-label">{{ __('answer') }}<small
+                                                class="text-danger">*</small></label>
                                         <div class="col-sm-9">
                                             <textarea id="image_ckeditor" type="text" class="form-control" name="answer"
                                                 placeholder="{{ __('enter') }} {{ __('answer') }}... ">{{ old('answer') }}</textarea>
                                             @error('answer')
                                                 <span class="text-danger font-size-13">{{ $message }}</span>
                                             @enderror
-
-
                                         </div>
                                     </div>
 
@@ -129,4 +118,34 @@
             </div>
         </div>
     </div>
+@endsection
+
+
+@section('script')
+    <script>
+        $(document).ready(function() {
+            $('#image_ckeditor').summernote({
+                height: 300, // Set the height of the editor
+                toolbar: [
+                    ['style', ['style']],
+                    ['font', ['bold', 'italic', 'underline', 'clear']],
+                    ['fontname', ['fontname']],
+                    ['fontsize', ['fontsize']],
+                    ['color', ['color']],
+                    ['para', ['ul', 'ol', 'paragraph']],
+                    ['table', ['table']],
+                    ['insert', ['link', 'picture', 'video']],
+                    ['view', ['fullscreen', 'codeview', 'help']]
+                ]
+            });
+
+
+        });
+    </script>
+    <script>
+        function pushClass(arg) {
+            $('.c-btn').removeClass('btn-primary text-white');
+            $('#' + arg).addClass('btn-primary text-white');
+        }
+    </script>
 @endsection

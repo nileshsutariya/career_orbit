@@ -96,8 +96,18 @@
 @endsection
 
 
+@section('style')
+    <!-- Bootstrap-Iconpicker -->
+    <link rel="stylesheet"
+        href="{{ asset('backend') }}/plugins/bootstrap-iconpicker/dist/css/bootstrap-iconpicker.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" />
+@endsection
+
+
 @section('script')
     <script src="{{ asset('backend') }}/plugins/jquery-ui/jquery-ui.min.js"></script>
+
 
     <script>
         $(function() {

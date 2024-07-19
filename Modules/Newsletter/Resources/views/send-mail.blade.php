@@ -30,8 +30,9 @@
                                 <label class="col-sm-2 col-form-label" for="composeTo">{{ __('to') }} <span
                                         class="text-danger">*</span></label>
                                 <div class="col-sm-10">
-                                    <select name="emails[]" class="form-control select2 @error('emails') is-invalid @enderror w-100-p"
-                                        multiple data-placeholder="{{ __('start_typing_for_search') }}">
+                                    <select name="emails[]"
+                                        class="form-control select2 @error('emails') is-invalid @enderror w-100-p" multiple
+                                        data-placeholder="{{ __('start_typing_for_search') }}">
                                         @foreach ($emails as $email)
                                             <option {{ collect(old('emails'))->contains($email->id) ? 'selected' : '' }}
                                                 value="{{ $email->email }}">{{ $email->email }}
@@ -59,24 +60,16 @@
                                 </div>
                             </div>
 
-                            <div class="row mb-3">
-                                <label class="col-sm-2 col-form-label">{{ __('body') }}
-                                    <span class="text-danger">*</span>
-                                </label>
+                            <div class="form-group row">
+                                <label class="col-sm-2 col-form-label">{{ __('body') }} <small
+                                        class="text-danger">*</small></label>
                                 <div class="col-sm-10">
-                                    <div class="toolbar-box">
-
-                                        <div id="toolbar1">
-                                            <button class="ql-bold">Bold </button>
-                                            <button class="ql-italic">Italic </button>
-                                            <button class="ql-underline">underline</button>
-                                            <button class="ql-list" value="ordered">List </button>
-                                            <button class="ql-list" value="bullet"> </button>
-                                            <button class="ql-link"></button>
-                                            <button class="ql-image"></button>
-                                        </div>
-                                        <div id="editor1"></div>
-                                    </div>
+                                    <textarea id="image_ckeditor" type="text" class="form-control @error('body') is-invalid @enderror" name="body">
+                                        {{ old('body') }}
+                                    </textarea>
+                                    @error('body')
+                                        <span class="invalid-feedback">{{ $message }}</span>
+                                    @enderror
                                 </div>
                             </div>
 
@@ -98,13 +91,25 @@
     </div>
 @endsection
 
-@section('style')
-    <link rel="stylesheet" type="text/css" href="{{ asset('backend/assets/css/vendors/quill.snow.css') }}">
-@endsection
 
 @section('script')
+    <script>
+        $(document).ready(function() {
+            $('#image_ckeditor').summernote({
+                height: 300, // Set the height of the editor
+                toolbar: [
+                    ['style', ['style']],
+                    ['font', ['bold', 'italic', 'underline', 'clear']],
+                    ['fontname', ['fontname']],
+                    ['fontsize', ['fontsize']],
+                    ['color', ['color']],
+                    ['para', ['ul', 'ol', 'paragraph']],
+                    ['table', ['table']],
+                    ['insert', ['link', 'picture', 'video']],
+                    ['view', ['fullscreen', 'codeview', 'help']]
+                ]
+            });
 
-    <script src="{{ asset('backend/assets/js/editors/quill.js') }}"></script>
-    <script src="{{ asset('backend/assets/js/editors/custom-quill.js') }}"></script>
-
+        });
+    </script>
 @endsection
