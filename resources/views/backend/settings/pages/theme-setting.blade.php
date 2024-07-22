@@ -6,11 +6,11 @@
 
 @section('breadcrumbs')
     <div class="row mb-2 mt-4">
-        <div class="col-sm-6">
+        <div class="col-sm-6 float-start">
             <h1 class="m-0">{{ __('settings') }}</h1>
         </div>
         <div class="col-sm-6">
-            <ol class="breadcrumb float-sm-right">
+            <ol class="breadcrumb float-end">
                 <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}">{{ __('home') }}</a></li>
                 <li class="breadcrumb-item">{{ __('settings') }}</li>
                 <li class="breadcrumb-item active">{{ __('theme_setting') }}</li>

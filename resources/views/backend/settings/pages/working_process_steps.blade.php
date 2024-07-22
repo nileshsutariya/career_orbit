@@ -10,7 +10,7 @@
             <h1 class="m-0">{{ __('settings') }}</h1>
         </div>
         <div class="col-sm-6">
-            <ol class="breadcrumb float-sm-right">
+            <ol class="breadcrumb float-end">
                 <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}">{{ __('home') }}</a></li>
                 <li class="breadcrumb-item">{{ __('settings') }}</li>
                 <li class="breadcrumb-item active">{{ __('working_process_setup') }}</li>
@@ -49,8 +49,7 @@
                                 <x-forms.required />:
                             </label>
                             <textarea class="form-control p-2 @error('working_process_step1_description') is-invalid @enderror" rows="5"
-                                name="working_process_step1_description"
-                                placeholder="{{ __('step_1_description') }}">{{ $working_process->working_process_step1_description }}</textarea>
+                                name="working_process_step1_description" placeholder="{{ __('step_1_description') }}">{{ $working_process->working_process_step1_description }}</textarea>
                             @error('working_process_step1_description')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ __($message) }}</strong>
@@ -78,8 +77,7 @@
                                 <x-forms.required />:
                             </label>
                             <textarea class="form-control p-2 @error('working_process_step2_description') is-invalid @enderror" rows="5"
-                                name="working_process_step2_description"
-                                placeholder="{{ __('step_2_description') }}">{{ $working_process->working_process_step2_description }}</textarea>
+                                name="working_process_step2_description" placeholder="{{ __('step_2_description') }}">{{ $working_process->working_process_step2_description }}</textarea>
                             @error('working_process_step2_description')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ __($message) }}</strong>
@@ -107,8 +105,7 @@
                                 <x-forms.required />:
                             </label>
                             <textarea class="form-control p-2 @error('working_process_step3_description') is-invalid @enderror" rows="5"
-                                name="working_process_step3_description"
-                                placeholder="{{ __('step_3_description') }}">{{ $working_process->working_process_step3_description }}</textarea>
+                                name="working_process_step3_description" placeholder="{{ __('step_3_description') }}">{{ $working_process->working_process_step3_description }}</textarea>
                             @error('working_process_step3_description')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ __($message) }}</strong>
@@ -136,8 +133,7 @@
                                 <x-forms.required />:
                             </label>
                             <textarea class="form-control p-2 @error('working_process_step4_description') is-invalid @enderror" rows="5"
-                                name="working_process_step4_description"
-                                placeholder="{{ __('step_4_description') }}">{{ $working_process->working_process_step4_description }}</textarea>
+                                name="working_process_step4_description" placeholder="{{ __('step_4_description') }}">{{ $working_process->working_process_step4_description }}</textarea>
                             @error('working_process_step4_description')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ __($message) }}</strong>

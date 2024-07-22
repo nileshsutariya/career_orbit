@@ -9,7 +9,7 @@
             <h1 class="m-0">{{ __('settings') }}</h1>
         </div>
         <div class="col-sm-6">
-            <ol class="breadcrumb float-sm-right">
+            <ol class="breadcrumb float-end">
                 <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}">{{ __('home') }}</a></li>
                 <li class="breadcrumb-item">{{ __('settings') }}</li>
                 <li class="breadcrumb-item active">{{ __('pages') }}</li>
@@ -79,18 +79,19 @@
                                             </td>
                                             <td>
                                                 <div class="d-flex align-items-center">
-                                                <a href="{{ route('settings.pages.edit', $page->id) }}" class="btn">
-                                                    <i class="txt-secondary fa fa-edit fa-2x"></i>
-                                                </a>
-                                                <form action="{{ route('settings.pages.delete', $page->id) }}"
-                                                    class="d-inline" method="POST">
-                                                    @method('DELETE')
-                                                    @csrf
-                                                    <button data-bs-toggle="tooltip" data-placement="top"
-                                                        title="{{ __('delete') }}"
-                                                        onclick="return confirm('{{ __('are_you_sure_want_to_delete_this_item') }}');"
-                                                        class="btn"><i class="txt-danger fa fa-trash fa-2x"></i></button>
-                                                </form>
+                                                    <a href="{{ route('settings.pages.edit', $page->id) }}" class="btn">
+                                                        <i class="txt-secondary fa fa-edit fa-2x"></i>
+                                                    </a>
+                                                    <form action="{{ route('settings.pages.delete', $page->id) }}"
+                                                        class="d-inline" method="POST">
+                                                        @method('DELETE')
+                                                        @csrf
+                                                        <button data-bs-toggle="tooltip" data-placement="top"
+                                                            title="{{ __('delete') }}"
+                                                            onclick="return confirm('{{ __('are_you_sure_want_to_delete_this_item') }}');"
+                                                            class="btn"><i
+                                                                class="txt-danger fa fa-trash fa-2x"></i></button>
+                                                    </form>
                                                 </div>
                                             </td>
                                         </tr>

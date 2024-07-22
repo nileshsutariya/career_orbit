@@ -8,7 +8,7 @@
             <h1 class="m-0">{{ __('settings') }}</h1>
         </div>
         <div class="col-sm-6">
-            <ol class="breadcrumb float-sm-right">
+            <ol class="breadcrumb float-end">
                 <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}">{{ __('home') }}</a></li>
                 <li class="breadcrumb-item">{{ __('settings') }}</li>
                 <li class="breadcrumb-item active">{{ __('language_list') }}</li>
@@ -78,8 +78,7 @@
                                         <td>{{ __($language->direction) }}</td>
                                         <td><i class="flag-icon {{ $language->icon }}"></i></td>
                                         <td class="d-flex justify-content-center align-items-center">
-                                            <a href="{{ route('languages.view', $language->code) }}"
-                                                class="btn">
+                                            <a href="{{ route('languages.view', $language->code) }}" class="btn">
                                                 <i class="fa fa-cog fa-2x"></i>
                                             </a>
                                             @if ($language->code == 'en')

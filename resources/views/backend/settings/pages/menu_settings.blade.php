@@ -12,7 +12,7 @@
             </h1>
         </div>
         <div class="col-sm-6">
-            <ol class="breadcrumb float-sm-right">
+            <ol class="breadcrumb float-end">
                 <li class="breadcrumb-item">
                     <a href="{{ route('admin.dashboard') }}">
                         {{ __('home') }}

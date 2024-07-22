@@ -10,7 +10,7 @@
             <h1 class="m-0">{{ __('settings') }}</h1>
         </div>
         <div class="col-sm-6">
-            <ol class="breadcrumb float-sm-right">
+            <ol class="breadcrumb float-end">
                 <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}">{{ __('home') }}</a></li>
                 <li class="breadcrumb-item">{{ __('settings') }}</li>
                 <li class="breadcrumb-item active">{{ __('update_page') }}</li>
@@ -141,7 +141,8 @@
                             </div>
                         </div>
                         <div class="card-footer text-end">
-                            <button type="submit" class="btn btn-primary"> <i class="fa fa-plus"></i>&nbsp;{{ __('update_page') }} </button>
+                            <button type="submit" class="btn btn-primary"> <i
+                                    class="fa fa-plus"></i>&nbsp;{{ __('update_page') }} </button>
                         </div>
                     </form>
                 </div>

@@ -9,7 +9,7 @@
             <h1 class="m-0">{{ __('settings') }}</h1>
         </div>
         <div class="col-sm-6">
-            <ol class="breadcrumb float-sm-right">
+            <ol class="breadcrumb float-end">
                 <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}">{{ __('home') }}</a></li>
                 <li class="breadcrumb-item">{{ __('settings') }}</li>
                 <li class="breadcrumb-item active">{{ __('website_settings') }}</li>
@@ -773,8 +773,8 @@
                                 @php
                                     $active_countries = $countries->where('status', 1)->pluck('id')->toArray();
                                 @endphp
-                                <select name="multiple_country[]" class="custom-select mr-sm-2 select2"
-                                    id="" multiple>
+                                <select name="multiple_country[]" class="custom-select mr-sm-2 select2" id=""
+                                    multiple>
                                     <option value="">{{ __('select_one') }}</option>
                                     @foreach ($countries as $country)
                                         <option {{ in_array($country->id, $active_countries) ? 'selected' : '' }}
