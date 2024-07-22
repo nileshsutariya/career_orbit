@@ -3,7 +3,7 @@
     <div>
         <div class="logo-wrapper">
             <div class="d-flex">
-                <img class="img-fluid m-r-5" src="{{ $setting->favicon_image_url }}" width="25%"
+                <img class="img-fluid" src="{{ $setting->favicon_image_url }}" width="25%"
                     alt="{{ __('logo') }}" />
                 <h3><span class="text-light mt-3">{{ config('app.name') }}</span></h3>
 
