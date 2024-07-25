@@ -27,7 +27,7 @@
     @php
         $user = auth()->user();
     @endphp
-
+ 
 
     <div class="page-wrapper compact-wrapper" id="pageWrapper">
         <div class="page-header row">
